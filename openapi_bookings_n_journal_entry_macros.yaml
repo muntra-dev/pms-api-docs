@@ -1,0 +1,254 @@
+{
+    "paths": {
+        "/api/bookings": {
+            "post": {
+                "operationId": "ApiBookingsPost",
+                "summary": "https://api.testing.muntra.com/api/bookings?include=booking_attendees.booking_attendee_external_binding%2Cbooking_attendees.declaration_emails%2Cbooking_attendees.declaration_sms%2Cbooking_attendees.email_ics%2Cbooking_attendees.emails%2Cbooking_attendees",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "include",
+                        "schema": {
+                            "type": "string",
+                            "example": "booking_attendees.booking_attendee_external_binding%2Cbooking_attendees.declaration_emails%2Cbooking_attendees.declaration_sms%2Cbooking_attendees.email_ics%2Cbooking_attendees.emails%2Cbooking_attendees.patient%2Cbooking_attendees.resource%2Cbooking_attendees.room%2Cbooking_attendees.sms_invitations.supplier_article%2Cbooking_attendees.sms_reminders.supplier_article%2Cbooking_attendees.snail_mails.country%2Cbooking_attendees.snail_mails.supplier_article%2Cbooking_attendees.user%2Cbooking_policy%2Cbooking_rrules%2Cbooking_type%2Cclinic.country%2Corganizer%2Cprocedure"
+                        },
+                        "x-link-response": []
+                    },
+                    {
+                        "in": "query",
+                        "name": "clinic_id",
+                        "schema": {
+                            "type": "string",
+                            "example": "823"
+                        },
+                        "x-link-response": []
+                    },
+                    {
+                        "in": "query",
+                        "name": "user_ids",
+                        "schema": {
+                            "type": "string",
+                            "example": "2082"
+                        },
+                        "x-link-response": []
+                    },
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "schema": {
+                            "type": "string",
+                            "example": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjNjZWY3N2NlN2EzZmNmZmM2NmM1YWVkYjYzNDU2OGZjYjYzYWY1YWRlYzU0YmRhNTIwYTVhY2ZiYzhlYzI0ZjA3M2FkNjRmNDBhZTgxMDkyIn0.eyJhdWQiOiIxIiwianRpIjoiM2NlZjc3Y2U3YTNmY2ZmYzY2YzVhZWRiNjM0NTY4ZmNiNjNhZjVhZGVjNTRiZGE1MjBhNWFjZmJjOGVjMjRmMDczYWQ2NGY0MGFlODEwOTIiLCJpYXQiOjE3MTg4ODg4NjgsIm5iZiI6MTcxODg4ODg2OCwiZXhwIjoyMDM0NDIxNjY4LCJzdWIiOiIyMDgyIiwic2NvcGVzIjpbInBlcnNvbmFsIl19.0FHRRwrqeN5S1abCn8zLQie3Xs3tD_O4E9IefETMK9v0nrWu5rou9gZ-y8Rgj0s0vn6v47LrYRTrSp6HMQ6LJ0PzY7o3ECxrhycw52y_1hCJmwAIsHu4fzaMJS8Ktz2nlKYnBSYcT7g16Gj7Fv6utZhPvCwoI1EF_8Vr466ghsRVjTibzRVUf6kCkhJg6QktH6eyP4YgP_OUJ9Tgpvjd3LCettGoAInW6E63g1vKZqboT3dNVjjkYrLCTCn6M8YyYp71WYZINsijte79qXDApZvXX9BsqEiLPBk3CEWnJAzj_qb-KzkfLM5bVe6a6nXlegFcnMD841MDBexQu_3lzga4shKTFk8XUl4OpKcHry8jQ1thbt-hXjGyAMNqbhCFC5Xbutf9nLrz2Va4-9-m_oiAprJRKsSi7JYkRwaNmrec8yx9SyKeQmMWudLUBhQpYhDLd4s8yt34uxYeSU9apQqjOInl87UQJXNHb_JkTSF3SVpLU9XAGQ3HlwwHaqddlRurrqyOxijWVtI78x2Wv0D5qAf6oOQZ6etGtWbTzq30MMf8ETZnap0yZRScSQ9oSdi_x4fgogIGyRaIegNqmt0rrfOVPcFKFq9El25qkrgtnu8PLUEhOcFvI8hF_pPaBvRDGBllt0vPV-_EYIx9rKKYDZ22vPgYZQ6mO_nLGDs"
+                        },
+                        "x-link-response": []
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        },
+        "/api/journal-entry-macros": {
+            "post": {
+                "operationId": "ApiJournalEntryMacrosPost",
+                "summary": "https://api.muntra.com/api/journal-entry-macros",
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "Authorization",
+                        "schema": {
+                            "type": "string",
+                            "example": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjE5MTg2NTU3Yjk4Y2Q3ODI4NGQ4YjFhNTJhZGJlYmZjOGU0ZTk0M2RiNzczMDVlY2VmNGNlMmExMDMwMzdhNzM3NTE3MDUyZTNiY2M1YzZmIn0.eyJhdWQiOiIxIiwianRpIjoiMTkxODY1NTdiOThjZDc4Mjg0ZDhiMWE1MmFkYmViZmM4ZTRlOTQzZGI3NzMwNWVjZWY0Y2UyYTEwMzAzN2E3Mzc1MTcwNTJlM2JjYzVjNmYiLCJpYXQiOjE3MTk5NDgzMDksIm5iZiI6MTcxOTk0ODMwOSwiZXhwIjoyMDM1NDgxMTA5LCJzdWIiOiIxMTc0NyIsInNjb3BlcyI6WyJwZXJzb25hbCJdfQ.ha9vastLC3bHrv9Ug_izDdPBegC5jv0n2L2ZhyoK73EoFBT0UwdOxh5VGoL8HXxAn81TpDhHbCgrIkW_C2Izzez_J8uhI8EzKLakol4dUbKpL7FnkKr5-VC3T_iDmKDMX0v1CIz6rFnk-NFif1ZWGb6TajuPpKW8BP07EsfAjH21ZJSecxAnaLVmHGuBb2KOXM1xgfMBWAgaxNcDCDoiIlKQQeCq4iIZzAvriQymKU0DDNgo2Fhi24a4tMDRQzT4Kf4jwvJTsfSO0ocN_33hU8KFgso7YagRig4cQLYJE59GUqObGsIpDp1B2kyBAXyTm1qcoWbTIksxjCouKnA0azkYsD8PbVLhDm63-f7qnDhkQCry2ndC5PfBOXoB9I7Dg3_O0ZNqwbQZZPSqSklru7rLS0hGtzJaLkxWWVAi-nglZzPAtoyhrW6YdsEAKOE47g_YPUGFwSSIXsh-1JN_RN4EG1JFZ79ZzG4KcHMjgsGrWPgh3CTytVN2H8D1RN9qy2Vbi-NTjjapU7Nq6B9OwMlDYAv1ZXpLK5IjmJhXd2qQTgRuY34JPYZkO8kOZUJFD2HNlLipQdIjoe4oArklFtOM8B_23ZUJLXGCLm6Ptywi3kDz3vCpZmsOb4JpDR9erfGfGN_DmVAVx8seym-LhiUke5Utabn8f5Y1cOcS3oI"
+                        },
+                        "x-link-response": []
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "*/*": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "data": {
+                                        "type": "object",
+                                        "properties": {
+                                            "type": {
+                                                "type": "string"
+                                            },
+                                            "attributes": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "name": {
+                                                        "type": "string"
+                                                    },
+                                                    "deleted": {
+                                                        "type": "boolean",
+                                                        "format": "null"
+                                                    }
+                                                },
+                                                "required": [
+                                                    "name",
+                                                    "deleted"
+                                                ]
+                                            },
+                                            "relationships": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "user": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "data": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "type": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "id": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "type",
+                                                                    "id"
+                                                                ]
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "data"
+                                                        ]
+                                                    },
+                                                    "currency": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "data": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "type": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "id": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "required": [
+                                                                    "type",
+                                                                    "id"
+                                                                ]
+                                                            }
+                                                        },
+                                                        "required": [
+                                                            "data"
+                                                        ]
+                                                    }
+                                                },
+                                                "required": [
+                                                    "user",
+                                                    "currency"
+                                                ]
+                                            }
+                                        },
+                                        "required": [
+                                            "type",
+                                            "attributes",
+                                            "relationships"
+                                        ]
+                                    },
+                                    "included": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "type": {
+                                                    "type": "string"
+                                                },
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "attributes": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "code": {
+                                                            "type": "string"
+                                                        },
+                                                        "name": {
+                                                            "type": "string"
+                                                        },
+                                                        "suffix": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "required": [
+                                                        "code",
+                                                        "name",
+                                                        "suffix"
+                                                    ]
+                                                }
+                                            },
+                                            "required": [
+                                                "type",
+                                                "id",
+                                                "attributes"
+                                            ]
+                                        }
+                                    }
+                                },
+                                "required": [
+                                    "data",
+                                    "included"
+                                ]
+                            },
+                            "example": {
+                                "value": {
+                                    "data": {
+                                        "type": "journal_entry_macro",
+                                        "attributes": {
+                                            "name": "Test name:22112",
+                                            "deleted": false
+                                        },
+                                        "relationships": {
+                                            "user": {
+                                                "data": {
+                                                    "type": "users",
+                                                    "id": "11747"
+                                                }
+                                            },
+                                            "currency": {
+                                                "data": {
+                                                    "type": "currency",
+                                                    "id": "1"
+                                                }
+                                            }
+                                        }
+                                    },
+                                    "included": [
+                                        {
+                                            "type": "currency",
+                                            "id": "1",
+                                            "attributes": {
+                                                "code": "SEK",
+                                                "name": "Svenska kroner",
+                                                "suffix": "kr"
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            "x-link-response": []
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": ""
+                    }
+                }
+            }
+        }
+    },
+    "info": {
+        "title": "New Collection",
+        "version": "1.0.0"
+    },
+    "openapi": "3.0.0"
+}
