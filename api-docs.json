@@ -1,0 +1,828 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API Documentation",
+        "description": "Muntra Practice Management System API",
+        "version": "1.0.0"
+    },
+    "basePath": "/api",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "paths": {
+        "/api/muntra-caregiver-at-locations": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show all Muntra Caregiver Locations",
+                "description": "Returns a list of Muntra Caregiver Locations based on the specified filters",
+                "operationId": "getCaregiverAtLocations",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "List of additional includes in response",
+                        "type": "array",
+                        "items": {
+                            "type": "string",
+                            "example": "clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "active",
+                        "in": "query",
+                        "description": "Query for active caregivers",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "name": "role_ids",
+                        "in": "query",
+                        "description": "List of role ids for filtering",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "procedure_ids",
+                        "in": "query",
+                        "description": "List of procedures for filtering caregiver_at_locations records",
+                        "type": "array",
+                        "items": {
+                            "type": "integer"
+                        },
+                        "collectionFormat": "multi"
+                    },
+                    {
+                        "name": "new_patient",
+                        "in": "query",
+                        "description": "Parameter for new patient procedure duration.",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "include_caregiver_locations_without_procedure_id_matches",
+                        "in": "query",
+                        "description": "Include caregiver_locations relations without requested procedures",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "Current datetime with ISO format for defining free bookable slots",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "End of a day (current + 3 days) with ISO format for defining free bookable slots",
+                        "type": "string",
+                        "format": "date-time"
+                    },
+                    {
+                        "name": "lat",
+                        "in": "query",
+                        "description": "Latitude of requested location for sorting results with the distance",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    {
+                        "name": "lng",
+                        "in": "query",
+                        "description": "Longitude of requested location for sorting results with the distance",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    {
+                        "name": "radius",
+                        "in": "query",
+                        "description": "Radius in kilometers for result limitation with the distance",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    {
+                        "name": "viewport_northeast_lat",
+                        "in": "query",
+                        "description": "Viewport geo limits",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    {
+                        "name": "viewport_northeast_lng",
+                        "in": "query",
+                        "description": "Viewport geo limits",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    {
+                        "name": "viewport_southwest_lat",
+                        "in": "query",
+                        "description": "Viewport geo limits",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    {
+                        "name": "viewport_southwest_lng",
+                        "in": "query",
+                        "description": "Viewport geo limits",
+                        "type": "number",
+                        "format": "float"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "Clinic ID of clinic at locations records",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "caregiver_id",
+                        "in": "query",
+                        "description": "Caregiver ID of clinic at locations records",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show all Muntra Caregiver Locations",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraCaregiverAtLocationResponse"
+                                    }
+                                },
+                                "included": {
+                                    "description": "Show all Muntra Caregiver Locations",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicResponse"
+                                    }
+                                },
+                                "meta": {
+                                    "description": "Show all Muntra Caregiver Locations",
+                                    "properties": {
+                                        "pagination": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "properties": {
+                                                "total": {
+                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "type": "number",
+                                                    "example": "2"
+                                                },
+                                                "count": {
+                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "type": "number",
+                                                    "example": "2"
+                                                },
+                                                "per_page": {
+                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "type": "number",
+                                                    "example": "2"
+                                                },
+                                                "current_page": {
+                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "total_pages": {
+                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show all Muntra Caregiver Locations",
+                                    "type": "string",
+                                    "example": "Please make request with all required query parameters"
+                                },
+                                "errors": {
+                                    "description": "Show all Muntra Caregiver Locations",
+                                    "properties": {
+                                        "dtstart": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "The dtstart is not a valid date."
+                                            }
+                                        },
+                                        "dtend": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "The dtend field is required when dtstart is present."
+                                            }
+                                        },
+                                        "lng": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "The lng field is required when lat is present."
+                                            }
+                                        },
+                                        "lat": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "The lat field is required when lng is present."
+                                            }
+                                        },
+                                        "viewport_northeast_lat": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "The viewport_northeast_lat field is required when viewport_northeast_lng,viewport_southwest_lat,viewport_southwest_lng is present."
+                                            }
+                                        },
+                                        "viewport_northeast_lng": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "The viewport_northeast_lng field is required when viewport_northeast_lat,viewport_southwest_lat,viewport_southwest_lng is present."
+                                            }
+                                        },
+                                        "viewport_southwest_lat": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "The viewport_northeast_lng field is required when viewport_northeast_lng,viewport_northeast_lat,viewport_southwest_lng is present."
+                                            }
+                                        },
+                                        "viewport_southwest_lng": {
+                                            "description": "Show all Muntra Caregiver Locations",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "string",
+                                                "example": "The viewport_northeast_lng field is required when viewport_northeast_lng,viewport_northeast_lat,viewport_southwest_lat is present."
+                                            }
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "MuntraCaregiverAtLocationResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_caregiver_at_location"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "latitude": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 49.427062
+                        },
+                        "longitude": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 32.081114
+                        },
+                        "auto_approve_patient_booking": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "require_patient_email": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "require_patient_cellphone": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "calendar_activated": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "distance": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 0
+                        },
+                        "latest_review_comment": {
+                            "type": "string",
+                            "example": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "clinic": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "muntra_clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "caregiver": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "muntra_caregiver"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 2
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "free_bookable_slots": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "example": "muntra_free_bookable_slot"
+                                            },
+                                            "id": {
+                                                "type": "string",
+                                                "example": "1-2-1"
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "procedures": {
+                            "properties": {
+                                "data": {
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "type": {
+                                                "type": "string",
+                                                "example": "muntra_caregiver_procedure_at_location"
+                                            },
+                                            "id": {
+                                                "type": "integer",
+                                                "example": 1
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "default_procedure": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "muntra_caregiver_procedure_at_location"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "next_free_bookable_slot": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "muntra_free_bookable_slot"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": "1-2-1"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MuntraCaregiverResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_caregiver"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "clinic_name": {
+                            "type": "string"
+                        },
+                        "booking_requires_two_factor_authentication": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "latitude": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 0
+                        },
+                        "first_name": {
+                            "type": "string"
+                        },
+                        "last_name": {
+                            "type": "string"
+                        },
+                        "professional_statement": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
+                        },
+                        "hide_reviews": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "gender": {
+                            "type": "string"
+                        },
+                        "active": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "number_of_reviews": {
+                            "type": "number",
+                            "format": "integer",
+                            "example": 0
+                        },
+                        "overall_rating": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_advice_and_tips": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_follow_up": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_how_to_find_place": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_patient_health": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_patient_treatment": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_pre_meeting": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_pricing": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_quality": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_bedside_manner": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_hygiene": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_reception_on_arrival": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_thoroughness": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_wait_time": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MuntraClinicResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_clinic"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "clinic_name": {
+                            "type": "string"
+                        },
+                        "clinic_address_1": {
+                            "type": "string"
+                        },
+                        "clinic_address_2": {
+                            "type": "string"
+                        },
+                        "clinic_postal_code": {
+                            "type": "string"
+                        },
+                        "clinic_city": {
+                            "type": "string"
+                        },
+                        "clinic_email_address": {
+                            "type": "string"
+                        },
+                        "clinic_phone_number": {
+                            "type": "string"
+                        },
+                        "clinic_phone_number_2": {
+                            "type": "string"
+                        },
+                        "clinic_phone_mobile": {
+                            "type": "string"
+                        },
+                        "clinic_fax": {
+                            "type": "string"
+                        },
+                        "clinic_professional_statement": {
+                            "type": "string"
+                        },
+                        "default_sms_reminder_text": {
+                            "type": "string"
+                        },
+                        "website_address": {
+                            "type": "string"
+                        },
+                        "booking_requires_two_factor_authentication": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "active": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "latitude": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 0
+                        },
+                        "longitude": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 0
+                        },
+                        "google_places_description": {
+                            "type": "string"
+                        },
+                        "accepts_children": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "accessible_via_elevator": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "accessible_via_stairs": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "capable_of_handling_fear_of_medical_procedures": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "handicap_accessible": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_drinks": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_free_parking_directly_outside_of_clinic": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_free_parking_near_the_clinic": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_magazines": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_music": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_paid_parking_directly_outside_of_clinic": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_paid_parking_near_the_clinic": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_restroom": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_toys": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_tv": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_waiting_room": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_wifi": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "number_of_reviews": {
+                            "type": "number",
+                            "format": "integer",
+                            "example": 10
+                        },
+                        "overall_rating": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_advice_and_tips": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_follow_up": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_how_to_find_place": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_patient_health": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_patient_treatment": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_pre_meeting": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "info_rating_pricing": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_quality": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_bedside_manner": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_hygiene": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_reception_on_arrival": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_thoroughness": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        },
+                        "rating_wait_time": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 4.5
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "tags": [
+        {
+            "name": "Muntra Caregiver-At-Locations",
+            "description": "API Endpoints of Muntra Caregiver-At-Locations"
+        }
+    ]
+}
