@@ -26,13 +26,12 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "List of additional includes in response",
+                        "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
                         "type": "array",
                         "items": {
-                            "type": "string",
-                            "example": "clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot"
+                            "type": "string"
                         },
-                        "collectionFormat": "multi"
+                        "collectionFormat": "csv"
                     },
                     {
                         "name": "active",
@@ -49,7 +48,7 @@
                         "items": {
                             "type": "integer"
                         },
-                        "collectionFormat": "multi"
+                        "collectionFormat": "csv"
                     },
                     {
                         "name": "procedure_ids",
@@ -59,7 +58,7 @@
                         "items": {
                             "type": "integer"
                         },
-                        "collectionFormat": "multi"
+                        "collectionFormat": "csv"
                     },
                     {
                         "name": "new_patient",
