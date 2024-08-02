@@ -293,6 +293,112 @@
                     }
                 }
             }
+        },
+        "/api/muntra-caregiver-procedure-at-locations": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show all Muntra Caregiver Locations",
+                "description": "Returns a list of Muntra Caregiver Locations based on the specified filters",
+                "operationId": "getCaregiverProcedureAtLocations",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Count of entities per page",
+                        "type": "boolean",
+                        "default": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraCaregiverAtLocationResponse"
+                                    }
+                                },
+                                "included": {
+                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicResponse"
+                                    }
+                                },
+                                "meta": {
+                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                    "properties": {
+                                        "pagination": {
+                                            "description": "Show all Muntra Caregiver Procedure At Location",
+                                            "properties": {
+                                                "total": {
+                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "type": "number",
+                                                    "example": "2"
+                                                },
+                                                "count": {
+                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "type": "number",
+                                                    "example": "2"
+                                                },
+                                                "per_page": {
+                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "type": "number",
+                                                    "example": "2"
+                                                },
+                                                "current_page": {
+                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "total_pages": {
+                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                    "type": "string",
+                                    "example": "Please make request parametes is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -822,6 +928,14 @@
         {
             "name": "Muntra Caregiver-At-Locations",
             "description": "API Endpoints of Muntra Caregiver-At-Locations"
+        },
+        {
+            "name": "Muntra Caregiver-Procedure-At-Location",
+            "description": "API Endpoints of Muntra Caregiver-Procedure-At-Location"
+        },
+        {
+            "name": "oauth/token",
+            "description": "API Endpoints of oauth/token"
         }
     ]
 }
