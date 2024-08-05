@@ -6,9 +6,6 @@
         "version": "1.0.0"
     },
     "basePath": "/api",
-    "servers": {
-        "url": "https://api.muntra.com"
-    },
     "schemes": [
         "http",
         "https"
@@ -313,19 +310,19 @@
                         "name": "include",
                         "in": "query",
                         "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
+                        "required": false,
                         "type": "array",
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "csv",
-                        "default": false
+                        "collectionFormat": "csv"
                     },
                     {
                         "name": "per_page",
                         "in": "query",
                         "description": "Count of entities per page",
-                        "type": "boolean",
-                        "default": false
+                        "required": false,
+                        "type": "boolean"
                     }
                 ],
                 "responses": {
