@@ -971,10 +971,6 @@
         {
             "name": "Muntra Caregiver-Procedure-At-Location",
             "description": "API Endpoints of Muntra Caregiver-Procedure-At-Location"
-        },
-        {
-            "name": "oauth/token",
-            "description": "API Endpoints of oauth/token"
         }
     ]
 }
