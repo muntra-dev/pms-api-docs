@@ -5,10 +5,10 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com",  
+    "basePath": "https://api.muntra.com",
     "schemes": [
         "http",
-        "https",   
+        "https"
     ],
     "paths": {
         "/api/muntra-caregiver-at-locations": {
@@ -294,6 +294,332 @@
                 }
             }
         },
+        "/api/muntra-caregivers": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show all Muntra Caregivers",
+                "description": "Returns a list of Muntra Caregivers based on the specified filters",
+                "operationId": "getMuntraCaregivers",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "active",
+                        "in": "query",
+                        "description": "Query for active caregivers.",
+                        "type": "boolean",
+                        "default": true
+                    },
+                    {
+                        "name": "roles",
+                        "in": "query",
+                        "description": "List of roles for filtering.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "procedure_ids",
+                        "in": "query",
+                        "description": "List of procedures for filtering caregiver_at_locations records.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "new_patient",
+                        "in": "query",
+                        "description": "Parameter for new patient procedure duration.",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "include_caregiver_locations_without_procedure_id_matches",
+                        "in": "query",
+                        "description": "Include caregiver_locations relations without requested procedures.",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
+                        "type": "string"
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of records in response, default is 10",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of offset page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Sort by attribute name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Order of sorting, default is asc",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show all Muntra Caregivers",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraCaregiverResponse"
+                                    }
+                                },
+                                "included": {
+                                    "description": "Show all Muntra Caregivers",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicResponse"
+                                    }
+                                },
+                                "meta": {
+                                    "description": "Show all Muntra Caregivers",
+                                    "properties": {
+                                        "pagination": {
+                                            "description": "Show all Muntra Caregivers",
+                                            "properties": {
+                                                "total": {
+                                                    "description": "Show all Muntra Caregivers",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "count": {
+                                                    "description": "Show all Muntra Caregivers",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "per_page": {
+                                                    "description": "Show all Muntra Caregivers",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "current_page": {
+                                                    "description": "Show all Muntra Caregivers",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "total_pages": {
+                                                    "description": "Show all Muntra Caregivers",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show all Muntra Caregivers",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-caregivers/{id}": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show Muntra Caregiver",
+                "description": "Returns certain Muntra Caregiver",
+                "operationId": "getMuntraCaregiver",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
+                        "required": false,
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "caregiver_id",
+                        "in": "query",
+                        "description": "Caregiver Id.",
+                        "type": "integer",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "List of additional includes in response.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "procedure_ids",
+                        "in": "query",
+                        "description": "List of procedures for filtering caregiver_at_locations records.",
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "new_patient",
+                        "in": "query",
+                        "description": "Parameter for new patient procedure duration.",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "include_caregiver_locations_without_procedure_id_matches",
+                        "in": "query",
+                        "description": "Include caregiver_locations relations without requested procedures.",
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
+                        "type": "string"
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show requested Muntra Caregiver",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraCaregiverResponse"
+                                    }
+                                },
+                                "included": {
+                                    "description": "Show requested Muntra Caregiver",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicResponse"
+                                    }
+                                },
+                                "meta": {
+                                    "description": "Show requested Muntra Caregiver",
+                                    "properties": {
+                                        "pagination": {
+                                            "description": "Show requested Muntra Caregiver",
+                                            "properties": {
+                                                "total": {
+                                                    "description": "Show requested Muntra Caregiver",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "count": {
+                                                    "description": "Show requested Muntra Caregiver",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "per_page": {
+                                                    "description": "Show requested Muntra Caregiver",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "current_page": {
+                                                    "description": "Show requested Muntra Caregiver",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "total_pages": {
+                                                    "description": "Show requested Muntra Caregiver",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show requested Muntra Caregiver",
+                                    "type": "string",
+                                    "example": "Muntra Caregiver with Id 5 not found."
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-caregiver-procedure-at-locations": {
             "get": {
                 "tags": [
@@ -334,7 +660,7 @@
                                     "description": "Show all Muntra Caregiver Procedure At Location",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/MuntraCaregiverProcedureAtLocationResponse"
+                                        "$ref": "#/definitions/MuntraCaregiverResponse"
                                     }
                                 },
                                 "included": {
@@ -579,7 +905,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "muntra_caregiver_at_location"
+                    "example": "muntra_caregiver_procedure_at_location"
                 },
                 "id": {
                     "type": "integer",
@@ -967,6 +1293,10 @@
         {
             "name": "Muntra Caregiver-At-Locations",
             "description": "API Endpoints of Muntra Caregiver-At-Locations"
+        },
+        {
+            "name": "Muntra Caregivers",
+            "description": "API Endpoints of Muntra Caregivers"
         },
         {
             "name": "Muntra Caregiver-Procedure-At-Location",
