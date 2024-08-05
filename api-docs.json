@@ -6,6 +6,9 @@
         "version": "1.0.0"
     },
     "basePath": "/api",
+    "servers": {
+        "url": "https://api.muntra.com"
+    },
     "schemes": [
         "http",
         "https"
