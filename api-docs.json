@@ -5,10 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "/api",
-    "servers": {
-        "url": "https://api.muntra.com"
-    },     
+    "basePath": "https://api.muntra.com/api",  
     "schemes": [
         "http",
         "https",   
