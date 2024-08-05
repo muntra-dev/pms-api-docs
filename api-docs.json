@@ -8,10 +8,10 @@
     "basePath": "/api",
     "servers": {
         "url": "https://api.muntra.com"
-    },
+    },     
     "schemes": [
         "http",
-        "https"
+        "https",   
     ],
     "paths": {
         "/api/muntra-caregiver-at-locations": {
@@ -325,7 +325,7 @@
                         "in": "query",
                         "description": "Count of entities per page",
                         "required": false,
-                        "type": "boolean"
+                        "type": "number"
                     }
                 ],
                 "responses": {
