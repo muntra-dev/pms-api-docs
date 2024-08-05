@@ -299,8 +299,8 @@
                 "tags": [
                     "Muntra"
                 ],
-                "summary": "Show all Muntra Caregiver Locations",
-                "description": "Returns a list of Muntra Caregiver Locations based on the specified filters",
+                "summary": "Show all Muntra Caregiver Procedure at Location",
+                "description": "Returns a list of Muntra Caregiver Procedures at Location based on the specified filters",
                 "operationId": "getCaregiverProcedureAtLocations",
                 "produces": [
                     "application/json"
@@ -314,7 +314,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": false
                     },
                     {
                         "name": "per_page",
@@ -333,7 +334,7 @@
                                     "description": "Show all Muntra Caregiver Procedure At Location",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/MuntraCaregiverAtLocationResponse"
+                                        "$ref": "#/definitions/MuntraCaregiverProcedureAtLocationResponse"
                                     }
                                 },
                                 "included": {
@@ -352,17 +353,17 @@
                                                 "total": {
                                                     "description": "Show all Muntra Caregiver Procedure At Location",
                                                     "type": "number",
-                                                    "example": "2"
+                                                    "example": "1"
                                                 },
                                                 "count": {
                                                     "description": "Show all Muntra Caregiver Procedure At Location",
                                                     "type": "number",
-                                                    "example": "2"
+                                                    "example": "1"
                                                 },
                                                 "per_page": {
                                                     "description": "Show all Muntra Caregiver Procedure At Location",
                                                     "type": "number",
-                                                    "example": "2"
+                                                    "example": "1"
                                                 },
                                                 "current_page": {
                                                     "description": "Show all Muntra Caregiver Procedure At Location",
@@ -391,7 +392,7 @@
                                 "message": {
                                     "description": "Show all Muntra Caregiver Procedure At Location",
                                     "type": "string",
-                                    "example": "Please make request parametes is correct"
+                                    "example": "Please make sure that request parameters is correct"
                                 }
                             },
                             "type": "object"
@@ -567,6 +568,44 @@
                                 }
                             },
                             "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MuntraCaregiverProcedureAtLocationResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_caregiver_at_location"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "frequency_in_minutes": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 10
+                        },
+                        "duration_in_minutes_existing_patient": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 20
+                        },
+                        "duration_in_minutes_new_patient": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 30
+                        },
+                        "minimum_age": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 30
                         }
                     },
                     "type": "object"
