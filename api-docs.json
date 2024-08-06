@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com",
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -511,7 +511,8 @@
                             "type": "integer"
                         },
                         "type": "integer",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "include",
@@ -523,7 +524,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": ""
                     },
                     {
                         "name": "caregiver_id",
@@ -534,7 +536,8 @@
                         "allowEmptyValue": true,
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "default": ""
                     },
                     {
                         "name": "include",
@@ -545,7 +548,8 @@
                         "allowEmptyValue": true,
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "default": ""
                     },
                     {
                         "name": "procedure_ids",
@@ -556,7 +560,8 @@
                         "allowEmptyValue": true,
                         "items": {
                             "type": "string"
-                        }
+                        },
+                        "default": ""
                     },
                     {
                         "name": "new_patient",
@@ -564,7 +569,8 @@
                         "description": "Parameter for new patient procedure duration.",
                         "required": false,
                         "type": "boolean",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "include_caregiver_locations_without_procedure_id_matches",
@@ -572,7 +578,8 @@
                         "description": "Include caregiver_locations relations without requested procedures.",
                         "required": false,
                         "type": "boolean",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "dtstart",
@@ -580,7 +587,8 @@
                         "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
                         "required": false,
                         "type": "string",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "dtend",
@@ -588,7 +596,8 @@
                         "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
                         "required": false,
                         "type": "string",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     }
                 ],
                 "responses": {
