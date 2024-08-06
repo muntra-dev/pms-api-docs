@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com", 
+     "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -27,125 +27,175 @@
                         "name": "include",
                         "in": "query",
                         "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
+                        "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": ""
                     },
                     {
                         "name": "active",
                         "in": "query",
                         "description": "Query for active caregivers",
+                        "required": false,
                         "type": "boolean",
-                        "default": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "role_ids",
                         "in": "query",
                         "description": "List of role ids for filtering",
+                        "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "integer"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": ""
                     },
                     {
                         "name": "procedure_ids",
                         "in": "query",
                         "description": "List of procedures for filtering caregiver_at_locations records",
+                        "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "integer"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": ""
                     },
                     {
                         "name": "new_patient",
                         "in": "query",
                         "description": "Parameter for new patient procedure duration.",
-                        "type": "boolean"
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "include_caregiver_locations_without_procedure_id_matches",
                         "in": "query",
                         "description": "Include caregiver_locations relations without requested procedures",
-                        "type": "boolean"
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "dtstart",
                         "in": "query",
                         "description": "Current datetime with ISO format for defining free bookable slots",
+                        "required": false,
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "dtend",
                         "in": "query",
                         "description": "End of a day (current + 3 days) with ISO format for defining free bookable slots",
+                        "required": false,
                         "type": "string",
-                        "format": "date-time"
+                        "format": "date-time",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "lat",
                         "in": "query",
                         "description": "Latitude of requested location for sorting results with the distance",
+                        "required": false,
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "lng",
                         "in": "query",
                         "description": "Longitude of requested location for sorting results with the distance",
+                        "required": false,
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "radius",
                         "in": "query",
                         "description": "Radius in kilometers for result limitation with the distance",
+                        "required": false,
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "viewport_northeast_lat",
                         "in": "query",
                         "description": "Viewport geo limits",
+                        "required": false,
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "viewport_northeast_lng",
                         "in": "query",
                         "description": "Viewport geo limits",
+                        "required": false,
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "viewport_southwest_lat",
                         "in": "query",
                         "description": "Viewport geo limits",
+                        "required": false,
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "viewport_southwest_lng",
                         "in": "query",
                         "description": "Viewport geo limits",
+                        "required": false,
                         "type": "number",
-                        "format": "float"
+                        "format": "float",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "clinic_id",
                         "in": "query",
                         "description": "Clinic ID of clinic at locations records",
-                        "type": "integer"
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "caregiver_id",
                         "in": "query",
                         "description": "Caregiver ID of clinic at locations records",
-                        "type": "integer"
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
                     }
                 ],
                 "responses": {
@@ -300,7 +350,7 @@
                     "Muntra"
                 ],
                 "summary": "Show all Muntra Caregivers",
-                "description": "Query for active caregivers.",
+                "description": "Returns a list of Muntra Caregivers based on the specified filters",
                 "operationId": "getMuntraCaregivers",
                 "produces": [
                     "application/json"
@@ -316,14 +366,17 @@
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": ""
                     },
                     {
                         "name": "active",
                         "in": "query",
+                        "description": "Query for active caregivers.",
                         "required": false,
                         "type": "boolean",
-                        "default": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "roles",
@@ -335,7 +388,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": ""
                     },
                     {
                         "name": "procedure_ids",
@@ -347,7 +401,8 @@
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": ""
                     },
                     {
                         "name": "new_patient",
@@ -355,7 +410,8 @@
                         "description": "Parameter for new patient procedure duration.",
                         "required": false,
                         "type": "boolean",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "include_caregiver_locations_without_procedure_id_matches",
@@ -363,7 +419,8 @@
                         "description": "Include caregiver_locations relations without requested procedures.",
                         "required": false,
                         "type": "boolean",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "dtstart",
@@ -371,7 +428,8 @@
                         "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
                         "required": false,
                         "type": "string",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "dtend",
@@ -379,7 +437,8 @@
                         "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
                         "required": false,
                         "type": "string",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "per_page",
@@ -387,7 +446,8 @@
                         "description": "Number of records in response, default is 10",
                         "required": false,
                         "type": "integer",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "page",
@@ -395,7 +455,8 @@
                         "description": "Number of offset page",
                         "required": false,
                         "type": "integer",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "sort_by",
@@ -403,7 +464,8 @@
                         "description": "Sort by attribute name",
                         "required": false,
                         "type": "string",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "order",
@@ -411,7 +473,8 @@
                         "description": "Order of sorting, default is asc",
                         "required": false,
                         "type": "string",
-                        "allowEmptyValue": true
+                        "allowEmptyValue": true,
+                        "default": ""
                     }
                 ],
                 "responses": {
@@ -694,17 +757,21 @@
                         "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
                         "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         },
-                        "collectionFormat": "csv"
+                        "collectionFormat": "csv",
+                        "default": ""
                     },
                     {
                         "name": "per_page",
                         "in": "query",
                         "description": "Count of entities per page",
                         "required": false,
-                        "type": "number"
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
                     }
                 ],
                 "responses": {
