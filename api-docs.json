@@ -24,6 +24,14 @@
                 ],
                 "parameters": [
                     {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer {token}"
+                    },
+                    {
                         "name": "include",
                         "in": "query",
                         "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
@@ -307,6 +315,14 @@
                 ],
                 "parameters": [
                     {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer {token}"
+                    },
+                    {
                         "name": "include",
                         "in": "query",
                         "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
@@ -476,11 +492,29 @@
                 ],
                 "summary": "Show Muntra Caregiver",
                 "description": "Returns certain Muntra Caregiver",
-                "operationId": "getMuntraCaregiver",
+                "operationId": "getMuntraCaregiverById",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer {token}"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Caregiver id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "type": "integer"
+                    },
                     {
                         "name": "include",
                         "in": "query",
@@ -632,6 +666,14 @@
                     "application/json"
                 ],
                 "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string",
+                        "default": "Bearer {token}"
+                    },
                     {
                         "name": "include",
                         "in": "query",
