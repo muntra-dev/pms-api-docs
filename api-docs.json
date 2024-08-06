@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-     "basePath": "https://api.muntra.com", 
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -849,6 +849,291 @@
                     }
                 }
             }
+        },
+        "/api/muntra-clinics": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show all Muntra Clinics",
+                "description": "Returns a list of Muntra Clinics based on the specified filters",
+                "operationId": "getMuntraClinics",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "List of additional includes in response.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "include_administrative_roles",
+                        "in": "query",
+                        "description": "All staff/caregivers only.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "procedure_ids",
+                        "in": "query",
+                        "description": "List of procedures for filtering caregiver_at_locations records.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "new_patient",
+                        "in": "query",
+                        "description": "Parameter for new patient procedure duration.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include_caregiver_locations_without_procedure_id_matches",
+                        "in": "query",
+                        "description": "Include caregiver_locations relations without requested procedures.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Attribute name for sorting.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Order direction, default is asc.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of records in response, default is 10",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Number of offset page",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show all Muntra Clinics",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicResponse"
+                                    }
+                                },
+                                "included": {
+                                    "description": "Show all Muntra Clinics",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-clinics/{id}": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show Muntra Clinic",
+                "description": "Returns certain Muntra Clinic",
+                "operationId": "getMuntraClinicsById",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Caregiver id",
+                        "required": false,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include_administrative_roles",
+                        "in": "query",
+                        "description": "All staff/caregivers only.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "procedure_ids",
+                        "in": "query",
+                        "description": "List of procedures for filtering caregiver_at_locations records.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "new_patient",
+                        "in": "query",
+                        "description": "Parameter for new patient procedure duration.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include_caregiver_locations_without_procedure_id_matches",
+                        "in": "query",
+                        "description": "Include caregiver_locations relations without requested procedures.",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Attribute name for sorting.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "Order direction, default is asc.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of records in response, default is 10",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show requested Muntra Clinic",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicResponse"
+                                    }
+                                },
+                                "included": {
+                                    "description": "Show requested Muntra Clinic",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show requested Muntra Clinic",
+                                    "type": "string",
+                                    "example": "Muntra Clinic with Id 5 not found."
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -1412,6 +1697,21 @@
             "type": "object"
         }
     },
+    "responses": {
+        "422": {
+            "description": "Validation error",
+            "schema": {
+                "properties": {
+                    "message": {
+                        "description": "Show all Muntra Clinics",
+                        "type": "string",
+                        "example": "Please make sure that request parameters is correct"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    },
     "tags": [
         {
             "name": "Muntra Caregiver-At-Locations",
@@ -1424,6 +1724,10 @@
         {
             "name": "Muntra Caregiver-Procedure-At-Location",
             "description": "API Endpoints of Muntra Caregiver-Procedure-At-Location"
+        },
+        {
+            "name": "Muntra Clinics",
+            "description": "API Endpoints of Muntra Clinics"
         }
     ]
 }
