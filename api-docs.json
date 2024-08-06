@@ -918,15 +918,19 @@
                         "name": "dtstart",
                         "in": "query",
                         "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
-                        "required": true,
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "dtend",
                         "in": "query",
                         "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
-                        "required": true,
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "sort_by",
@@ -1058,15 +1062,19 @@
                         "name": "dtstart",
                         "in": "query",
                         "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
-                        "required": true,
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "dtend",
                         "in": "query",
                         "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
-                        "required": true,
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
                     },
                     {
                         "name": "sort_by",
