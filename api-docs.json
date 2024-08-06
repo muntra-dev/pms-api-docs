@@ -24,14 +24,6 @@
                 ],
                 "parameters": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string",
-                        "default": "Bearer {token}"
-                    },
-                    {
                         "name": "include",
                         "in": "query",
                         "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
@@ -308,26 +300,19 @@
                     "Muntra"
                 ],
                 "summary": "Show all Muntra Caregivers",
-                "description": "Returns a list of Muntra Caregivers based on the specified filters",
+                "description": "Query for active caregivers.",
                 "operationId": "getMuntraCaregivers",
                 "produces": [
                     "application/json"
                 ],
                 "parameters": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string",
-                        "default": "Bearer {token}"
-                    },
-                    {
                         "name": "include",
                         "in": "query",
                         "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
                         "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         },
@@ -336,7 +321,7 @@
                     {
                         "name": "active",
                         "in": "query",
-                        "description": "Query for active caregivers.",
+                        "required": false,
                         "type": "boolean",
                         "default": true
                     },
@@ -344,7 +329,9 @@
                         "name": "roles",
                         "in": "query",
                         "description": "List of roles for filtering.",
+                        "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         },
@@ -354,7 +341,9 @@
                         "name": "procedure_ids",
                         "in": "query",
                         "description": "List of procedures for filtering caregiver_at_locations records.",
+                        "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         },
@@ -364,49 +353,65 @@
                         "name": "new_patient",
                         "in": "query",
                         "description": "Parameter for new patient procedure duration.",
-                        "type": "boolean"
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "include_caregiver_locations_without_procedure_id_matches",
                         "in": "query",
                         "description": "Include caregiver_locations relations without requested procedures.",
-                        "type": "boolean"
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "dtstart",
                         "in": "query",
                         "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "dtend",
                         "in": "query",
                         "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "per_page",
                         "in": "query",
                         "description": "Number of records in response, default is 10",
-                        "type": "integer"
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "page",
                         "in": "query",
                         "description": "Number of offset page",
-                        "type": "integer"
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "sort_by",
                         "in": "query",
                         "description": "Sort by attribute name",
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "order",
                         "in": "query",
                         "description": "Order of sorting, default is asc",
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
                     }
                 ],
                 "responses": {
@@ -498,22 +503,15 @@
                 ],
                 "parameters": [
                     {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string",
-                        "default": "Bearer {token}"
-                    },
-                    {
                         "name": "id",
                         "in": "path",
                         "description": "Caregiver id",
-                        "required": true,
+                        "required": false,
                         "schema": {
                             "type": "integer"
                         },
-                        "type": "integer"
+                        "type": "integer",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "include",
@@ -521,6 +519,7 @@
                         "description": "List of additional includes in response, e.g. clinic,caregiver,free_bookable_slots,procedures,default_procedure,next_free_bookable_slot",
                         "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         },
@@ -530,7 +529,9 @@
                         "name": "caregiver_id",
                         "in": "query",
                         "description": "Caregiver Id.",
+                        "required": false,
                         "type": "integer",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         }
@@ -539,7 +540,9 @@
                         "name": "include",
                         "in": "query",
                         "description": "List of additional includes in response.",
+                        "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         }
@@ -548,7 +551,9 @@
                         "name": "procedure_ids",
                         "in": "query",
                         "description": "List of procedures for filtering caregiver_at_locations records.",
+                        "required": false,
                         "type": "array",
+                        "allowEmptyValue": true,
                         "items": {
                             "type": "string"
                         }
@@ -557,25 +562,33 @@
                         "name": "new_patient",
                         "in": "query",
                         "description": "Parameter for new patient procedure duration.",
-                        "type": "boolean"
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "include_caregiver_locations_without_procedure_id_matches",
                         "in": "query",
                         "description": "Include caregiver_locations relations without requested procedures.",
-                        "type": "boolean"
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "dtstart",
                         "in": "query",
                         "description": "Current datetime with format Y-m-d H:i for defining free bookable slots.",
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "dtend",
                         "in": "query",
                         "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
-                        "type": "string"
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
                     }
                 ],
                 "responses": {
@@ -666,14 +679,6 @@
                     "application/json"
                 ],
                 "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string",
-                        "default": "Bearer {token}"
-                    },
                     {
                         "name": "include",
                         "in": "query",
