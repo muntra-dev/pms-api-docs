@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com",
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -1011,12 +1011,11 @@
                         "name": "id",
                         "in": "path",
                         "description": "Caregiver id",
-                        "required": false,
+                        "required": true,
                         "schema": {
                             "type": "integer"
                         },
                         "type": "integer",
-                        "allowEmptyValue": true,
                         "default": ""
                     },
                     {
@@ -1185,6 +1184,531 @@
                             "properties": {
                                 "message": {
                                     "description": "Show all Muntra Patient Review for Caregiver",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-patient-reviews": {
+            "post": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Store Muntra Patient review",
+                "description": "Create Muntra Patient review",
+                "operationId": "postMuntraPatientReview",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "external_id",
+                        "in": "formData",
+                        "description": "External id field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "overall_rating",
+                        "in": "formData",
+                        "description": "Overall rating field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "review_comment",
+                        "in": "formData",
+                        "description": "Review rating comment field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "comparison_to_expectations",
+                        "in": "formData",
+                        "description": "Comparison to expectations field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_amazing_amenities",
+                        "in": "formData",
+                        "description": "Extra special amazing amenities field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_excellent_quality",
+                        "in": "formData",
+                        "description": "Extra special excellent quality field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_fast_and_painless",
+                        "in": "formData",
+                        "description": "Extra special fast and painless field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_no_waiting_time",
+                        "in": "formData",
+                        "description": "Extra special no waiting time field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_outstanding_treatment",
+                        "in": "formData",
+                        "description": "Extra special outstanding treatment field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_phenomenal_information",
+                        "in": "formData",
+                        "description": "Extra special phenomenal information field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_useful_practical_tips",
+                        "in": "formData",
+                        "description": "Extra special useful practical tips field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_advice_and_tips",
+                        "in": "formData",
+                        "description": "Info rating advice and tips field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_follow_up",
+                        "in": "formData",
+                        "description": "Info rating follow up field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "Info rating how to find_place",
+                        "in": "formData",
+                        "description": "Info rating how to find place field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_patient_health",
+                        "in": "formData",
+                        "description": "Info rating patient health field field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_patient_treatment",
+                        "in": "formData",
+                        "description": "Info rating patient treatment field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_pre_meeting",
+                        "in": "formData",
+                        "description": "info rating pre meeting field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "private_comment_to_caregiver",
+                        "in": "formData",
+                        "description": "Private comment to caregiver field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_quality",
+                        "in": "formData",
+                        "description": "Rating quality field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_bedside_manner",
+                        "in": "formData",
+                        "description": "Rating bedside manner field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_hygiene",
+                        "in": "formData",
+                        "description": "Rating hygiene field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_reception_on_arrival",
+                        "in": "formData",
+                        "description": "Rating reception on arrival field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_thoroughness",
+                        "in": "formData",
+                        "description": "Rating thoroughness field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_wait_time",
+                        "in": "formData",
+                        "description": "Rating wait time field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Store Muntra Patient Review",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraPatientReviewCaregiver"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Store Muntra Patient Review",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-patient-reviews/{id}": {
+            "patch": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Patch Muntra Patient review",
+                "description": "Edit Muntra Patient review",
+                "operationId": "patchMuntraPatientReview",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Muntra Muntra Patient Review Id.",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "default": ""
+                    },
+                    {
+                        "name": "external_id",
+                        "in": "formData",
+                        "description": "External id field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "overall_rating",
+                        "in": "formData",
+                        "description": "Overall rating field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "review_comment",
+                        "in": "formData",
+                        "description": "Review rating comment field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "comparison_to_expectations",
+                        "in": "formData",
+                        "description": "Comparison to expectations field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_amazing_amenities",
+                        "in": "formData",
+                        "description": "Extra special amazing amenities field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_excellent_quality",
+                        "in": "formData",
+                        "description": "Extra special excellent quality field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_fast_and_painless",
+                        "in": "formData",
+                        "description": "Extra special fast and painless field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_no_waiting_time",
+                        "in": "formData",
+                        "description": "Extra special no waiting time field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_outstanding_treatment",
+                        "in": "formData",
+                        "description": "Extra special outstanding treatment field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_phenomenal_information",
+                        "in": "formData",
+                        "description": "Extra special phenomenal information field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "extra_special_useful_practical_tips",
+                        "in": "formData",
+                        "description": "Extra special useful practical tips field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_advice_and_tips",
+                        "in": "formData",
+                        "description": "Info rating advice and tips field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_follow_up",
+                        "in": "formData",
+                        "description": "Info rating follow up field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "Info rating how to find_place",
+                        "in": "formData",
+                        "description": "Info rating how to find place field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_patient_health",
+                        "in": "formData",
+                        "description": "Info rating patient health field field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_patient_treatment",
+                        "in": "formData",
+                        "description": "Info rating patient treatment field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "info_rating_pre_meeting",
+                        "in": "formData",
+                        "description": "info rating pre meeting field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "private_comment_to_caregiver",
+                        "in": "formData",
+                        "description": "Private comment to caregiver field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_quality",
+                        "in": "formData",
+                        "description": "Rating quality field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_bedside_manner",
+                        "in": "formData",
+                        "description": "Rating bedside manner field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_hygiene",
+                        "in": "formData",
+                        "description": "Rating hygiene field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_reception_on_arrival",
+                        "in": "formData",
+                        "description": "Rating reception on arrival field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_thoroughness",
+                        "in": "formData",
+                        "description": "Rating thoroughness field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rating_wait_time",
+                        "in": "formData",
+                        "description": "Rating wait time field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Patch Muntra Patient Review",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraPatientReviewCaregiver"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Patch Muntra Patient Review",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
