@@ -850,6 +850,58 @@
                 }
             }
         },
+        "/api/muntra-clinic-ads": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show all Clinic Ads",
+                "description": "Returns a list of Clinic Ads based on the specified filters",
+                "operationId": "getMuntraClinicAds",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "'muntra_clinic_image' can be added",
+                        "required": false,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show all Muntra Clinic Adsr",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraClinicAdsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show all Muntra Clinic Adsr",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-clinics": {
             "get": {
                 "tags": [
@@ -2059,6 +2111,29 @@
             },
             "type": "object"
         },
+        "MuntraClinicAdsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_clinic_ad"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "per_page": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 3
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "MuntraClinicResponse": {
             "properties": {
                 "type": {
@@ -2344,6 +2419,10 @@
         {
             "name": "Muntra Caregiver-Procedure-At-Location",
             "description": "API Endpoints of Muntra Caregiver-Procedure-At-Location"
+        },
+        {
+            "name": "Muntra Clinic Ad",
+            "description": "API Endpoints of Muntra Clinic Ad"
         },
         {
             "name": "Muntra Clinics",
