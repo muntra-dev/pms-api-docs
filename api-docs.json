@@ -5,13 +5,13 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com",
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
     ],
     "paths": {
-        "/api/api/muntra-bookings": {
+        "/api/muntra-bookings": {
             "get": {
                 "tags": [
                     "Muntra"
