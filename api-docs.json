@@ -5,12 +5,98 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com", 
+    "basePath": "https://api.muntra.com",
     "schemes": [
         "http",
         "https"
     ],
     "paths": {
+        "/api/api/muntra-bookings": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show all Muntra Patient Bookings",
+                "description": "Returns a list of Muntra bookings based on the specified filters",
+                "operationId": "getMuntraBookings",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "'booking_attendees', 'caregiver', 'room', 'booking_policy', 'clinic', can be added.",
+                        "required": false,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "Period filter of bookings.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "Period filter of bookings.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Filter by booking status.",
+                        "required": false,
+                        "type": "string",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show all Muntra Bookings",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookings"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show all Muntra Bookings",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-caregiver-at-locations": {
             "get": {
                 "tags": [
@@ -867,7 +953,8 @@
                         "in": "query",
                         "description": "'muntra_clinic_image' can be added",
                         "required": false,
-                        "type": "string"
+                        "type": "string",
+                        "default": ""
                     }
                 ],
                 "responses": {
@@ -876,7 +963,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show all Muntra Clinic Adsr",
+                                    "description": "Show all Muntra Clinic Ads",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicAdsResponse"
@@ -891,7 +978,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show all Muntra Clinic Adsr",
+                                    "description": "Show all Muntra Clinic Ads",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1773,6 +1860,87 @@
         }
     },
     "definitions": {
+        "MuntraBookings": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_booking"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "BKel6a02b"
+                },
+                "attributes": {
+                    "properties": {
+                        "class": {
+                            "type": "string",
+                            "example": 3
+                        },
+                        "summary": {
+                            "type": "string",
+                            "example": "Title"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Text"
+                        },
+                        "dtstart": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2023-01-30T16:49:23+01:00"
+                        },
+                        "dtend": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2023-02-11T18:19:43+01:00"
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "Description"
+                        },
+                        "location": {
+                            "type": "string",
+                            "example": "Address"
+                        },
+                        "transparent": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "status": {
+                            "type": "string",
+                            "example": "CONFIRMED"
+                        },
+                        "booked_by_patient": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "new_patient": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "referral_source": {
+                            "type": "string",
+                            "example": "muntra.com"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "type": {
+                            "type": "muntra_clinic",
+                            "example": 3
+                        },
+                        "id": {
+                            "type": "string",
+                            "example": "1"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "MuntraCaregiverAtLocationResponse": {
             "properties": {
                 "type": {
@@ -2408,6 +2576,10 @@
         }
     },
     "tags": [
+        {
+            "name": "Muntra Bookings",
+            "description": "API Endpoints of Muntra Bookings"
+        },
         {
             "name": "Muntra Caregiver-At-Locations",
             "description": "API Endpoints of Muntra Caregiver-At-Locations"
