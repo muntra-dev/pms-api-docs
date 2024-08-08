@@ -1928,8 +1928,13 @@
                 "relationships": {
                     "properties": {
                         "data": {
-                            "type": "muntra_clinic",
-                            "example": 3
+                            "properties": {
+                                "type": {
+                                    "type": "string",
+                                    "example": "muntra_clinic"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
