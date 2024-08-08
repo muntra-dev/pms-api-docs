@@ -1927,13 +1927,9 @@
                 },
                 "relationships": {
                     "properties": {
-                        "type": {
+                        "data": {
                             "type": "muntra_clinic",
                             "example": 3
-                        },
-                        "id": {
-                            "type": "string",
-                            "example": "1"
                         }
                     },
                     "type": "object"
