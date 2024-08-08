@@ -95,6 +95,278 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Store Muntra Bookings",
+                "description": "Create Muntra Bookings",
+                "operationId": "postMuntraBookings",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "formData",
+                        "description": "Clinic id field",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "organizer_id",
+                        "in": "formData",
+                        "description": "Organizer id field",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "summary",
+                        "in": "formData",
+                        "description": "Summary field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "formData",
+                        "description": "Date time start field",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "formData",
+                        "description": "Date time end field",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "description": "Description field",
+                        "required": true,
+                        "type": "string",
+                        "format": "date"
+                    },
+                    {
+                        "name": "procedure_id",
+                        "in": "formData",
+                        "description": "Procedure id field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "class",
+                        "in": "formData",
+                        "description": "Class field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "text",
+                        "in": "formData",
+                        "description": "Text field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "location",
+                        "in": "formData",
+                        "description": "Location field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "transparent",
+                        "in": "formData",
+                        "description": "Transparent field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "formData",
+                        "description": "Status field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "new_patient",
+                        "in": "formData",
+                        "description": "New patient field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "referral_source",
+                        "in": "formData",
+                        "description": "Referral source field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Store Muntra Booking",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookings"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Store Muntra Booking",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-bookings/{id}": {
+            "get": {
+                "tags": [
+                    "Muntra"
+                ],
+                "summary": "Show requested Muntra Patient Booking",
+                "description": "Returns requested Muntra booking based on the specified filters",
+                "operationId": "getMuntraBooking",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Booking id",
+                        "required": true,
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "type": "integer",
+                        "default": ""
+                    },
+                    {
+                        "name": "muntra_booking_id",
+                        "in": "query",
+                        "description": "Muntra booking id",
+                        "required": true,
+                        "type": "integer",
+                        "default": ""
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "'booking_attendees', 'caregiver', 'room', 'booking_policy', 'clinic', can be added.",
+                        "required": false,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "Period filter of bookings.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "Period filter of bookings.",
+                        "required": false,
+                        "type": "string",
+                        "format": "date",
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Filter by booking status.",
+                        "required": false,
+                        "type": "string",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show requested Muntra Booking",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookings"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show requested Muntra Booking",
+                                    "type": "string",
+                                    "example": "Muntra Booking with Id BK1NxwX not found."
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             }
         },
         "/api/muntra-caregiver-at-locations": {
