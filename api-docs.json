@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com", 
+    "basePath": "/api",
     "schemes": [
         "http",
         "https"
@@ -372,7 +372,7 @@
         "/api/muntra-caregiver-at-locations": {
             "get": {
                 "tags": [
-                    "/api/muntra-caregiver-at-locations/"
+                    "muntra-caregiver-at-locations"
                 ],
                 "summary": "Show all Muntra Caregiver Locations",
                 "description": "Returns a list of Muntra Caregiver Locations based on the specified filters",
@@ -705,7 +705,7 @@
         "/api/muntra-caregivers": {
             "get": {
                 "tags": [
-                    "/api/muntra-caregivers/"
+                    "muntra-caregivers"
                 ],
                 "summary": "Show all Muntra Caregivers",
                 "description": "Returns a list of Muntra Caregivers based on the specified filters",
@@ -914,7 +914,7 @@
         "/api/muntra-caregivers/{id}": {
             "get": {
                 "tags": [
-                    "/api/muntra-caregivers/"
+                    "muntra-caregivers"
                 ],
                 "summary": "Show Muntra Caregiver",
                 "description": "Returns certain Muntra Caregiver",
@@ -1100,7 +1100,7 @@
         "/api/muntra-caregiver-procedure-at-locations": {
             "get": {
                 "tags": [
-                    "/api/muntra-caregiver-procedure-at-locations/"
+                    "muntra-caregiver-procedure-at-locations"
                 ],
                 "summary": "Show all Muntra Caregiver Procedure at Location",
                 "description": "Returns a list of Muntra Caregiver Procedures at Location based on the specified filters",
@@ -1211,7 +1211,7 @@
         "/api/muntra-clinic-ads": {
             "get": {
                 "tags": [
-                    "/api/muntra-clinic-ads/"
+                    "muntra-clinic-ads"
                 ],
                 "summary": "Show all Clinic Ads",
                 "description": "Returns a list of Clinic Ads based on the specified filters",
@@ -1264,7 +1264,7 @@
         "/api/muntra-clinics": {
             "get": {
                 "tags": [
-                    "/api/muntra-clinics/"
+                    "muntra-clinics"
                 ],
                 "summary": "Show all Muntra Clinics",
                 "description": "Returns a list of Muntra Clinics based on the specified filters",
@@ -1409,7 +1409,7 @@
         "/api/muntra-clinics/{id}": {
             "get": {
                 "tags": [
-                    "/api/muntra-clinics/"
+                    "muntra-clinics"
                 ],
                 "summary": "Show Muntra Clinic",
                 "description": "Returns certain Muntra Clinic",
@@ -1556,7 +1556,7 @@
         "/api/muntra-patient-reviews/{caregiver_id}": {
             "get": {
                 "tags": [
-                    "/api/muntra-patient-reviews/"
+                    "muntra-patient-reviews"
                 ],
                 "summary": "Show all Patient Reviews for Cargiver",
                 "description": "Returns a list of Patient Reviews for Cargiver based on the specified filters",
@@ -1608,7 +1608,7 @@
         "/api/muntra-patient-reviews": {
             "post": {
                 "tags": [
-                    "/api/muntra-patient-reviews/"
+                    "muntra-patient-reviews"
                 ],
                 "summary": "Store Muntra Patient review",
                 "description": "Create Muntra Patient review",
@@ -1865,7 +1865,7 @@
         "/api/muntra-patient-reviews/{id}": {
             "patch": {
                 "tags": [
-                    "/api/muntra-patient-reviews/"
+                    "muntra-patient-reviews"
                 ],
                 "summary": "Patch Muntra Patient review",
                 "description": "Edit Muntra Patient review",
@@ -2847,31 +2847,5 @@
                 "type": "object"
             }
         }
-    },
-    "tags": [
-        {
-            "name": "Muntra Caregiver-At-Locations",
-            "description": "API Endpoints of Muntra Caregiver-At-Locations"
-        },
-        {
-            "name": "Muntra Caregivers",
-            "description": "API Endpoints of Muntra Caregivers"
-        },
-        {
-            "name": "Muntra Caregiver-Procedure-At-Location",
-            "description": "API Endpoints of Muntra Caregiver-Procedure-At-Location"
-        },
-        {
-            "name": "Muntra Clinic Ad",
-            "description": "API Endpoints of Muntra Clinic Ad"
-        },
-        {
-            "name": "Muntra Clinics",
-            "description": "API Endpoints of Muntra Clinics"
-        },
-        {
-            "name": "Muntra Patient Review",
-            "description": "API Endpoints of Muntra Patient Review"
-        }
-    ]
+    }
 }
