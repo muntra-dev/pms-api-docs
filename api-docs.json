@@ -14,7 +14,7 @@
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "Muntra Bookings"
                 ],
                 "summary": "Show all Muntra Patient Bookings",
                 "description": "Returns a list of Muntra bookings based on the specified filters",
@@ -98,7 +98,7 @@
             },
             "post": {
                 "tags": [
-                    "Muntra"
+                    "Muntra Bookings"
                 ],
                 "summary": "Store Muntra Bookings",
                 "description": "Create Muntra Bookings",
@@ -267,7 +267,7 @@
         "/api/muntra-bookings/{id}": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "Muntra Bookings"
                 ],
                 "summary": "Show requested Muntra Patient Booking",
                 "description": "Returns requested Muntra booking based on the specified filters",
