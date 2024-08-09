@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com", 
+     "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -2152,7 +2152,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including used state price list id with 'country.used_state_price_list' or state price list with 'state_price_list' in response. We also have varios list of include such as: backup_computer,clinic_images,clinic_xray_systems.string_arguments,country.official_languages,country.reimbursement_types,currency,default_clinic_image,default_county_council,default_invoice_type.default_payment_type,default_xray_system,locale.language,logotype,main_caregiver.default_email_address,main_caregiver.default_user_image,main_caregiver.role,organization.organization_clinic_settings.cash_registers,organization.organization_clinic_settings.clinic,organization.organization_clinic_settings.payment_terminals.supplier,organization.supplier_settings_for_organizationsetc.",
+                        "description": "Including used state price list id with 'country.used_state_price_list' or state price list with 'state_price_list' in response. We also have varios list of include such as: backup_computer,clinic_images,clinic_xray_systems.string_arguments,country.official_languages,country.reimbursement_types,currency,default_clinic_image,default_county_council,default_invoice_type.default_payment_type,default_xray_system,locale.language,logotype,main_caregiver.default_email_address,main_caregiver.default_user_image,main_caregiver.role,organization.organization_clinic_settings.cash_registers,organization.organization_clinic_settings.clinic,organization.organization_clinic_settings.payment_terminals.supplier,organization.supplier_settings_for_organizations etc.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -2160,7 +2160,7 @@
                             "type": "string"
                         },
                         "collectionFormat": "csv",
-                        "default": "country.used_state_price_list, used_clinic_price_list"
+                        "default": "country.used_state_price_list,used_clinic_price_list"
                     }
                 ],
                 "responses": {
