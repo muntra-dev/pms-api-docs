@@ -14,7 +14,7 @@
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
-                    "Muntra Bookings"
+                    "/api/muntra-bookings/"
                 ],
                 "summary": "Show all Muntra Patient Bookings",
                 "description": "Returns a list of Muntra bookings based on the specified filters",
@@ -98,7 +98,7 @@
             },
             "post": {
                 "tags": [
-                    "Muntra Bookings"
+                    "/api/muntra-bookings/"
                 ],
                 "summary": "Store Muntra Bookings",
                 "description": "Create Muntra Bookings",
@@ -267,7 +267,7 @@
         "/api/muntra-bookings/{id}": {
             "get": {
                 "tags": [
-                    "Muntra Bookings"
+                    "/api/muntra-bookings/"
                 ],
                 "summary": "Show requested Muntra Patient Booking",
                 "description": "Returns requested Muntra booking based on the specified filters",
@@ -372,7 +372,7 @@
         "/api/muntra-caregiver-at-locations": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-caregiver-at-locations/"
                 ],
                 "summary": "Show all Muntra Caregiver Locations",
                 "description": "Returns a list of Muntra Caregiver Locations based on the specified filters",
@@ -705,7 +705,7 @@
         "/api/muntra-caregivers": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-caregivers/"
                 ],
                 "summary": "Show all Muntra Caregivers",
                 "description": "Returns a list of Muntra Caregivers based on the specified filters",
@@ -914,7 +914,7 @@
         "/api/muntra-caregivers/{id}": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-caregivers/"
                 ],
                 "summary": "Show Muntra Caregiver",
                 "description": "Returns certain Muntra Caregiver",
@@ -1100,7 +1100,7 @@
         "/api/muntra-caregiver-procedure-at-locations": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-caregiver-procedure-at-locations/"
                 ],
                 "summary": "Show all Muntra Caregiver Procedure at Location",
                 "description": "Returns a list of Muntra Caregiver Procedures at Location based on the specified filters",
@@ -1211,7 +1211,7 @@
         "/api/muntra-clinic-ads": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-clinic-ads/"
                 ],
                 "summary": "Show all Clinic Ads",
                 "description": "Returns a list of Clinic Ads based on the specified filters",
@@ -1264,7 +1264,7 @@
         "/api/muntra-clinics": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-clinics/"
                 ],
                 "summary": "Show all Muntra Clinics",
                 "description": "Returns a list of Muntra Clinics based on the specified filters",
@@ -1409,7 +1409,7 @@
         "/api/muntra-clinics/{id}": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-clinics/"
                 ],
                 "summary": "Show Muntra Clinic",
                 "description": "Returns certain Muntra Clinic",
@@ -1556,7 +1556,7 @@
         "/api/muntra-patient-reviews/{caregiver_id}": {
             "get": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-patient-reviews/"
                 ],
                 "summary": "Show all Patient Reviews for Cargiver",
                 "description": "Returns a list of Patient Reviews for Cargiver based on the specified filters",
@@ -1608,7 +1608,7 @@
         "/api/muntra-patient-reviews": {
             "post": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-patient-reviews/"
                 ],
                 "summary": "Store Muntra Patient review",
                 "description": "Create Muntra Patient review",
@@ -1865,7 +1865,7 @@
         "/api/muntra-patient-reviews/{id}": {
             "patch": {
                 "tags": [
-                    "Muntra"
+                    "/api/muntra-patient-reviews/"
                 ],
                 "summary": "Patch Muntra Patient review",
                 "description": "Edit Muntra Patient review",
