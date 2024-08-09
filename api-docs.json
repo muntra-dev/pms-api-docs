@@ -14,7 +14,7 @@
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
-                    "/api/muntra-bookings/"
+                    "muntra-bookings"
                 ],
                 "summary": "Show all Muntra Patient Bookings",
                 "description": "Returns a list of Muntra bookings based on the specified filters",
@@ -98,7 +98,7 @@
             },
             "post": {
                 "tags": [
-                    "/api/muntra-bookings/"
+                    "muntra-bookings"
                 ],
                 "summary": "Store Muntra Bookings",
                 "description": "Create Muntra Bookings",
@@ -267,7 +267,7 @@
         "/api/muntra-bookings/{id}": {
             "get": {
                 "tags": [
-                    "/api/muntra-bookings/"
+                    "muntra-bookings"
                 ],
                 "summary": "Show requested Muntra Patient Booking",
                 "description": "Returns requested Muntra booking based on the specified filters",
@@ -2849,10 +2849,6 @@
         }
     },
     "tags": [
-        {
-            "name": "Muntra Bookings",
-            "description": "API Endpoints of Muntra Bookings"
-        },
         {
             "name": "Muntra Caregiver-At-Locations",
             "description": "API Endpoints of Muntra Caregiver-At-Locations"
