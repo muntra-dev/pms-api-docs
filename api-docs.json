@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "/api",
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -2129,6 +2129,71 @@
                     }
                 }
             }
+        },
+        "/api/clinics/current": {
+            "get": {
+                "tags": [
+                    "clinics/current"
+                ],
+                "summary": "Show Clinic Current",
+                "description": "Returns a data of Current Clinic based on the specified filters",
+                "operationId": "getMuntraClinicCurrent",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including used state price list id with 'country.used_state_price_list' or state price list with 'state_price_list' in response. We also have varios list of include such as: backup_computer,clinic_images,clinic_xray_systems.string_arguments,country.official_languages,country.reimbursement_types,currency,default_clinic_image,default_county_council,default_invoice_type.default_payment_type,default_xray_system,locale.language,logotype,main_caregiver.default_email_address,main_caregiver.default_user_image,main_caregiver.role,organization.organization_clinic_settings.cash_registers,organization.organization_clinic_settings.clinic,organization.organization_clinic_settings.payment_terminals.supplier,organization.supplier_settings_for_organizationsetc.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": "country.used_state_price_list, used_clinic_price_list"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Show Clinic Current",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ClinicCurrentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Show Clinic Current",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -2825,6 +2890,152 @@
                             "type": "string",
                             "format": "date",
                             "example": "2023-01-30T16:49:23+01:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ClinicCurrentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "clinic"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "clinic_name": {
+                            "type": "string",
+                            "example": "Test Sverige"
+                        },
+                        "clinic_address_1": {
+                            "type": "string",
+                            "example": "Testv\u00e4gen 1"
+                        },
+                        "clinic_address_2": {
+                            "type": "string",
+                            "example": "Testv\u00e4gen 2"
+                        },
+                        "clinic_postal_code": {
+                            "type": "string",
+                            "example": "12345"
+                        },
+                        "clinic_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "clinic_reference": {
+                            "type": "string"
+                        },
+                        "clinic_email_address": {
+                            "type": "string"
+                        },
+                        "clinic_phone_number": {
+                            "type": "string"
+                        },
+                        "clinic_phone_number_2": {
+                            "type": "string"
+                        },
+                        "clinic_phone_mobile": {
+                            "type": "string"
+                        },
+                        "clinic_fax": {
+                            "type": "string"
+                        },
+                        "clinic_professional_statement": {
+                            "type": "string"
+                        },
+                        "workplace_code": {
+                            "type": "string"
+                        },
+                        "website_address": {
+                            "type": "string"
+                        },
+                        "booking_requires_two_factor_authentication": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_user_in_invoice_clinic_reference": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "timezone": {
+                            "type": "string",
+                            "example": "Europe/Stockholm"
+                        },
+                        "latitude": {
+                            "type": "integer",
+                            "format": "float"
+                        },
+                        "longitude": {
+                            "type": "integer",
+                            "format": "float"
+                        },
+                        "google_places_description": {
+                            "type": "string"
+                        },
+                        "journal_entry_autosign_limit_in_days": {
+                            "type": "integer",
+                            "example": 30
+                        },
+                        "journal_entry_unsign_limit_in_days": {
+                            "type": "integer",
+                            "example": 30
+                        },
+                        "default_sms_invitation_text": {
+                            "type": "string",
+                            "example": "Hej [patient_first_name]! V\u00e4lkommen [booking_datetime] [clinic_address_1]. Bekr\u00e4fta tiden via [booking_confirmation_link]. Mvh, [caregiver_title] [caregiver_first_name] [caregiver_last_name] (OBS! det g\u00e5r inte att svara p\u00e5 detta meddelande)"
+                        },
+                        "default_sms_reminder_text": {
+                            "type": "string",
+                            "example": "Hej [patient_first_name]! H\u00e4r \u00e4r en p\u00e5minnelse om din tid p\u00e5 [clinic_name] p\u00e5 [clinic_address_1] kl. [booking_time] den [booking_date]. Mvh, [caregiver_first_name] [caregiver_last_name], [caregiver_title]"
+                        },
+                        "default_snail_mail_invitation_text": {
+                            "type": "string",
+                            "example": "Hej [patient_first_name]!\\r\\n\\r\\nNu \u00e4r det dags att bes\u00f6ka oss.\\r\\n\\r\\nV\u00e4lkommen till [clinic_name] p\u00e5 [clinic_address_1] kl. [booking_time] den [booking_date].\\r\\n\\r\\nBekr\u00e4fta g\u00e4rna tiden genom att g\u00e5 till f\u00f6ljande l\u00e4nk: [booking_confirmation_link]\\r\\n\\r\\nMed v\u00e4nlig h\u00e4lsning,\\r\\n[caregiver_first_name] [caregiver_last_name], [caregiver_title]"
+                        },
+                        "default_hours_until_sms_invitation_sent": {
+                            "type": "integer",
+                            "example": 48
+                        },
+                        "default_hours_before_sms_reminder_sent": {
+                            "type": "integer",
+                            "example": 48
+                        },
+                        "default_hours_until_snail_mail_invitation_sent": {
+                            "type": "integer",
+                            "example": 48
+                        },
+                        "allow_remittance_without_individual_recipient": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "accepts_digital_remittance": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_cbct": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "has_music": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2024-07-02T19:16:42+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "format": "date",
+                            "example": "2024-07-02T19:17:48+02:00"
                         }
                     },
                     "type": "object"
