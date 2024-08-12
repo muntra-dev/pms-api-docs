@@ -2418,7 +2418,9 @@
                         "in": "body",
                         "description": "Price list id field",
                         "required": true,
-                        "schema": {},
+                        "schema": {
+                            "$ref": "#/definitions/PricesResponse"
+                        },
                         "type": "number"
                     },
                     {
@@ -3470,6 +3472,80 @@
             "type": "object"
         },
         "PricesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "price"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "price_code": {
+                            "type": "string",
+                            "example": "p701"
+                        },
+                        "price_type": {
+                            "type": "string",
+                            "example": ""
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "Fyllning av en yta p\u00e5 framtand eller h\u00f6rntand"
+                        },
+                        "printed_text": {
+                            "type": "string",
+                            "example": ""
+                        },
+                        "total_excluding_vat": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "purchase_price_excluding_vat": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "included_material": {
+                            "type": "string",
+                            "example": "Komposit"
+                        },
+                        "time_based": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "duration_in_minutes": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "standard_duration_in_minutes": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "multi_tooth": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "class": {
+                            "type": "string",
+                            "example": ""
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PricesResponse2": {
             "properties": {
                 "type": {
                     "type": "string",
