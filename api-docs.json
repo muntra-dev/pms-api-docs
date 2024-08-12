@@ -16,7 +16,7 @@
                 "tags": [
                     "muntra-bookings"
                 ],
-                "summary": "List of muntra-bookins",
+                "summary": "List of muntra-bookings",
                 "description": "Returns a list of Muntra bookings based on the specified filters",
                 "operationId": "getMuntraBookings",
                 "produces": [
@@ -71,7 +71,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List of muntra-bookins",
+                                    "description": "List of muntra-bookings",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraBookings"
@@ -86,7 +86,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List of muntra-bookins",
+                                    "description": "List of muntra-bookings",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2135,7 +2135,7 @@
                 "tags": [
                     "clinics/current"
                 ],
-                "summary": "Retrieve a clinics/current",
+                "summary": "Retrieve the current clinic",
                 "description": "Returns a data of Current Clinic based on the specified filters",
                 "operationId": "getMuntraClinicCurrent",
                 "produces": [
@@ -2169,7 +2169,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a clinics/current",
+                                    "description": "Retrieve the current clinic",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/ClinicCurrentResponse"
@@ -2184,7 +2184,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a clinics/current",
+                                    "description": "Retrieve the current clinic",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
