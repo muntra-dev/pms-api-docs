@@ -101,7 +101,7 @@
                     "muntra-bookings"
                 ],
                 "summary": "Create a muntra-booking",
-                "description": "Create Muntra Bookings",
+                "description": "Create a Muntra Booking",
                 "operationId": "postMuntraBookings",
                 "produces": [
                     "application/json"
@@ -374,7 +374,7 @@
                 "tags": [
                     "muntra-caregiver-at-locations"
                 ],
-                "summary": "Show all Muntra Caregiver Locations",
+                "summary": "List of muntra-caregiver-at-locations",
                 "description": "Returns a list of Muntra Caregiver Locations based on the specified filters",
                 "operationId": "getCaregiverAtLocations",
                 "produces": [
@@ -562,47 +562,47 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show all Muntra Caregiver Locations",
+                                    "description": "List of muntra-caregiver-at-locations",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraCaregiverAtLocationResponse"
                                     }
                                 },
                                 "included": {
-                                    "description": "Show all Muntra Caregiver Locations",
+                                    "description": "List of muntra-caregiver-at-locations",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicResponse"
                                     }
                                 },
                                 "meta": {
-                                    "description": "Show all Muntra Caregiver Locations",
+                                    "description": "List of muntra-caregiver-at-locations",
                                     "properties": {
                                         "pagination": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "properties": {
                                                 "total": {
-                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "description": "List of muntra-caregiver-at-locations",
                                                     "type": "number",
                                                     "example": "2"
                                                 },
                                                 "count": {
-                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "description": "List of muntra-caregiver-at-locations",
                                                     "type": "number",
                                                     "example": "2"
                                                 },
                                                 "per_page": {
-                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "description": "List of muntra-caregiver-at-locations",
                                                     "type": "number",
                                                     "example": "2"
                                                 },
                                                 "current_page": {
-                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "description": "List of muntra-caregiver-at-locations",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "total_pages": {
-                                                    "description": "Show all Muntra Caregiver Locations",
+                                                    "description": "List of muntra-caregiver-at-locations",
                                                     "type": "number",
                                                     "example": "1"
                                                 }
@@ -621,15 +621,15 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show all Muntra Caregiver Locations",
+                                    "description": "List of muntra-caregiver-at-locations",
                                     "type": "string",
                                     "example": "Please make request with all required query parameters"
                                 },
                                 "errors": {
-                                    "description": "Show all Muntra Caregiver Locations",
+                                    "description": "List of muntra-caregiver-at-locations",
                                     "properties": {
                                         "dtstart": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -637,7 +637,7 @@
                                             }
                                         },
                                         "dtend": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -645,7 +645,7 @@
                                             }
                                         },
                                         "lng": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -653,7 +653,7 @@
                                             }
                                         },
                                         "lat": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -661,7 +661,7 @@
                                             }
                                         },
                                         "viewport_northeast_lat": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -669,7 +669,7 @@
                                             }
                                         },
                                         "viewport_northeast_lng": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -677,7 +677,7 @@
                                             }
                                         },
                                         "viewport_southwest_lat": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -685,7 +685,7 @@
                                             }
                                         },
                                         "viewport_southwest_lng": {
-                                            "description": "Show all Muntra Caregiver Locations",
+                                            "description": "List of muntra-caregiver-at-locations",
                                             "type": "array",
                                             "items": {
                                                 "type": "string",
@@ -707,7 +707,7 @@
                 "tags": [
                     "muntra-caregivers"
                 ],
-                "summary": "Show all Muntra Caregivers",
+                "summary": "List of muntra-caregivers",
                 "description": "Returns a list of Muntra Caregivers based on the specified filters",
                 "operationId": "getMuntraCaregivers",
                 "produces": [
@@ -841,47 +841,47 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show all Muntra Caregivers",
+                                    "description": "List of muntra-caregivers",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraCaregiverResponse"
                                     }
                                 },
                                 "included": {
-                                    "description": "Show all Muntra Caregivers",
+                                    "description": "List of muntra-caregivers",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicResponse"
                                     }
                                 },
                                 "meta": {
-                                    "description": "Show all Muntra Caregivers",
+                                    "description": "List of muntra-caregivers",
                                     "properties": {
                                         "pagination": {
-                                            "description": "Show all Muntra Caregivers",
+                                            "description": "List of muntra-caregivers",
                                             "properties": {
                                                 "total": {
-                                                    "description": "Show all Muntra Caregivers",
+                                                    "description": "List of muntra-caregivers",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "count": {
-                                                    "description": "Show all Muntra Caregivers",
+                                                    "description": "List of muntra-caregivers",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "per_page": {
-                                                    "description": "Show all Muntra Caregivers",
+                                                    "description": "List of muntra-caregivers",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "current_page": {
-                                                    "description": "Show all Muntra Caregivers",
+                                                    "description": "List of muntra-caregivers",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "total_pages": {
-                                                    "description": "Show all Muntra Caregivers",
+                                                    "description": "List of muntra-caregivers",
                                                     "type": "number",
                                                     "example": "1"
                                                 }
@@ -900,7 +900,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show all Muntra Caregivers",
+                                    "description": "List of muntra-caregivers",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -916,7 +916,7 @@
                 "tags": [
                     "muntra-caregivers"
                 ],
-                "summary": "Show Muntra Caregiver",
+                "summary": "Retrieve a muntra-caregiver",
                 "description": "Returns certain Muntra Caregiver",
                 "operationId": "getMuntraCaregiverById",
                 "produces": [
@@ -1027,47 +1027,47 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show requested Muntra Caregiver",
+                                    "description": "Retrieve a muntra-caregiver",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraCaregiverResponse"
                                     }
                                 },
                                 "included": {
-                                    "description": "Show requested Muntra Caregiver",
+                                    "description": "Retrieve a muntra-caregiver",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicResponse"
                                     }
                                 },
                                 "meta": {
-                                    "description": "Show requested Muntra Caregiver",
+                                    "description": "Retrieve a muntra-caregiver",
                                     "properties": {
                                         "pagination": {
-                                            "description": "Show requested Muntra Caregiver",
+                                            "description": "Retrieve a muntra-caregiver",
                                             "properties": {
                                                 "total": {
-                                                    "description": "Show requested Muntra Caregiver",
+                                                    "description": "Retrieve a muntra-caregiver",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "count": {
-                                                    "description": "Show requested Muntra Caregiver",
+                                                    "description": "Retrieve a muntra-caregiver",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "per_page": {
-                                                    "description": "Show requested Muntra Caregiver",
+                                                    "description": "Retrieve a muntra-caregiver",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "current_page": {
-                                                    "description": "Show requested Muntra Caregiver",
+                                                    "description": "Retrieve a muntra-caregiver",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "total_pages": {
-                                                    "description": "Show requested Muntra Caregiver",
+                                                    "description": "Retrieve a muntra-caregiver",
                                                     "type": "number",
                                                     "example": "1"
                                                 }
@@ -1086,7 +1086,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show requested Muntra Caregiver",
+                                    "description": "Retrieve a muntra-caregiver",
                                     "type": "string",
                                     "example": "Muntra Caregiver with Id 5 not found."
                                 }
@@ -1102,7 +1102,7 @@
                 "tags": [
                     "muntra-caregiver-procedure-at-locations"
                 ],
-                "summary": "Show all Muntra Caregiver Procedure at Location",
+                "summary": "List of muntra-caregiver-procedure-at-locations",
                 "description": "Returns a list of Muntra Caregiver Procedures at Location based on the specified filters",
                 "operationId": "getCaregiverProcedureAtLocations",
                 "produces": [
@@ -1138,47 +1138,47 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraCaregiverResponse"
                                     }
                                 },
                                 "included": {
-                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicResponse"
                                     }
                                 },
                                 "meta": {
-                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                     "properties": {
                                         "pagination": {
-                                            "description": "Show all Muntra Caregiver Procedure At Location",
+                                            "description": "List of muntra-caregiver-procedure-at-locations",
                                             "properties": {
                                                 "total": {
-                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "count": {
-                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "per_page": {
-                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "current_page": {
-                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                                     "type": "number",
                                                     "example": "1"
                                                 },
                                                 "total_pages": {
-                                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                                     "type": "number",
                                                     "example": "1"
                                                 }
@@ -1197,7 +1197,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show all Muntra Caregiver Procedure At Location",
+                                    "description": "List of muntra-caregiver-procedure-at-locations",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1213,7 +1213,7 @@
                 "tags": [
                     "muntra-clinic-ads"
                 ],
-                "summary": "Show all Clinic Ads",
+                "summary": "List of muntra-clinic-ads",
                 "description": "Returns a list of Clinic Ads based on the specified filters",
                 "operationId": "getMuntraClinicAds",
                 "produces": [
@@ -1235,7 +1235,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show all Muntra Clinic Ads",
+                                    "description": "List of muntra-clinic-ads",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicAdsResponse"
@@ -1250,7 +1250,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show all Muntra Clinic Ads",
+                                    "description": "List of muntra-clinic-ads",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1579,7 +1579,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show all Muntra Patient Review for Caregiver",
+                                    "description": "List of muntra-patient-reviews",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraPatientReviewCaregiver"
@@ -1594,7 +1594,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show all Muntra Patient Review for Caregiver",
+                                    "description": "List of muntra-patient-reviews",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1610,7 +1610,7 @@
                 "tags": [
                     "muntra-patient-reviews"
                 ],
-                "summary": "Store Muntra Patient review",
+                "summary": "Create a muntra-patient-review",
                 "description": "Create Muntra Patient review",
                 "operationId": "postMuntraPatientReview",
                 "produces": [
@@ -1836,7 +1836,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Store Muntra Patient Review",
+                                    "description": "Create a muntra-patient-review",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraPatientReviewCaregiver"
@@ -1851,7 +1851,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Store Muntra Patient Review",
+                                    "description": "Create a muntra-patient-review",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1867,7 +1867,7 @@
                 "tags": [
                     "muntra-patient-reviews"
                 ],
-                "summary": "Patch Muntra Patient review",
+                "summary": "Edit muntra-patient-review",
                 "description": "Edit Muntra Patient review",
                 "operationId": "patchMuntraPatientReview",
                 "produces": [
@@ -2104,7 +2104,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Patch Muntra Patient Review",
+                                    "description": "Edit muntra-patient-review",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraPatientReviewCaregiver"
@@ -2119,7 +2119,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Patch Muntra Patient Review",
+                                    "description": "Edit muntra-patient-review",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2135,7 +2135,7 @@
                 "tags": [
                     "clinics/current"
                 ],
-                "summary": "Show Clinic Current",
+                "summary": "Show clinics/current",
                 "description": "Returns a data of Current Clinic based on the specified filters",
                 "operationId": "getMuntraClinicCurrent",
                 "produces": [
@@ -2169,7 +2169,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show Clinic Current",
+                                    "description": "Show clinics/current",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/ClinicCurrentResponse"
@@ -2184,7 +2184,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show Clinic Current",
+                                    "description": "Show clinics/current",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
