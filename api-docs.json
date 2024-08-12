@@ -2415,30 +2415,34 @@
                     },
                     {
                         "name": "price_list_id",
-                        "in": "formData",
+                        "in": "body",
                         "description": "Price list id field",
                         "required": true,
+                        "schema": {},
                         "type": "number"
                     },
                     {
                         "name": "state_price_id",
-                        "in": "formData",
+                        "in": "body",
                         "description": "State price id field",
                         "required": true,
+                        "schema": {},
                         "type": "number"
                     },
                     {
                         "name": "price_code",
-                        "in": "formData",
+                        "in": "body",
                         "description": "Price code field",
                         "required": true,
+                        "schema": {},
                         "type": "number"
                     },
                     {
                         "name": "description",
-                        "in": "formData",
+                        "in": "body",
                         "description": "Description field",
                         "required": true,
+                        "schema": {},
                         "type": "string"
                     }
                 ],
