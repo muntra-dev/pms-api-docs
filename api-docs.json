@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-     "basePath": "https://api.muntra.com", 
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -71,7 +71,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show all Muntra Bookings",
+                                    "description": "List of muntra-bookins",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraBookings"
@@ -86,7 +86,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show all Muntra Bookings",
+                                    "description": "List of muntra-bookins",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -238,7 +238,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Store Muntra Booking",
+                                    "description": "Create a muntra-booking",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraBookings"
@@ -253,7 +253,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Store Muntra Booking",
+                                    "description": "Create a muntra-booking",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -343,7 +343,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show requested Muntra Booking",
+                                    "description": "Retrieve a muntra-booking",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraBookings"
@@ -358,7 +358,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show requested Muntra Booking",
+                                    "description": "Retrieve a muntra-booking",
                                     "type": "string",
                                     "example": "Muntra Booking with Id BK1NxwX not found."
                                 }
