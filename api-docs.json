@@ -16,7 +16,7 @@
                 "tags": [
                     "muntra-bookings"
                 ],
-                "summary": "Show all Muntra Patient Bookings",
+                "summary": "List of muntra-bookins",
                 "description": "Returns a list of Muntra bookings based on the specified filters",
                 "operationId": "getMuntraBookings",
                 "produces": [
@@ -100,7 +100,7 @@
                 "tags": [
                     "muntra-bookings"
                 ],
-                "summary": "Store Muntra Bookings",
+                "summary": "Create a muntra-booking",
                 "description": "Create Muntra Bookings",
                 "operationId": "postMuntraBookings",
                 "produces": [
@@ -269,7 +269,7 @@
                 "tags": [
                     "muntra-bookings"
                 ],
-                "summary": "Show requested Muntra Patient Booking",
+                "summary": "Retrieve a muntra-booking",
                 "description": "Returns requested Muntra booking based on the specified filters",
                 "operationId": "getMuntraBooking",
                 "produces": [
