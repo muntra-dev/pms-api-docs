@@ -16,7 +16,7 @@
                 "tags": [
                     "muntra-bookings"
                 ],
-                "summary": "List of muntra-bookings",
+                "summary": "List muntra-bookings",
                 "description": "Returns a list of Muntra bookings based on the specified filters",
                 "operationId": "getMuntraBookings",
                 "produces": [
