@@ -1266,7 +1266,7 @@
                 "tags": [
                     "muntra-clinics"
                 ],
-                "summary": "Show all Muntra Clinics",
+                "summary": "List of muntra-clinics",
                 "description": "Returns a list of Muntra Clinics based on the specified filters",
                 "operationId": "getMuntraClinics",
                 "produces": [
@@ -1386,14 +1386,14 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show all Muntra Clinics",
+                                    "description": "List of muntra-clinics",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicResponse"
                                     }
                                 },
                                 "included": {
-                                    "description": "Show all Muntra Clinics",
+                                    "description": "List of muntra-clinics",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicResponse"
@@ -1411,7 +1411,7 @@
                 "tags": [
                     "muntra-clinics"
                 ],
-                "summary": "Show Muntra Clinic",
+                "summary": "Retrieve a muntra-clinic",
                 "description": "Returns certain Muntra Clinic",
                 "operationId": "getMuntraClinicsById",
                 "produces": [
@@ -1520,14 +1520,14 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show requested Muntra Clinic",
+                                    "description": "Retrieve a muntra-clinic",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicResponse"
                                     }
                                 },
                                 "included": {
-                                    "description": "Show requested Muntra Clinic",
+                                    "description": "Retrieve a muntra-clinic",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraClinicResponse"
@@ -1542,7 +1542,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show requested Muntra Clinic",
+                                    "description": "Retrieve a muntra-clinic",
                                     "type": "string",
                                     "example": "Muntra Clinic with Id 5 not found."
                                 }
@@ -1558,7 +1558,7 @@
                 "tags": [
                     "muntra-patient-reviews"
                 ],
-                "summary": "Show all Patient Reviews for Cargiver",
+                "summary": "List of muntra-patient-reviews",
                 "description": "Returns a list of Patient Reviews for Cargiver based on the specified filters",
                 "operationId": "getMuntraPatientReviewForCaregiver",
                 "produces": [
@@ -2135,7 +2135,7 @@
                 "tags": [
                     "clinics/current"
                 ],
-                "summary": "Show clinics/current",
+                "summary": "Retrieve a clinics/current",
                 "description": "Returns a data of Current Clinic based on the specified filters",
                 "operationId": "getMuntraClinicCurrent",
                 "produces": [
@@ -2169,7 +2169,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Show clinics/current",
+                                    "description": "Retrieve a clinics/current",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/ClinicCurrentResponse"
@@ -2184,7 +2184,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Show clinics/current",
+                                    "description": "Retrieve a clinics/current",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -3050,7 +3050,7 @@
             "schema": {
                 "properties": {
                     "message": {
-                        "description": "Show all Muntra Clinics",
+                        "description": "List of muntra-clinics",
                         "type": "string",
                         "example": "Please make sure that request parameters is correct"
                     }
