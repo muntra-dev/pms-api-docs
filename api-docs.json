@@ -71,7 +71,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List of muntra-bookings",
+                                    "description": "List muntra-bookings",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraBookings"
@@ -86,7 +86,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List of muntra-bookings",
+                                    "description": "List muntra-bookings",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
