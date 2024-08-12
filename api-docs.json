@@ -1618,6 +1618,13 @@
                 ],
                 "parameters": [
                     {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "external_id",
                         "in": "formData",
                         "description": "External id field",
@@ -2196,13 +2203,13 @@
             }
         },
         "/api/prices": {
-            "get": {
+            "post": {
                 "tags": [
                     "prices"
                 ],
-                "summary": "List prices",
-                "description": "Returns a data of Prices based on the specified filters",
-                "operationId": "getPrices",
+                "summary": "Create a price",
+                "description": "Returns created price based on the given filters",
+                "operationId": "postPrices",
                 "produces": [
                     "application/json"
                 ],
@@ -2215,44 +2222,32 @@
                         "type": "string"
                     },
                     {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'include_non_reimbursed', 'price_list', 'state_price', 'currency', 'vat_code','default_treatment'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
                         "name": "price_list_id",
-                        "in": "query",
-                        "description": "Filtering prices according to price_list_id",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
+                        "in": "formData",
+                        "description": "Price list id field",
+                        "required": true,
+                        "type": "number"
                     },
                     {
-                        "name": "state_price_list_id",
-                        "in": "query",
-                        "description": "Filtering prices according to state_price_list_id",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
+                        "name": "state_price_id",
+                        "in": "formData",
+                        "description": "State price id field",
+                        "required": true,
+                        "type": "number"
                     },
                     {
-                        "name": "list_id",
-                        "in": "query",
-                        "description": "Filtering prices according to list_id",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
+                        "name": "price_code",
+                        "in": "formData",
+                        "description": "Price code field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "description": "Description field",
+                        "required": true,
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -2261,7 +2256,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List prices",
+                                    "description": "Create a price",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/PricesResponse"
@@ -2276,7 +2271,150 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List prices",
+                                    "description": "Create a price",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/prices/{id}": {
+            "get": {
+                "tags": [
+                    "prices"
+                ],
+                "summary": "Retrieve a price",
+                "description": "Returns a specific price",
+                "operationId": "getPrice",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' of price",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'include_non_reimbursed', 'price_list', 'state_price', 'currency', 'vat_code', 'default_treatment'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a price",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PricesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a price",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "prices"
+                ],
+                "summary": "Edit a specific price",
+                "description": "Returns edited price based on the given filters",
+                "operationId": "patchPrices",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' of price",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "price_code",
+                        "in": "formData",
+                        "description": "Price code field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "description",
+                        "in": "formData",
+                        "description": "Description field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a price",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PricesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a price",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
