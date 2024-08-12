@@ -2203,6 +2203,195 @@
             }
         },
         "/api/prices": {
+            "get": {
+                "tags": [
+                    "prices"
+                ],
+                "summary": "List prices",
+                "description": "Returns a list of prices based on the given filters",
+                "operationId": "getPrices",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'include_non_reimbursed', 'price_list', 'state_price', 'currency', 'vat_code', 'default_treatment'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "price_list_id",
+                        "in": "query",
+                        "description": "Filtering prices according to price_list_id",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "state_price_list_id",
+                        "in": "query",
+                        "description": "Filtering prices according to state_price_list_id",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "list_id",
+                        "in": "query",
+                        "description": "Filtering prices according to list_id",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "list_ids",
+                        "in": "query",
+                        "description": "Filtering prices according to list_ids",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "Filtering prices according to deleted",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "price_type",
+                        "in": "query",
+                        "description": "Filtering prices according to price_type",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "default_treatment_id",
+                        "in": "query",
+                        "description": "Filtering prices according to default_treatment_id",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "Filtering prices according to code",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "price_code",
+                        "in": "query",
+                        "description": "Filtering prices according to price_code",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Filtering prices according to filter (example: 'filter':'id')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "elements",
+                        "in": "query",
+                        "description": "Filtering prices according to elements",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "Filtering prices according to query",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "Filtering prices according to sort_by",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "diagnosis_id",
+                        "in": "query",
+                        "description": "Filtering prices according to diagnosis_id",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List prices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PricesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List prices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "prices"
