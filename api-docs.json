@@ -2399,6 +2399,9 @@
                 "summary": "Create a price",
                 "description": "Returns created price based on the given filters",
                 "operationId": "postPrices",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
