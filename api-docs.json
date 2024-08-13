@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-     "basePath": "https://api.muntra.com", 
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -2422,13 +2422,7 @@
                             "required": [
                                 "price_list_id"
                             ],
-                            "properties": {
-                                "price_list_id": {
-                                    "description": "Create a price",
-                                    "type": "string"
-                                }
-                            },
-                            "type": "object"
+                            "type": "string"
                         },
                         "type": "number"
                     },
