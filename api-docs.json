@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-     "basePath": "https://api.muntra.com", 
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -2414,29 +2414,16 @@
                         "type": "string"
                     },
                     {
-                        "name": "price_list_id",
-                        "in": "body",
-                        "description": "Price list id field",
-                        "required": true,
-                        "schema": {
-                            "required": [
-                                "price_list_id"
-                            ],
-                            "type": "string"
-                        },
-                        "type": "number"
-                    },
-                    {
                         "name": "body",
                         "in": "body",
                         "description": "User email used to create account.",
                         "required": true,
                         "schema": {
                             "properties": {
-                                "email": {
+                                "price_list_id": {
                                     "description": "Create a price",
                                     "type": "string",
-                                    "example": "email@example3.com"
+                                    "example": "Price list id field"
                                 }
                             }
                         }
