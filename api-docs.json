@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com", 
+     "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -2202,6 +2202,145 @@
                 }
             }
         },
+        "/api/patients": {
+            "post": {
+                "tags": [
+                    "patients"
+                ],
+                "summary": "Create a patient",
+                "description": "Returns created patient based on the given filters",
+                "operationId": "postPatient",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (one field obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "social_security_number": {
+                                    "description": "Create a patient",
+                                    "type": "number",
+                                    "example": "199007212211"
+                                },
+                                "date_of_birth": {
+                                    "description": "Create a patient",
+                                    "type": "number",
+                                    "format": "date",
+                                    "example": "1990-08-24"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "patient_number",
+                        "in": "query",
+                        "description": "Patient number field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "query",
+                        "description": "First name field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "last_name",
+                        "in": "query",
+                        "description": "Last name field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "gender",
+                        "in": "query",
+                        "description": "Gender field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "address_1",
+                        "in": "query",
+                        "description": "Address 1 field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "postal_code",
+                        "in": "query",
+                        "description": "Postal code field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "city",
+                        "in": "query",
+                        "description": "City field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a patient",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/prices": {
             "get": {
                 "tags": [
@@ -2414,34 +2553,38 @@
                         "type": "string"
                     },
                     {
-                        "name": "body",
+                        "name": "price_list_id",
                         "in": "body",
-                        "description": "Body of request (all fields is obligatory)",
+                        "description": "Price list id field",
                         "required": true,
                         "schema": {
-                            "properties": {
-                                "price_list_id": {
-                                    "description": "Create a price",
-                                    "type": "number",
-                                    "example": "1"
-                                },
-                                "state_price_id": {
-                                    "description": "Create a price",
-                                    "type": "number",
-                                    "example": "2"
-                                },
-                                "price_code": {
-                                    "description": "Create a price",
-                                    "type": "number",
-                                    "example": "3"
-                                },
-                                "description": {
-                                    "description": "Create a price",
-                                    "type": "string",
-                                    "example": "Test description"
-                                }
-                            }
-                        }
+                            "$ref": "#/definitions/PricesResponse"
+                        },
+                        "type": "number"
+                    },
+                    {
+                        "name": "state_price_id",
+                        "in": "body",
+                        "description": "State price id field",
+                        "required": true,
+                        "schema": {},
+                        "type": "number"
+                    },
+                    {
+                        "name": "price_code",
+                        "in": "body",
+                        "description": "Price code field",
+                        "required": true,
+                        "schema": {},
+                        "type": "number"
+                    },
+                    {
+                        "name": "description",
+                        "in": "body",
+                        "description": "Description field",
+                        "required": true,
+                        "schema": {},
+                        "type": "string"
                     }
                 ],
                 "responses": {
@@ -3460,6 +3603,199 @@
                             "type": "string",
                             "format": "date",
                             "example": "2024-07-02T19:17:48+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "social_security_number": {
+                            "type": "string",
+                            "example": "199008266972"
+                        },
+                        "first_name": {
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "last_name": {
+                            "type": "string",
+                            "example": "Smith"
+                        },
+                        "maiden_name": {
+                            "type": "string",
+                            "example": "Lore"
+                        },
+                        "initials": {
+                            "type": "string",
+                            "example": "J.S."
+                        },
+                        "gender": {
+                            "type": "string",
+                            "example": "male"
+                        },
+                        "address_1": {
+                            "type": "string"
+                        },
+                        "address_2": {
+                            "type": "string"
+                        },
+                        "city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "postal_code": {
+                            "type": "string"
+                        },
+                        "municipality": {
+                            "type": "string"
+                        },
+                        "date_of_birth": {
+                            "type": "string",
+                            "example": "2002-06-14T00:00:00+02:00"
+                        },
+                        "passport_number": {
+                            "type": "string"
+                        },
+                        "phone_number_cell": {
+                            "type": "string"
+                        },
+                        "phone_number_home": {
+                            "type": "string"
+                        },
+                        "phone_number_work": {
+                            "type": "string"
+                        },
+                        "fax_number": {
+                            "type": "string"
+                        },
+                        "e_mail_address": {
+                            "type": "string",
+                            "example": "muntra@email.com"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-07-01T17:15:30+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-07-01T17:15:30+02:00"
+                        },
+                        "patient_number": {
+                            "type": "string",
+                            "format": "number",
+                            "example": "222"
+                        },
+                        "invoice_reference": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "string",
+                            "example": "active"
+                        },
+                        "wants_anestesia": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "start_date_free_card": {
+                            "type": "string",
+                            "example": "2024-07-01T17:15:30+02:00"
+                        },
+                        "end_date_free_card": {
+                            "type": "string",
+                            "example": "2024-07-01T17:15:30+02:00"
+                        },
+                        "free_card_number": {
+                            "type": "string"
+                        },
+                        "county_council_certificate_number": {
+                            "type": "string"
+                        },
+                        "county_council_certificate_end_date": {
+                            "type": "string"
+                        },
+                        "euro_certificate_number": {
+                            "type": "string"
+                        },
+                        "protected_identity": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "warning": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "warning_text": {
+                            "type": "string"
+                        },
+                        "xray_id": {
+                            "type": "string"
+                        },
+                        "notes": {
+                            "type": "string"
+                        },
+                        "external_dentist": {
+                            "type": "string"
+                        },
+                        "external_hygienist": {
+                            "type": "string"
+                        },
+                        "auto_include_email_invitation": {
+                            "type": "string"
+                        },
+                        "auto_include_sms_invitation": {
+                            "type": "string"
+                        },
+                        "auto_include_sms_reminder": {
+                            "type": "string"
+                        },
+                        "auto_include_snail_mail_invitation": {
+                            "type": "string"
+                        },
+                        "prefers_not_to_be_contacted_by_clinic": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "recurring": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "referral_source": {
+                            "type": "string"
+                        },
+                        "teeth_count": {
+                            "type": "string"
+                        },
+                        "untreated_teeth_count": {
+                            "type": "string"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-07-01T17:15:30+02:00"
+                        },
+                        "nearest_booking_date": {
+                            "type": "string",
+                            "example": "2024-08-01T19:25:31+02:00"
+                        },
+                        "latest_unbooked_rebooking_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
                         }
                     },
                     "type": "object"
