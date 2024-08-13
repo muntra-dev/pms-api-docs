@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com", 
+     "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -2419,7 +2419,16 @@
                         "description": "Price list id field",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/PricesResponse"
+                            "required": [
+                                "price_list_id"
+                            ],
+                            "properties": {
+                                "price_list_id": {
+                                    "description": "Create a price",
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object"
                         },
                         "type": "number"
                     },
@@ -3472,80 +3481,6 @@
             "type": "object"
         },
         "PricesResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "price"
-                },
-                "id": {
-                    "type": "integer",
-                    "example": 1
-                },
-                "attributes": {
-                    "properties": {
-                        "price_code": {
-                            "type": "string",
-                            "example": "p701"
-                        },
-                        "price_type": {
-                            "type": "string",
-                            "example": ""
-                        },
-                        "description": {
-                            "type": "string",
-                            "example": "Fyllning av en yta p\u00e5 framtand eller h\u00f6rntand"
-                        },
-                        "printed_text": {
-                            "type": "string",
-                            "example": ""
-                        },
-                        "total_excluding_vat": {
-                            "type": "number",
-                            "example": 0
-                        },
-                        "purchase_price_excluding_vat": {
-                            "type": "number",
-                            "example": 0
-                        },
-                        "lab_fee": {
-                            "type": "number",
-                            "example": 0
-                        },
-                        "included_material": {
-                            "type": "string",
-                            "example": "Komposit"
-                        },
-                        "time_based": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "duration_in_minutes": {
-                            "type": "number",
-                            "example": 0
-                        },
-                        "standard_duration_in_minutes": {
-                            "type": "number",
-                            "example": 0
-                        },
-                        "multi_tooth": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "class": {
-                            "type": "string",
-                            "example": ""
-                        },
-                        "deleted": {
-                            "type": "boolean",
-                            "example": true
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "PricesResponse2": {
             "properties": {
                 "type": {
                     "type": "string",
