@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-     "basePath": "https://api.muntra.com", 
+    "basePath": "https://api.muntra.com", 
     "schemes": [
         "http",
         "https"
@@ -2231,16 +2231,28 @@
                         "required": true,
                         "schema": {
                             "properties": {
-                                "social_security_number": {
+                                "data": {
                                     "description": "Create a patient",
-                                    "type": "number",
-                                    "example": "199007212211"
-                                },
-                                "date_of_birth": {
-                                    "description": "Create a patient",
-                                    "type": "number",
-                                    "format": "date",
-                                    "example": "1990-08-24"
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a patient",
+                                            "properties": {
+                                                "social_security_number": {
+                                                    "description": "Create a patient",
+                                                    "type": "number",
+                                                    "example": "199007212211"
+                                                },
+                                                "date_of_birth": {
+                                                    "description": "Create a patient",
+                                                    "type": "number",
+                                                    "format": "date",
+                                                    "example": "1990-08-24"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             }
                         }
