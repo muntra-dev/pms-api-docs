@@ -2424,6 +2424,16 @@
                                     "description": "Create a price",
                                     "type": "string",
                                     "example": "Price list id field"
+                                },
+                                "state_price_id": {
+                                    "description": "Create a price",
+                                    "type": "string",
+                                    "example": "Price list id field"
+                                },
+                                "price_code": {
+                                    "description": "Create a price",
+                                    "type": "string",
+                                    "example": "Price list id field"
                                 }
                             }
                         }
@@ -2431,10 +2441,17 @@
                     {
                         "name": "state_price_id",
                         "in": "body",
-                        "description": "State price id field",
+                        "description": "User email used to create account.",
                         "required": true,
-                        "schema": {},
-                        "type": "number"
+                        "schema": {
+                            "properties": {
+                                "state_price_id": {
+                                    "description": "Create a price",
+                                    "type": "string",
+                                    "example": "State price list id field"
+                                }
+                            }
+                        }
                     },
                     {
                         "name": "price_code",
