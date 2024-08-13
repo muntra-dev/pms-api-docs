@@ -2416,58 +2416,32 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "User email used to create account.",
+                        "description": "Body of request (all fields is obligatory)",
                         "required": true,
                         "schema": {
                             "properties": {
                                 "price_list_id": {
                                     "description": "Create a price",
-                                    "type": "string",
-                                    "example": "Price list id field"
+                                    "type": "number",
+                                    "example": "1"
                                 },
                                 "state_price_id": {
                                     "description": "Create a price",
-                                    "type": "string",
-                                    "example": "Price list id field"
+                                    "type": "number",
+                                    "example": "2"
                                 },
                                 "price_code": {
                                     "description": "Create a price",
-                                    "type": "string",
-                                    "example": "Price list id field"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "name": "state_price_id",
-                        "in": "body",
-                        "description": "User email used to create account.",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "state_price_id": {
+                                    "type": "number",
+                                    "example": "3"
+                                },
+                                "description": {
                                     "description": "Create a price",
                                     "type": "string",
-                                    "example": "State price list id field"
+                                    "example": "Test description"
                                 }
                             }
                         }
-                    },
-                    {
-                        "name": "price_code",
-                        "in": "body",
-                        "description": "Price code field",
-                        "required": true,
-                        "schema": {},
-                        "type": "number"
-                    },
-                    {
-                        "name": "description",
-                        "in": "body",
-                        "description": "Description field",
-                        "required": true,
-                        "schema": {},
-                        "type": "string"
                     }
                 ],
                 "responses": {
