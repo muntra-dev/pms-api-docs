@@ -14,7 +14,7 @@
         "/api/booking-attendees/{id}": {
             "patch": {
                 "tags": [
-                    "declarations"
+                    "booking-attendees"
                 ],
                 "summary": "Edit a booking atteendees",
                 "description": "Returns edited booking attendees based on the given filters",
