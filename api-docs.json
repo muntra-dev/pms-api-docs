@@ -2208,7 +2208,7 @@
                     "declarations"
                 ],
                 "summary": "Create a health declaration",
-                "description": "Returns created health declaration based on the given filters",
+                "description": "",
                 "operationId": "postDeclaration",
                 "consumes": [
                     "application/json"
