@@ -11,6 +11,162 @@
         "https"
     ],
     "paths": {
+        "/api/booking-attendees/{id}": {
+            "patch": {
+                "tags": [
+                    "declarations"
+                ],
+                "summary": "Edit a booking atteendees",
+                "description": "Returns edited booking attendees based on the given filters",
+                "operationId": "patchBookingAttendees",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a booking atteendees",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a booking atteendees",
+                                            "properties": {
+                                                "booking_id": {
+                                                    "description": "Edit a booking atteendees",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking', 'user', 'patient', 'room', 'resource', 'emails', 'email_ics', 'declaration_emails', 'sms_invitations', 'sms_reminders', 'declaration_sms', 'snail_mails', 'booking_attendee_external_binding'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "arrived_at",
+                        "in": "query",
+                        "description": "Arrived at field (format: '2024-09-01 19:25:31')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "Date/time start field (format: '2024-08-01 11:35:33')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "Date/time end field (format: '2024-08-02 13:46:43')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "partstat",
+                        "in": "query",
+                        "description": "Part stat field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rsvp",
+                        "in": "query",
+                        "description": "'rsvp' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "first_sendout_on",
+                        "in": "query",
+                        "description": "'first_sendout_on' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a booking atteendees",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingAttendeeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a booking atteendees",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
@@ -2879,6 +3035,44 @@
         }
     },
     "definitions": {
+        "BookingAttendeeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_attendee"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "dtstart": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "dtend": {
+                            "type": "string",
+                            "example": "2024-10-01T22:28:33+02:00"
+                        },
+                        "partstat": {
+                            "type": "string",
+                            "example": "ACCEPTED"
+                        },
+                        "rsvp": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "arrived_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "MuntraBookings": {
             "properties": {
                 "type": {
