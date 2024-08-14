@@ -2202,6 +2202,109 @@
                 }
             }
         },
+        "/api/declarations": {
+            "post": {
+                "tags": [
+                    "declarations"
+                ],
+                "summary": "Create a declaration",
+                "description": "Returns created declaration based on the given filters",
+                "operationId": "postDeclaration",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a declaration",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a declaration",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a declaration",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "journal_pharmaceutical_articles",
+                        "in": "query",
+                        "description": "Journal pharmaceutical articles array field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "asthma",
+                        "in": "query",
+                        "description": "Astma field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a declaration",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a declaration",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patients": {
             "post": {
                 "tags": [
@@ -3615,6 +3718,273 @@
                             "type": "string",
                             "format": "date",
                             "example": "2024-07-02T19:17:48+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DeclarationsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "declaration"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "asthma": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "blood_infection": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "hemophilia": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "cancer": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "diabetes": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "epilepsy": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "hiv_aids": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "cerebral_haemorrhage": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "cardiovascular_diseases": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "high_blood_pressure": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "immunological_disease": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "supplement_for_dental_treatment": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "nutrition_diet": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "respiratory_disease": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "parkinsons": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mental_health_problems": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "rheumatic_disease": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "smokes_takes_snuff": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "gets_chemo_therapy": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "eating_disorder": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "ear_nose_throat": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_latex": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_local_anesthesia": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_edibles": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_nickel": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_penicillin": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_pollen": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_other": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_bleeding_gums": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_bruxism": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_halitosis": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_finger_sucker": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_mouth_breather": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_mouth_ulceration": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_xerostomia": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_sore_masticatory_muscles": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_other": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "osteoporosis": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other_impaired_hearing": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other_reduced_mobility": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other_impaired_vision": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other_impaired_speech": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "pacemaker": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "bisphosphonate": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "pain_in_face_jaw_or_temple": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "pain_when_opening_or_chewing": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "locks_jaw": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "patient_health_evaluation": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "pregnant_due_date": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "last_dental_treatment": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "registration_date": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "special_notes": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "complementary_information": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "medications": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "medications_free_text": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "medical_treatment_past_two_years": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "medical_treatment": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "reason_patient_visits": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "submitted_by_patient_at": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "signed_at": {
+                            "type": "string"
+                        },
+                        "prev_history_id": {
+                            "type": "string"
+                        },
+                        "next_history_id": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
