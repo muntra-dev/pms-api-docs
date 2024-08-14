@@ -2207,8 +2207,8 @@
                 "tags": [
                     "declarations"
                 ],
-                "summary": "Create a declaration",
-                "description": "Returns created declaration based on the given filters",
+                "summary": "Create a health declaration",
+                "description": "Returns created health declaration based on the given filters",
                 "operationId": "postDeclaration",
                 "consumes": [
                     "application/json"
@@ -2232,13 +2232,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a declaration",
+                                    "description": "Create a health declaration",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a declaration",
+                                            "description": "Create a health declaration",
                                             "properties": {
                                                 "patient_id": {
-                                                    "description": "Create a declaration",
+                                                    "description": "Create a health declaration",
                                                     "type": "number",
                                                     "example": "1"
                                                 }
@@ -2279,7 +2279,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a declaration",
+                                    "description": "Create a health declaration",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/DeclarationsResponse"
@@ -2294,7 +2294,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a declaration",
+                                    "description": "Create a health declaration",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
