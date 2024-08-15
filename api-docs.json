@@ -2543,6 +2543,77 @@
             }
         },
         "/api/declarations": {
+            "get": {
+                "tags": [
+                    "declarations"
+                ],
+                "summary": "Retrieve a health declaration",
+                "description": "Returns health declaration based on the given filters",
+                "operationId": "getDeclaration",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "Patient id field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "history_id",
+                        "in": "query",
+                        "description": "History id field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a health declaration",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a health declaration",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "declarations"
