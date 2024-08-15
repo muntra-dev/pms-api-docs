@@ -71,19 +71,6 @@
                             },
                             "type": "object"
                         }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List booking attendees",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
                     }
                 }
             }
@@ -336,6 +323,9 @@
                 "summary": "List muntra-bookings",
                 "description": "Returns a list of bookings based on the given filters",
                 "operationId": "getMuntraBookings",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -420,6 +410,9 @@
                 "summary": "Create a muntra-booking",
                 "description": "Create a booking",
                 "operationId": "postMuntraBookings",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -589,6 +582,9 @@
                 "summary": "Retrieve a muntra-booking",
                 "description": "Retrieves a specific booking",
                 "operationId": "getMuntraBooking",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -694,6 +690,9 @@
                 "summary": "List muntra-caregiver-at-locations",
                 "description": "Returns a list of caregiver-location combinations based on the given filters",
                 "operationId": "getCaregiverAtLocations",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -1027,6 +1026,9 @@
                 "summary": "List muntra-caregivers",
                 "description": "Returns a list of caregivers based on the given filters",
                 "operationId": "getMuntraCaregivers",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -1236,6 +1238,9 @@
                 "summary": "Retrieve a muntra-caregiver",
                 "description": "Retrieves a specific caregiver",
                 "operationId": "getMuntraCaregiverById",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -1422,6 +1427,9 @@
                 "summary": "List muntra-caregiver-procedure-at-locations",
                 "description": "Returns a list of caregiver, location and procedure combinations based on the given filters",
                 "operationId": "getCaregiverProcedureAtLocations",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -1533,6 +1541,9 @@
                 "summary": "List muntra-clinic-ads",
                 "description": "Returns a list of clinics advertised on the start page of Muntra's clinical app",
                 "operationId": "getMuntraClinicAds",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -1861,7 +1872,7 @@
                                 "message": {
                                     "description": "Retrieve a muntra-clinic",
                                     "type": "string",
-                                    "example": "Muntra Clinic with Id 5 not found."
+                                    "example": "Please make sure that request parameters is correct"
                                 }
                             },
                             "type": "object"
@@ -1878,6 +1889,9 @@
                 "summary": "List muntra-patient-reviews",
                 "description": "Returns a list of patient reviews for a caregiver based on the given filters",
                 "operationId": "getMuntraPatientReviewForCaregiver",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -1930,6 +1944,9 @@
                 "summary": "Create a muntra-patient-review",
                 "description": "Create a patient review",
                 "operationId": "postMuntraPatientReview",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -2194,6 +2211,9 @@
                 "summary": "Edit muntra-patient-review",
                 "description": "Edit a patient review",
                 "operationId": "patchMuntraPatientReview",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -2462,6 +2482,9 @@
                 "summary": "Retrieve the current clinic",
                 "description": "Retrieves the clinic currently selected in the user's session",
                 "operationId": "getMuntraClinicCurrent",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -2781,6 +2804,9 @@
                 "summary": "List prices",
                 "description": "Returns a list of prices based on the given filters",
                 "operationId": "getPrices",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -2985,38 +3011,46 @@
                         "type": "string"
                     },
                     {
-                        "name": "price_list_id",
+                        "name": "body",
                         "in": "body",
-                        "description": "Price list id field",
+                        "description": "Body of request (obligatory)",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/PricesResponse"
-                        },
-                        "type": "number"
-                    },
-                    {
-                        "name": "state_price_id",
-                        "in": "body",
-                        "description": "State price id field",
-                        "required": true,
-                        "schema": {},
-                        "type": "number"
-                    },
-                    {
-                        "name": "price_code",
-                        "in": "body",
-                        "description": "Price code field",
-                        "required": true,
-                        "schema": {},
-                        "type": "number"
-                    },
-                    {
-                        "name": "description",
-                        "in": "body",
-                        "description": "Description field",
-                        "required": true,
-                        "schema": {},
-                        "type": "string"
+                            "properties": {
+                                "data": {
+                                    "description": "Create a price",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a price",
+                                            "properties": {
+                                                "price_list_id": {
+                                                    "description": "Create a price",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "state_price_id": {
+                                                    "description": "Create a price",
+                                                    "type": "number",
+                                                    "example": "2"
+                                                },
+                                                "price_code": {
+                                                    "description": "Create a price",
+                                                    "type": "number",
+                                                    "example": "p303"
+                                                },
+                                                "description": {
+                                                    "description": "Create a price",
+                                                    "type": "number",
+                                                    "example": "Test description"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 ],
                 "responses": {
@@ -3059,6 +3093,9 @@
                 "summary": "Retrieve a price",
                 "description": "Returns a specific price",
                 "operationId": "getPrice",
+                "consumes": [
+                    "application/json"
+                ],
                 "produces": [
                     "application/json"
                 ],
@@ -3148,18 +3185,36 @@
                         "type": "number"
                     },
                     {
-                        "name": "price_code",
-                        "in": "formData",
-                        "description": "Price code field",
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
                         "required": true,
-                        "type": "number"
-                    },
-                    {
-                        "name": "description",
-                        "in": "formData",
-                        "description": "Description field",
-                        "required": true,
-                        "type": "string"
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a price",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a price",
+                                            "properties": {
+                                                "price_code": {
+                                                    "description": "Edit a price",
+                                                    "type": "number",
+                                                    "example": "p303"
+                                                },
+                                                "description": {
+                                                    "description": "Edit a price",
+                                                    "type": "number",
+                                                    "example": "Test description"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 ],
                 "responses": {
@@ -4613,6 +4668,35 @@
                 }
             },
             "type": "object"
+        }
+    },
+    "parameters": {
+        "body": {
+            "name": "body",
+            "in": "body",
+            "description": "Body of request (obligatory)",
+            "required": true,
+            "schema": {
+                "properties": {
+                    "data": {
+                        "description": "List booking attendees",
+                        "properties": {
+                            "attributes": {
+                                "description": "List booking attendees",
+                                "properties": {
+                                    "patient_id": {
+                                        "description": "List booking attendees",
+                                        "type": "number",
+                                        "example": "1"
+                                    }
+                                },
+                                "type": "object"
+                            }
+                        },
+                        "type": "object"
+                    }
+                }
+            }
         }
     },
     "responses": {
