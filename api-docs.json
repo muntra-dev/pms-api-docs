@@ -315,6 +315,245 @@
                 }
             }
         },
+        "/api/bookings": {
+            "get": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "List bookings",
+                "description": "Returns a list of bookings based on the given filters",
+                "operationId": "getBookings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'organizer', 'booking_type', 'booking_policy', 'procedure', 'rebooking', 'promo_code', 'declaration', 'booking_attendees', 'booking_rrules', 'booking_exdates', 'booking_external_binding'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "Date/time start field (format: '2024-08-01 11:35:33')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "Date/time end field (format: '2024-08-02 13:46:43')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'From date' start field (format: '2024-08-01')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'To date' field (format: '2024-08-02')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "Clinic id(s) field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "organizer_id",
+                        "in": "query",
+                        "description": "Organizer id field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "caregiver_id",
+                        "in": "query",
+                        "description": "Caregiver id field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "User id(s) field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "Patient id field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_partstat",
+                        "in": "query",
+                        "description": "Patient partstat field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "room_ids",
+                        "in": "query",
+                        "description": "Room id(s) field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "booking_type_ids",
+                        "in": "query",
+                        "description": "Booking type id(s) field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Satus field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_failed_to_appear",
+                        "in": "query",
+                        "description": "'Patient failed to appear' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_failed_to_appear_handled",
+                        "in": "query",
+                        "description": "'Patient failed to appear handled' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_wants_earlier_slot",
+                        "in": "query",
+                        "description": "'Patient wants earlier slot' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_made_late_cancellation",
+                        "in": "query",
+                        "description": "'Patient made late cancellation' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "done",
+                        "in": "query",
+                        "description": "'Done' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'Deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List bookings",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List bookings",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
@@ -3353,6 +3592,104 @@
                         "arrived_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "class": {
+                            "type": "string",
+                            "example": "PUBLIC"
+                        },
+                        "summary": {
+                            "type": "string",
+                            "example": "Test summary"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "dtstart": {
+                            "type": "string",
+                            "example": "2024-01-01T00:00:00+01:00"
+                        },
+                        "dtend": {
+                            "type": "string",
+                            "example": "2024-01-01T08:00:00+01:00"
+                        },
+                        "reschedulable": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "duration_in_minutes": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "location": {
+                            "type": "number",
+                            "format": "float"
+                        },
+                        "transparent": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "status": {
+                            "type": "string",
+                            "example": "CONFIRMED"
+                        },
+                        "price": {
+                            "type": "number",
+                            "example": 111
+                        },
+                        "new_patient": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "patient_wants_earlier_slot": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "patient_made_late_cancellation": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "patient_failed_to_appear": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "patient_failed_to_appear_handled": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "patient_declaration_allowed": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "done": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "archived_at": {
+                            "type": "string",
+                            "example": "2024-02-01T09:11:00+01:00"
                         }
                     },
                     "type": "object"
