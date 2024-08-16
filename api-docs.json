@@ -552,6 +552,290 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "Create a booking",
+                "description": "Returns a created booking based on the given filters",
+                "operationId": "postBooking",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (few examples what can be added)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a booking",
+                                            "properties": {
+                                                "class": {
+                                                    "description": "Create a booking",
+                                                    "type": "number",
+                                                    "example": "Test class"
+                                                },
+                                                "text": {
+                                                    "description": "Create a booking",
+                                                    "type": "number",
+                                                    "example": "Test text"
+                                                },
+                                                "dtstart": {
+                                                    "description": "Create a booking",
+                                                    "type": "string",
+                                                    "example": "2024-08-01 11:35:33"
+                                                },
+                                                "dtend": {
+                                                    "description": "Create a booking",
+                                                    "type": "string",
+                                                    "example": "2024-08-02 12:35:33"
+                                                },
+                                                "description": {
+                                                    "description": "Create a booking",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'organizer', 'booking_type', 'booking_policy', 'procedure', 'rebooking', 'promo_code', 'declaration', 'booking_attendees', 'booking_rrules', 'booking_exdates', 'booking_external_binding'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "Date/time start field (format: '2024-08-01 11:35:33')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "Date/time end field (format: '2024-08-02 13:46:43')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'From date' start field (format: '2024-08-01')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'To date' field (format: '2024-08-02')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "Clinic id(s) field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "organizer_id",
+                        "in": "query",
+                        "description": "Organizer id field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "caregiver_id",
+                        "in": "query",
+                        "description": "Caregiver id field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "User id(s) field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "Patient id field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_partstat",
+                        "in": "query",
+                        "description": "Patient partstat field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "room_ids",
+                        "in": "query",
+                        "description": "Room id(s) field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "booking_type_ids",
+                        "in": "query",
+                        "description": "Booking type id(s) field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Satus field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_failed_to_appear",
+                        "in": "query",
+                        "description": "'Patient failed to appear' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_failed_to_appear_handled",
+                        "in": "query",
+                        "description": "'Patient failed to appear handled' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_wants_earlier_slot",
+                        "in": "query",
+                        "description": "'Patient wants earlier slot' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_made_late_cancellation",
+                        "in": "query",
+                        "description": "'Patient made late cancellation' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "done",
+                        "in": "query",
+                        "description": "'Done' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'Deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a booking",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             }
         },
         "/api/muntra-bookings": {
