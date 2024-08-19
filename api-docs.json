@@ -3259,7 +3259,7 @@
                 ],
                 "summary": "List patients",
                 "description": "Returns s list of patients based on the given filters",
-                "operationId": "postPatient",
+                "operationId": "getPatients",
                 "consumes": [
                     "application/json"
                 ],
@@ -3579,6 +3579,90 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a patient",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patients/{id}": {
+            "get": {
+                "tags": [
+                    "patients"
+                ],
+                "summary": "Retrieve a patient",
+                "description": "Retrieve a specific patient",
+                "operationId": "getPatient",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Patient id in query/url",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'country', 'stb_disease', 'county_council', 'county_council_patient_category', 'default_reimbursement_type', 'patient_tags'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "Organization id field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a patient",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a patient",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
