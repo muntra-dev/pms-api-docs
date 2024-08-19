@@ -3406,6 +3406,60 @@
                         "type": "string",
                         "allowEmptyValue": true,
                         "default": ""
+                    },
+                    {
+                        "name": "include_closest_unbooked_rebooking",
+                        "in": "query",
+                        "description": "'include_closest_unbooked_rebooking' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include_first_future_booking",
+                        "in": "query",
+                        "description": "'include_first_future_booking' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include_latest_unbooked_rebooking",
+                        "in": "query",
+                        "description": "'include_latest_unbooked_rebooking' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "social_security_number",
+                        "in": "query",
+                        "description": "Social security number field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "booking_status",
+                        "in": "query",
+                        "description": "Booking status field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "Status field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
                     }
                 ],
                 "responses": {
