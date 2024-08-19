@@ -3088,6 +3088,19 @@
                         "type": "string"
                     },
                     {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'declaration_items', 'journal_pharmaceutical_articles', 'updater', 'signer'",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
                         "name": "patient_id",
                         "in": "query",
                         "description": "Patient id field",
