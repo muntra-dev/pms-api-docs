@@ -3253,6 +3253,192 @@
             }
         },
         "/api/patients": {
+            "get": {
+                "tags": [
+                    "patients"
+                ],
+                "summary": "List patients",
+                "description": "Returns s list of patients based on the given filters",
+                "operationId": "postPatient",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'country', 'stb_disease', 'county_council', 'county_council_patient_category', 'default_reimbursement_type', 'patient_tags'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "history_id",
+                        "in": "query",
+                        "description": "History id field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'Deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "xray_id",
+                        "in": "query",
+                        "description": "'xray_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "Clinic id(s) field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "has_email",
+                        "in": "query",
+                        "description": "'has_email' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_tag_ids",
+                        "in": "query",
+                        "description": "Patient tag id(s) field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "third_party_patient_category_ids",
+                        "in": "query",
+                        "description": "Third party patient category id(s) field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "rebooking_from_date",
+                        "in": "query",
+                        "description": "Rebooking from date field (format: '2024-08-01')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rebooking_to_date",
+                        "in": "query",
+                        "description": "Rebooking from date field (format: '2024-08-08')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "first_name",
+                        "in": "query",
+                        "description": "First name field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field (example: 'sort_by':'first_name')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patients",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patients",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "patients"
