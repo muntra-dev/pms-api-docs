@@ -318,7 +318,8 @@
         "/api/bookings": {
             "get": {
                 "tags": [
-                    "bookings"
+                    "Muntra",
+                    "declarations"
                 ],
                 "summary": "List bookings",
                 "description": "Returns a list of bookings based on the given filters",
@@ -3068,6 +3069,7 @@
         "/api/declarations": {
             "get": {
                 "tags": [
+                    "Muntra",
                     "declarations"
                 ],
                 "summary": "Retrieve a health declaration",
