@@ -5742,5 +5742,15 @@
                 "type": "object"
             }
         }
-    }
+    },
+    "tags": [
+        {
+            "name": "Muntra",
+            "description": "Muntra API methods"
+        },
+        {
+            "name": "Muntra",
+            "description": "Muntra API methods"
+        }
+    ]
 }
