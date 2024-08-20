@@ -2505,9 +2505,9 @@
                 "tags": [
                     "muntra-patient-clinic-curations"
                 ],
-                "summary": "Create a mmuntra-patient-clinic-curations",
+                "summary": "Create a muntra-patient-clinic-curation",
                 "description": "Returns created Muntra patient clinic curation based on the given filters",
-                "operationId": "postMuntraPatientClinicCurations",
+                "operationId": "postMuntraPatientClinicCuration",
                 "consumes": [
                     "application/json"
                 ],
@@ -2530,18 +2530,18 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                    "description": "Create a muntra-patient-clinic-curation",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a mmuntra-patient-clinic-curations",
+                                            "description": "Create a muntra-patient-clinic-curation",
                                             "properties": {
                                                 "external_id": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
-                                                    "type": "number",
-                                                    "example": "1"
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "type": "string",
+                                                    "example": "RRH2HHSb9aVcHZY20XQ17tE39QOOM12HbC"
                                                 },
                                                 "accepts_children": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -2549,7 +2549,7 @@
                                                     "example": true
                                                 },
                                                 "accessible_via_elevator": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -2557,77 +2557,122 @@
                                                     "example": false
                                                 },
                                                 "accessible_via_stairs": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": true
                                                 },
                                                 "capable_of_handling_fear_of_medical_procedures": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": true
                                                 },
                                                 "handicap_accessible": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 },
                                                 "has_drinks": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": true
                                                 },
                                                 "has_free_parking_directly_outside_of_clinic": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 },
                                                 "has_free_parking_near_the_clinic": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 },
                                                 "has_magazines": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": true
                                                 },
                                                 "has_music": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": true
                                                 },
                                                 "phas_paid_parking_directly_outside_of_clinic": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": true
                                                 },
                                                 "has_paid_parking_near_the_clinic": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 },
                                                 "has_restroom": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 },
                                                 "has_toys": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 },
                                                 "has_tv": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 },
                                                 "has_waiting_room": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 },
                                                 "has_wifi": {
-                                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                                    "description": "Create a muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
                                                     "type": "boolean",
                                                     "example": false
                                                 }
@@ -2639,15 +2684,6 @@
                                 }
                             }
                         }
-                    },
-                    {
-                        "name": "asthma",
-                        "in": "query",
-                        "description": "Asthma field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
                     }
                 ],
                 "responses": {
@@ -2656,7 +2692,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                    "description": "Create a muntra-patient-clinic-curation",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/PatientClinicCurationResponse"
@@ -2671,7 +2707,232 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a mmuntra-patient-clinic-curations",
+                                    "description": "Create a muntra-patient-clinic-curation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-patient-clinic-curations/{id}": {
+            "patch": {
+                "tags": [
+                    "muntra-patient-clinic-curations"
+                ],
+                "summary": "Edit muntra-patient-clinic-curation",
+                "description": "Returns edited Muntra patient clinic curation based on the given filters",
+                "operationId": "patchMuntraPatientClinicCuration",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' of Muntra patient clinic curation",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit muntra-patient-clinic-curation",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit muntra-patient-clinic-curation",
+                                            "properties": {
+                                                "external_id": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "type": "string",
+                                                    "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
+                                                },
+                                                "accepts_children": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "accessible_via_elevator": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "accessible_via_stairs": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "capable_of_handling_fear_of_medical_procedures": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "handicap_accessible": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_drinks": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "has_free_parking_directly_outside_of_clinic": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_free_parking_near_the_clinic": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_magazines": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "has_music": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "phas_paid_parking_directly_outside_of_clinic": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "has_paid_parking_near_the_clinic": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_restroom": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_toys": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_tv": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_waiting_room": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "has_wifi": {
+                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "required": [
+                                                        "false"
+                                                    ],
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit muntra-patient-clinic-curation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientClinicCurationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit muntra-patient-clinic-curation",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -5273,8 +5534,8 @@
                 "attributes": {
                     "properties": {
                         "external_id": {
-                            "type": "number",
-                            "example": "1"
+                            "type": "string",
+                            "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
                         },
                         "accepts_children": {
                             "type": "boolean",
@@ -5541,6 +5802,273 @@
                 "type": {
                     "type": "string",
                     "example": "declaration"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "asthma": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "blood_infection": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "hemophilia": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "cancer": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "diabetes": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "epilepsy": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "hiv_aids": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "cerebral_haemorrhage": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "cardiovascular_diseases": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "high_blood_pressure": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "immunological_disease": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "supplement_for_dental_treatment": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "nutrition_diet": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "respiratory_disease": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "parkinsons": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mental_health_problems": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "rheumatic_disease": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "smokes_takes_snuff": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "gets_chemo_therapy": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "eating_disorder": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "ear_nose_throat": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_latex": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_local_anesthesia": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_edibles": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_nickel": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_penicillin": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_pollen": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "allergy_other": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_bleeding_gums": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_bruxism": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_halitosis": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_finger_sucker": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_mouth_breather": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_mouth_ulceration": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_xerostomia": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_sore_masticatory_muscles": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "mouth_other": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "osteoporosis": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other_impaired_hearing": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other_reduced_mobility": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other_impaired_vision": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "other_impaired_speech": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "pacemaker": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "bisphosphonate": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "pain_in_face_jaw_or_temple": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "pain_when_opening_or_chewing": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "locks_jaw": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "patient_health_evaluation": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "pregnant_due_date": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "last_dental_treatment": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "registration_date": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "special_notes": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "complementary_information": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "medications": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "medications_free_text": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "medical_treatment_past_two_years": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "medical_treatment": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "reason_patient_visits": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "submitted_by_patient_at": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "signed_at": {
+                            "type": "string"
+                        },
+                        "prev_history_id": {
+                            "type": "string"
+                        },
+                        "next_history_id": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DeclarationsMuntraResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra-declaration"
                 },
                 "id": {
                     "type": "integer",
