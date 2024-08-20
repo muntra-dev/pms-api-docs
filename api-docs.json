@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "1.0.0"
     },
-    "basePath": "https://api.muntra.com", 
+    "basePath": "https://api.muntra.com",
     "schemes": [
         "http",
         "https"
@@ -318,8 +318,7 @@
         "/api/bookings": {
             "get": {
                 "tags": [
-                    "bookings",
-                    "Muntra"
+                    "bookings"
                 ],
                 "summary": "List bookings",
                 "description": "Returns a list of bookings based on the given filters",
@@ -3069,8 +3068,7 @@
         "/api/declarations": {
             "get": {
                 "tags": [
-                    "declarations",
-                    "Muntra"
+                    "declarations"
                 ],
                 "summary": "Retrieve a health declaration",
                 "description": "Returns health declaration based on the given filters",
@@ -5744,15 +5742,5 @@
                 "type": "object"
             }
         }
-    },
-    "tags": [
-        {
-            "name": "Muntra",
-            "description": "Muntra API methods"
-        },
-        {
-            "name": "Muntra",
-            "description": "Muntra API methods"
-        }
-    ]
+    }
 }
