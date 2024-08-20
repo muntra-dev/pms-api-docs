@@ -2407,7 +2407,7 @@
         "/api/muntra-declarations": {
             "post": {
                 "tags": [
-                    "muntra-declaration"
+                    "muntra-declarations"
                 ],
                 "summary": "Create a muntra-declaration",
                 "description": "Returns created Muntra declaration based on the given filters",
