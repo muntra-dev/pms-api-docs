@@ -2404,6 +2404,102 @@
                 }
             }
         },
+        "/api/muntra-declarations": {
+            "post": {
+                "tags": [
+                    "muntra-declaration"
+                ],
+                "summary": "Create a muntra-declaration",
+                "description": "Returns created Muntra declaration based on the given filters",
+                "operationId": "postMuntraDeclaration",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra-declaration",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a muntra-declaration",
+                                            "properties": {
+                                                "booking_attendee_external_binding_id": {
+                                                    "description": "Create a muntra-declaration",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "external_id": {
+                                                    "description": "Create a muntra-declaration",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "asthma",
+                        "in": "query",
+                        "description": "Asthma field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra-declaration",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a muntra-declaration",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-patient-reviews/{caregiver_id}": {
             "get": {
                 "tags": [
