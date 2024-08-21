@@ -2590,6 +2590,155 @@
                 }
             }
         },
+        "/api/muntra-google-place-details": {
+            "get": {
+                "tags": [
+                    "muntra-google-place-details"
+                ],
+                "summary": "List muntra-google-place-details",
+                "description": "Returns a list of Google place details based on the given filters",
+                "operationId": "getGooglePlaceDetails",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "'order' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List muntra-google-place-details",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GooglePlaceDetailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List muntra-google-place-details",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-google-place-details/{id}": {
+            "get": {
+                "tags": [
+                    "muntra-google-place-details"
+                ],
+                "summary": "Retrieve a muntra-google-place-detail",
+                "description": "Returns a certain Google place details based on the given filters",
+                "operationId": "getGooglePlaceDetail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field (example: '/api/muntra-google-place-details/ChIJbwV2YQbwWEYRVX7GsjrK-GM')",
+                        "required": true,
+                        "type": "number",
+                        "default": ""
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "List of additional included. Available: 'parent_place', 'child_places'.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "detail_id",
+                        "in": "query",
+                        "description": "Google Place Details Id.",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a muntra-google-place-detail",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GooglePlaceDetailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a muntra-google-place-detail",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-google-place-detail-requests": {
             "get": {
                 "tags": [
@@ -6546,17 +6695,120 @@
                 },
                 "attributes": {
                     "properties": {
-                        "description": {
+                        "country_short_name": {
                             "type": "string",
-                            "example": "Testa, Sverige"
+                            "example": "sv"
+                        },
+                        "international_phone_number": {
+                            "type": "string"
+                        },
+                        "location_lat": {
+                            "type": "string",
+                            "example": "57.726407"
+                        },
+                        "location_lng": {
+                            "type": "string",
+                            "example": "11.953961"
+                        },
+                        "viewport_northeast_lat": {
+                            "type": "string",
+                            "example": "59.25614253029151"
+                        },
+                        "viewport_northeast_lng": {
+                            "type": "string",
+                            "example": "17.8636166302915"
+                        },
+                        "viewport_southwest_lat": {
+                            "type": "string",
+                            "example": "59.25344456970849"
+                        },
+                        "viewport_southwest_lng": {
+                            "type": "string",
+                            "example": "17.8609186697085"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "postal_code": {
+                            "type": "string"
+                        },
+                        "postal_town": {
+                            "type": "string"
                         },
                         "place_id": {
                             "type": "string",
                             "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
                         },
+                        "route": {
+                            "type": "string"
+                        },
+                        "street_number": {
+                            "type": "string",
+                            "example": "11"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GooglePlaceDetailResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_google_place_detail"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
+                },
+                "attributes": {
+                    "properties": {
+                        "include_in_sitemap": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "location_lat": {
+                            "type": "string",
+                            "example": "57.726407"
+                        },
+                        "location_lng": {
+                            "type": "string",
+                            "example": "11.953961"
+                        },
+                        "viewport_northeast_lat": {
+                            "type": "string",
+                            "example": "59.25614253029151"
+                        },
+                        "viewport_northeast_lng": {
+                            "type": "string",
+                            "example": "17.8636166302915"
+                        },
+                        "viewport_southwest_lat": {
+                            "type": "string",
+                            "example": "59.25344456970849"
+                        },
+                        "viewport_southwest_lng": {
+                            "type": "string",
+                            "example": "17.8609186697085"
+                        },
                         "reference": {
+                            "type": "string"
+                        },
+                        "international_phone_number": {
+                            "type": "string"
+                        },
+                        "place_id": {
                             "type": "string",
                             "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
+                        },
+                        "formatted_address": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
