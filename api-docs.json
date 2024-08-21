@@ -2590,6 +2590,89 @@
                 }
             }
         },
+        "/api/muntra-google-place-detail-requests": {
+            "get": {
+                "tags": [
+                    "muntra-google-place-detail-requests"
+                ],
+                "summary": "List muntra-google-place-detail-requests",
+                "description": "Returns a list of Google place detail requests based on the given filters",
+                "operationId": "getGooglePlaceDetailRequests",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "place_id",
+                        "in": "query",
+                        "description": "'place_id' field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "sensor",
+                        "in": "query",
+                        "description": "This field is not required if 'reference' provided.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "reference",
+                        "in": "query",
+                        "description": "This field is not required if 'place_id' provided.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "description": "Language field (example: 'language:sv')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List muntra-google-place-detail-requests",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GooglePlaceDetailRequest"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List muntra-google-place-detail-requests",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-patient-clinic-curations": {
             "post": {
                 "tags": [
@@ -6444,6 +6527,36 @@
                         },
                         "next_history_id": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GooglePlaceDetailRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra-google-place-detail-request"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
+                },
+                "attributes": {
+                    "properties": {
+                        "description": {
+                            "type": "string",
+                            "example": "Testa, Sverige"
+                        },
+                        "place_id": {
+                            "type": "string",
+                            "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
+                        },
+                        "reference": {
+                            "type": "string",
+                            "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
                         }
                     },
                     "type": "object"
