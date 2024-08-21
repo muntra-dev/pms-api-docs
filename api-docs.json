@@ -2477,7 +2477,7 @@
                                     "description": "Create a muntra-declaration",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/DeclarationsResponse"
+                                        "$ref": "#/definitions/DeclarationsMuntraResponse"
                                     }
                                 }
                             },
@@ -5514,6 +5514,36 @@
                             "type": "number",
                             "format": "float",
                             "example": 4.5
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GooglePlaceAutocompleteResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_google_place_autocomplete"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
+                },
+                "attributes": {
+                    "properties": {
+                        "description": {
+                            "type": "string",
+                            "example": "Testa, Sverige"
+                        },
+                        "place_id": {
+                            "type": "string",
+                            "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
+                        },
+                        "reference": {
+                            "type": "string",
+                            "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
                         }
                     },
                     "type": "object"
