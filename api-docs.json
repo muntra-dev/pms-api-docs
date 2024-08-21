@@ -2500,6 +2500,96 @@
                 }
             }
         },
+        "/api/muntra-google-place-autocompletes": {
+            "get": {
+                "tags": [
+                    "muntra-google-place-autocompletes"
+                ],
+                "summary": "List muntra-google-place-autocompletes",
+                "description": "Returns a list of Google place autocomplete based on the given filters",
+                "operationId": "getGooglePlaceAutocomplete",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "components",
+                        "in": "query",
+                        "description": "'components' field (example: 'components: country:se')",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "input",
+                        "in": "query",
+                        "description": "Input field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "sensor",
+                        "in": "query",
+                        "description": "'sensor' field",
+                        "required": true,
+                        "type": "boolean",
+                        "default": ""
+                    },
+                    {
+                        "name": "language",
+                        "in": "query",
+                        "description": "Language field (example: 'language:sv')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "types",
+                        "in": "query",
+                        "description": "Types field (example: 'types:(regions)')",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List muntra-google-place-autocompletes",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GooglePlaceAutocompleteResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List muntra-google-place-autocompletes",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-patient-clinic-curations": {
             "post": {
                 "tags": [
