@@ -6045,6 +6045,100 @@
                         }
                     }
                 }
+            },
+            "patch": {
+                "tags": [
+                    "treatment-plans"
+                ],
+                "summary": "Edit a treatment-plan",
+                "description": "Returns edited treatment plan based on the given filters",
+                "operationId": "patchTreatmentPlan",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a treatment-plan",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a treatment-plan",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Edit a treatment-plan",
+                                                    "type": "string",
+                                                    "example": "11"
+                                                },
+                                                "name": {
+                                                    "description": "Edit a treatment-plan",
+                                                    "type": "string",
+                                                    "example": "John"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a treatment-plan",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentPlansResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a treatment-plan",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             }
         }
     },
