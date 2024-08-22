@@ -4440,6 +4440,440 @@
                 }
             }
         },
+        "/api/journal-entries/{id}": {
+            "get": {
+                "tags": [
+                    "journal-entries"
+                ],
+                "summary": "Retrieve a journal-entry",
+                "description": "Returns journal entry based on the given filters",
+                "operationId": "getJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' (journal entry) field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including additional data, like: 'clinic', 'patient', 'journal_diagnosis', 'free_card', 'verification', 'user', 'related_user', 'history', 'treatment', 'reimbursement_type', 'price', 'county_council_price', 'currency', 'vat_code', 'teeth', 'elements', 'position_elements', 'journal_validation', 'patient_invoice_row', 'patient_invoice_rows', 'claim_row', 'signer', 'prescription', 'remittance', 'received_remittance', 'sent_remittance'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "journal-entries"
+                ],
+                "summary": "Retrieve a journal-entry",
+                "description": "Returns edited journal entry based on the given filters",
+                "operationId": "patchJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' (journal entry) field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a journal-entry",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Edit a journal-entry",
+                                                    "type": "string",
+                                                    "example": "11"
+                                                },
+                                                "user_id": {
+                                                    "description": "Edit a journal-entry",
+                                                    "type": "string",
+                                                    "example": "12"
+                                                },
+                                                "entry_type": {
+                                                    "description": "Edit a journal-entry",
+                                                    "type": "string",
+                                                    "example": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "clinic",
+                        "in": "query",
+                        "description": "'clinic' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_invoice_rows",
+                        "in": "query",
+                        "description": "'patient_invoice_rows' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "claim_row",
+                        "in": "query",
+                        "description": "'claim_row' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "draft",
+                        "in": "query",
+                        "description": "'draft' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "'id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "reimbursable",
+                        "in": "query",
+                        "description": "'reimbursable' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "stub",
+                        "in": "query",
+                        "description": "'stub' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "reimbursement_type_id",
+                        "in": "query",
+                        "description": "'reimbursement_type_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "'type' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "unsigned",
+                        "in": "query",
+                        "description": "'unsigned' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "entry_date",
+                        "in": "query",
+                        "description": "'entry_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "tooth_ids",
+                        "in": "query",
+                        "description": "'tooth_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "teeth",
+                        "in": "query",
+                        "description": "'teeth' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "claimed",
+                        "in": "query",
+                        "description": "'claimed' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-entry": {
+            "post": {
+                "tags": [
+                    "journal-entries"
+                ],
+                "summary": "Create a journal-entry",
+                "description": "Returns created journal entry based on the given filters",
+                "operationId": "postJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a journal-entry",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a journal-entry",
+                                                    "type": "string",
+                                                    "example": "11"
+                                                },
+                                                "user_id": {
+                                                    "description": "Create a journal-entry",
+                                                    "type": "string",
+                                                    "example": "12"
+                                                },
+                                                "entry_type": {
+                                                    "description": "Create a journal-entry",
+                                                    "type": "string",
+                                                    "example": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patients": {
             "get": {
                 "tags": [
@@ -7178,37 +7612,44 @@
                 "attributes": {
                     "properties": {
                         "entry_date": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "2024-06-21T08:21:16+02:00"
                         },
                         "text": {
                             "type": "string",
-                            "example": "Test text"
+                            "example": "Registrering av parodontal status"
                         },
                         "printed_text": {
                             "type": "string",
                             "example": "Test printed text"
                         },
                         "referral": {
-                            "type": "string"
+                            "type": "boolean",
+                            "example": false
                         },
                         "quantity": {
-                            "type": "string"
+                            "type": "number",
+                            "example": 1
                         },
                         "fee": {
-                            "type": "string"
+                            "type": "number",
+                            "example": 1
                         },
                         "lab_fee": {
-                            "type": "string"
+                            "type": "number",
+                            "example": 1
                         },
                         "discount_excluding_vat": {
-                            "type": "string"
+                            "type": "number",
+                            "example": 1
                         },
                         "duration_in_minutes": {
                             "type": "number",
                             "example": 10
                         },
                         "entry_type": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "parodont"
                         },
                         "included_in_insurance": {
                             "type": "boolean",
