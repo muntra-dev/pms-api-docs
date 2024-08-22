@@ -868,7 +868,7 @@
                                             "properties": {
                                                 "external_id": {
                                                     "description": "Create a muntra_accepts_review_requests_email_settings",
-                                                    "type": "number",
+                                                    "type": "string",
                                                     "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
                                                 }
                                             },
