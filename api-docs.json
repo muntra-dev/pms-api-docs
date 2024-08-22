@@ -843,7 +843,7 @@
                 "tags": [
                     "muntra-accepts-review-requests-email-settings"
                 ],
-                "summary": "Create a muntra_accepts_review_requests_email_settings",
+                "summary": "Create a muntra-accepts-review-requests-email-settings",
                 "description": "Returns created Muntra accepts review requests email settings based on the given filters",
                 "operationId": "postMuntraAcceptsReviewRequestsEmailSettings",
                 "consumes": [
@@ -861,13 +861,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a muntra_accepts_review_requests_email_settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-settings",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a muntra_accepts_review_requests_email_settings",
+                                            "description": "Create a muntra-accepts-review-requests-email-settings",
                                             "properties": {
                                                 "external_id": {
-                                                    "description": "Create a muntra_accepts_review_requests_email_settings",
+                                                    "description": "Create a muntra-accepts-review-requests-email-settings",
                                                     "type": "string",
                                                     "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
                                                 }
@@ -887,7 +887,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a muntra_accepts_review_requests_email_settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-settings",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraAcceptsReviewRequestsEmailSettingsResponse"
@@ -902,7 +902,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a muntra_accepts_review_requests_email_settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-settings",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -3936,7 +3936,7 @@
         "/api/clinics/current": {
             "get": {
                 "tags": [
-                    "clinics/current"
+                    "clinics"
                 ],
                 "summary": "Retrieve the current clinic",
                 "description": "Retrieves the clinic currently selected in the user's session",
