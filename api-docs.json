@@ -4438,6 +4438,96 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "journal-entries"
+                ],
+                "summary": "Create a journal-entry",
+                "description": "Returns created journal entry based on the given filters",
+                "operationId": "postJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a journal-entry",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a journal-entry",
+                                                    "type": "string",
+                                                    "example": "11"
+                                                },
+                                                "user_id": {
+                                                    "description": "Create a journal-entry",
+                                                    "type": "string",
+                                                    "example": "12"
+                                                },
+                                                "entry_type": {
+                                                    "description": "Create a journal-entry",
+                                                    "type": "string",
+                                                    "example": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             }
         },
         "/api/journal-entries/{id}": {
@@ -4520,7 +4610,7 @@
                 "tags": [
                     "journal-entries"
                 ],
-                "summary": "Retrieve a journal-entry",
+                "summary": "Edit a journal-entry",
                 "description": "Returns edited journal entry based on the given filters",
                 "operationId": "patchJournalEntry",
                 "consumes": [
@@ -4772,98 +4862,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a journal-entry",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/journal-entry": {
-            "post": {
-                "tags": [
-                    "journal-entries"
-                ],
-                "summary": "Create a journal-entry",
-                "description": "Returns created journal entry based on the given filters",
-                "operationId": "postJournalEntry",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a journal-entry",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a journal-entry",
-                                            "properties": {
-                                                "patient_id": {
-                                                    "description": "Create a journal-entry",
-                                                    "type": "string",
-                                                    "example": "11"
-                                                },
-                                                "user_id": {
-                                                    "description": "Create a journal-entry",
-                                                    "type": "string",
-                                                    "example": "12"
-                                                },
-                                                "entry_type": {
-                                                    "description": "Create a journal-entry",
-                                                    "type": "string",
-                                                    "example": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a journal-entry",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/JournalEntryResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a journal-entry",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
