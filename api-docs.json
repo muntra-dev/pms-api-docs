@@ -838,81 +838,6 @@
                 }
             }
         },
-        "/api/muntra-accepts-review-requests-email-settings": {
-            "post": {
-                "tags": [
-                    "muntra-accepts-review-requests-email-settings"
-                ],
-                "summary": "Create a muntra-accepts-review-requests-email-settings",
-                "description": "Returns created Muntra accepts review requests email settings based on the given filters",
-                "operationId": "postMuntraAcceptsReviewRequestsEmailSettings",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a muntra-accepts-review-requests-email-settings",
-                                            "properties": {
-                                                "external_id": {
-                                                    "description": "Create a muntra-accepts-review-requests-email-settings",
-                                                    "type": "string",
-                                                    "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MuntraAcceptsReviewRequestsEmailSettingsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
@@ -5799,6 +5724,328 @@
                     }
                 }
             }
+        },
+        "/api/treatment-plans": {
+            "get": {
+                "tags": [
+                    "treatment-plans"
+                ],
+                "summary": "List treatment-plans",
+                "description": "Returns treatment plans based on the given filters",
+                "operationId": "getTreatmentPlans",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including additional data, like: 'patient', 'currency', 'signer', 'treatment_plan_item_groups', 'treatment_plan_items', 'reimbursement_rules', 'deductions', 'validate_claim'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "history_id",
+                        "in": "query",
+                        "description": "'history_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field, possible options: 'treatment_plans.id', 'treatment_plans.name', 'treatment_plans.terms', 'patients.first_name', 'patients.last_name', 'patients.social_insurance_number', 'patients.patient_number', 'patients.id'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "latest",
+                        "in": "query",
+                        "description": "'latest' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List treatment-plans",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentPlansResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List treatment-plans",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "treatment-plans"
+                ],
+                "summary": "Create a treatment-plan",
+                "description": "Returns created treatment plan based on the given filters",
+                "operationId": "postTreatmentPlan",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a treatment-plan",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a treatment-plan",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a treatment-plan",
+                                                    "type": "string",
+                                                    "example": "11"
+                                                },
+                                                "name": {
+                                                    "description": "Create a treatment-plan",
+                                                    "type": "string",
+                                                    "example": "John"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "reimbursement_rules",
+                        "in": "query",
+                        "description": "'reimbursement_rules' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a treatment-plan",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentPlansResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a treatment-plan",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/treatment-plans/{id}": {
+            "get": {
+                "tags": [
+                    "treatment-plans"
+                ],
+                "summary": "Retrieve a treatment-plan",
+                "description": "Returns treatment plan based on the given filters",
+                "operationId": "getTreatmentPlan",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including additional data, like: 'patient', 'currency', 'signer', 'treatment_plan_item_groups', 'treatment_plan_items', 'reimbursement_rules', 'deductions', 'validate_claim'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a treatment-plan",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentPlansResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a treatment-plan",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -7942,6 +8189,73 @@
                         "deleted": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TreatmentPlansResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "treatment_plan"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "id"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Terapiplan"
+                        },
+                        "terms": {
+                            "type": "string",
+                            "example": "Detta \u00e4r ett kostnadsf\u00f6rslag som kan komma att revideras vid f\u00f6r\u00e4ndrad behandlingsplan."
+                        },
+                        "reference": {
+                            "type": "string",
+                            "example": "Test reference"
+                        },
+                        "atb_amount_claimed": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "disregard_subscription": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "high_cost_amount_before_treatments": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "stb_amount_claimed": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "validated_reimbursement_amount": {
+                            "type": "string"
+                        },
+                        "hcd_end_date": {
+                            "type": "string"
+                        },
+                        "treatment_plan_free_text": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "updated_at": {
+                            "type": "boolean",
+                            "example": "2024-06-28T12:14:26+02:00"
                         }
                     },
                     "type": "object"
