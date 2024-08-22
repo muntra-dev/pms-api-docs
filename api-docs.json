@@ -4188,6 +4188,258 @@
                 }
             }
         },
+        "/api/journal-entries": {
+            "get": {
+                "tags": [
+                    "journal-entries"
+                ],
+                "summary": "List journal-entries",
+                "description": "Returns journal entries based on the given filters",
+                "operationId": "getJournalEntries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including additional data, like: 'clinic', 'patient', 'journal_diagnosis', 'free_card', 'verification', 'user', 'related_user', 'history', 'treatment', 'reimbursement_type', 'price', 'county_council_price', 'currency', 'vat_code', 'teeth', 'elements', 'position_elements', 'journal_validation', 'patient_invoice_row', 'patient_invoice_rows', 'claim_row', 'signer', 'prescription', 'remittance', 'received_remittance', 'sent_remittance'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic",
+                        "in": "query",
+                        "description": "'clinic' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_invoice_rows",
+                        "in": "query",
+                        "description": "'patient_invoice_rows' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "claim_row",
+                        "in": "query",
+                        "description": "'claim_row' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "draft",
+                        "in": "query",
+                        "description": "'draft' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "'id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "reimbursable",
+                        "in": "query",
+                        "description": "'reimbursable' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "stub",
+                        "in": "query",
+                        "description": "'stub' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "reimbursement_type_id",
+                        "in": "query",
+                        "description": "'reimbursement_type_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "entry_type",
+                        "in": "query",
+                        "description": "'entry_type' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "type",
+                        "in": "query",
+                        "description": "'type' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "unsigned",
+                        "in": "query",
+                        "description": "'unsigned' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "entry_date",
+                        "in": "query",
+                        "description": "'entry_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "tooth_ids",
+                        "in": "query",
+                        "description": "'tooth_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "teeth",
+                        "in": "query",
+                        "description": "'teeth' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "claimed",
+                        "in": "query",
+                        "description": "'claimed' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List journal-entries",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List journal-entries",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patients": {
             "get": {
                 "tags": [
@@ -6906,6 +7158,84 @@
                         },
                         "formatted_address": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "JournalEntryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "journal-entry"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "id"
+                },
+                "attributes": {
+                    "properties": {
+                        "entry_date": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "printed_text": {
+                            "type": "string",
+                            "example": "Test printed text"
+                        },
+                        "referral": {
+                            "type": "string"
+                        },
+                        "quantity": {
+                            "type": "string"
+                        },
+                        "fee": {
+                            "type": "string"
+                        },
+                        "lab_fee": {
+                            "type": "string"
+                        },
+                        "discount_excluding_vat": {
+                            "type": "string"
+                        },
+                        "duration_in_minutes": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "entry_type": {
+                            "type": "string"
+                        },
+                        "included_in_insurance": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "draft": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "imported": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "editable": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
                         }
                     },
                     "type": "object"
