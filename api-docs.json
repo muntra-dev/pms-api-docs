@@ -838,6 +838,81 @@
                 }
             }
         },
+        "/api/muntra-accepts-review-requests-email-settings": {
+            "post": {
+                "tags": [
+                    "muntra-accepts-review-requests-email-settings"
+                ],
+                "summary": "Create a muntra_accepts_review_requests_email_settings",
+                "description": "Returns created Muntra accepts review requests email settings based on the given filters",
+                "operationId": "postMuntraAcceptsReviewRequestsEmailSettings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra_accepts_review_requests_email_settings",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a muntra_accepts_review_requests_email_settings",
+                                            "properties": {
+                                                "external_id": {
+                                                    "description": "Create a muntra_accepts_review_requests_email_settings",
+                                                    "type": "number",
+                                                    "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra_accepts_review_requests_email_settings",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraAcceptsReviewRequestsEmailSettingsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a muntra_accepts_review_requests_email_settings",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
@@ -5172,6 +5247,28 @@
                         "archived_at": {
                             "type": "string",
                             "example": "2024-02-01T09:11:00+01:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MuntraAcceptsReviewRequestsEmailSettingsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_accepts_review_requests_email_settings"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "accepts_review_request_emails": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
