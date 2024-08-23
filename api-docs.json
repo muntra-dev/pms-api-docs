@@ -5376,7 +5376,7 @@
                     "patient-invoices"
                 ],
                 "summary": "List patient-invoices",
-                "description": "Returns s list of patient invoices based on the given filters",
+                "description": "Returns a list of patient invoices based on the given filters",
                 "operationId": "getPatientInvoices",
                 "consumes": [
                     "application/json"
@@ -5644,6 +5644,310 @@
                             "properties": {
                                 "message": {
                                     "description": "List patient-invoices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "patient-invoices"
+                ],
+                "summary": "Create a patient-invoice",
+                "description": "Returns created patient invoice based on the given filters",
+                "operationId": "postPatientInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (one field obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-invoice",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a patient-invoice",
+                                            "properties": {
+                                                "organization_id": {
+                                                    "description": "Create a patient-invoice",
+                                                    "type": "string",
+                                                    "example": "123"
+                                                },
+                                                "user_id": {
+                                                    "description": "Create a patient-invoice",
+                                                    "type": "string",
+                                                    "example": "11"
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Create a patient-invoice",
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "123"
+                                                },
+                                                "invoice_date": {
+                                                    "description": "Create a patient-invoice",
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2020-08-24"
+                                                },
+                                                "due_date": {
+                                                    "description": "Create a patient-invoice",
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-08-28"
+                                                },
+                                                "currency_id": {
+                                                    "description": "Create a patient-invoice",
+                                                    "type": "string"
+                                                },
+                                                "invoice_type_id": {
+                                                    "description": "Create a patient-invoice",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a patient-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-invoices/{id}": {
+            "get": {
+                "tags": [
+                    "patient-invoices"
+                ],
+                "summary": "Retrieve a patient-invoice",
+                "description": "Returns certain patient invoice based on the given filters",
+                "operationId": "getPatientInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'user', 'fiscal_year', 'verification', 'invoice_type', 'payment_type', 'currency', 'patient', 'third_party', 'location', 'county_council', 'daily_reconciliation', 'patient_invoice_rows', 'checkout_service', 'claims', 'invoice_payments', 'invoice_emails', 'receipt_registrations', 'deductions', 'third_party_requests', 'third_party_response_errors', 'references'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a patient-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a patient-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "patient-invoices"
+                ],
+                "summary": "Edit a patient-invoice",
+                "description": "Returns edited patient invoice based on the given filters",
+                "operationId": "patchPatientInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (one field obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-invoice",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a patient-invoice",
+                                            "properties": {
+                                                "organization_id": {
+                                                    "description": "Edit a patient-invoice",
+                                                    "type": "string",
+                                                    "example": "123"
+                                                },
+                                                "user_id": {
+                                                    "description": "Edit a patient-invoice",
+                                                    "type": "string",
+                                                    "example": "11"
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Edit a patient-invoice",
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "123"
+                                                },
+                                                "invoice_date": {
+                                                    "description": "Edit a patient-invoice",
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2020-08-24"
+                                                },
+                                                "due_date": {
+                                                    "description": "Edit a patient-invoice",
+                                                    "type": "string",
+                                                    "format": "date",
+                                                    "example": "2024-08-28"
+                                                },
+                                                "currency_id": {
+                                                    "description": "Edit a patient-invoice",
+                                                    "type": "string"
+                                                },
+                                                "invoice_type_id": {
+                                                    "description": "Edit a patient-invoice",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a patient-invoice",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
