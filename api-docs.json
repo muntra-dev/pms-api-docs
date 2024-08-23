@@ -838,6 +838,81 @@
                 }
             }
         },
+        "/api/muntra-accepts-review-requests-email-settings": {
+            "post": {
+                "tags": [
+                    "muntra-accepts-review-requests-email-settings"
+                ],
+                "summary": "Create a muntra-accepts-review-requests-email-settings",
+                "description": "Returns created Muntra accepts review requests email settings based on the given filters",
+                "operationId": "postMuntraAcceptsReviewRequestsEmailSettings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a muntra-accepts-review-requests-email-settings",
+                                            "properties": {
+                                                "external_id": {
+                                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                                    "type": "string",
+                                                    "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraAcceptsReviewRequestsEmailSettingsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
@@ -5700,7 +5775,6 @@
                                                 "fiscal_year_id": {
                                                     "description": "Create a patient-invoice",
                                                     "type": "string",
-                                                    "format": "date",
                                                     "example": "123"
                                                 },
                                                 "invoice_date": {
@@ -5893,7 +5967,6 @@
                                                 "fiscal_year_id": {
                                                     "description": "Edit a patient-invoice",
                                                     "type": "string",
-                                                    "format": "date",
                                                     "example": "123"
                                                 },
                                                 "invoice_date": {
@@ -9207,7 +9280,7 @@
                             "example": "2024-06-28T12:14:26+02:00"
                         },
                         "updated_at": {
-                            "type": "boolean",
+                            "type": "string",
                             "example": "2024-06-28T12:14:26+02:00"
                         }
                     },
