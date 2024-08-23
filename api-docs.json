@@ -5270,6 +5270,388 @@
                         }
                     }
                 }
+            },
+            "patch": {
+                "tags": [
+                    "patients"
+                ],
+                "summary": "Edit a patient",
+                "description": "Edit a specific patient",
+                "operationId": "patchPatient",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Patient id in query/url",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (one field obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a patient",
+                                            "properties": {
+                                                "patient_number": {
+                                                    "description": "Edit a patient",
+                                                    "type": "number",
+                                                    "example": "2"
+                                                },
+                                                "social_security_number": {
+                                                    "description": "Edit a patient",
+                                                    "type": "number",
+                                                    "example": "199007212211"
+                                                },
+                                                "date_of_birth": {
+                                                    "description": "Edit a patient",
+                                                    "type": "number",
+                                                    "format": "date",
+                                                    "example": "1990-08-24"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a patient",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-invoices": {
+            "get": {
+                "tags": [
+                    "patient-invoices"
+                ],
+                "summary": "List patient-invoices",
+                "description": "Returns s list of patient invoices based on the given filters",
+                "operationId": "getPatientInvoices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'user', 'fiscal_year', 'verification', 'invoice_type', 'payment_type', 'currency', 'patient', 'third_party', 'location', 'county_council', 'daily_reconciliation', 'patient_invoice_rows', 'checkout_service', 'claims', 'invoice_payments', 'invoice_emails', 'receipt_registrations', 'deductions', 'third_party_requests', 'third_party_response_errors', 'references'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "Clinic id(s) field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "invoice_type_ids",
+                        "in": "query",
+                        "description": "Invoice type id(s) field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "'category' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "only_third_party_tags",
+                        "in": "query",
+                        "description": "'only_third_party_tags' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "exclude_third_party_tags",
+                        "in": "query",
+                        "description": "'exclude_third_party_tags' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "has_debt_collection_service",
+                        "in": "query",
+                        "description": "'has_debt_collection_service' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "printed",
+                        "in": "query",
+                        "description": "'printed' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "only_include_unbooked_patients",
+                        "in": "query",
+                        "description": "'only_include_unbooked_patients' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "has_reminder",
+                        "in": "query",
+                        "description": "'has_reminder' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "receipt_from_date",
+                        "in": "query",
+                        "description": "'receipt_from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "caregiver_ids",
+                        "in": "query",
+                        "description": "'caregiver_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "location_ids",
+                        "in": "query",
+                        "description": "'location_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-invoices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-invoices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             }
         },
         "/api/prices": {
@@ -8016,6 +8398,179 @@
                         "signed_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientInvoiceResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_invoice"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "id"
+                },
+                "attributes": {
+                    "properties": {
+                        "organization_name": {
+                            "type": "string",
+                            "example": "Mike's Clinic"
+                        },
+                        "organization_country": {
+                            "type": "string",
+                            "example": "Sverige"
+                        },
+                        "organization_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "organization_street_address_1": {
+                            "type": "string",
+                            "example": "White street"
+                        },
+                        "organization_street_address_2": {
+                            "type": "string",
+                            "example": "Stone street"
+                        },
+                        "organization_postal_code": {
+                            "type": "string",
+                            "example": "111 22"
+                        },
+                        "organization_phone_nr": {
+                            "type": "string"
+                        },
+                        "organization_email": {
+                            "type": "string",
+                            "example": "test_organization_email@email.com"
+                        },
+                        "organization_number": {
+                            "type": "string",
+                            "example": "123456-1234"
+                        },
+                        "ocr_number": {
+                            "type": "string",
+                            "example": "010000000269256"
+                        },
+                        "invoice_reference": {
+                            "type": "string"
+                        },
+                        "swish_number": {
+                            "type": "string"
+                        },
+                        "invoice_date": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "due_date": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "rounding_amount": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "invoice_fee": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "clearing_number": {
+                            "type": "string"
+                        },
+                        "account_number": {
+                            "type": "string"
+                        },
+                        "bankgiro_number": {
+                            "type": "string"
+                        },
+                        "plusgiro_number": {
+                            "type": "string"
+                        },
+                        "comment": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "category": {
+                            "type": "string",
+                            "example": "regular"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "Over Lord"
+                        },
+                        "patient_street_address_1": {
+                            "type": "string",
+                            "example": "Yellow street"
+                        },
+                        "patient_street_address_2": {
+                            "type": "string",
+                            "example": "Blue street"
+                        },
+                        "patient_postal_code": {
+                            "type": "string",
+                            "example": "111 24"
+                        },
+                        "patient_city": {
+                            "type": "string",
+                            "example": "Kyiv"
+                        },
+                        "patient_country": {
+                            "type": "string",
+                            "example": "Ukraine"
+                        },
+                        "patient_reference": {
+                            "type": "string"
+                        },
+                        "third_party_city": {
+                            "type": "string"
+                        },
+                        "third_party_name": {
+                            "type": "string"
+                        },
+                        "third_party_postal_code": {
+                            "type": "string"
+                        },
+                        "third_party_address_1": {
+                            "type": "string"
+                        },
+                        "third_party_address_2": {
+                            "type": "string"
+                        },
+                        "third_party_organization_id": {
+                            "type": "string"
+                        },
+                        "third_party_status": {
+                            "type": "string"
+                        },
+                        "generic_dental_subsidy": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "specific_dental_subsidy": {
+                            "type": "number",
+                            "example": 2
+                        },
+                        "state_dental_subsidy": {
+                            "type": "number",
+                            "example": 3
+                        },
+                        "read_by_recipient_at": {
+                            "type": "string"
+                        },
+                        "printed_at": {
+                            "type": "string",
+                            "example": "2024-06-28T11:10:21+02:00"
                         }
                     },
                     "type": "object"
