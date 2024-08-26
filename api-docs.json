@@ -913,6 +913,76 @@
                 }
             }
         },
+        "/api/muntra-booking-attendees": {
+            "get": {
+                "tags": [
+                    "muntra-booking-attendees"
+                ],
+                "summary": "List muntra-booking-attendees",
+                "description": "Returns a list of Muntra booking attendees based on the given filters",
+                "operationId": "getMuntraBookingAttendees",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking', 'patient', 'user', 'sms_reminders'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "only_users",
+                        "in": "query",
+                        "description": "'only_users' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List muntra-booking-attendees",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookingAttendeesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List muntra-booking-attendees",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-bookings": {
             "get": {
                 "tags": [
@@ -7053,6 +7123,30 @@
                         "accepts_review_request_emails": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MuntraBookingAttendeesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra-booking-attendee"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "id"
+                },
+                "attributes": {
+                    "properties": {
+                        "partstat": {
+                            "type": "string"
+                        },
+                        "rsvp": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
