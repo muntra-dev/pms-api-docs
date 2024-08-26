@@ -1180,7 +1180,7 @@
                 ],
                 "summary": "Retrieve a muntra-booking-attendee",
                 "description": "Returns certain Muntra booking attendee based on the given filters",
-                "operationId": "getMuntraBookingAttendees",
+                "operationId": "getMuntraBookingAttendee",
                 "consumes": [
                     "application/json"
                 ],
