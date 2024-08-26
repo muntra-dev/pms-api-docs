@@ -1098,7 +1098,7 @@
                 ],
                 "summary": "Confirm muntra-booking-attendee",
                 "description": "Returns confirmed Muntra booking attendees based on the given filters",
-                "operationId": "postMuntraBookingAttendee",
+                "operationId": "postMuntraBookingAttendeeConfirm",
                 "consumes": [
                     "application/json"
                 ],
