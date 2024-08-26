@@ -981,6 +981,264 @@
                         }
                     }
                 }
+            },
+            "post": {
+                "tags": [
+                    "muntra-booking-attendees"
+                ],
+                "summary": "Create a muntra-booking-attendee",
+                "description": "Returns created Muntra booking attendees based on the given filters",
+                "operationId": "postMuntraBookingAttendee",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (The user id field is required when patient id is null.)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra-booking-attendee",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a muntra-booking-attendee",
+                                            "properties": {
+                                                "booking_id": {
+                                                    "description": "Create a muntra-booking-attendee",
+                                                    "type": "string",
+                                                    "example": "1"
+                                                },
+                                                "patient_id": {
+                                                    "description": "Create a muntra-booking-attendee",
+                                                    "type": "integer",
+                                                    "example": 2
+                                                },
+                                                "user_id": {
+                                                    "description": "Create a muntra-booking-attendee",
+                                                    "type": "integer",
+                                                    "example": 3
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "partstat",
+                        "in": "query",
+                        "description": "'partstat' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "rsvp",
+                        "in": "query",
+                        "description": "'rsvp' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra-booking-attendee",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookingAttendeesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a muntra-booking-attendee",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-booking-attendees/confirm": {
+            "post": {
+                "tags": [
+                    "muntra-booking-attendees"
+                ],
+                "summary": "Confirm muntra-booking-attendee",
+                "description": "Returns confirmed Muntra booking attendees based on the given filters",
+                "operationId": "postMuntraBookingAttendee",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Confirm muntra-booking-attendee",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Confirm muntra-booking-attendee",
+                                            "properties": {
+                                                "external_id": {
+                                                    "description": "Confirm muntra-booking-attendee",
+                                                    "type": "string",
+                                                    "example": "123"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Confirm muntra-booking-attendee",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookingAttendeesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Confirm muntra-booking-attendee",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-booking-attendees/{id}": {
+            "get": {
+                "tags": [
+                    "muntra-booking-attendees"
+                ],
+                "summary": "Retrieve a muntra-booking-attendee",
+                "description": "Returns certain Muntra booking attendee based on the given filters",
+                "operationId": "getMuntraBookingAttendees",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' of price",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking', 'patient', 'user', 'sms_reminders'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a muntra-booking-attendee",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookingAttendeesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a muntra-booking-attendee",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             }
         },
         "/api/muntra-bookings": {
@@ -7143,10 +7401,12 @@
                 "attributes": {
                     "properties": {
                         "partstat": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "ACCEPTED"
                         },
                         "rsvp": {
-                            "type": "string"
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
