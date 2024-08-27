@@ -6938,14 +6938,14 @@
                 }
             }
         },
-        "/api/stb-diseases": {
+        "/api/tanden-checks": {
             "get": {
                 "tags": [
-                    "stb-diseases"
+                    "muntra-procedures"
                 ],
-                "summary": "List stb-diseases",
-                "description": "Returns a list of stb diseases based on the given filters",
-                "operationId": "getStbDiseases",
+                "summary": "List tanden-checks",
+                "description": "Returns a list of tanden checks based on the given filters",
+                "operationId": "getTandenChecks",
                 "consumes": [
                     "application/json"
                 ],
@@ -6961,9 +6961,18 @@
                         "type": "string"
                     },
                     {
-                        "name": "query",
+                        "name": "patient_id",
                         "in": "query",
-                        "description": "'query' field",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'insurance_contract', 'tanden_check_commentaries', 'currency'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -6980,10 +6989,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List stb-diseases",
+                                    "description": "List tanden-checks",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/StbDiseaseResponse"
+                                        "$ref": "#/definitions/TandenCheckResponse"
                                     }
                                 }
                             },
@@ -6995,7 +7004,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List stb-diseases",
+                                    "description": "List tanden-checks",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -9792,11 +9801,11 @@
             },
             "type": "object"
         },
-        "StbDiseaseResponse": {
+        "TandenCheckResponse": {
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "stb_disease"
+                    "example": "tanden_check"
                 },
                 "id": {
                     "type": "string",
@@ -9804,13 +9813,45 @@
                 },
                 "attributes": {
                     "properties": {
-                        "code": {
-                            "type": "string",
-                            "example": "1100"
+                        "eligble": {
+                            "type": "boolean",
+                            "example": "Tandblekning"
                         },
-                        "description": {
+                        "eligible_from_date": {
+                            "type": "string"
+                        },
+                        "stb_amount_available": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "hcd_amount": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "hcd_start_date": {
+                            "type": "string"
+                        },
+                        "hcd_end_date": {
+                            "type": "string"
+                        },
+                        "last_treatment_date": {
+                            "type": "string"
+                        },
+                        "faultcode": {
+                            "type": "number"
+                        },
+                        "faultstring": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "number"
+                        },
+                        "error_text": {
+                            "type": "string"
+                        },
+                        "created_at": {
                             "type": "string",
-                            "example": "Muntorrhet pga. l\u00e4kemedelsbehandling"
+                            "example": "2024-08-01T11:35:00+02:00"
                         }
                     },
                     "type": "object"
