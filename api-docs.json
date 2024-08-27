@@ -4387,158 +4387,6 @@
                 }
             }
         },
-        "/api/muntra-roles": {
-            "get": {
-                "tags": [
-                    "muntra-roles"
-                ],
-                "summary": "List muntra-roles",
-                "description": "Returns a list of Muntra roles based on the given filters",
-                "operationId": "getMuntraRoles",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "is_caregiver_role",
-                        "in": "query",
-                        "description": "'is_caregiver_role' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "filter.ids",
-                        "in": "query",
-                        "description": "'filter.ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'default_procedure'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List muntra-roles",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MuntraRolesResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List muntra-roles",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/muntra-roles/{id}": {
-            "get": {
-                "tags": [
-                    "muntra-roles"
-                ],
-                "summary": "Retrieve a muntra-role",
-                "description": "Returns certain Muntra role based on the given filters",
-                "operationId": "getMuntraRole",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "number",
-                        "default": ""
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'default_procedure'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a muntra-role",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MuntraRolesResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a muntra-role",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/clinics/current": {
             "get": {
                 "tags": [
@@ -5468,6 +5316,74 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/organizations/current": {
+            "get": {
+                "tags": [
+                    "organizations"
+                ],
+                "summary": "Retrieve the current organization",
+                "description": "Returns a list of Muntra roles based on the given filters",
+                "operationId": "getMuntraRoles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'default_procedure', 'user', 'contact_person', 'additional_owners', 'invoice_payment_standard_option', 'clinics', 'verification_series', 'payment_types', 'fiscal_years', 'orders', 'payment_gateway_accounts', 'supplier_settings_for_organizations', 'organization_supplier_settings', 'organization_clinic_settings', 'reference_types', 'certificate'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve the current organization",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraOrganizationsCurrentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve the current organization",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -8516,36 +8432,6 @@
             },
             "type": "object"
         },
-        "MuntraRolesResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "muntra-role"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "id"
-                },
-                "attributes": {
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "example": "Tandl\u00e4kare"
-                        },
-                        "slug": {
-                            "type": "string",
-                            "example": "slug"
-                        },
-                        "is_caregiver_role": {
-                            "type": "boolean",
-                            "example": true
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "ClinicCurrentResponse": {
             "properties": {
                 "type": {
@@ -9437,6 +9323,115 @@
                         "signed_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MuntraOrganizationsCurrentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "muntra_procedure"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "id"
+                },
+                "attributes": {
+                    "properties": {
+                        "organization_number": {
+                            "type": "string",
+                            "example": "556935-2726"
+                        },
+                        "organization_name": {
+                            "type": "string",
+                            "example": "Muntra AB"
+                        },
+                        "invoice_address_1": {
+                            "type": "string",
+                            "example": "Katarinav\u00e4gen 15"
+                        },
+                        "invoice_address_2": {
+                            "type": "string",
+                            "example": "Katarinav\u00e4gen 24"
+                        },
+                        "invoice_postal_code": {
+                            "type": "string",
+                            "example": "11645"
+                        },
+                        "invoice_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "invoice_email_address": {
+                            "type": "string"
+                        },
+                        "invoice_phone_number": {
+                            "type": "string"
+                        },
+                        "invoice_phone_number_2": {
+                            "type": "string"
+                        },
+                        "invoice_phone_mobile": {
+                            "type": "string"
+                        },
+                        "invoice_fax": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2017-09-11T14:59:38+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-02-16T08:01:01+01:00"
+                        },
+                        "invoice_reference": {
+                            "type": "string"
+                        },
+                        "invoice_country_code": {
+                            "type": "string",
+                            "example": "Tandblekning"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "SE"
+                        },
+                        "invoice_plusgiro": {
+                            "type": "string",
+                            "example": "12831-8"
+                        },
+                        "invoice_bankgiro": {
+                            "type": "string",
+                            "example": "12831-9"
+                        },
+                        "invoice_account_number": {
+                            "type": "string"
+                        },
+                        "invoice_clearing_number": {
+                            "type": "string"
+                        },
+                        "invoice_swish_number": {
+                            "type": "string",
+                            "example": "1230955831"
+                        },
+                        "iban": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string",
+                            "example": "company"
+                        },
+                        "cert_exists": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "has_unpaid_invoices": {
+                            "type": "string",
+                            "example": false
                         }
                     },
                     "type": "object"
