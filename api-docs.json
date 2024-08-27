@@ -5326,74 +5326,6 @@
                 }
             }
         },
-        "/api/organizations/current": {
-            "get": {
-                "tags": [
-                    "organizations"
-                ],
-                "summary": "Retrieve the current organization",
-                "description": "Returns a list of Muntra roles based on the given filters",
-                "operationId": "getMuntraRoles",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'default_procedure', 'user', 'contact_person', 'additional_owners', 'invoice_payment_standard_option', 'clinics', 'verification_series', 'payment_types', 'fiscal_years', 'orders', 'payment_gateway_accounts', 'supplier_settings_for_organizations', 'organization_supplier_settings', 'organization_clinic_settings', 'reference_types', 'certificate'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve the current organization",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MuntraOrganizationsCurrentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve the current organization",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/patients": {
             "get": {
                 "tags": [
@@ -6996,6 +6928,74 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a price",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/stb-diseases": {
+            "get": {
+                "tags": [
+                    "stb-diseases"
+                ],
+                "summary": "List stb-diseases",
+                "description": "Returns a list of stb diseases based on the given filters",
+                "operationId": "getStbDiseases",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List stb-diseases",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/StbDiseaseResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List stb-diseases",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -9330,115 +9330,6 @@
             },
             "type": "object"
         },
-        "MuntraOrganizationsCurrentResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "muntra_procedure"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "id"
-                },
-                "attributes": {
-                    "properties": {
-                        "organization_number": {
-                            "type": "string",
-                            "example": "556935-2726"
-                        },
-                        "organization_name": {
-                            "type": "string",
-                            "example": "Muntra AB"
-                        },
-                        "invoice_address_1": {
-                            "type": "string",
-                            "example": "Katarinav\u00e4gen 15"
-                        },
-                        "invoice_address_2": {
-                            "type": "string",
-                            "example": "Katarinav\u00e4gen 24"
-                        },
-                        "invoice_postal_code": {
-                            "type": "string",
-                            "example": "11645"
-                        },
-                        "invoice_city": {
-                            "type": "string",
-                            "example": "Stockholm"
-                        },
-                        "invoice_email_address": {
-                            "type": "string"
-                        },
-                        "invoice_phone_number": {
-                            "type": "string"
-                        },
-                        "invoice_phone_number_2": {
-                            "type": "string"
-                        },
-                        "invoice_phone_mobile": {
-                            "type": "string"
-                        },
-                        "invoice_fax": {
-                            "type": "string"
-                        },
-                        "created_at": {
-                            "type": "string",
-                            "example": "2017-09-11T14:59:38+02:00"
-                        },
-                        "updated_at": {
-                            "type": "string",
-                            "example": "2024-02-16T08:01:01+01:00"
-                        },
-                        "invoice_reference": {
-                            "type": "string"
-                        },
-                        "invoice_country_code": {
-                            "type": "string",
-                            "example": "Tandblekning"
-                        },
-                        "name": {
-                            "type": "string",
-                            "example": "SE"
-                        },
-                        "invoice_plusgiro": {
-                            "type": "string",
-                            "example": "12831-8"
-                        },
-                        "invoice_bankgiro": {
-                            "type": "string",
-                            "example": "12831-9"
-                        },
-                        "invoice_account_number": {
-                            "type": "string"
-                        },
-                        "invoice_clearing_number": {
-                            "type": "string"
-                        },
-                        "invoice_swish_number": {
-                            "type": "string",
-                            "example": "1230955831"
-                        },
-                        "iban": {
-                            "type": "string"
-                        },
-                        "type": {
-                            "type": "string",
-                            "example": "company"
-                        },
-                        "cert_exists": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "has_unpaid_invoices": {
-                            "type": "string",
-                            "example": false
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "PatientInvoiceResponse": {
             "properties": {
                 "type": {
@@ -9894,6 +9785,32 @@
                         "name": {
                             "type": "string",
                             "example": "Tandblekning"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "StbDiseaseResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "stb_disease"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "id"
+                },
+                "attributes": {
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "example": "1100"
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "Muntorrhet pga. l\u00e4kemedelsbehandling"
                         }
                     },
                     "type": "object"
