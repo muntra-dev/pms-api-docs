@@ -4470,6 +4470,75 @@
                 }
             }
         },
+        "/api/muntra-roles/{id}": {
+            "get": {
+                "tags": [
+                    "muntra-roles"
+                ],
+                "summary": "Retrieve a muntra-role",
+                "description": "Returns certain Muntra role based on the given filters",
+                "operationId": "getMuntraRole",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "number",
+                        "default": ""
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'default_procedure'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a muntra-role",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraRolesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a muntra-role",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/clinics/current": {
             "get": {
                 "tags": [
