@@ -7226,14 +7226,14 @@
                 }
             }
         },
-        "/api/remittance-responses": {
+        "/api/remittances": {
             "get": {
                 "tags": [
-                    "remittance-responses"
+                    "remittances"
                 ],
-                "summary": "List remittance-responses",
-                "description": "Returns a list of remittance responses based on the given filters",
-                "operationId": "getRemittanceResponses",
+                "summary": "List remittances",
+                "description": "Returns a list of remittances based on the given filters",
+                "operationId": "getRemittances",
                 "consumes": [
                     "application/json"
                 ],
@@ -7262,17 +7262,85 @@
                         "default": ""
                     },
                     {
-                        "name": "sort_by",
+                        "name": "patient_id",
                         "in": "query",
-                        "description": "'sort_by' field",
+                        "description": "'patient_id' field",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": true
                     },
                     {
-                        "name": "per_page",
+                        "name": "receiver_clinic_id",
                         "in": "query",
-                        "description": "'per_page' field",
+                        "description": "'receiver_clinic_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "receiver_clinic_ids",
+                        "in": "query",
+                        "description": "'receiver_clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sender_clinic_ids",
+                        "in": "query",
+                        "description": "'sender_clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_group_ids",
+                        "in": "query",
+                        "description": "'user_group_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "urgent",
+                        "in": "query",
+                        "description": "'urgent' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": true
@@ -7284,10 +7352,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List remittance-responses",
+                                    "description": "List remittances",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/RemittanceResponseResp"
+                                        "$ref": "#/definitions/RemittanceResponse"
                                     }
                                 }
                             },
@@ -7299,7 +7367,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List remittance-responses",
+                                    "description": "List remittances",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7311,11 +7379,11 @@
             },
             "post": {
                 "tags": [
-                    "remittance-responses"
+                    "remittances"
                 ],
-                "summary": "Create a remittance-response",
+                "summary": "Create a remittance",
                 "description": "Returns a created remittance response based on the given filters",
-                "operationId": "postRemittanceResponse",
+                "operationId": "postRemittance",
                 "consumes": [
                     "application/json"
                 ],
@@ -7329,32 +7397,6 @@
                         "description": "Bearer token",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a remittance-response",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a remittance-response",
-                                            "properties": {
-                                                "remittance_id": {
-                                                    "description": "Create a remittance-response",
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
                     }
                 ],
                 "responses": {
@@ -7363,10 +7405,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a remittance-response",
+                                    "description": "Create a remittance",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/RemittanceResponseResp"
+                                        "$ref": "#/definitions/RemittanceResponse"
                                     }
                                 }
                             },
@@ -7378,7 +7420,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a remittance-response",
+                                    "description": "Create a remittance",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7389,14 +7431,14 @@
                 }
             }
         },
-        "/api/remittance-responses/{id}": {
+        "/api/remittances/{id}": {
             "get": {
                 "tags": [
-                    "remittance-responses"
+                    "remittances"
                 ],
-                "summary": "Retrieve a remittance-response",
-                "description": "Returns specific remittance response based on the given filters",
-                "operationId": "getRemittanceResponse",
+                "summary": "Retrieve a remittance",
+                "description": "Returns certain remittance based on the given filters",
+                "operationId": "getRemittance",
                 "consumes": [
                     "application/json"
                 ],
@@ -7407,7 +7449,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Bearer token",
+                        "description": "'id' field",
                         "required": true,
                         "type": "string"
                     },
@@ -7438,10 +7480,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a remittance-response",
+                                    "description": "Retrieve a remittance",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/RemittanceResponseResp"
+                                        "$ref": "#/definitions/RemittanceResponse"
                                     }
                                 }
                             },
@@ -7453,7 +7495,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a remittance-response",
+                                    "description": "Retrieve a remittance",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7465,11 +7507,11 @@
             },
             "patch": {
                 "tags": [
-                    "remittance-responses"
+                    "remittances"
                 ],
-                "summary": "Edit a remittance-response",
-                "description": "Returns edited remittance response based on the given filters",
-                "operationId": "patchRemittanceResponse",
+                "summary": "Edit a remittance",
+                "description": "Returns edited remittance based on the given filters",
+                "operationId": "patchRemittance",
                 "consumes": [
                     "application/json"
                 ],
@@ -7480,7 +7522,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Bearer token",
+                        "description": "'id' field",
                         "required": true,
                         "type": "string"
                     },
@@ -7498,10 +7540,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a remittance-response",
+                                    "description": "Edit a remittance",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/RemittanceResponseResp"
+                                        "$ref": "#/definitions/RemittanceResponse"
                                     }
                                 }
                             },
@@ -7513,7 +7555,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit a remittance-response",
+                                    "description": "Edit a remittance",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10747,11 +10789,11 @@
             },
             "type": "object"
         },
-        "RemittanceResponseResp": {
+        "RemittanceResponse": {
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "remittance_response"
+                    "example": "remittance"
                 },
                 "id": {
                     "type": "string",
