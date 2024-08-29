@@ -4794,6 +4794,217 @@
                 }
             }
         },
+        "/api/events": {
+            "get": {
+                "tags": [
+                    "events"
+                ],
+                "summary": "List events",
+                "description": "Returns a list of events based on the given filters",
+                "operationId": "getEvents",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dtstart",
+                        "in": "query",
+                        "description": "'dtstart' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "dtend",
+                        "in": "query",
+                        "description": "'dtend' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking', 'event_colors'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "caregiver_id",
+                        "in": "query",
+                        "description": "'caregiver_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "caregiver_ids",
+                        "in": "query",
+                        "description": "'caregiver_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "room_ids",
+                        "in": "query",
+                        "description": "'room_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "resource_ids",
+                        "in": "query",
+                        "description": "'resource_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "from_munute",
+                        "in": "query",
+                        "description": "'from_munute' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "to_minute",
+                        "in": "query",
+                        "description": "'to_minute' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "display_weekends ",
+                        "in": "query",
+                        "description": "'display_weekends' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "hidden_weekday_ids",
+                        "in": "query",
+                        "description": "'hidden_weekday_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "search_by_or",
+                        "in": "query",
+                        "description": "'search_by_or' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "'order' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List events",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EventsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List events",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/journal-entries": {
             "get": {
                 "tags": [
@@ -7226,14 +7437,14 @@
                 }
             }
         },
-        "/api/sent-remittances": {
+        "/api/remittance-responses": {
             "get": {
                 "tags": [
-                    "sent-remittances"
+                    "remittance-responses"
                 ],
-                "summary": "List sent-remittances",
-                "description": "Returns a list of sent remittances based on the given filters",
-                "operationId": "getSentRemittances",
+                "summary": "List remittance-responses",
+                "description": "Returns a list of remittance responses based on the given filters",
+                "operationId": "getRemittanceResponses",
                 "consumes": [
                     "application/json"
                 ],
@@ -7260,6 +7471,22 @@
                         },
                         "collectionFormat": "csv",
                         "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
                     }
                 ],
                 "responses": {
@@ -7268,10 +7495,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List sent-remittances",
+                                    "description": "List remittance-responses",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/SentRemittanceResponse"
+                                        "$ref": "#/definitions/RemittanceResponseResp"
                                     }
                                 }
                             },
@@ -7283,7 +7510,86 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List sent-remittances",
+                                    "description": "List remittance-responses",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "remittance-responses"
+                ],
+                "summary": "Create a remittance-response",
+                "description": "Returns a created remittance response based on the given filters",
+                "operationId": "postRemittanceResponse",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a remittance-response",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a remittance-response",
+                                            "properties": {
+                                                "remittance_id": {
+                                                    "description": "Create a remittance-response",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a remittance-response",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RemittanceResponseResp"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a remittance-response",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7294,14 +7600,14 @@
                 }
             }
         },
-        "/api/sent-remittances/{id}": {
+        "/api/remittance-responses/{id}": {
             "get": {
                 "tags": [
-                    "sent-remittances"
+                    "remittance-responses"
                 ],
-                "summary": "Retrieve a sent-remittance",
-                "description": "Returns certain sent remittance based on the given filters",
-                "operationId": "getSentRemittance",
+                "summary": "Retrieve a remittance-response",
+                "description": "Returns specific remittance response based on the given filters",
+                "operationId": "getRemittanceResponse",
                 "consumes": [
                     "application/json"
                 ],
@@ -7343,10 +7649,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a sent-remittance",
+                                    "description": "Retrieve a remittance-response",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/SentRemittanceResponse"
+                                        "$ref": "#/definitions/RemittanceResponseResp"
                                     }
                                 }
                             },
@@ -7358,7 +7664,67 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a sent-remittance",
+                                    "description": "Retrieve a remittance-response",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "remittance-responses"
+                ],
+                "summary": "Edit a remittance-response",
+                "description": "Returns edited remittance response based on the given filters",
+                "operationId": "patchRemittanceResponse",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a remittance-response",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RemittanceResponseResp"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a remittance-response",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7427,6 +7793,83 @@
                             "properties": {
                                 "message": {
                                     "description": "List stb-diseases",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tanden-checks": {
+            "get": {
+                "tags": [
+                    "tanden-checks"
+                ],
+                "summary": "List tanden-checks",
+                "description": "Returns a list of tanden checks based on the given filters",
+                "operationId": "getTandenChecks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'insurance_contract', 'tanden_check_commentaries', 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List tanden-checks",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TandenCheckResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List tanden-checks",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -9573,6 +10016,236 @@
             },
             "type": "object"
         },
+        "EventsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "event"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "bfa1d33f97396a54b3083d0c03e94719"
+                },
+                "attributes": {
+                    "properties": {
+                        "'external_id' ": {
+                            "type": "string"
+                        },
+                        "'patient_address_1' ": {
+                            "type": "string",
+                            "example": "Test address 1"
+                        },
+                        "'patient_address_2' ": {
+                            "type": "string",
+                            "example": "Test address 2"
+                        },
+                        "patient_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "patient_date_of_birth": {
+                            "type": "string"
+                        },
+                        "patient_e_mail_address": {
+                            "type": "string",
+                            "example": "patient_email_address@testemail.com"
+                        },
+                        "patient_first_name": {
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "patient_gender": {
+                            "type": "string",
+                            "example": "male"
+                        },
+                        "patient_last_name": {
+                            "type": "string",
+                            "example": "Otto"
+                        },
+                        "patient_municipality": {
+                            "type": "string"
+                        },
+                        "patient_phone_number_cell": {
+                            "type": "string"
+                        },
+                        "patient_phone_number_home": {
+                            "type": "string"
+                        },
+                        "patient_phone_number_work": {
+                            "type": "string"
+                        },
+                        "patient_postal_code": {
+                            "type": "string"
+                        },
+                        "patient_social_security_number": {
+                            "type": "string"
+                        },
+                        "sender_clinic_address_1": {
+                            "type": "string",
+                            "example": "Test address clinic sender 1"
+                        },
+                        "sender_clinic_address_2": {
+                            "type": "string",
+                            "example": "Test address clinic sender 2"
+                        },
+                        "sender_clinic_city": {
+                            "type": "string",
+                            "example": "Kyiv"
+                        },
+                        "sender_clinic_email_address": {
+                            "type": "string",
+                            "example": "sender_clinic_email_address@testemail.com"
+                        },
+                        "sender_clinic_name": {
+                            "type": "string"
+                        },
+                        "sender_clinic_phone_number": {
+                            "type": "string"
+                        },
+                        "sender_clinic_postal_code": {
+                            "type": "string"
+                        },
+                        "receiver_clinic_address_1": {
+                            "type": "string",
+                            "example": "Test receiver clinic address 1"
+                        },
+                        "receiver_clinic_address_2": {
+                            "type": "string",
+                            "example": "Test receiver clinic address 2"
+                        },
+                        "receiver_clinic_city": {
+                            "type": "string",
+                            "example": "Berlin"
+                        },
+                        "receiver_clinic_email_address": {
+                            "type": "string",
+                            "example": "receiver_clinic_email_address@testemail.com"
+                        },
+                        "receiver_clinic_name": {
+                            "type": "string"
+                        },
+                        "receiver_clinic_phone_number": {
+                            "type": "string"
+                        },
+                        "receiver_clinic_postal_code": {
+                            "type": "string"
+                        },
+                        "receiver_user_email_address": {
+                            "type": "string",
+                            "example": "receiver_user_email_address@testemail.com"
+                        },
+                        "receiver_user_first_name": {
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "receiver_user_last_name": {
+                            "type": "string",
+                            "example": "Smith"
+                        },
+                        "receiver_user_phone_number": {
+                            "type": "string"
+                        },
+                        "receiver_user_social_security_number": {
+                            "type": "string"
+                        },
+                        "receiver_user_signed_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "remittance_background": {
+                            "type": "string"
+                        },
+                        "remittance_comment": {
+                            "type": "string"
+                        },
+                        "remittance_question": {
+                            "type": "string"
+                        },
+                        "desired_treatment": {
+                            "type": "string"
+                        },
+                        "remittance_response": {
+                            "type": "string"
+                        },
+                        "urgent": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "consultation": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "booked": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "priority": {
+                            "type": "string"
+                        },
+                        "due_date": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "sender_user_email_address": {
+                            "type": "string",
+                            "example": "sender_user_email_address@testemail.com"
+                        },
+                        "sender_user_first_name": {
+                            "type": "string",
+                            "example": "Bob"
+                        },
+                        "sender_user_last_name": {
+                            "type": "string",
+                            "example": "Blue"
+                        },
+                        "sender_user_phone_number": {
+                            "type": "string"
+                        },
+                        "sender_user_social_security_number": {
+                            "type": "string"
+                        },
+                        "receiver_first_view_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "confirmed_receipt_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "declined_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "closed_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "printed_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "approved_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "GooglePlaceDetailRequest": {
             "properties": {
                 "type": {
@@ -10592,11 +11265,11 @@
             },
             "type": "object"
         },
-        "SentRemittanceResponse": {
+        "RemittanceResponseResp": {
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "remittance"
+                    "example": "remittance_response"
                 },
                 "id": {
                     "type": "string",
@@ -10841,6 +11514,64 @@
                         "description": {
                             "type": "string",
                             "example": "Muntorrhet pga. l\u00e4kemedelsbehandling"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TandenCheckResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "tanden_check"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "id"
+                },
+                "attributes": {
+                    "properties": {
+                        "eligble": {
+                            "type": "boolean",
+                            "example": "Tandblekning"
+                        },
+                        "eligible_from_date": {
+                            "type": "string"
+                        },
+                        "stb_amount_available": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "hcd_amount": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "hcd_start_date": {
+                            "type": "string"
+                        },
+                        "hcd_end_date": {
+                            "type": "string"
+                        },
+                        "last_treatment_date": {
+                            "type": "string"
+                        },
+                        "faultcode": {
+                            "type": "number"
+                        },
+                        "faultstring": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "number"
+                        },
+                        "error_text": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-08-01T11:35:00+02:00"
                         }
                     },
                     "type": "object"
