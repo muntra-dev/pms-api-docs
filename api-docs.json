@@ -8296,7 +8296,7 @@
                 }
             }
         },
-        "webhook-bookings": {
+        "/webhook:bookings": {
             "post": {
                 "tags": [
                     "webhook-bookings"
