@@ -11550,17 +11550,13 @@
                 },
                 "attributes": {
                     "properties": {
-                        "class": {
-                            "type": "string",
-                            "example": "PUBLIC"
-                        },
                         "summary": {
                             "type": "string",
                             "example": "Test summary"
                         },
                         "text": {
                             "type": "string",
-                            "example": false
+                            "example": "Test text"
                         },
                         "dtstart": {
                             "type": "string",
@@ -11570,65 +11566,29 @@
                             "type": "string",
                             "example": "2024-01-01T08:00:00+01:00"
                         },
-                        "reschedulable": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "duration_in_minutes": {
-                            "type": "number",
-                            "example": 10
-                        },
-                        "description": {
-                            "type": "string",
-                            "example": false
-                        },
-                        "location": {
-                            "type": "number",
-                            "format": "float"
-                        },
-                        "transparent": {
-                            "type": "boolean",
-                            "example": true
-                        },
                         "status": {
                             "type": "string",
                             "example": "CONFIRMED"
-                        },
-                        "price": {
-                            "type": "number",
-                            "example": 111
-                        },
-                        "new_patient": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "patient_wants_earlier_slot": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "patient_made_late_cancellation": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "patient_failed_to_appear": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "patient_failed_to_appear_handled": {
-                            "type": "boolean",
-                            "example": false
                         },
                         "patient_declaration_allowed": {
                             "type": "boolean",
                             "example": false
                         },
-                        "done": {
+                        "patient_declaration_submitted": {
                             "type": "boolean",
                             "example": false
                         },
-                        "archived_at": {
-                            "type": "string",
-                            "example": "2024-02-01T09:11:00+01:00"
+                        "payment_prepared": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "price": {
+                            "type": "number",
+                            "example": 111
+                        },
+                        "source": {
+                            "type": "boolean",
+                            "example": false
                         }
                     },
                     "type": "object"
