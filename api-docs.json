@@ -8296,14 +8296,14 @@
                 }
             }
         },
-        "webhook:bookings": {
+        "webhook-bookings": {
             "post": {
                 "tags": [
-                    "webhook:bookings"
+                    "webhook-bookings"
                 ],
-                "summary": "Webhook: bookings",
+                "summary": "Webhook bookings",
                 "description": "Webhook returns a list of bookings based on the given filters",
-                "operationId": "getBookings",
+                "operationId": "WebhookBookings",
                 "consumes": [
                     "application/json"
                 ],
@@ -8325,7 +8325,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Webhook: bookings",
+                                    "description": "Webhook bookings",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/BookingWebhookResponse"
@@ -8340,7 +8340,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Webhook: bookings",
+                                    "description": "Webhook bookings",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
