@@ -7803,6 +7803,185 @@
                 }
             }
         },
+        "/api/suppliers": {
+            "get": {
+                "tags": [
+                    "suppliers"
+                ],
+                "summary": "List suppliers",
+                "description": "Returns a list of suppliers based on the given filters",
+                "operationId": "getSuppliers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_articles', 'supplier_settings_for_organizations', 'tags'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "'tag' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "'country_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List suppliers",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SupplierResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List suppliers",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/suppliers/{id}": {
+            "get": {
+                "tags": [
+                    "suppliers"
+                ],
+                "summary": "Retrieve a supplier",
+                "description": "Returns a certain supplier based on the given filters",
+                "operationId": "getSupplier",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "header",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_articles', 'supplier_settings_for_organizations', 'tags'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a supplier",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SupplierResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a supplier",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/tanden-checks": {
             "get": {
                 "tags": [
@@ -8286,61 +8465,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a treatment-plan",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/webhook:bookings": {
-            "post": {
-                "tags": [
-                    "webhook-bookings"
-                ],
-                "summary": "Webhook bookings",
-                "description": "Webhook returns a list of bookings based on the given filters",
-                "operationId": "WebhookBookings",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Webhook bookings",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/BookingWebhookResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Webhook bookings",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -11387,6 +11511,49 @@
             },
             "type": "object"
         },
+        "SupplierResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "event"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "bfa1d33f97396a54b3083d0c03e94719"
+                },
+                "attributes": {
+                    "properties": {
+                        "invoice_address_1": {
+                            "type": "string",
+                            "example": "Katarinav\u00e4gen 15"
+                        },
+                        "invoice_address_2": {
+                            "type": "string"
+                        },
+                        "invoice_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "invoice_postal_code": {
+                            "type": "string"
+                        },
+                        "invoice_phone_number": {
+                            "type": "string"
+                        },
+                        "organization_name": {
+                            "type": "string",
+                            "example": "Muntra AB"
+                        },
+                        "organization_number": {
+                            "type": "string",
+                            "example": "556935-2726"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "StbDiseaseResponse": {
             "properties": {
                 "type": {
@@ -11531,64 +11698,6 @@
                         "updated_at": {
                             "type": "string",
                             "example": "2024-06-28T12:14:26+02:00"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "BookingWebhookResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "booking"
-                },
-                "id": {
-                    "type": "integer",
-                    "example": 1
-                },
-                "attributes": {
-                    "properties": {
-                        "summary": {
-                            "type": "string",
-                            "example": "Test summary"
-                        },
-                        "text": {
-                            "type": "string",
-                            "example": "Test text"
-                        },
-                        "dtstart": {
-                            "type": "string",
-                            "example": "2024-01-01T00:00:00+01:00"
-                        },
-                        "dtend": {
-                            "type": "string",
-                            "example": "2024-01-01T08:00:00+01:00"
-                        },
-                        "status": {
-                            "type": "string",
-                            "example": "CONFIRMED"
-                        },
-                        "patient_declaration_allowed": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "patient_declaration_submitted": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "payment_prepared": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "price": {
-                            "type": "number",
-                            "example": 111
-                        },
-                        "source": {
-                            "type": "boolean",
-                            "example": false
                         }
                     },
                     "type": "object"
