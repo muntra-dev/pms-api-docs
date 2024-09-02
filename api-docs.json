@@ -8474,6 +8474,66 @@
                     }
                 }
             }
+        },
+        "/webhooks:patients": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for patient",
+                "description": "Patient request be send to webhook endpoint",
+                "operationId": "WebhookPatients",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook patients",
+                                    "type": "object",
+                                    "$ref": "#/definitions/PatientWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook patients",
+                                    "properties": {
+                                        "clinic": {
+                                            "description": "Webhook patients",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ClinicWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "included2": {
+                                    "description": "Webhook patients",
+                                    "properties": {
+                                        "user": {
+                                            "description": "Webhook patients",
+                                            "type": "object",
+                                            "$ref": "#/definitions/UserWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -11698,6 +11758,184 @@
                         "updated_at": {
                             "type": "string",
                             "example": "2024-06-28T12:14:26+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ClinicWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "clinic"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "clinic_name": {
+                            "type": "string",
+                            "example": "Dental Clinic"
+                        },
+                        "clinic_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "clinic_address_1": {
+                            "type": "string",
+                            "example": "Central Street 12"
+                        },
+                        "clinic_address_2": {
+                            "type": "string"
+                        },
+                        "clinic_email_address": {
+                            "type": "string",
+                            "example": "dental.clinic@dental.com"
+                        },
+                        "clinic_phone_number": {
+                            "type": "string",
+                            "example": "0465636985"
+                        },
+                        "clinic_postal_code": {
+                            "type": "string",
+                            "example": "07586"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "address_1": {
+                            "type": "string",
+                            "example": "Test address 1"
+                        },
+                        "address_2": {
+                            "type": "string",
+                            "example": "Test address 2"
+                        },
+                        "city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "date_of_birth": {
+                            "type": "string",
+                            "example": "1956-01-01"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "e_mail_address": {
+                            "type": "string",
+                            "example": "test@email.com"
+                        },
+                        "first_name": {
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "last_name": {
+                            "type": "string",
+                            "example": "Otto"
+                        },
+                        "gender": {
+                            "type": "string",
+                            "example": "male"
+                        },
+                        "patient_number": {
+                            "type": "string"
+                        },
+                        "postal_code": {
+                            "type": "string"
+                        },
+                        "phone_number_cell": {
+                            "type": "string"
+                        },
+                        "prefers_not_to_be_contacted_by_clinic": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "protected_identity": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "social_security_number": {
+                            "type": "string"
+                        },
+                        "status": {
+                            "type": "string",
+                            "example": "CONFIRMED"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "clinic": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UserWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "user"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "first_name": {
+                            "type": "string",
+                            "example": "Jerald"
+                        },
+                        "last_name": {
+                            "type": "string",
+                            "example": "Smith"
+                        },
+                        "social_security_number": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
