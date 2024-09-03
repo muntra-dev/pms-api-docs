@@ -1304,6 +1304,409 @@
                 }
             }
         },
+        "/api/human-prescriptions": {
+            "get": {
+                "tags": [
+                    "human-prescriptions"
+                ],
+                "summary": "List human-prescriptions",
+                "description": "Returns a list of human prescriptions based on the given filters",
+                "operationId": "getHumanPrescriptions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "order",
+                        "in": "query",
+                        "description": "'order' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List human-prescriptions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List human-prescriptions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "human-prescriptions"
+                ],
+                "summary": "Create a human-prescription",
+                "description": "Returns created human prescription based on the given filters",
+                "operationId": "postHumanPrescription",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a human-prescription",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a human-prescription",
+                                            "properties": {
+                                                "supplier_article_id": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "organization_id": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "order_line_id": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "deleted": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a human-prescription",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a human-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/human-prescriptions/{id}": {
+            "get": {
+                "tags": [
+                    "human-prescriptions"
+                ],
+                "summary": "Retrieve a human-prescription",
+                "description": "Returns certain human prescription based on the given filters",
+                "operationId": "getHumanPrescription",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a human-prescription",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a human-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "human-prescriptions"
+                ],
+                "summary": "Edit a human-prescription",
+                "description": "Returns edited human prescription based on the given filters",
+                "operationId": "patchHumanPrescription",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a human-prescription",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a human-prescription",
+                                            "properties": {
+                                                "journal_entry_id": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "country_id": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "supplier_article_id": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "organization_id": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "order_line_id": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "deleted": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a human-prescription",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a human-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/journal-entries": {
             "get": {
                 "tags": [
@@ -3772,7 +4175,9 @@
                         "required": false,
                         "type": "integer",
                         "allowEmptyValue": true,
-                        "default": ""
+                        "default": "",
+                        "maximum": 20,
+                        "minimum": 1
                     },
                     {
                         "name": "page",
@@ -8508,13 +8913,7 @@
                                             "description": "Webhook patients",
                                             "type": "object",
                                             "$ref": "#/definitions/ClinicWebhookRequest"
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                "included2": {
-                                    "description": "Webhook patients",
-                                    "properties": {
+                                        },
                                         "user": {
                                             "description": "Webhook patients",
                                             "type": "object",
@@ -10455,6 +10854,34 @@
             },
             "type": "object"
         },
+        "HumanPrescriptionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "human_prescription"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "healthcare_agent_id": {
+                            "type": "string"
+                        },
+                        "subject_of_care_sex": {
+                            "type": "string"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "JournalEntryResponse": {
             "properties": {
                 "type": {
@@ -11894,6 +12321,24 @@
                                         "type": {
                                             "type": "string",
                                             "example": "clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "user": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "user"
                                         },
                                         "id": {
                                             "type": "integer",
