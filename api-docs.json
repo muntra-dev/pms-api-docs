@@ -1304,411 +1304,6 @@
                 }
             }
         },
-        "/api/human-prescriptions": {
-            "get": {
-                "tags": [
-                    "human-prescriptions"
-                ],
-                "summary": "List human-prescriptions",
-                "description": "Returns a list of human prescriptions based on the given filters",
-                "operationId": "getHumanPrescriptions",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'patient'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "user_ids",
-                        "in": "query",
-                        "description": "'user_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "patient_id",
-                        "in": "query",
-                        "description": "'patient_id' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "'deleted' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true
-                    },
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "'status' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true
-                    },
-                    {
-                        "name": "order",
-                        "in": "query",
-                        "description": "'order' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "description": "'per_page' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List human-prescriptions",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/HumanPrescriptionResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List human-prescriptions",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "human-prescriptions"
-                ],
-                "summary": "Create a human-prescription",
-                "description": "Returns created human prescription based on the given filters",
-                "operationId": "postHumanPrescription",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (not obligatory)",
-                        "required": false,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a human-prescription",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a human-prescription",
-                                            "properties": {
-                                                "supplier_article_id": {
-                                                    "description": "Create a human-prescription",
-                                                    "type": "integer",
-                                                    "example": "123"
-                                                },
-                                                "organization_id": {
-                                                    "description": "Create a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "order_line_id": {
-                                                    "description": "Create a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "deleted": {
-                                                    "description": "Create a human-prescription",
-                                                    "type": "boolean",
-                                                    "example": true
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a human-prescription",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/HumanPrescriptionResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a human-prescription",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/human-prescriptions/{id}": {
-            "get": {
-                "tags": [
-                    "human-prescriptions"
-                ],
-                "summary": "Retrieve a human-prescription",
-                "description": "Returns certain human prescription based on the given filters",
-                "operationId": "getHumanPrescription",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'patient'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a human-prescription",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/HumanPrescriptionResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a human-prescription",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "human-prescriptions"
-                ],
-                "summary": "Edit a human-prescription",
-                "description": "Returns edited human prescription based on the given filters",
-                "operationId": "patchHumanPrescription",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (not obligatory)",
-                        "required": false,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a human-prescription",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a human-prescription",
-                                            "properties": {
-                                                "journal_entry_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "country_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "supplier_article_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "integer",
-                                                    "example": "123"
-                                                },
-                                                "organization_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "order_line_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "deleted": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "boolean",
-                                                    "example": true
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a human-prescription",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/HumanPrescriptionResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a human-prescription",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/journal-entries": {
             "get": {
                 "tags": [
@@ -8882,6 +8477,149 @@
                 }
             }
         },
+        "/webhooks:booking": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for booking",
+                "description": "Booking request be send to webhook endpoint",
+                "operationId": "WebhookBookings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook booking",
+                                    "type": "object",
+                                    "$ref": "#/definitions/BookingWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook booking",
+                                    "properties": {
+                                        "clinic": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ClinicWebhookRequest"
+                                        },
+                                        "user": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/UserWebhookRequest"
+                                        },
+                                        "booking_attendees": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/BookingAttendeeWebhookRequest"
+                                        },
+                                        "patient": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/PatientWebhookRequest"
+                                        },
+                                        "booking_type": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/BookingTypeWebhookRequest"
+                                        },
+                                        "procedure": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ProcedureWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/webhooks:journal-entry": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for journal-entry",
+                "description": "Journal entry request be send to webhook endpoint",
+                "operationId": "WebhookJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook journal-entry",
+                                    "type": "object",
+                                    "$ref": "#/definitions/JournalEntryWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook journal-entry",
+                                    "properties": {
+                                        "clinic": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ClinicWebhookRequest"
+                                        },
+                                        "user": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/UserWebhookRequest"
+                                        },
+                                        "currency": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/CurrencyWebhookRequest"
+                                        },
+                                        "patient": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/PatientWebhookRequest"
+                                        },
+                                        "vat_code": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/VatCodeWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/webhooks:patients": {
             "post": {
                 "tags": [
@@ -8920,6 +8658,129 @@
                                             "description": "Webhook patients",
                                             "type": "object",
                                             "$ref": "#/definitions/UserWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/webhooks:task": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for task",
+                "description": "Task request be send to webhook endpoint",
+                "operationId": "WebhookTask",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook task",
+                                    "type": "object",
+                                    "$ref": "#/definitions/TaskWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook task",
+                                    "properties": {
+                                        "clinic": {
+                                            "description": "Webhook task",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ClinicWebhookRequest"
+                                        },
+                                        "patient": {
+                                            "description": "Webhook task",
+                                            "type": "object",
+                                            "$ref": "#/definitions/PatientWebhookRequest"
+                                        },
+                                        "comments": {
+                                            "description": "Webhook task",
+                                            "type": "object",
+                                            "$ref": "#/definitions/TaskCommentWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/webhooks:verification": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for verification",
+                "description": "Verification request be send to webhook endpoint",
+                "operationId": "WebhookVerification",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook verification",
+                                    "type": "object",
+                                    "$ref": "#/definitions/VerificationWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook verification",
+                                    "properties": {
+                                        "currency": {
+                                            "description": "Webhook verification",
+                                            "type": "object",
+                                            "$ref": "#/definitions/CurrencyWebhookRequest"
+                                        },
+                                        "fiscal_year": {
+                                            "description": "Webhook verification",
+                                            "type": "object",
+                                            "$ref": "#/definitions/FiscalYearWebhookRequest"
+                                        },
+                                        "verification_serie": {
+                                            "description": "Webhook verification",
+                                            "type": "object",
+                                            "$ref": "#/definitions/VerificationSerieWebhookRequest"
+                                        },
+                                        "transactions": {
+                                            "description": "Webhook verification",
+                                            "type": "object",
+                                            "$ref": "#/definitions/TransactionWebhookRequest"
                                         }
                                     },
                                     "type": "object"
@@ -10122,6 +9983,34 @@
             },
             "type": "object"
         },
+        "CurrencyWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "task"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "code": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Test title"
+                        },
+                        "suffix": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "DeclarationsResponse": {
             "properties": {
                 "type": {
@@ -10849,34 +10738,6 @@
                         },
                         "formatted_address": {
                             "type": "string"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "HumanPrescriptionResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "human_prescription"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "healthcare_agent_id": {
-                            "type": "string"
-                        },
-                        "subject_of_care_sex": {
-                            "type": "string"
-                        },
-                        "signed_at": {
-                            "type": "string",
-                            "example": "2024-06-28T12:14:26+02:00"
                         }
                     },
                     "type": "object"
@@ -12194,6 +12055,330 @@
             },
             "type": "object"
         },
+        "VatCodeWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "verification"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "vat_percentage": {
+                            "type": "float",
+                            "example": 33.5
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnswerWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "answer"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "body": {
+                            "type": "string"
+                        },
+                        "accepted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "up_vote_count": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "down_vote_count": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "creation_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingAttendeeWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_attendee"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "dtstart": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "dtend": {
+                            "type": "string",
+                            "example": "2024-09-02T19:25:31+02:00"
+                        },
+                        "partstat": {
+                            "type": "string"
+                        },
+                        "rsvp": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "first_sendout_on": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "arrived_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "summary": {
+                            "type": "string",
+                            "example": "Test summary"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "dtstart": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "dtend": {
+                            "type": "string",
+                            "example": "2024-09-02T19:25:31+02:00"
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "patient_declaration_allowed": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "patient_declaration_submitted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "payment_prepared": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "price": {
+                            "type": "number",
+                            "example": 132
+                        },
+                        "source": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "clinic": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "user": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "user"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "booking_attendees": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "booking_attendee"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "patient": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "patient"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "booking_type": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "booking_type"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "procedure": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "procedure"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingTypeWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_type"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "color": {
+                            "type": "string"
+                        },
+                        "text_color": {
+                            "type": "string"
+                        },
+                        "color_order": {
+                            "type": "string"
+                        },
+                        "duration_in_minutes": {
+                            "type": "number",
+                            "example": 123
+                        },
+                        "reschedulable": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "patient_declaration_allowed": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "default": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ClinicWebhookRequest": {
             "properties": {
                 "type": {
@@ -12235,6 +12420,291 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "FiscalYearWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "fiscal_year"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "start_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "end_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "cash_accounting_method": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "JournalEntryWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "journal_entry"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "entry_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "referral": {
+                            "type": "string"
+                        },
+                        "quantity": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "fee": {
+                            "type": "number",
+                            "example": 333
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 111
+                        },
+                        "discount_excluding_vat": {
+                            "type": "float",
+                            "example": 8.5
+                        },
+                        "duration_in_minutes": {
+                            "type": "number",
+                            "example": 16
+                        },
+                        "entry_type": {
+                            "type": "string"
+                        },
+                        "included_in_insurance": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "draft": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "imported": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "editable": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "clinic": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "user": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "user"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "currency": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "currency"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "patient": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "patient"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "vat_code": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "vat_code"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "OrganizationWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "organization"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "organization_number": {
+                            "type": "string"
+                        },
+                        "organization_name": {
+                            "type": "string",
+                            "example": "Test organization name"
+                        },
+                        "invoice_address_1": {
+                            "type": "string"
+                        },
+                        "invoice_address_2": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "invoice_postal_code": {
+                    "type": "string"
+                },
+                "invoice_city": {
+                    "type": "string"
+                },
+                "invoice_email_address": {
+                    "type": "string"
+                },
+                "invoice_phone_number": {
+                    "type": "string"
+                },
+                "invoice_phone_number_2": {
+                    "type": "string"
+                },
+                "invoice_phone_mobile": {
+                    "type": "string"
+                },
+                "invoice_fax": {
+                    "type": "string"
+                },
+                "invoice_reference": {
+                    "type": "string"
+                },
+                "invoice_country_code": {
+                    "type": "string"
+                },
+                "invoice_plusgiro": {
+                    "type": "string"
+                },
+                "invoice_bankgiro": {
+                    "type": "string"
+                },
+                "invoice_account_number": {
+                    "type": "string"
+                },
+                "invoice_clearing_number": {
+                    "type": "string"
+                },
+                "invoice_swish_number": {
+                    "type": "string"
+                },
+                "iban": {
+                    "type": "string"
+                },
+                "created_at": {
+                    "type": "string",
+                    "example": "2024-09-01T19:25:31+02:00"
+                },
+                "updated_at": {
+                    "type": "string",
+                    "example": "2024-09-02T22:25:31+02:00"
                 }
             },
             "type": "object"
@@ -12358,6 +12828,301 @@
             },
             "type": "object"
         },
+        "ProcedureWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "procedure"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "QuestionWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "question"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "title": {
+                            "type": "string",
+                            "example": "Test title"
+                        },
+                        "body": {
+                            "type": "string"
+                        },
+                        "view_count": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "up_vote_count": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "down_vote_count": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "creation_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "last_activity_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "closed_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "embedded_text": {
+                            "type": "string",
+                            "example": "Test embeded text"
+                        },
+                        "embedding": {
+                            "type": "string"
+                        },
+                        "relevant_for_clinic_support": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "internal": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TaskCommentWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "task_comment"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "body": {
+                            "type": "string"
+                        },
+                        "public": {
+                            "type": "boolean",
+                            "example": 10
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TaskWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "task"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "title": {
+                            "type": "string",
+                            "example": "Test title"
+                        },
+                        "details": {
+                            "type": "string"
+                        },
+                        "from_address": {
+                            "type": "string"
+                        },
+                        "from_name": {
+                            "type": "string"
+                        },
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "due_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "completed": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "clinic": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "responsible": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "responsible"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "creator": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "creator"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "patient": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "patient"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "comments": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "comment"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TransactionWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "transaction"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "account_number": {
+                            "type": "string"
+                        },
+                        "account_name": {
+                            "type": "string"
+                        },
+                        "cost_center_code": {
+                            "type": "string"
+                        },
+                        "cost_center_name": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "UserWebhookRequest": {
             "properties": {
                 "type": {
@@ -12383,6 +13148,143 @@
                         },
                         "title": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "VerificationSerieWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "verification_serie"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "code": {
+                            "type": "string"
+                        },
+                        "label": {
+                            "type": "string"
+                        },
+                        "manual_accountcoding": {
+                            "type": "boolean"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "VerificationWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "verification"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "verification_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "verification_text": {
+                            "type": "string",
+                            "example": "Test verification text"
+                        },
+                        "verification_number": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "currency": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "currency"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "fiscal_year": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "fiscal_year"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "verification_serie": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "verification_serie"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "transactions": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "transactions"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
