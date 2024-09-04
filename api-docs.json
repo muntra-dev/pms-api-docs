@@ -12072,7 +12072,7 @@
                             "example": "Test name"
                         },
                         "vat_percentage": {
-                            "type": "float",
+                            "type": "number",
                             "example": 33.5
                         }
                     },
@@ -12490,7 +12490,7 @@
                             "example": 111
                         },
                         "discount_excluding_vat": {
-                            "type": "float",
+                            "type": "number",
                             "example": 8.5
                         },
                         "duration_in_minutes": {
