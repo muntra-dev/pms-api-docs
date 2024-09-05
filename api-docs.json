@@ -9460,6 +9460,296 @@
                 }
             }
         },
+        "/api/user-at-clinics": {
+            "get": {
+                "tags": [
+                    "user-at-clinics"
+                ],
+                "summary": "List user-at-clinics",
+                "description": "Returns list of users at clinics based on the given filters",
+                "operationId": "getUserAtClinics",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'user', 'user_group', 'default_locale', 'default_journal_pharmacy', 'default_room', 'default_booking_type', 'default_reimbursement_type', 'default_calendar_view', 'default_prescription_fee_price', 'default_failed_to_appear_price', 'default_late_cancellation_price', 'default_state_price_list', 'organizations_authorized_for_invoicing', 'default_organization', 'user_procedure_at_clinics', 'default_user_procedure_at_clinic', 'permission_policies', 'unwanted_notification_types', 'dashboard_reports', 'selected_clinics', 'selected_users', 'selected_rooms', 'selected_resources', 'hidden_weekdays', 'credentials', 'gui_items'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "has_access",
+                        "in": "query",
+                        "description": "'has_access' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List user-at-clinics",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UserAtClinicsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List user-at-clinics",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "user-at-clinics"
+                ],
+                "summary": "Create a user-at-clinics",
+                "description": "Returns created user at clinics based on the given filters",
+                "operationId": "postUserAtClinics",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a user-at-clinics",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a user-at-clinics",
+                                            "properties": {
+                                                "clinic_id": {
+                                                    "description": "Create a user-at-clinics",
+                                                    "type": "integer",
+                                                    "example": 5771
+                                                },
+                                                "user_id": {
+                                                    "description": "Create a user-at-clinics",
+                                                    "type": "integer",
+                                                    "example": 11223
+                                                },
+                                                "organizations_authorized_for_invoicing": {
+                                                    "description": "Create a user-at-clinics",
+                                                    "type": "string"
+                                                },
+                                                "default_organization_id": {
+                                                    "description": "Create a user-at-clinics",
+                                                    "type": "integer",
+                                                    "example": 3331
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "unwanted_notification_types",
+                        "in": "query",
+                        "description": "'unwanted_notification_types' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "selected_clinics",
+                        "in": "query",
+                        "description": "'selected_clinics' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "selected_users",
+                        "in": "query",
+                        "description": "'selected_users' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "selected_rooms",
+                        "in": "query",
+                        "description": "'selected_rooms' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "selected_resources",
+                        "in": "query",
+                        "description": "'selected_resources' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv"
+                    },
+                    {
+                        "name": "display_weekends",
+                        "in": "query",
+                        "description": "'display_weekends' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "hidden_weekdays",
+                        "in": "query",
+                        "description": "'hidden_weekdays' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a user-at-clinics",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UserAtClinicsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a user-at-clinics",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/user-at-clinics/current": {
             "get": {
                 "tags": [
@@ -9505,7 +9795,7 @@
                                     "description": "Retrieve the current user at clinics",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/HumanPrescriptionResponse"
+                                        "$ref": "#/definitions/UserAtClinicsResponse"
                                     }
                                 }
                             },
@@ -9518,6 +9808,198 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve the current user at clinics",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/user-at-clinics/{id}": {
+            "get": {
+                "tags": [
+                    "user-at-clinics"
+                ],
+                "summary": "Retrieve user-at-clinic",
+                "description": "Returns certain user at clinics based on the given filters",
+                "operationId": "getUserAtClinic",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'user', 'user_group', 'default_locale', 'default_journal_pharmacy', 'default_room', 'default_booking_type', 'default_reimbursement_type', 'default_calendar_view', 'default_prescription_fee_price', 'default_failed_to_appear_price', 'default_late_cancellation_price', 'default_state_price_list', 'organizations_authorized_for_invoicing', 'default_organization', 'user_procedure_at_clinics', 'default_user_procedure_at_clinic', 'permission_policies', 'unwanted_notification_types', 'dashboard_reports', 'selected_clinics', 'selected_users', 'selected_rooms', 'selected_resources', 'hidden_weekdays', 'credentials', 'gui_items'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve user-at-clinic",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UserAtClinicsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve user-at-clinic",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "user-at-clinics"
+                ],
+                "summary": "Edit a user-at-clinic",
+                "description": "Returns edited user at clinics based on the given filters",
+                "operationId": "patchUserAtClinic",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a user-at-clinic",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a user-at-clinic",
+                                            "properties": {
+                                                "clinic_id": {
+                                                    "description": "Edit a user-at-clinic",
+                                                    "type": "integer",
+                                                    "example": 5771
+                                                },
+                                                "user_id": {
+                                                    "description": "Edit a user-at-clinic",
+                                                    "type": "integer",
+                                                    "example": 11223
+                                                },
+                                                "organizations_authorized_for_invoicing": {
+                                                    "description": "Edit a user-at-clinic",
+                                                    "type": "string"
+                                                },
+                                                "default_organization_id": {
+                                                    "description": "Edit a user-at-clinic",
+                                                    "type": "integer",
+                                                    "example": 3331
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a user-at-clinic",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UserAtClinicsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a user-at-clinic",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
