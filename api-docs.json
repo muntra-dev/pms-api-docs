@@ -2399,8 +2399,8 @@
                     "latest-monitored-journal-entries"
                 ],
                 "summary": "List latest-monitored-journal-entries",
-                "description": "Returns a list of latest mentioned journal entries based on the given filters",
-                "operationId": "getLatestMentionedJournalEntries",
+                "description": "Returns a list of latest monitored journal entries based on the given filters",
+                "operationId": "getLatestMonitoredJournalEntries",
                 "consumes": [
                     "application/json"
                 ],
@@ -9460,6 +9460,217 @@
                 }
             }
         },
+        "/api/user-at-clinics/current": {
+            "get": {
+                "tags": [
+                    "user-at-clinics"
+                ],
+                "summary": "Retrieve the current user at clinics",
+                "description": "Returns a the current user at clinics based on the given filters",
+                "operationId": "getCurrentUserAtClinic",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'user', 'user_group', 'default_locale', 'default_journal_pharmacy', 'default_room', 'default_booking_type', 'default_reimbursement_type', 'default_calendar_view', 'default_prescription_fee_price', 'default_failed_to_appear_price', 'default_late_cancellation_price', 'default_state_price_list', 'organizations_authorized_for_invoicing', 'default_organization', 'user_procedure_at_clinics', 'default_user_procedure_at_clinic', 'permission_policies', 'unwanted_notification_types', 'dashboard_reports', 'selected_clinics', 'selected_users', 'selected_rooms', 'selected_resources', 'hidden_weekdays', 'credentials', 'gui_items'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve the current user at clinics",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve the current user at clinics",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/webhooks:booking": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for booking",
+                "description": "Booking request be send to webhook endpoint",
+                "operationId": "WebhookBookings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook booking",
+                                    "type": "object",
+                                    "$ref": "#/definitions/BookingWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook booking",
+                                    "properties": {
+                                        "clinic": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ClinicWebhookRequest"
+                                        },
+                                        "user": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/UserWebhookRequest"
+                                        },
+                                        "booking_attendees": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/BookingAttendeeWebhookRequest"
+                                        },
+                                        "patient": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/PatientWebhookRequest"
+                                        },
+                                        "booking_type": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/BookingTypeWebhookRequest"
+                                        },
+                                        "procedure": {
+                                            "description": "Webhook booking",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ProcedureWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/webhooks:journal-entry": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for journal-entry",
+                "description": "Journal entry request be send to webhook endpoint",
+                "operationId": "WebhookJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook journal-entry",
+                                    "type": "object",
+                                    "$ref": "#/definitions/JournalEntryWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook journal-entry",
+                                    "properties": {
+                                        "clinic": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ClinicWebhookRequest"
+                                        },
+                                        "user": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/UserWebhookRequest"
+                                        },
+                                        "currency": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/CurrencyWebhookRequest"
+                                        },
+                                        "patient": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/PatientWebhookRequest"
+                                        },
+                                        "vat_code": {
+                                            "description": "Webhook journal-entry",
+                                            "type": "object",
+                                            "$ref": "#/definitions/VatCodeWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
         "/webhooks:patients": {
             "post": {
                 "tags": [
@@ -9498,6 +9709,129 @@
                                             "description": "Webhook patients",
                                             "type": "object",
                                             "$ref": "#/definitions/UserWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/webhooks:task": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for task",
+                "description": "Task request be send to webhook endpoint",
+                "operationId": "WebhookTask",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook task",
+                                    "type": "object",
+                                    "$ref": "#/definitions/TaskWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook task",
+                                    "properties": {
+                                        "clinic": {
+                                            "description": "Webhook task",
+                                            "type": "object",
+                                            "$ref": "#/definitions/ClinicWebhookRequest"
+                                        },
+                                        "patient": {
+                                            "description": "Webhook task",
+                                            "type": "object",
+                                            "$ref": "#/definitions/PatientWebhookRequest"
+                                        },
+                                        "comments": {
+                                            "description": "Webhook task",
+                                            "type": "object",
+                                            "$ref": "#/definitions/TaskCommentWebhookRequest"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/webhooks:verification": {
+            "post": {
+                "tags": [
+                    "webhooks"
+                ],
+                "summary": "Webhook for verification",
+                "description": "Verification request be send to webhook endpoint",
+                "operationId": "WebhookVerification",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "data",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Webhook verification",
+                                    "type": "object",
+                                    "$ref": "#/definitions/VerificationWebhookRequest"
+                                },
+                                "included": {
+                                    "description": "Webhook verification",
+                                    "properties": {
+                                        "currency": {
+                                            "description": "Webhook verification",
+                                            "type": "object",
+                                            "$ref": "#/definitions/CurrencyWebhookRequest"
+                                        },
+                                        "fiscal_year": {
+                                            "description": "Webhook verification",
+                                            "type": "object",
+                                            "$ref": "#/definitions/FiscalYearWebhookRequest"
+                                        },
+                                        "verification_serie": {
+                                            "description": "Webhook verification",
+                                            "type": "object",
+                                            "$ref": "#/definitions/VerificationSerieWebhookRequest"
+                                        },
+                                        "transactions": {
+                                            "description": "Webhook verification",
+                                            "type": "object",
+                                            "$ref": "#/definitions/TransactionWebhookRequest"
                                         }
                                     },
                                     "type": "object"
@@ -10693,6 +11027,34 @@
                             "type": "string",
                             "format": "date",
                             "example": "2024-07-02T19:17:48+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CurrencyWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "task"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "code": {
+                            "type": "string"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Test title"
+                        },
+                        "suffix": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
@@ -13048,6 +13410,338 @@
             },
             "type": "object"
         },
+        "UserAtClinicsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "user_at_clinic"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "change_user_allowed": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "allowed_to_do_treatment": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "use_specialist_reference_prices": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "use_patient_properties_for_teeth_statistics": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "save_delay_in_milliseconds": {
+                            "type": "boolean",
+                            "example": 3000
+                        },
+                        "remittance_user": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "enable_shortcuts": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "require_patient_email": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "require_patient_cellphone": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "default_to_recurring_patient": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "confirm_booking_time_changing": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "auto_approve_patient_booking": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "auto_include_email_invitation": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "auto_include_sms_invitation": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "auto_include_sms_reminder": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "auto_include_snail_mail_invitation": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "auto_include_declaration_email": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "auto_include_declaration_sms": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "include_ics_in_email_invitation": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "auto_check_public_records_on_snail_mail_creation": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "only_add_snail_mail_when_others_missing": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "default_booking_title": {
+                            "type": "string"
+                        },
+                        "default_booking_disclaimer": {
+                            "type": "string"
+                        },
+                        "default_booking_cancelling_text": {
+                            "type": "boolean",
+                            "example": "Patienten ringde och l\u00e4mnade"
+                        },
+                        "default_booking_duration": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "max_nr_of_days_before_first_sendout": {
+                            "type": "number",
+                            "example": 20
+                        },
+                        "default_months_to_rebooking": {
+                            "type": "number",
+                            "example": 20
+                        },
+                        "default_sms_sender_id": {
+                            "type": "string",
+                            "example": "NoReply"
+                        },
+                        "default_days_in_calendar": {
+                            "type": "string"
+                        },
+                        "calendar_time_label_interval_minutes": {
+                            "type": "number",
+                            "example": 20
+                        },
+                        "calendar_minute_increment": {
+                            "type": "number",
+                            "example": 20
+                        },
+                        "calendar_zoom_value": {
+                            "type": "number",
+                            "example": 20
+                        },
+                        "calendar_from_minute": {
+                            "type": "string"
+                        },
+                        "calendar_to_minute": {
+                            "type": "string"
+                        },
+                        "calendar_color": {
+                            "type": "string"
+                        },
+                        "base_booking_color_on_calendar_color": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "default_patient_booking_text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "default_patient_partstat": {
+                            "type": "string",
+                            "example": "NEEDS-ACTION"
+                        },
+                        "display_pride_config": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "display_patient_names": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "display_booking_times": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "display_recurring_bookings": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "display_recurring_booking_text": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "display_weekends": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "search_events_by_or": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "display_all_parked_bookings": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "enable_done": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "public_calendar_activated": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "booking_requests_activated": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "order_in_public_clinic_page": {
+                            "type": "string"
+                        },
+                        "hidden_in_online_booking": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "reviews_deactivated": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "default_invoice_credit_days": {
+                            "type": "number"
+                        },
+                        "default_invoice_fee": {
+                            "type": "number"
+                        },
+                        "auto_include_invoice_email": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "default_to_printing_on_invoice_handling": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "default_to_printing_receipt_on_payment": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "default_to_no_atb": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "use_default_journal_entry_filters": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "default_journal_entry_status_filter": {
+                            "type": "string"
+                        },
+                        "default_journal_entry_type_filter": {
+                            "type": "string"
+                        },
+                        "default_treatment_plan_terms": {
+                            "type": "string"
+                        },
+                        "sign_all_entries": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "include_admin_journal_entries": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "display_journal_entry_rows": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "enable_deepest_pocket": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "display_red_pocket_depth_text_in_perio": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "display_roots_in_perio": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "get_reimbursement_data_on_patient_select": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "auto_include_prescription_fee": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "auto_include_prescription_email": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "default_to_any_pharmacy": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "accepts_referrals": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "telemedicine_activated": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "recommend_diagnoses": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "VatCodeWebhookRequest": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "verification"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "vat_percentage": {
+                            "type": "number",
+                            "example": 33.5
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AnswerWebhookRequest": {
             "properties": {
                 "type": {
@@ -13175,6 +13869,119 @@
                         },
                         "source": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "clinic": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "user": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "user"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "booking_attendees": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "booking_attendee"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "patient": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "patient"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "booking_type": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "booking_type"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "procedure": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "procedure"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -13377,6 +14184,101 @@
                         "signed_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "clinic": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "user": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "user"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "currency": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "currency"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "patient": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "patient"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "vat_code": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "vat_code"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
@@ -13749,6 +14651,101 @@
                         }
                     },
                     "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "clinic": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "clinic"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "responsible": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "responsible"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "creator": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "creator"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "patient": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "patient"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "comments": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "comment"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -13872,6 +14869,83 @@
                         "created_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                },
+                "relationships": {
+                    "properties": {
+                        "currency": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "currency"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "fiscal_year": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "fiscal_year"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "verification_serie": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "verification_serie"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
+                        },
+                        "transactions": {
+                            "properties": {
+                                "data": {
+                                    "properties": {
+                                        "type": {
+                                            "type": "string",
+                                            "example": "transactions"
+                                        },
+                                        "id": {
+                                            "type": "integer",
+                                            "example": 1
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            },
+                            "type": "object"
                         }
                     },
                     "type": "object"
