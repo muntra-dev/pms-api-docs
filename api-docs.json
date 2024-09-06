@@ -1709,434 +1709,6 @@
                 }
             }
         },
-        "/api/invoice-payments": {
-            "get": {
-                "tags": [
-                    "invoice-payments"
-                ],
-                "summary": "List invoice-payments",
-                "description": "Returns a list of invoice payments based on the given filters",
-                "operationId": "getInvoicePayments",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'patient', 'patient_invoice', 'payments_per_invoices', 'patient_payment_method', 'daily_reconciliation', 'payment_service', 'payment_file'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "fiscal_year_id",
-                        "in": "query",
-                        "description": "'fiscal_year_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "clinic_ids",
-                        "in": "query",
-                        "description": "'clinic_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "payment_type_id",
-                        "in": "query",
-                        "description": "'payment_type_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "payment_type_names",
-                        "in": "query",
-                        "description": "'payment_type_names' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "from_date",
-                        "in": "query",
-                        "description": "'from_date' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "to_date",
-                        "in": "query",
-                        "description": "'to_date' field (required when 'from_date' provided)",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "succeeded",
-                        "in": "query",
-                        "description": "'succeeded' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "has_payment_per_invoice",
-                        "in": "query",
-                        "description": "'has_payment_per_invoice' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List invoice-payments",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/InvoicePaymentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List invoice-payments",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "invoice-payments"
-                ],
-                "summary": "Create a invoice-payments",
-                "description": "Returns created invoice payment based on the given filters",
-                "operationId": "postInvoicePayment",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "custom_payment_type_id",
-                        "in": "query",
-                        "description": "Note for body: 'The custom payment type id field is required when payment type id is empty'.",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (not obligatory)",
-                        "required": false,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a invoice-payments",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a invoice-payments",
-                                            "properties": {
-                                                "currency_id": {
-                                                    "description": "Create a invoice-payments",
-                                                    "type": "number",
-                                                    "example": 123
-                                                },
-                                                "payment_type_id": {
-                                                    "description": "Create a invoice-payments",
-                                                    "type": "number",
-                                                    "example": 1
-                                                },
-                                                "fiscal_year_id": {
-                                                    "description": "Create a invoice-payments",
-                                                    "type": "number",
-                                                    "example": 3
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a invoice-payments",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/InvoicePaymentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a invoice-payments",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/invoice-payments/{id}": {
-            "get": {
-                "tags": [
-                    "invoice-payments"
-                ],
-                "summary": "Retrieve a invoice-payment",
-                "description": "Returns certain invoice payment based on the given filters",
-                "operationId": "getInvoicePayment",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'patient', 'patient_invoice', 'payments_per_invoices', 'patient_payment_method', 'daily_reconciliation', 'payment_service', 'payment_file'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a invoice-payment",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/InvoicePaymentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a invoice-payment",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "invoice-payments"
-                ],
-                "summary": "Edit a invoice-payment",
-                "description": "Returns edited invoice payment based on the given filters",
-                "operationId": "patchInvoicePayment",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "custom_payment_type_id",
-                        "in": "query",
-                        "description": "Note for body: 'The custom payment type id field is required when payment type id is empty'.",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (not obligatory)",
-                        "required": false,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a invoice-payment",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a invoice-payment",
-                                            "properties": {
-                                                "currency_id": {
-                                                    "description": "Edit a invoice-payment",
-                                                    "type": "number",
-                                                    "example": 123
-                                                },
-                                                "payment_type_id": {
-                                                    "description": "Edit a invoice-payment",
-                                                    "type": "number",
-                                                    "example": 1
-                                                },
-                                                "fiscal_year_id": {
-                                                    "description": "Edit a invoice-payment",
-                                                    "type": "number",
-                                                    "example": 3
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a invoice-payment",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/InvoicePaymentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a invoice-payment",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/journal-entries": {
             "get": {
                 "tags": [
@@ -9472,6 +9044,429 @@
                 }
             }
         },
+        "/api/tasks": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "List tasks",
+                "description": "Returns a list of tasks based on the given filters",
+                "operationId": "getTasks",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'responsible', creator', 'incident', 'patient', 'booking', 'comments', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "incident_id",
+                        "in": "query",
+                        "description": "'incident_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "completed",
+                        "in": "query",
+                        "description": "'completed' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List tasks",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TaskResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List tasks",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Create a tasks",
+                "description": "Returns created task based on the given filters",
+                "operationId": "postTask",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a tasks",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a tasks",
+                                            "properties": {
+                                                "title": {
+                                                    "description": "Create a tasks",
+                                                    "type": "string",
+                                                    "example": "Test title"
+                                                },
+                                                "details": {
+                                                    "description": "Create a tasks",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "date": {
+                                                    "description": "Create a tasks",
+                                                    "type": "string",
+                                                    "example": "2024-09-06"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a tasks",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TaskResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a tasks",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tasks/{id}": {
+            "get": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Retrieve a tasks",
+                "description": "Returns a certain task based on the given filters",
+                "operationId": "getTask",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "header",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'responsible', creator', 'incident', 'patient', 'booking', 'comments', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a tasks",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TaskResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a tasks",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Edit a tasks",
+                "description": "Returns edited task based on the given filters",
+                "operationId": "patchTask",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "header",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a tasks",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a tasks",
+                                            "properties": {
+                                                "title": {
+                                                    "description": "Edit a tasks",
+                                                    "type": "string",
+                                                    "example": "Test title"
+                                                },
+                                                "details": {
+                                                    "description": "Edit a tasks",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "date": {
+                                                    "description": "Edit a tasks",
+                                                    "type": "string",
+                                                    "example": "2024-09-06"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a tasks",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TaskResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a tasks",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/treatment-plans": {
             "get": {
                 "tags": [
@@ -12744,60 +12739,6 @@
             },
             "type": "object"
         },
-        "InvoicePaymentResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "invoice_payment"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "205"
-                },
-                "attributes": {
-                    "properties": {
-                        "amount": {
-                            "type": "number",
-                            "example": 200
-                        },
-                        "vat_amount": {
-                            "type": "number",
-                            "example": 333
-                        },
-                        "description": {
-                            "type": "string",
-                            "example": "Test description"
-                        },
-                        "succeeded": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "paid_at": {
-                            "type": "string",
-                            "example": "2024-09-06T11:36:23+02:00"
-                        },
-                        "created_at": {
-                            "type": "string",
-                            "example": "2024-11-06T11:36:10+02:00"
-                        },
-                        "updated_at": {
-                            "type": "string",
-                            "example": "2024-12-06T11:22:13+02:00"
-                        },
-                        "advance_payment": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "deleted": {
-                            "type": "boolean",
-                            "example": true
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "JournalEntryResponse": {
             "properties": {
                 "type": {
@@ -14313,6 +14254,57 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TaskResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "task"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "2"
+                },
+                "attributes": {
+                    "properties": {
+                        "title": {
+                            "type": "string",
+                            "example": "Test title"
+                        },
+                        "details": {
+                            "type": "string"
+                        },
+                        "from_address": {
+                            "type": "string"
+                        },
+                        "from_name": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                },
+                "date": {
+                    "type": "string",
+                    "example": "2024-09-01T19:25:31+02:00"
+                },
+                "due_at": {
+                    "type": "string",
+                    "example": "2024-09-01T19:25:31+02:00"
+                },
+                "completed": {
+                    "type": "boolean",
+                    "example": true
+                },
+                "created_at": {
+                    "type": "string",
+                    "example": "2024-09-01T19:25:31+02:00"
+                },
+                "deleted_at": {
+                    "type": "string",
+                    "example": "2024-09-02T19:25:31+02:00"
                 }
             },
             "type": "object"
