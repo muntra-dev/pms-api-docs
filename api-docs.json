@@ -12771,29 +12771,29 @@
                         "succeeded": {
                             "type": "boolean",
                             "example": true
+                        },
+                        "paid_at": {
+                            "type": "string",
+                            "example": "2024-09-06T11:36:23+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-11-06T11:36:10+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-12-06T11:22:13+02:00"
+                        },
+                        "advance_payment": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
-                },
-                "paid_at": {
-                    "type": "string",
-                    "example": "2024-09-06T11:36:23+02:00"
-                },
-                "created_at": {
-                    "type": "string",
-                    "example": "2024-11-06T11:36:10+02:00"
-                },
-                "updated_at": {
-                    "type": "string",
-                    "example": "2024-12-06T11:22:13+02:00"
-                },
-                "advance_payment": {
-                    "type": "boolean",
-                    "example": true
-                },
-                "deleted": {
-                    "type": "boolean",
-                    "example": true
                 }
             },
             "type": "object"
