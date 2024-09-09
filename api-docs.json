@@ -1093,6 +1093,375 @@
                 }
             }
         },
+        "/api/emails": {
+            "get": {
+                "tags": [
+                    "emails"
+                ],
+                "summary": "List emails",
+                "description": "Returns a list of emails based on the given filters",
+                "operationId": "getEmails",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List emails",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List emails",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "emails"
+                ],
+                "summary": "Create email",
+                "description": "Returns created email based on the given filters",
+                "operationId": "postEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create email",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create email",
+                                            "properties": {
+                                                "subject": {
+                                                    "description": "Create email",
+                                                    "type": "string",
+                                                    "example": "Test subject"
+                                                },
+                                                "body": {
+                                                    "description": "Create email",
+                                                    "type": "string",
+                                                    "example": "Test body"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/emails/{id}": {
+            "get": {
+                "tags": [
+                    "emails"
+                ],
+                "summary": "Retrieve email",
+                "description": "Returns certain email based on the given filters",
+                "operationId": "getEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "emails"
+                ],
+                "summary": "Edit email",
+                "description": "Returns edited email based on the given filters",
+                "operationId": "patchEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit email",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit email",
+                                            "properties": {
+                                                "subject": {
+                                                    "description": "Edit email",
+                                                    "type": "string",
+                                                    "example": "Test subject"
+                                                },
+                                                "body": {
+                                                    "description": "Edit email",
+                                                    "type": "string",
+                                                    "example": "Test body"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/events": {
             "get": {
                 "tags": [
@@ -9166,409 +9535,6 @@
                 }
             }
         },
-        "/api/sms": {
-            "get": {
-                "tags": [
-                    "sms"
-                ],
-                "summary": "List sms",
-                "description": "Returns a list of sms based on the given filters",
-                "operationId": "getSms",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'supplier_article', 'organization', 'order_line', 'patient', 'booking_attendee'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "patient_id",
-                        "in": "query",
-                        "description": "'patient_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "clinic_ids",
-                        "in": "query",
-                        "description": "'clinic_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "from_date",
-                        "in": "query",
-                        "description": "'from_date' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "to_date",
-                        "in": "query",
-                        "description": "'to_date' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "'status' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List sms",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SmsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List sms",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "sms"
-                ],
-                "summary": "Create a sms",
-                "description": "Returns created sms based on the given filters",
-                "operationId": "postSms",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a sms",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a sms",
-                                            "properties": {
-                                                "from": {
-                                                    "description": "Create a sms",
-                                                    "type": "string",
-                                                    "example": "2024-09-06"
-                                                },
-                                                "to": {
-                                                    "description": "Create a sms",
-                                                    "type": "string",
-                                                    "example": "2024-09-12"
-                                                },
-                                                "body": {
-                                                    "description": "Create a sms",
-                                                    "type": "string"
-                                                },
-                                                "sent_at": {
-                                                    "description": "Create a sms",
-                                                    "type": "string",
-                                                    "example": "2024-09-03T19:25:31+02:00"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a sms",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SmsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a sms",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/sms/{id}": {
-            "get": {
-                "tags": [
-                    "sms"
-                ],
-                "summary": "Retrieve a sms",
-                "description": "Returns certain sms based on the given filters",
-                "operationId": "getSmsRetrieve",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'supplier_article', 'organization', 'order_line', 'patient', 'booking_attendee'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a sms",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SmsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a sms",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "sms"
-                ],
-                "summary": "Edit a sms",
-                "description": "Returns edited sms based on the given filters",
-                "operationId": "patchSms",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "'deleted' token",
-                        "required": true,
-                        "type": "boolean"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a sms",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a sms",
-                                            "properties": {
-                                                "from": {
-                                                    "description": "Edit a sms",
-                                                    "type": "string",
-                                                    "example": "2024-09-06"
-                                                },
-                                                "to": {
-                                                    "description": "Edit a sms",
-                                                    "type": "string",
-                                                    "example": "2024-09-12"
-                                                },
-                                                "body": {
-                                                    "description": "Edit a sms",
-                                                    "type": "string"
-                                                },
-                                                "sent_at": {
-                                                    "description": "Edit a sms",
-                                                    "type": "string",
-                                                    "example": "2024-09-03T19:25:31+02:00"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a sms",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SmsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a sms",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/stb-diseases": {
             "get": {
                 "tags": [
@@ -13360,6 +13326,57 @@
             },
             "type": "object"
         },
+        "EmailsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "email"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "to": {
+                            "type": "string"
+                        },
+                        "to_name": {
+                            "type": "string"
+                        },
+                        "subject": {
+                            "type": "string"
+                        },
+                        "body": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean"
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "EventsResponse": {
             "properties": {
                 "type": {
@@ -15070,62 +15087,6 @@
                         "organization_number": {
                             "type": "string",
                             "example": "556935-2726"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "SmsResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "sms"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "sender_id": {
-                            "type": "string",
-                            "example": "123"
-                        },
-                        "from": {
-                            "type": "string"
-                        },
-                        "to": {
-                            "type": "string"
-                        },
-                        "body": {
-                            "type": "string"
-                        },
-                        "segments": {
-                            "type": "string"
-                        },
-                        "message_status": {
-                            "type": "string"
-                        },
-                        "error_code": {
-                            "type": "string"
-                        },
-                        "sent_at": {
-                            "type": "string",
-                            "example": "2024-09-01T19:25:31+02:00"
-                        },
-                        "created_at": {
-                            "type": "string",
-                            "example": "2024-09-03T19:25:31+02:00"
-                        },
-                        "scheduled": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "deleted": {
-                            "type": "boolean",
-                            "example": true
                         }
                     },
                     "type": "object"
