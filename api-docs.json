@@ -8317,495 +8317,6 @@
                 }
             }
         },
-        "/api/rebookings": {
-            "get": {
-                "tags": [
-                    "rebookings"
-                ],
-                "summary": "List rebookings",
-                "description": "Returns a list of rebookings based on the given filters",
-                "operationId": "getRebookings",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'clinic', rebooking_default', 'patient', 'caregiver', 'room', 'booking_type', 'booking'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "patient_id",
-                        "in": "query",
-                        "description": "'patient_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "clinic_ids",
-                        "in": "query",
-                        "description": "'clinic_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "user_ids",
-                        "in": "query",
-                        "description": "'user_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "room_ids",
-                        "in": "query",
-                        "description": "'room_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "booking_type_ids",
-                        "in": "query",
-                        "description": "'booking_type_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "from_date",
-                        "in": "query",
-                        "description": "'from_date' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "to_date",
-                        "in": "query",
-                        "description": "'to_date' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "from_patient_birth_date",
-                        "in": "query",
-                        "description": "'from_patient_birth_date' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "to_patient_birth_date",
-                        "in": "query",
-                        "description": "'to_patient_birth_date' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "exclude_last_treatment_date",
-                        "in": "query",
-                        "description": "'exclude_last_treatment_date' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "exclude_next_treatment_date",
-                        "in": "query",
-                        "description": "'exclude_next_treatment_date' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "'status' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "booking_status",
-                        "in": "query",
-                        "description": "'booking_status' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "booking_status",
-                        "in": "query",
-                        "description": "'booking_status' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List rebookings",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/RebookingsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List rebookings",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "rebookings"
-                ],
-                "summary": "Create a rebooking",
-                "description": "Returns created rebooking based on the given filters",
-                "operationId": "postRebooking",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a rebooking",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a rebooking",
-                                            "properties": {
-                                                "patient_id": {
-                                                    "description": "Create a rebooking",
-                                                    "type": "number",
-                                                    "example": 123
-                                                },
-                                                "date": {
-                                                    "description": "Create a rebooking",
-                                                    "type": "string",
-                                                    "example": "2024-09-06"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a rebooking",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/RebookingsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a rebooking",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/rebookings/{id}": {
-            "get": {
-                "tags": [
-                    "rebookings"
-                ],
-                "summary": "Retrieve a rebooking",
-                "description": "Returns certain rebooking based on the given filters",
-                "operationId": "getRebooking",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'clinic', rebooking_default', 'patient', 'caregiver', 'room', 'booking_type', 'booking'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "exclude_last_treatment_date",
-                        "in": "query",
-                        "description": "'exclude_last_treatment_date' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "exclude_next_treatment_date",
-                        "in": "query",
-                        "description": "'exclude_next_treatment_date' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a rebooking",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/RebookingsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a rebooking",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "rebookings"
-                ],
-                "summary": "Edit a rebooking",
-                "description": "Returns edited rebooking based on the given filters",
-                "operationId": "patchRebooking",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a rebooking",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a rebooking",
-                                            "properties": {
-                                                "patient_id": {
-                                                    "description": "Edit a rebooking",
-                                                    "type": "number",
-                                                    "example": 123
-                                                },
-                                                "date": {
-                                                    "description": "Edit a rebooking",
-                                                    "type": "string",
-                                                    "example": "2024-09-06"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a rebooking",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/RebookingsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a rebooking",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/received-remittances": {
             "get": {
                 "tags": [
@@ -9645,6 +9156,409 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a sent-remittance",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sms": {
+            "get": {
+                "tags": [
+                    "sms"
+                ],
+                "summary": "List sms",
+                "description": "Returns a list of sms based on the given filters",
+                "operationId": "getSms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_article', 'organization', 'order_line', 'patient', 'booking_attendee'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List sms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "sms"
+                ],
+                "summary": "Create a sms",
+                "description": "Returns created sms based on the given filters",
+                "operationId": "postSms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a sms",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a sms",
+                                            "properties": {
+                                                "from": {
+                                                    "description": "Create a sms",
+                                                    "type": "string",
+                                                    "example": "2024-09-06"
+                                                },
+                                                "to": {
+                                                    "description": "Create a sms",
+                                                    "type": "string",
+                                                    "example": "2024-09-12"
+                                                },
+                                                "body": {
+                                                    "description": "Create a sms",
+                                                    "type": "string"
+                                                },
+                                                "sent_at": {
+                                                    "description": "Create a sms",
+                                                    "type": "string",
+                                                    "example": "2024-09-03T19:25:31+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a sms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sms/{id}": {
+            "get": {
+                "tags": [
+                    "sms"
+                ],
+                "summary": "Retrieve a sms",
+                "description": "Returns certain sms based on the given filters",
+                "operationId": "getSmsRetrieve",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_article', 'organization', 'order_line', 'patient', 'booking_attendee'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a sms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "sms"
+                ],
+                "summary": "Edit a sms",
+                "description": "Returns edited sms based on the given filters",
+                "operationId": "patchSms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' token",
+                        "required": true,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a sms",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a sms",
+                                            "properties": {
+                                                "from": {
+                                                    "description": "Edit a sms",
+                                                    "type": "string",
+                                                    "example": "2024-09-06"
+                                                },
+                                                "to": {
+                                                    "description": "Edit a sms",
+                                                    "type": "string",
+                                                    "example": "2024-09-12"
+                                                },
+                                                "body": {
+                                                    "description": "Edit a sms",
+                                                    "type": "string"
+                                                },
+                                                "sent_at": {
+                                                    "description": "Edit a sms",
+                                                    "type": "string",
+                                                    "example": "2024-09-03T19:25:31+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a sms",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -14384,52 +14298,6 @@
             },
             "type": "object"
         },
-        "RebookingsResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "rebooking"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "date": {
-                            "type": "string",
-                            "example": "2024-07-31T00:00:00+02:00"
-                        },
-                        "description": {
-                            "type": "string",
-                            "example": "Test description"
-                        },
-                        "duration_in_minutes": {
-                            "type": "number",
-                            "example": 10
-                        },
-                        "rebooked": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "last_treatment_date": {
-                            "type": "string",
-                            "example": "2024-08-31T00:00:00+02:00"
-                        },
-                        "next_treatment_date": {
-                            "type": "string",
-                            "example": "2024-09-08T19:25:31+02:00"
-                        },
-                        "created_at": {
-                            "type": "string",
-                            "example": "2024-09-01T19:25:31+02:00"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "RemittanceResponseResp": {
             "properties": {
                 "type": {
@@ -15202,6 +15070,62 @@
                         "organization_number": {
                             "type": "string",
                             "example": "556935-2726"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SmsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "sms"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "sender_id": {
+                            "type": "string",
+                            "example": "123"
+                        },
+                        "from": {
+                            "type": "string"
+                        },
+                        "to": {
+                            "type": "string"
+                        },
+                        "body": {
+                            "type": "string"
+                        },
+                        "segments": {
+                            "type": "string"
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-03T19:25:31+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
