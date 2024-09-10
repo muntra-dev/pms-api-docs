@@ -589,12 +589,12 @@
                                             "properties": {
                                                 "class": {
                                                     "description": "Create a booking",
-                                                    "type": "string",
+                                                    "type": "number",
                                                     "example": "Test class"
                                                 },
                                                 "text": {
                                                     "description": "Create a booking",
-                                                    "type": "string",
+                                                    "type": "number",
                                                     "example": "Test text"
                                                 },
                                                 "dtstart": {
@@ -828,126 +828,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a booking",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/bookings/{id}/change": {
-            "post": {
-                "tags": [
-                    "bookings"
-                ],
-                "summary": "Change booking",
-                "description": "Returns changed booking based on the given filters",
-                "operationId": "postBookingChange",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (body is not obligatory, below you can see few examples what can be added)",
-                        "required": false,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Change booking",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Change booking",
-                                            "properties": {
-                                                "dtstart": {
-                                                    "description": "Change booking",
-                                                    "type": "string",
-                                                    "example": "2024-08-01 11:35:33"
-                                                },
-                                                "dtend": {
-                                                    "description": "Change booking",
-                                                    "type": "string",
-                                                    "example": "2024-08-02 12:55:53"
-                                                },
-                                                "booking_type_id": {
-                                                    "description": "Change booking",
-                                                    "type": "number",
-                                                    "example": 12
-                                                },
-                                                "clinic_id": {
-                                                    "description": "Change booking",
-                                                    "type": "number",
-                                                    "example": 312
-                                                },
-                                                "caregiver_ids": {
-                                                    "description": "Change booking",
-                                                    "type": "string"
-                                                },
-                                                "room_ids": {
-                                                    "description": "Change booking",
-                                                    "type": "string"
-                                                },
-                                                "resource_ids": {
-                                                    "description": "Change booking",
-                                                    "type": "string"
-                                                },
-                                                "patient_ids": {
-                                                    "description": "Change booking",
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Change booking",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/BookingResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Change booking",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
