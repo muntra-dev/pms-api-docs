@@ -12163,9 +12163,9 @@
                 "tags": [
                     "bookings"
                 ],
-                "summary": "Create a booking",
+                "summary": "Change booking",
                 "description": "Returns changed booking based on the given filters",
-                "operationId": "postBooking",
+                "operationId": "postBookingChange",
                 "consumes": [
                     "application/json"
                 ],
