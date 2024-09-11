@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "3.5.234"
     },
-     "basePath": "https://api.muntra.com",
+    "basePath": "https://api.muntra.com",
     "schemes": [
         "http",
         "https"
@@ -9406,7 +9406,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'sender_clinic', 'patient', 'sender_user', 'sender_signer', 'approver', 'receiver_clinic', 'receiver_user', 'user_group', 'wanted_receiver_user', 'receiver_creation_signer', 'receiver_signer', 'files', 'sender_files', 'receiver_files', 'remittance_responses', 'remittance_emails', 'snail_mails', 'journal_entry', 'receiver_journal_entry', 'sender_journal_entry'.",
+                        "description": "Including 'clinic', 'booking_attendees', 'default_users', 'clinics'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -10019,14 +10019,14 @@
                 }
             }
         },
-        "/api/resources": {
+        "/api/rooms": {
             "get": {
                 "tags": [
-                    "resources"
+                    "rooms"
                 ],
-                "summary": "List resources",
-                "description": "Returns a list of resources based on the given filters",
-                "operationId": "getResources",
+                "summary": "List rooms",
+                "description": "Returns a list of rooms based on the given filters",
+                "operationId": "getRooms",
                 "consumes": [
                     "application/json"
                 ],
@@ -10044,7 +10044,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'clinic', 'booking_attendees', 'clinics'.",
+                        "description": "Including 'clinic', 'booking_attendees', 'default_users', 'clinics'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -10059,7 +10059,25 @@
                         "in": "query",
                         "description": "'clinic_id' field",
                         "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
                         "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
                         "allowEmptyValue": true,
                         "default": ""
                     }
@@ -10070,10 +10088,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List resources",
+                                    "description": "List rooms",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/ResourceResponse"
+                                        "$ref": "#/definitions/RoomsResponse"
                                     }
                                 }
                             },
@@ -10085,7 +10103,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List resources",
+                                    "description": "List rooms",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10097,11 +10115,11 @@
             },
             "post": {
                 "tags": [
-                    "resources"
+                    "rooms"
                 ],
-                "summary": "Create a resource",
-                "description": "Returns created resource based on the given filters",
-                "operationId": "postResource",
+                "summary": "Create a room",
+                "description": "Returns created room based on the given filters",
+                "operationId": "postRoom",
                 "consumes": [
                     "application/json"
                 ],
@@ -10124,13 +10142,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a resource",
+                                    "description": "Create a room",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a resource",
+                                            "description": "Create a room",
                                             "properties": {
                                                 "name": {
-                                                    "description": "Create a resource",
+                                                    "description": "Create a room",
                                                     "type": "string",
                                                     "example": "Test name"
                                                 }
@@ -10150,10 +10168,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a resource",
+                                    "description": "Create a room",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/ResourceResponse"
+                                        "$ref": "#/definitions/RoomsResponse"
                                     }
                                 }
                             },
@@ -10165,7 +10183,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a resource",
+                                    "description": "Create a room",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10176,14 +10194,14 @@
                 }
             }
         },
-        "/api/resources/{id}": {
+        "/api/rooms/{id}": {
             "get": {
                 "tags": [
-                    "resources"
+                    "rooms"
                 ],
-                "summary": "Retrieve a resource",
-                "description": "Returns certain resource based on the given filters",
-                "operationId": "getResource",
+                "summary": "Retrieve a room",
+                "description": "Returns certain room based on the given filters",
+                "operationId": "getRoom",
                 "consumes": [
                     "application/json"
                 ],
@@ -10208,7 +10226,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'clinic', 'booking_attendees', 'clinics'.",
+                        "description": "Including 'clinic', 'booking_attendees', 'default_users', 'clinics'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -10225,10 +10243,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a resource",
+                                    "description": "Retrieve a room",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/ResourceResponse"
+                                        "$ref": "#/definitions/RoomsResponse"
                                     }
                                 }
                             },
@@ -10240,7 +10258,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a resource",
+                                    "description": "Retrieve a room",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10252,11 +10270,11 @@
             },
             "patch": {
                 "tags": [
-                    "resources"
+                    "rooms"
                 ],
-                "summary": "Edit a resource",
-                "description": "Returns edited resource based on the given filters",
-                "operationId": "patchResource",
+                "summary": "Edit a room",
+                "description": "Returns edited room based on the given filters",
+                "operationId": "patchRoom",
                 "consumes": [
                     "application/json"
                 ],
@@ -10286,13 +10304,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a resource",
+                                    "description": "Edit a room",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit a resource",
+                                            "description": "Edit a room",
                                             "properties": {
                                                 "name": {
-                                                    "description": "Edit a resource",
+                                                    "description": "Edit a room",
                                                     "type": "string",
                                                     "example": "Test name"
                                                 }
@@ -10312,10 +10330,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a resource",
+                                    "description": "Edit a room",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/ResourceResponse"
+                                        "$ref": "#/definitions/RoomsResponse"
                                     }
                                 }
                             },
@@ -10327,7 +10345,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit a resource",
+                                    "description": "Edit a room",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -16446,11 +16464,11 @@
             },
             "type": "object"
         },
-        "ResourceResponse": {
+        "RoomsResponse": {
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "resource"
+                    "example": "room"
                 },
                 "id": {
                     "type": "string",
@@ -16461,6 +16479,18 @@
                         "name": {
                             "type": "string",
                             "example": "Test name"
+                        },
+                        "floor": {
+                            "type": "string",
+                            "example": "5"
+                        },
+                        "order": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "replace_with_default_users": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
