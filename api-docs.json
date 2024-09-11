@@ -3,7 +3,7 @@
     "info": {
         "title": "API Documentation",
         "description": "Muntra Practice Management System API",
-        "version": "1.0.0"
+        "version": "3.5.234"
     },
     "basePath": "https://api.muntra.com",
     "schemes": [
@@ -589,12 +589,12 @@
                                             "properties": {
                                                 "class": {
                                                     "description": "Create a booking",
-                                                    "type": "number",
+                                                    "type": "string",
                                                     "example": "Test class"
                                                 },
                                                 "text": {
                                                     "description": "Create a booking",
-                                                    "type": "number",
+                                                    "type": "string",
                                                     "example": "Test text"
                                                 },
                                                 "dtstart": {
@@ -828,6 +828,126 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a booking",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/bookings/{id}/change": {
+            "post": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "Change booking",
+                "description": "Returns changed booking based on the given filters",
+                "operationId": "postBookingChange",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (body is not obligatory, below you can see few examples what can be added)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Change booking",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Change booking",
+                                            "properties": {
+                                                "dtstart": {
+                                                    "description": "Change booking",
+                                                    "type": "string",
+                                                    "example": "2024-08-01 11:35:33"
+                                                },
+                                                "dtend": {
+                                                    "description": "Change booking",
+                                                    "type": "string",
+                                                    "example": "2024-08-02 12:55:53"
+                                                },
+                                                "booking_type_id": {
+                                                    "description": "Change booking",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "clinic_id": {
+                                                    "description": "Change booking",
+                                                    "type": "number",
+                                                    "example": 312
+                                                },
+                                                "caregiver_ids": {
+                                                    "description": "Change booking",
+                                                    "type": "string"
+                                                },
+                                                "room_ids": {
+                                                    "description": "Change booking",
+                                                    "type": "string"
+                                                },
+                                                "resource_ids": {
+                                                    "description": "Change booking",
+                                                    "type": "string"
+                                                },
+                                                "patient_ids": {
+                                                    "description": "Change booking",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Change booking",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Change booking",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10445,501 +10565,6 @@
                 }
             }
         },
-        "/api/snail-mails": {
-            "get": {
-                "tags": [
-                    "snail-mails"
-                ],
-                "summary": "List snail-mails",
-                "description": "Returns a list of snail mails based on the given filters",
-                "operationId": "getSnailEmails",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'supplier_article', 'organization', 'order_line', 'patient', 'booking_attendee', 'invoice', 'patient_invoice', 'patient_invoice_with_reminder', 'animal_owner_invoice', 'remittance', 'country'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "booking_attendee_id",
-                        "in": "query",
-                        "description": "'booking_attendee_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "invoice_id",
-                        "in": "query",
-                        "description": "'invoice_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "remittance_id",
-                        "in": "query",
-                        "description": "'remittance_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "patient_id",
-                        "in": "query",
-                        "description": "'patient_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "clinic_ids",
-                        "in": "query",
-                        "description": "'clinic_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "from_date",
-                        "in": "query",
-                        "description": "'from_date' start field (format: '2024-08-01')",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "to_date",
-                        "in": "query",
-                        "description": "'to_date' field (format: '2024-08-02')",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "status",
-                        "in": "query",
-                        "description": "'status' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List snail-mails",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SnailMailResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List snail-mails",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "snail-mails"
-                ],
-                "summary": "Create a snail-mail",
-                "description": "Returns created snail mail based on the given filters",
-                "operationId": "postSnailEmail",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a snail-mail",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a snail-mail",
-                                            "properties": {
-                                                "body": {
-                                                    "description": "Create a snail-mail",
-                                                    "type": "string"
-                                                },
-                                                "country_id": {
-                                                    "description": "Create a snail-mail",
-                                                    "type": "number",
-                                                    "example": 1
-                                                },
-                                                "first_name": {
-                                                    "description": "Create a snail-mail",
-                                                    "type": "string",
-                                                    "example": "John"
-                                                },
-                                                "last_name": {
-                                                    "description": "Create a snail-mail",
-                                                    "type": "string",
-                                                    "example": "Otto"
-                                                },
-                                                "address_1": {
-                                                    "description": "Create a snail-mail",
-                                                    "type": "string"
-                                                },
-                                                "city": {
-                                                    "description": "Create a snail-mail",
-                                                    "type": "string",
-                                                    "example": "Lviv"
-                                                },
-                                                "postal_code": {
-                                                    "description": "Create a snail-mail",
-                                                    "type": "string"
-                                                },
-                                                "output_date": {
-                                                    "description": "Create a snail-mail",
-                                                    "type": "string",
-                                                    "example": "2024-05-22"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "name": "supplier_article_id",
-                        "in": "query",
-                        "description": "'supplier_article_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "booking_attendee_id",
-                        "in": "query",
-                        "description": "'booking_attendee_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a snail-mail",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SnailMailResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a snail-mail",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/snail-mails/{id}": {
-            "get": {
-                "tags": [
-                    "snail-mails"
-                ],
-                "summary": "Retrieve a snail-mail",
-                "description": "Returns certain snail mail based on the given filters",
-                "operationId": "getSnailEmail",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'supplier_article', 'organization', 'order_line', 'patient', 'booking_attendee', 'invoice', 'patient_invoice', 'patient_invoice_with_reminder', 'animal_owner_invoice', 'remittance', 'country'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a snail-mail",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SnailMailResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a snail-mail",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "snail-mails"
-                ],
-                "summary": "Edit a snail-mail",
-                "description": "Returns edited snail mail based on the given filters",
-                "operationId": "patchSnailEmail",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a snail-mail",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a snail-mail",
-                                            "properties": {
-                                                "body": {
-                                                    "description": "Edit a snail-mail",
-                                                    "type": "string"
-                                                },
-                                                "country_id": {
-                                                    "description": "Edit a snail-mail",
-                                                    "type": "number",
-                                                    "example": 1
-                                                },
-                                                "first_name": {
-                                                    "description": "Edit a snail-mail",
-                                                    "type": "string",
-                                                    "example": "John"
-                                                },
-                                                "last_name": {
-                                                    "description": "Edit a snail-mail",
-                                                    "type": "string",
-                                                    "example": "Otto"
-                                                },
-                                                "address_1": {
-                                                    "description": "Edit a snail-mail",
-                                                    "type": "string"
-                                                },
-                                                "city": {
-                                                    "description": "Edit a snail-mail",
-                                                    "type": "string",
-                                                    "example": "Lviv"
-                                                },
-                                                "postal_code": {
-                                                    "description": "Edit a snail-mail",
-                                                    "type": "string"
-                                                },
-                                                "output_date": {
-                                                    "description": "Edit a snail-mail",
-                                                    "type": "string",
-                                                    "example": "2024-05-22"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "name": "supplier_article_id",
-                        "in": "query",
-                        "description": "'supplier_article_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "'deleted' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a snail-mail",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SnailMailResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a snail-mail",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/stb-diseases": {
             "get": {
                 "tags": [
@@ -11677,6 +11302,352 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a task",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/treatment-plan-items": {
+            "get": {
+                "tags": [
+                    "treatment-plan-items"
+                ],
+                "summary": "List treatment-plan-items",
+                "description": "Returns a list of treatment plan items based on the given filters",
+                "operationId": "getTreatmentPlanItems",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'treatment_plan', 'treatment_plan_item_group', 'user', 'related_user', 'journal_diagnosis', 'free_card', 'treatment', 'price', 'county_council_price', 'vat_code', 'reimbursement_type', 'journal_entry', 'journal_validation', 'elements', 'claim_row'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "treatment_plan_id",
+                        "in": "query",
+                        "description": "'treatment_plan_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List treatment-plan-items",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentPlanItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List treatment-plan-items",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "treatment-plan-items"
+                ],
+                "summary": "Create a treatment-plan-item",
+                "description": "Returns created treatment plan item based on the given filters",
+                "operationId": "postTreatmentPlanItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a treatment-plan-item",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a treatment-plan-item",
+                                            "properties": {
+                                                "treatment_plan_id": {
+                                                    "description": "Create a treatment-plan-item",
+                                                    "type": "nmber",
+                                                    "example": 33
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a treatment-plan-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentPlanItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a treatment-plan-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/treatment-plan-items/{id}": {
+            "get": {
+                "tags": [
+                    "treatment-plan-items"
+                ],
+                "summary": "Retrieve a treatment-plan-item",
+                "description": "Returns certain treatment plan item based on the given filters",
+                "operationId": "getTreatmentPlanItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'treatment_plan', 'treatment_plan_item_group', 'user', 'related_user', 'journal_diagnosis', 'free_card', 'treatment', 'price', 'county_council_price', 'vat_code', 'reimbursement_type', 'journal_entry', 'journal_validation', 'elements', 'claim_row'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a treatment-plan-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentPlanItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a treatment-plan-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "treatment-plan-items"
+                ],
+                "summary": "Edit a treatment-plan-item",
+                "description": "Returns edited treatment plan item based on the given filters",
+                "operationId": "patchTreatmentPlanItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a treatment-plan-item",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a treatment-plan-item",
+                                            "properties": {
+                                                "treatment_plan_id": {
+                                                    "description": "Edit a treatment-plan-item",
+                                                    "type": "nmber",
+                                                    "example": 33
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a treatment-plan-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentPlanItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a treatment-plan-item",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -16601,89 +16572,6 @@
             },
             "type": "object"
         },
-        "SnailMailResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "snail_mail"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "first_name": {
-                            "type": "string",
-                            "example": "Gorro"
-                        },
-                        "last_name": {
-                            "type": "string",
-                            "example": "Gordon"
-                        },
-                        "address_1": {
-                            "type": "string"
-                        },
-                        "address_2": {
-                            "type": "string"
-                        },
-                        "city": {
-                            "type": "string",
-                            "example": "Kyiv"
-                        },
-                        "postal_code": {
-                            "type": "string"
-                        },
-                        "color": {
-                            "type": "string"
-                        },
-                        "body": {
-                            "type": "string"
-                        },
-                        "wait_number_of_hours_after_send": {
-                            "type": "number",
-                            "example": 12
-                        },
-                        "sent_at": {
-                            "type": "string",
-                            "example": "2024-08-31T00:00:00+02:00"
-                        },
-                        "only_send_if_booking_unconfirmed": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "only_send_if_invoice_unread": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "only_send_if_remittance_unread": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "scheduled": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "message_status": {
-                            "type": "string"
-                        },
-                        "error_code": {
-                            "type": "string"
-                        },
-                        "deleted": {
-                            "type": "boolean",
-                            "example": false
-                        },
-                        "created_at": {
-                            "type": "string",
-                            "example": "2024-09-11T29:25:31+02:00"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "StbDiseaseResponse": {
             "properties": {
                 "type": {
@@ -16812,6 +16700,73 @@
                         "deleted_at": {
                             "type": "string",
                             "example": "2024-09-02T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TreatmentPlanItemResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "treatment_plan_item"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "4"
+                },
+                "attributes": {
+                    "properties": {
+                        "entry_type": {
+                            "type": "string"
+                        },
+                        "price_code": {
+                            "type": "string"
+                        },
+                        "date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "referral": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "fee": {
+                            "type": "number",
+                            "example": 11
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 22
+                        },
+                        "discount_excluding_vat": {
+                            "type": "number",
+                            "example": 33
+                        },
+                        "vat_percentage": {
+                            "type": "number",
+                            "example": 11.4
+                        },
+                        "multi_tooth": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "order": {
+                            "type": "string"
+                        },
+                        "done": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
