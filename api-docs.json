@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "3.5.234"
     },
-    "basePath": "https://api.muntra.com",
+     "basePath": "https://api.muntra.com",
     "schemes": [
         "http",
         "https"
@@ -10019,6 +10019,325 @@
                 }
             }
         },
+        "/api/resources": {
+            "get": {
+                "tags": [
+                    "resources"
+                ],
+                "summary": "List resources",
+                "description": "Returns a list of resources based on the given filters",
+                "operationId": "getResources",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'booking_attendees', 'clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List resources",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ResourceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List resources",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "resources"
+                ],
+                "summary": "Create a resource",
+                "description": "Returns created resource based on the given filters",
+                "operationId": "postResource",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a resource",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a resource",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create a resource",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a resource",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ResourceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a resource",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/resources/{id}": {
+            "get": {
+                "tags": [
+                    "resources"
+                ],
+                "summary": "Retrieve a resource",
+                "description": "Returns certain resource based on the given filters",
+                "operationId": "getResource",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'booking_attendees', 'clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a resource",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ResourceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a resource",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "resources"
+                ],
+                "summary": "Edit a resource",
+                "description": "Returns edited resource based on the given filters",
+                "operationId": "patchResource",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a resource",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a resource",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a resource",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a resource",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ResourceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a resource",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/sent-remittances": {
             "get": {
                 "tags": [
@@ -11302,352 +11621,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a task",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/treatment-plan-items": {
-            "get": {
-                "tags": [
-                    "treatment-plan-items"
-                ],
-                "summary": "List treatment-plan-items",
-                "description": "Returns a list of treatment plan items based on the given filters",
-                "operationId": "getTreatmentPlanItems",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'treatment_plan', 'treatment_plan_item_group', 'user', 'related_user', 'journal_diagnosis', 'free_card', 'treatment', 'price', 'county_council_price', 'vat_code', 'reimbursement_type', 'journal_entry', 'journal_validation', 'elements', 'claim_row'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "treatment_plan_id",
-                        "in": "query",
-                        "description": "'treatment_plan_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "'deleted' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "description": "'per_page' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List treatment-plan-items",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TreatmentPlanItemResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List treatment-plan-items",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "treatment-plan-items"
-                ],
-                "summary": "Create a treatment-plan-item",
-                "description": "Returns created treatment plan item based on the given filters",
-                "operationId": "postTreatmentPlanItem",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a treatment-plan-item",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a treatment-plan-item",
-                                            "properties": {
-                                                "treatment_plan_id": {
-                                                    "description": "Create a treatment-plan-item",
-                                                    "type": "number",
-                                                    "example": 33
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a treatment-plan-item",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TreatmentPlanItemResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a treatment-plan-item",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/treatment-plan-items/{id}": {
-            "get": {
-                "tags": [
-                    "treatment-plan-items"
-                ],
-                "summary": "Retrieve a treatment-plan-item",
-                "description": "Returns certain treatment plan item based on the given filters",
-                "operationId": "getTreatmentPlanItem",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'treatment_plan', 'treatment_plan_item_group', 'user', 'related_user', 'journal_diagnosis', 'free_card', 'treatment', 'price', 'county_council_price', 'vat_code', 'reimbursement_type', 'journal_entry', 'journal_validation', 'elements', 'claim_row'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a treatment-plan-item",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TreatmentPlanItemResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a treatment-plan-item",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "treatment-plan-items"
-                ],
-                "summary": "Edit a treatment-plan-item",
-                "description": "Returns edited treatment plan item based on the given filters",
-                "operationId": "patchTreatmentPlanItem",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a treatment-plan-item",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a treatment-plan-item",
-                                            "properties": {
-                                                "treatment_plan_id": {
-                                                    "description": "Edit a treatment-plan-item",
-                                                    "type": "number",
-                                                    "example": 33
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a treatment-plan-item",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TreatmentPlanItemResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a treatment-plan-item",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -16473,6 +16446,28 @@
             },
             "type": "object"
         },
+        "ResourceResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "resource"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "SupplierResponse": {
             "properties": {
                 "type": {
@@ -16700,73 +16695,6 @@
                         "deleted_at": {
                             "type": "string",
                             "example": "2024-09-02T19:25:31+02:00"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "TreatmentPlanItemResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "treatment_plan_item"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "4"
-                },
-                "attributes": {
-                    "properties": {
-                        "entry_type": {
-                            "type": "string"
-                        },
-                        "price_code": {
-                            "type": "string"
-                        },
-                        "date": {
-                            "type": "string",
-                            "example": "2024-08-31T00:00:00+02:00"
-                        },
-                        "referral": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "fee": {
-                            "type": "number",
-                            "example": 11
-                        },
-                        "lab_fee": {
-                            "type": "number",
-                            "example": 22
-                        },
-                        "discount_excluding_vat": {
-                            "type": "number",
-                            "example": 33
-                        },
-                        "vat_percentage": {
-                            "type": "number",
-                            "example": 11.4
-                        },
-                        "multi_tooth": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "text": {
-                            "type": "string",
-                            "example": "Test text"
-                        },
-                        "order": {
-                            "type": "string"
-                        },
-                        "done": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "deleted": {
-                            "type": "boolean",
-                            "example": true
                         }
                     },
                     "type": "object"
