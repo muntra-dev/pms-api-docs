@@ -11451,7 +11451,7 @@
                                             "properties": {
                                                 "treatment_plan_id": {
                                                     "description": "Create a treatment-plan-item",
-                                                    "type": "nmber",
+                                                    "type": "number",
                                                     "example": 33
                                                 }
                                             },
@@ -11613,7 +11613,7 @@
                                             "properties": {
                                                 "treatment_plan_id": {
                                                     "description": "Edit a treatment-plan-item",
-                                                    "type": "nmber",
+                                                    "type": "number",
                                                     "example": 33
                                                 }
                                             },
