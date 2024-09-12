@@ -7144,6 +7144,70 @@
                 }
             }
         },
+        "/api/number-of-unread-message-rooms": {
+            "get": {
+                "tags": [
+                    "number-of-unread-message-rooms"
+                ],
+                "summary": "List number-of-unread-message-rooms",
+                "description": "Returns a list of number of unread messag rooms based on the given filters",
+                "operationId": "getNumberOfUnreadMessageRooms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "has_ticket",
+                        "in": "query",
+                        "description": "'has_ticket' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List number-of-unread-message-rooms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/NumberOfUnreadMessageRoomsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List number-of-unread-message-rooms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/organizations/current": {
             "get": {
                 "tags": [
@@ -12463,88 +12527,6 @@
                 }
             }
         },
-        "/api/tooth-surface-snapshots": {
-            "get": {
-                "tags": [
-                    "tooth-surface-snapshots"
-                ],
-                "summary": "List tooth-surface-snapshots",
-                "description": "Returns a list of tooth surface snapshots based on the given filters",
-                "operationId": "getToothSurfaceSnapshot",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "patient_id",
-                        "in": "query",
-                        "description": "'patient_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "treatment_plan_id",
-                        "in": "query",
-                        "description": "'treatment_plan_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "date",
-                        "in": "query",
-                        "description": "'date' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List tooth-surface-snapshots",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ToothSurfaceSnapshotResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List tooth-surface-snapshots",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/treatment-plan-items": {
             "get": {
                 "tags": [
@@ -16417,6 +16399,28 @@
             },
             "type": "object"
         },
+        "NumberOfUnreadMessageRoomsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "number_of_unread_message_room"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "cfcd208495d565ef66e7dff9f98764da"
+                },
+                "attributes": {
+                    "properties": {
+                        "unread_message_rooms": {
+                            "type": "number",
+                            "example": 0
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "MuntraOrganizationsCurrentResponse": {
             "properties": {
                 "type": {
@@ -18136,52 +18140,6 @@
                         "deleted_at": {
                             "type": "string",
                             "example": "2024-09-02T19:25:31+02:00"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "ToothSurfaceSnapshotResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "tooth_surface_snapshot"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "T_11"
-                },
-                "attributes": {
-                    "properties": {
-                        "element_id": {
-                            "type": "string",
-                            "example": "11"
-                        },
-                        "position": {
-                            "type": "number",
-                            "example": 22
-                        },
-                        "status": {
-                            "type": "string",
-                            "example": "intact"
-                        },
-                        "treated": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "type": {
-                            "type": "string",
-                            "example": "permanent"
-                        },
-                        "text": {
-                            "type": "string",
-                            "example": "Test text"
-                        },
-                        "deepest_pocket": {
-                            "type": "boolean",
-                            "example": true
                         }
                     },
                     "type": "object"
