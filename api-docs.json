@@ -1026,6 +1026,158 @@
                 }
             }
         },
+        "/api/county-councils": {
+            "get": {
+                "tags": [
+                    "county-councils"
+                ],
+                "summary": "List county-councils",
+                "description": "Returns a list of country councils based on the given filters",
+                "operationId": "getCountryCouncils",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country', 'county_council_price_lists', 'used_county_council_price_list', 'county_council_patient_categories'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "'country_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List county-councils",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryCouncilResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List county-councils",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/county-councils/{id}": {
+            "get": {
+                "tags": [
+                    "county-councils"
+                ],
+                "summary": "Retrieve a county-council",
+                "description": "Returns certain country council based on the given filters",
+                "operationId": "getCountryCouncil",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country', 'county_council_price_lists', 'used_county_council_price_list', 'county_council_patient_categories'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a county-council",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryCouncilResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a county-council",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/declarations": {
             "get": {
                 "tags": [
@@ -9381,167 +9533,6 @@
                 }
             }
         },
-        "/api/reimbursement-types": {
-            "get": {
-                "tags": [
-                    "reimbursement-types"
-                ],
-                "summary": "List reimbursement-types",
-                "description": "Returns a list of reimbursement types based on the given filters",
-                "operationId": "getReimbursementTypes",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'country'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "country_id",
-                        "in": "query",
-                        "description": "'country_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "payer_type_name",
-                        "in": "query",
-                        "description": "'payer_type_name' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List reimbursement-types",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ReimbursementTypeResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List reimbursement-types",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/reimbursement-types/{}": {
-            "get": {
-                "tags": [
-                    "reimbursement-types"
-                ],
-                "summary": "Retrieve a reimbursement-type",
-                "description": "Returns certain reimbursement type based on the given filters",
-                "operationId": "getReimbursementType",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'country'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a reimbursement-type",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ReimbursementTypeResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a reimbursement-type",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/remittance-responses": {
             "get": {
                 "tags": [
@@ -15516,6 +15507,44 @@
             },
             "type": "object"
         },
+        "CountryCouncilResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "county_council"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "invoice_address_1": {
+                            "type": "string",
+                            "example": "H\u00e4lso- och sjukv\u00e5rdsf\u00f6rvaltningen"
+                        },
+                        "invoice_address_2": {
+                            "type": "string",
+                            "example": "Box 120 81"
+                        },
+                        "invoice_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "postal_code": {
+                            "type": "string",
+                            "example": "10223"
+                        },
+                        "organization_name": {
+                            "type": "string",
+                            "example": "Region Stockholm"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "CurrencyWebhookRequest": {
             "properties": {
                 "type": {
@@ -17106,32 +17135,6 @@
                         "created_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "ReimbursementTypeResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "reimbursement_type"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "name": {
-                            "type": "string",
-                            "example": "FK & patient name"
-                        },
-                        "active": {
-                            "type": "boolean",
-                            "example": true
                         }
                     },
                     "type": "object"
