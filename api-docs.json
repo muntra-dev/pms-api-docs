@@ -1369,79 +1369,6 @@
                         }
                     }
                 }
-            },
-            "patch": {
-                "tags": [
-                    "custom-payment-types"
-                ],
-                "summary": "Edit a custom-payment-types",
-                "description": "Returns edited custom payment type based on the given filters",
-                "operationId": "patchCustomPaymentType",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'fiscal_year', 'payment_type', 'account', 'clinics'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a custom-payment-types",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/CustomPaymentTypeResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a custom-payment-types",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
             }
         },
         "/api/custom-payment-types/{id}": {
@@ -1509,6 +1436,79 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a custom-payment-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "custom-payment-types"
+                ],
+                "summary": "Edit a custom-payment-types",
+                "description": "Returns edited custom payment type based on the given filters",
+                "operationId": "patchCustomPaymentType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'fiscal_year', 'payment_type', 'account', 'clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a custom-payment-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CustomPaymentTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a custom-payment-types",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
