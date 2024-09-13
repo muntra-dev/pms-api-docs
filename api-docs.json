@@ -4009,30 +4009,17 @@
                     },
                     {
                         "name": "body",
-                        "in": "body",
+                        "in": "formData",
                         "description": "Body of request (obligatory)",
                         "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Reschedule muntra-booking-attendee",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Reschedule muntra-booking-attendee",
-                                            "properties": {
-                                                "new_dtstart": {
-                                                    "description": "Reschedule muntra-booking-attendee",
-                                                    "type": "string",
-                                                    "example": "2024-09-01T19:25:31+02:00"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
+                        "type": "string"
+                    },
+                    {
+                        "name": "new_dtstart",
+                        "in": "query",
+                        "description": "Format example: '2024-09-01T23:25:31+02:00'",
+                        "required": true,
+                        "type": "string"
                     },
                     {
                         "name": "only_users",
