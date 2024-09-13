@@ -1178,6 +1178,347 @@
                 }
             }
         },
+        "/api/custom-payment-types": {
+            "get": {
+                "tags": [
+                    "custom-payment-types"
+                ],
+                "summary": "List a custom-payment-types",
+                "description": "Returns list of custom payment types based on the given filters",
+                "operationId": "getCustomPaymentTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'fiscal_year', 'payment_type', 'account', 'clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List a custom-payment-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CustomPaymentTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List a custom-payment-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "custom-payment-types"
+                ],
+                "summary": "Create a custom-payment-type",
+                "description": "Returns created custom payment type based on the given filters",
+                "operationId": "postCustomPaymentType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a custom-payment-type",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a custom-payment-type",
+                                            "properties": {
+                                                "fiscal_year_id": {
+                                                    "description": "Create a custom-payment-type",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "payment_type_id": {
+                                                    "description": "Create a custom-payment-type",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "account_id": {
+                                                    "description": "Create a custom-payment-type",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "label": {
+                                                    "description": "Create a custom-payment-type",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "clinics",
+                        "in": "query",
+                        "description": "'clinics' field.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a custom-payment-type",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CustomPaymentTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a custom-payment-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "custom-payment-types"
+                ],
+                "summary": "Edit a custom-payment-types",
+                "description": "Returns edited custom payment type based on the given filters",
+                "operationId": "patchCustomPaymentType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'fiscal_year', 'payment_type', 'account', 'clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a custom-payment-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CustomPaymentTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a custom-payment-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/custom-payment-types/{id}": {
+            "get": {
+                "tags": [
+                    "custom-payment-types"
+                ],
+                "summary": "Retrieve a custom-payment-types",
+                "description": "Returns certain custom payment type based on the given filters",
+                "operationId": "getCustomPaymentType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'fiscal_year', 'payment_type', 'account', 'clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a custom-payment-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CustomPaymentTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a custom-payment-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/declarations": {
             "get": {
                 "tags": [
@@ -3724,7 +4065,7 @@
                     "muntra-booking-attendees"
                 ],
                 "summary": "Create a muntra-booking-attendee",
-                "description": "Returns created Muntra booking attendee based on the given filters",
+                "description": "Returns created Muntra booking attendees based on the given filters",
                 "operationId": "postMuntraBookingAttendee",
                 "consumes": [
                     "application/json"
@@ -3834,7 +4175,7 @@
                     "muntra-booking-attendees"
                 ],
                 "summary": "Confirm muntra-booking-attendee",
-                "description": "Returns confirmed Muntra booking attendee based on the given filters",
+                "description": "Returns confirmed Muntra booking attendees based on the given filters",
                 "operationId": "postMuntraBookingAttendeeConfirm",
                 "consumes": [
                     "application/json"
@@ -3968,84 +4309,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a muntra-booking-attendee",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/muntra-booking-attendees/{id}/reschedule": {
-            "post": {
-                "tags": [
-                    "muntra-booking-attendees"
-                ],
-                "summary": "Reschedule muntra-booking-attendee",
-                "description": "Returns rescheduled Muntra booking attendee based on the given filters",
-                "operationId": "postMuntraBookingAttendeeReschedule",
-                "consumes": [
-                    "application/x-www-form-urlencoded"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "new_dtstart",
-                        "in": "formData",
-                        "description": "Format example: '2024-09-01T23:25:31+02:00'",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "only_users",
-                        "in": "query",
-                        "description": "'only_users' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Reschedule muntra-booking-attendee",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MuntraBookingAttendeesResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Reschedule muntra-booking-attendee",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -15950,6 +16213,27 @@
                             "example": "Test title"
                         },
                         "suffix": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CustomPaymentTypeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "custom_payment_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
                             "type": "string"
                         }
                     },
