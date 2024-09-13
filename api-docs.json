@@ -1474,17 +1474,45 @@
                         "type": "string"
                     },
                     {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'fiscal_year', 'payment_type', 'account', 'clinics'.",
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
                         "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a custom-payment-types",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a custom-payment-types",
+                                            "properties": {
+                                                "fiscal_year_id": {
+                                                    "description": "Edit a custom-payment-types",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "payment_type_id": {
+                                                    "description": "Edit a custom-payment-types",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "account_id": {
+                                                    "description": "Edit a custom-payment-types",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "label": {
+                                                    "description": "Edit a custom-payment-types",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
                     }
                 ],
                 "responses": {
