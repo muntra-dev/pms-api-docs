@@ -4008,15 +4008,8 @@
                         "type": "string"
                     },
                     {
-                        "name": "body",
-                        "in": "formData",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "name": "new_dtstart",
-                        "in": "query",
+                        "in": "formData",
                         "description": "Format example: '2024-09-01T23:25:31+02:00'",
                         "required": true,
                         "type": "string"
