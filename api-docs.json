@@ -1026,6 +1026,158 @@
                 }
             }
         },
+        "/api/county-councils": {
+            "get": {
+                "tags": [
+                    "county-councils"
+                ],
+                "summary": "List county-councils",
+                "description": "Returns a list of country councils based on the given filters",
+                "operationId": "getCountryCouncils",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country', 'county_council_price_lists', 'used_county_council_price_list', 'county_council_patient_categories'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "'country_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List county-councils",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryCouncilResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List county-councils",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/county-councils/{id}": {
+            "get": {
+                "tags": [
+                    "county-councils"
+                ],
+                "summary": "Retrieve a county-council",
+                "description": "Returns certain country council based on the given filters",
+                "operationId": "getCountryCouncil",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country', 'county_council_price_lists', 'used_county_council_price_list', 'county_council_patient_categories'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a county-council",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryCouncilResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a county-council",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/declarations": {
             "get": {
                 "tags": [
@@ -3816,6 +3968,104 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a muntra-booking-attendee",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-booking-attendees/{id}/reschedule": {
+            "post": {
+                "tags": [
+                    "muntra-booking-attendees"
+                ],
+                "summary": "Reschedule muntra-booking-attendee",
+                "description": "Returns rescheduled Muntra booking attendees based on the given filters",
+                "operationId": "postMuntraBookingAttendeeReschedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Reschedule muntra-booking-attendee",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Reschedule muntra-booking-attendee",
+                                            "properties": {
+                                                "new_dtstart": {
+                                                    "description": "Reschedule muntra-booking-attendee",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "only_users",
+                        "in": "query",
+                        "description": "'only_users' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Reschedule muntra-booking-attendee",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookingAttendeesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Reschedule muntra-booking-attendee",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -9445,6 +9695,167 @@
                 }
             }
         },
+        "/api/reimbursement-types": {
+            "get": {
+                "tags": [
+                    "reimbursement-types"
+                ],
+                "summary": "List reimbursement-types",
+                "description": "Returns a list of reimbursement types based on the given filters",
+                "operationId": "getReimbursementTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "'country_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "payer_type_name",
+                        "in": "query",
+                        "description": "'payer_type_name' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List reimbursement-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ReimbursementTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List reimbursement-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/reimbursement-types/{id}": {
+            "get": {
+                "tags": [
+                    "reimbursement-types"
+                ],
+                "summary": "Retrieve a reimbursement-type",
+                "description": "Returns certain reimbursement type based on the given filters",
+                "operationId": "getReimbursementType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a reimbursement-type",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ReimbursementTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a reimbursement-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/remittance-responses": {
             "get": {
                 "tags": [
@@ -12527,6 +12938,88 @@
                 }
             }
         },
+        "/api/tooth-surface-snapshots": {
+            "get": {
+                "tags": [
+                    "tooth-surface-snapshots"
+                ],
+                "summary": "List tooth-surface-snapshots",
+                "description": "Returns a list of tooth surface snapshots based on the given filters",
+                "operationId": "getToothSurfaceSnapshot",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "treatment_plan_id",
+                        "in": "query",
+                        "description": "'treatment_plan_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "'date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List tooth-surface-snapshots",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ToothSurfaceSnapshotResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List tooth-surface-snapshots",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/treatment-plan-items": {
             "get": {
                 "tags": [
@@ -15419,6 +15912,44 @@
             },
             "type": "object"
         },
+        "CountryCouncilResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "county_council"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "invoice_address_1": {
+                            "type": "string",
+                            "example": "H\u00e4lso- och sjukv\u00e5rdsf\u00f6rvaltningen"
+                        },
+                        "invoice_address_2": {
+                            "type": "string",
+                            "example": "Box 120 81"
+                        },
+                        "invoice_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "postal_code": {
+                            "type": "string",
+                            "example": "10223"
+                        },
+                        "organization_name": {
+                            "type": "string",
+                            "example": "Region Stockholm"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "CurrencyWebhookRequest": {
             "properties": {
                 "type": {
@@ -17038,6 +17569,32 @@
             },
             "type": "object"
         },
+        "ReimbursementTypeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "reimbursement_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "FK & patient name"
+                        },
+                        "active": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "RemittanceResponseResp": {
             "properties": {
                 "type": {
@@ -18140,6 +18697,52 @@
                         "deleted_at": {
                             "type": "string",
                             "example": "2024-09-02T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ToothSurfaceSnapshotResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "tooth_surface_snapshot"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "T_11"
+                },
+                "attributes": {
+                    "properties": {
+                        "element_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "position": {
+                            "type": "number",
+                            "example": 22
+                        },
+                        "status": {
+                            "type": "string",
+                            "example": "intact"
+                        },
+                        "treated": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "type": {
+                            "type": "string",
+                            "example": "permanent"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "deepest_pocket": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
