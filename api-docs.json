@@ -3724,7 +3724,7 @@
                     "muntra-booking-attendees"
                 ],
                 "summary": "Create a muntra-booking-attendee",
-                "description": "Returns created Muntra booking attendees based on the given filters",
+                "description": "Returns created Muntra booking attendee based on the given filters",
                 "operationId": "postMuntraBookingAttendee",
                 "consumes": [
                     "application/json"
@@ -3834,7 +3834,7 @@
                     "muntra-booking-attendees"
                 ],
                 "summary": "Confirm muntra-booking-attendee",
-                "description": "Returns confirmed Muntra booking attendees based on the given filters",
+                "description": "Returns confirmed Muntra booking attendee based on the given filters",
                 "operationId": "postMuntraBookingAttendeeConfirm",
                 "consumes": [
                     "application/json"
@@ -3984,10 +3984,10 @@
                     "muntra-booking-attendees"
                 ],
                 "summary": "Reschedule muntra-booking-attendee",
-                "description": "Returns rescheduled Muntra booking attendees based on the given filters",
+                "description": "Returns rescheduled Muntra booking attendee based on the given filters",
                 "operationId": "postMuntraBookingAttendeeReschedule",
                 "consumes": [
-                    "application/json"
+                    "application/x-www-form-urlencoded"
                 ],
                 "produces": [
                     "application/json"
