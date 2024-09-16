@@ -1300,17 +1300,17 @@
                                                 "fiscal_year_id": {
                                                     "description": "Create a custom-payment-type",
                                                     "type": "number",
-                                                    "example": 123
+                                                    "example": 1
                                                 },
                                                 "payment_type_id": {
                                                     "description": "Create a custom-payment-type",
                                                     "type": "number",
-                                                    "example": 123
+                                                    "example": 1
                                                 },
                                                 "account_id": {
                                                     "description": "Create a custom-payment-type",
                                                     "type": "number",
-                                                    "example": 123
+                                                    "example": 1
                                                 },
                                                 "label": {
                                                     "description": "Create a custom-payment-type",
@@ -1489,17 +1489,17 @@
                                                 "fiscal_year_id": {
                                                     "description": "Edit a custom-payment-types",
                                                     "type": "number",
-                                                    "example": 123
+                                                    "example": 1
                                                 },
                                                 "payment_type_id": {
                                                     "description": "Edit a custom-payment-types",
                                                     "type": "number",
-                                                    "example": 123
+                                                    "example": 1
                                                 },
                                                 "account_id": {
                                                     "description": "Edit a custom-payment-types",
                                                     "type": "number",
-                                                    "example": 123
+                                                    "example": 1
                                                 },
                                                 "label": {
                                                     "description": "Edit a custom-payment-types",
@@ -3147,6 +3147,158 @@
                 }
             }
         },
+        "/api/invoice-types": {
+            "get": {
+                "tags": [
+                    "invoice-types"
+                ],
+                "summary": "List invoice-types",
+                "description": "Returns list of invoice types based on the given filters",
+                "operationId": "getInvoiceTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'payment_types', 'default_payment_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "'name' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoice-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoice-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-types/{id}": {
+            "get": {
+                "tags": [
+                    "invoice-types"
+                ],
+                "summary": "Retrieve a invoice-type",
+                "description": "Returns certain invoice type based on the given filters",
+                "operationId": "getInvoiceType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "{id} field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'payment_types', 'default_payment_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a invoice-type",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a invoice-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/journal-entries": {
             "get": {
                 "tags": [
@@ -4093,7 +4245,7 @@
                     "muntra-booking-attendees"
                 ],
                 "summary": "Create a muntra-booking-attendee",
-                "description": "Returns created Muntra booking attendees based on the given filters",
+                "description": "Returns created Muntra booking attendee based on the given filters",
                 "operationId": "postMuntraBookingAttendee",
                 "consumes": [
                     "application/json"
@@ -4203,7 +4355,7 @@
                     "muntra-booking-attendees"
                 ],
                 "summary": "Confirm muntra-booking-attendee",
-                "description": "Returns confirmed Muntra booking attendees based on the given filters",
+                "description": "Returns confirmed Muntra booking attendee based on the given filters",
                 "operationId": "postMuntraBookingAttendeeConfirm",
                 "consumes": [
                     "application/json"
@@ -4337,6 +4489,68 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a muntra-booking-attendee",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-booking-attendees/{id}/reschedule": {
+            "post": {
+                "tags": [
+                    "muntra-booking-attendees"
+                ],
+                "summary": "Reschedule muntra-booking-attendee",
+                "description": "Returns rescheduled Muntra booking attendee based on the given filters",
+                "operationId": "postMuntraBookingAttendeeReschedule",
+                "consumes": [
+                    "application/x-www-form-urlencoded"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "new_dtstart",
+                        "in": "formData",
+                        "description": "Format example: '2024-09-01T23:25:31+02:00'",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Reschedule muntra-booking-attendee",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraBookingAttendeesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Reschedule muntra-booking-attendee",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -17130,6 +17344,32 @@
                         "deleted": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InvoiceTypeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "3"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "debit": {
+                            "type": "boolean",
+                            "example": false
                         }
                     },
                     "type": "object"
