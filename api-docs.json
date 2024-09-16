@@ -3849,14 +3849,14 @@
                 }
             }
         },
-        "/api/journal-entry-macros": {
+        "/api/journal-entry-macro-items": {
             "get": {
                 "tags": [
-                    "journal-entry-macros"
+                    "journal-entry-macro-items"
                 ],
-                "summary": "List journal-entry-macros",
-                "description": "Returns list of journal entry macros based on the given filters",
-                "operationId": "getJournalEntryMacros",
+                "summary": "List journal-entry-macro-items",
+                "description": "Returns list of journal entry macro items based on the given filters",
+                "operationId": "getJournalEntryMacroItems",
                 "consumes": [
                     "application/json"
                 ],
@@ -3874,7 +3874,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'user', 'currency', 'journal_entry_macro_items'.",
+                        "description": "Including 'journal_entry_macro', 'history', 'journal_diagnosis', 'price', 'county_council_price', 'journal_validation', 'reimbursement_type', 'treatment', 'vat_code', 'county_council', 'elements'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -3882,15 +3882,6 @@
                             "type": "string"
                         },
                         "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "user_id",
-                        "in": "query",
-                        "description": "'user_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
                         "default": ""
                     },
                     {
@@ -3903,16 +3894,12 @@
                         "default": ""
                     },
                     {
-                        "name": "elements",
+                        "name": "draft",
                         "in": "query",
-                        "description": "'elements' field",
+                        "description": "'draft' field",
                         "required": false,
-                        "type": "array",
+                        "type": "boolean",
                         "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
                         "default": ""
                     },
                     {
@@ -3940,10 +3927,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List journal-entry-macros",
+                                    "description": "List journal-entry-macro-items",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/JournalEntryMacroResponse"
+                                        "$ref": "#/definitions/JournalEntryMacroItemResponse"
                                     }
                                 }
                             },
@@ -3955,7 +3942,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List journal-entry-macros",
+                                    "description": "List journal-entry-macro-items",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -3967,11 +3954,11 @@
             },
             "post": {
                 "tags": [
-                    "journal-entry-macros"
+                    "journal-entry-macro-items"
                 ],
-                "summary": "Create a journal-entry-macro",
-                "description": "Returns created journal entry macro based on the given filters",
-                "operationId": "postJournalEntryMacro",
+                "summary": "Create a journal-entry-macro-item",
+                "description": "Returns created journal entry macro item based on the given filters",
+                "operationId": "postJournalEntryMacroItem",
                 "consumes": [
                     "application/json"
                 ],
@@ -3990,19 +3977,19 @@
                         "name": "body",
                         "in": "body",
                         "description": "Body of request (obligatory)",
-                        "required": false,
+                        "required": true,
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a journal-entry-macro",
+                                    "description": "Create a journal-entry-macro-item",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a journal-entry-macro",
+                                            "description": "Create a journal-entry-macro-item",
                                             "properties": {
-                                                "name": {
-                                                    "description": "Create a journal-entry-macro",
-                                                    "type": "string",
-                                                    "example": "Test bane"
+                                                "journal_entry_macro_id": {
+                                                    "description": "Create a journal-entry-macro-item",
+                                                    "type": "number",
+                                                    "example": 1
                                                 }
                                             },
                                             "type": "object"
@@ -4020,10 +4007,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a journal-entry-macro",
+                                    "description": "Create a journal-entry-macro-item",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/JournalEntryMacroResponse"
+                                        "$ref": "#/definitions/JournalEntryMacroItemResponse"
                                     }
                                 }
                             },
@@ -4035,7 +4022,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a journal-entry-macro",
+                                    "description": "Create a journal-entry-macro-item",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -4046,14 +4033,14 @@
                 }
             }
         },
-        "/api/journal-entry-macros/{id}": {
+        "/api/journal-entry-macro-items/{id}": {
             "get": {
                 "tags": [
-                    "journal-entry-macros"
+                    "journal-entry-macro-items"
                 ],
-                "summary": "Retrieve a journal-entry-macro",
-                "description": "Returns certain journal entry macro based on the given filters",
-                "operationId": "getJournalEntryMacro",
+                "summary": "List journal-entry-macro-items",
+                "description": "Returns certain journal entry macro item based on the given filters",
+                "operationId": "getJournalEntryMacroItem",
                 "consumes": [
                     "application/json"
                 ],
@@ -4078,7 +4065,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'user', 'currency', 'journal_entry_macro_items'.",
+                        "description": "Including 'journal_entry_macro', 'history', 'journal_diagnosis', 'price', 'county_council_price', 'journal_validation', 'reimbursement_type', 'treatment', 'vat_code', 'county_council', 'elements'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -4095,10 +4082,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a journal-entry-macro",
+                                    "description": "Retrieve a journal-entry-macro-item",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/JournalEntryMacroResponse"
+                                        "$ref": "#/definitions/JournalEntryMacroItemResponse"
                                     }
                                 }
                             },
@@ -4110,7 +4097,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a journal-entry-macro",
+                                    "description": "Retrieve a journal-entry-macro-item",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -4122,11 +4109,11 @@
             },
             "patch": {
                 "tags": [
-                    "journal-entry-macros"
+                    "journal-entry-macro-items"
                 ],
-                "summary": "Edit a journal-entry-macro",
-                "description": "Returns edited journal entry macro based on the given filters",
-                "operationId": "patchJournalEntryMacro",
+                "summary": "Edit a journal-entry-macro-item",
+                "description": "Returns edited journal entry macro item based on the given filters",
+                "operationId": "patchJournalEntryMacroItem",
                 "consumes": [
                     "application/json"
                 ],
@@ -4144,36 +4131,27 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "'id' field",
+                        "description": "Bearer token",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "'deleted' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
                     },
                     {
                         "name": "body",
                         "in": "body",
                         "description": "Body of request (obligatory)",
-                        "required": false,
+                        "required": true,
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a journal-entry-macro",
+                                    "description": "Edit a journal-entry-macro-item",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit a journal-entry-macro",
+                                            "description": "Edit a journal-entry-macro-item",
                                             "properties": {
-                                                "name": {
-                                                    "description": "Edit a journal-entry-macro",
-                                                    "type": "string",
-                                                    "example": "Test bane"
+                                                "journal_entry_macro_id": {
+                                                    "description": "Edit a journal-entry-macro-item",
+                                                    "type": "number",
+                                                    "example": 1
                                                 }
                                             },
                                             "type": "object"
@@ -4191,10 +4169,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a journal-entry-macro",
+                                    "description": "Edit a journal-entry-macro-item",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/JournalEntryMacroResponse"
+                                        "$ref": "#/definitions/JournalEntryMacroItemResponse"
                                     }
                                 }
                             },
@@ -4206,7 +4184,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit a journal-entry-macro",
+                                    "description": "Edit a journal-entry-macro-item",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -17567,11 +17545,11 @@
             },
             "type": "object"
         },
-        "JournalEntryMacroResponse": {
+        "JournalEntryMacroItemResponse": {
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "journal_entry_macro"
+                    "example": "journal_entry_macro_item"
                 },
                 "id": {
                     "type": "string",
@@ -17579,21 +17557,42 @@
                 },
                 "attributes": {
                     "properties": {
-                        "name": {
+                        "entry_type": {
+                            "type": "string"
+                        },
+                        "entry_date": {
                             "type": "string",
-                            "example": "Test name"
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "text": {
+                            "type": "string"
+                        },
+                        "fee": {
+                            "type": "number",
+                            "example": 33
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 11
+                        },
+                        "price_code": {
+                            "type": "string"
+                        },
+                        "referral": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "multi_tooth": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "draft": {
+                            "type": "boolean",
+                            "example": true
                         },
                         "deleted": {
                             "type": "boolean",
-                            "example": false
-                        },
-                        "created_at": {
-                            "type": "string",
-                            "example": "2024-09-01T19:25:31+02:00"
-                        },
-                        "updated_at": {
-                            "type": "string",
-                            "example": "2024-09-01T19:25:31+02:00"
+                            "example": true
                         }
                     },
                     "type": "object"
