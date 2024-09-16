@@ -9109,6 +9109,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "body",
                         "in": "body",
                         "description": "Body of request (not obligatory)",
