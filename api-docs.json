@@ -1183,7 +1183,7 @@
                 "tags": [
                     "custom-payment-types"
                 ],
-                "summary": "List a custom-payment-types",
+                "summary": "List custom-payment-types",
                 "description": "Returns list of custom payment types based on the given filters",
                 "operationId": "getCustomPaymentTypes",
                 "consumes": [
@@ -1238,7 +1238,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List a custom-payment-types",
+                                    "description": "List custom-payment-types",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/CustomPaymentTypeResponse"
@@ -1253,7 +1253,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List a custom-payment-types",
+                                    "description": "List custom-payment-types",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1376,7 +1376,7 @@
                 "tags": [
                     "custom-payment-types"
                 ],
-                "summary": "Retrieve a custom-payment-types",
+                "summary": "Retrieve a custom-payment-type",
                 "description": "Returns certain custom payment type based on the given filters",
                 "operationId": "getCustomPaymentType",
                 "consumes": [
@@ -1420,7 +1420,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a custom-payment-types",
+                                    "description": "Retrieve a custom-payment-type",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/CustomPaymentTypeResponse"
@@ -1435,7 +1435,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a custom-payment-types",
+                                    "description": "Retrieve a custom-payment-type",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1449,7 +1449,7 @@
                 "tags": [
                     "custom-payment-types"
                 ],
-                "summary": "Edit a custom-payment-types",
+                "summary": "Edit a custom-payment-type",
                 "description": "Returns edited custom payment type based on the given filters",
                 "operationId": "patchCustomPaymentType",
                 "consumes": [
@@ -1481,28 +1481,28 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a custom-payment-types",
+                                    "description": "Edit a custom-payment-type",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit a custom-payment-types",
+                                            "description": "Edit a custom-payment-type",
                                             "properties": {
                                                 "fiscal_year_id": {
-                                                    "description": "Edit a custom-payment-types",
+                                                    "description": "Edit a custom-payment-type",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "payment_type_id": {
-                                                    "description": "Edit a custom-payment-types",
+                                                    "description": "Edit a custom-payment-type",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "account_id": {
-                                                    "description": "Edit a custom-payment-types",
+                                                    "description": "Edit a custom-payment-type",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "label": {
-                                                    "description": "Edit a custom-payment-types",
+                                                    "description": "Edit a custom-payment-type",
                                                     "type": "string"
                                                 }
                                             },
@@ -1521,7 +1521,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a custom-payment-types",
+                                    "description": "Edit a custom-payment-type",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/CustomPaymentTypeResponse"
@@ -1536,7 +1536,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit a custom-payment-types",
+                                    "description": "Edit a custom-payment-type",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -3147,6 +3147,158 @@
                 }
             }
         },
+        "/api/invoice-types": {
+            "get": {
+                "tags": [
+                    "invoice-types"
+                ],
+                "summary": "List invoice-types",
+                "description": "Returns list of invoice types based on the given filters",
+                "operationId": "getInvoiceTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'payment_types', 'default_payment_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "'name' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoice-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoice-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-types/{id}": {
+            "get": {
+                "tags": [
+                    "invoice-types"
+                ],
+                "summary": "Retrieve a invoice-type",
+                "description": "Returns certain invoice type based on the given filters",
+                "operationId": "getInvoiceType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "{id} field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'payment_types', 'default_payment_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a invoice-type",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a invoice-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/journal-entries": {
             "get": {
                 "tags": [
@@ -3839,6 +3991,720 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-entry-macro-items": {
+            "get": {
+                "tags": [
+                    "journal-entry-macro-items"
+                ],
+                "summary": "List journal-entry-macro-items",
+                "description": "Returns list of journal entry macro items based on the given filters",
+                "operationId": "getJournalEntryMacroItems",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'journal_entry_macro', 'history', 'journal_diagnosis', 'price', 'county_council_price', 'journal_validation', 'reimbursement_type', 'treatment', 'vat_code', 'county_council', 'elements'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "draft",
+                        "in": "query",
+                        "description": "'draft' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List journal-entry-macro-items",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMacroItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List journal-entry-macro-items",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "journal-entry-macro-items"
+                ],
+                "summary": "Create a journal-entry-macro-item",
+                "description": "Returns created journal entry macro item based on the given filters",
+                "operationId": "postJournalEntryMacroItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry-macro-item",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a journal-entry-macro-item",
+                                            "properties": {
+                                                "journal_entry_macro_id": {
+                                                    "description": "Create a journal-entry-macro-item",
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry-macro-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMacroItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a journal-entry-macro-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-entry-macro-items/{id}": {
+            "get": {
+                "tags": [
+                    "journal-entry-macro-items"
+                ],
+                "summary": "Retrieve a journal-entry-macro-item",
+                "description": "Returns certain journal entry macro item based on the given filters",
+                "operationId": "getJournalEntryMacroItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'journal_entry_macro', 'history', 'journal_diagnosis', 'price', 'county_council_price', 'journal_validation', 'reimbursement_type', 'treatment', 'vat_code', 'county_council', 'elements'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a journal-entry-macro-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMacroItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a journal-entry-macro-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "journal-entry-macro-items"
+                ],
+                "summary": "Edit a journal-entry-macro-item",
+                "description": "Returns edited journal entry macro item based on the given filters",
+                "operationId": "patchJournalEntryMacroItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry-macro-item",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a journal-entry-macro-item",
+                                            "properties": {
+                                                "journal_entry_macro_id": {
+                                                    "description": "Edit a journal-entry-macro-item",
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry-macro-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMacroItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a journal-entry-macro-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-entry-macros": {
+            "get": {
+                "tags": [
+                    "journal-entry-macros"
+                ],
+                "summary": "List journal-entry-macros",
+                "description": "Returns list of journal entry macros based on the given filters",
+                "operationId": "getJournalEntryMacros",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'currency', 'journal_entry_macro_items'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "elements",
+                        "in": "query",
+                        "description": "'elements' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List journal-entry-macros",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMacroResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List journal-entry-macros",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "journal-entry-macros"
+                ],
+                "summary": "Create a journal-entry-macro",
+                "description": "Returns created journal entry macro based on the given filters",
+                "operationId": "postJournalEntryMacro",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry-macro",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a journal-entry-macro",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create a journal-entry-macro",
+                                                    "type": "string",
+                                                    "example": "Test bane"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry-macro",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMacroResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a journal-entry-macro",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-entry-macros/{id}": {
+            "get": {
+                "tags": [
+                    "journal-entry-macros"
+                ],
+                "summary": "Retrieve a journal-entry-macro",
+                "description": "Returns certain journal entry macro based on the given filters",
+                "operationId": "getJournalEntryMacro",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'currency', 'journal_entry_macro_items'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a journal-entry-macro",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMacroResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a journal-entry-macro",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "journal-entry-macros"
+                ],
+                "summary": "Edit a journal-entry-macro",
+                "description": "Returns edited journal entry macro based on the given filters",
+                "operationId": "patchJournalEntryMacro",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry-macro",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a journal-entry-macro",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a journal-entry-macro",
+                                                    "type": "string",
+                                                    "example": "Test bane"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry-macro",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMacroResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a journal-entry-macro",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7849,6 +8715,336 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve the current organization",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-invoice-rows": {
+            "get": {
+                "tags": [
+                    "patient-invoice-rows"
+                ],
+                "summary": "List patient-invoice-rows",
+                "description": "Returns list of patient invoice rows based on the given filters",
+                "operationId": "getPatientInvoiceRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient_invoices', 'user', 'price', 'patient_payment_method', 'journal_entry'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-invoice-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-invoice-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "patient-invoice-rows"
+                ],
+                "summary": "Create a patient-invoice-row",
+                "description": "Returns created patient invoice row based on the given filters",
+                "operationId": "postPatientInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-invoice-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a patient-invoice-row",
+                                            "properties": {
+                                                "vat_code_id": {
+                                                    "description": "Create a patient-invoice-row",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "patient_invoices": {
+                                                    "description": "Create a patient-invoice-row",
+                                                    "properties": {
+                                                        "patient_invoice_row_id": {
+                                                            "description": "Create a patient-invoice-row",
+                                                            "type": "number",
+                                                            "example": 1
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-invoice-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a patient-invoice-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-invoice-rows/{id}": {
+            "get": {
+                "tags": [
+                    "patient-invoice-rows"
+                ],
+                "summary": "Retrieve a patient-invoice-rows",
+                "description": "Returns certain patient invoice row based on the given filters",
+                "operationId": "getPatientInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient_invoices', 'user', 'price', 'patient_payment_method', 'journal_entry'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a patient-invoice-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a patient-invoice-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "patient-invoice-rows"
+                ],
+                "summary": "Edit a patient-invoice-row",
+                "description": "Returns edited patient invoice row based on the given filters",
+                "operationId": "patchPatientInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-invoice-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a patient-invoice-row",
+                                            "properties": {
+                                                "vat_code_id": {
+                                                    "description": "Edit a patient-invoice-row",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "patient_invoices": {
+                                                    "description": "Edit a patient-invoice-row",
+                                                    "properties": {
+                                                        "patient_invoice_row_id": {
+                                                            "description": "Edit a patient-invoice-row",
+                                                            "type": "number",
+                                                            "example": 1
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-invoice-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a patient-invoice-row",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -17356,15 +18552,130 @@
             },
             "type": "object"
         },
+        "InvoiceTypeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "3"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "debit": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "JournalEntryMacroItemResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "journal_entry_macro_item"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "entry_type": {
+                            "type": "string"
+                        },
+                        "entry_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "text": {
+                            "type": "string"
+                        },
+                        "fee": {
+                            "type": "number",
+                            "example": 33
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 11
+                        },
+                        "price_code": {
+                            "type": "string"
+                        },
+                        "referral": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "multi_tooth": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "draft": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "JournalEntryMacroResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "journal_entry_macro"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "JournalEntryResponse": {
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "journal-entry"
+                    "example": "journal_entry"
                 },
                 "id": {
                     "type": "string",
-                    "example": "id"
+                    "example": "12"
                 },
                 "attributes": {
                     "properties": {
@@ -17565,6 +18876,28 @@
                         "has_unpaid_invoices": {
                             "type": "string",
                             "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientInvoiceRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_invoice_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "treatment_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
                         }
                     },
                     "type": "object"
