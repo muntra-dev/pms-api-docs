@@ -13199,130 +13199,6 @@
                 }
             }
         },
-        "/api/sms-reminders/{id}/schedule": {
-            "post": {
-                "tags": [
-                    "sms-reminders"
-                ],
-                "summary": "Schedule sms-reminder",
-                "description": "Returns scheduled sms reminder based on the given filters",
-                "operationId": "postSmsReminderSchedule",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Schedule sms-reminder",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SmsReminderResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Schedule sms-reminder",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/sms-reminders/{id}/unschedule": {
-            "post": {
-                "tags": [
-                    "sms-reminders"
-                ],
-                "summary": "Unchedule sms-reminder",
-                "description": "Returns unscheduled sms reminder based on the given filters",
-                "operationId": "postSmsReminderUnschedule",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Unchedule sms-reminder",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SmsReminderResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Unchedule sms-reminder",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/sms/{id}": {
             "get": {
                 "tags": [
@@ -13991,6 +13867,130 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a snail-mail",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/snail-mails/{id}/schedule": {
+            "post": {
+                "tags": [
+                    "snail-mails"
+                ],
+                "summary": "Schedule snail-mail",
+                "description": "Returns scheduled snail mail based on the given filters",
+                "operationId": "postSnailEmailSchedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Schedule snail-mail",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SnailMailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Schedule snail-mail",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/snail-mails/{id}/unschedule": {
+            "post": {
+                "tags": [
+                    "snail-mails"
+                ],
+                "summary": "Unschedule snail-mail",
+                "description": "Returns unscheduled snail mail based on the given filters",
+                "operationId": "postSnailEmailUnschedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Unschedule snail-mail",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SnailMailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Unschedule snail-mail",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -20817,123 +20817,6 @@
                         "organization_number": {
                             "type": "string",
                             "example": "556935-2726"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "SmsReminderResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "sms_reminder"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "social_security_number": {
-                            "type": "string"
-                        },
-                        "first_name": {
-                            "type": "string",
-                            "example": "John"
-                        },
-                        "last_name": {
-                            "type": "string",
-                            "example": "Otto"
-                        },
-                        "maiden_name": {
-                            "type": "string",
-                            "example": "Forester"
-                        },
-                        "gender": {
-                            "type": "string",
-                            "example": "male"
-                        },
-                        "address_1": {
-                            "type": "string",
-                            "example": "Testgatan"
-                        },
-                        "address_2": {
-                            "type": "string",
-                            "example": "Testgatan 2"
-                        },
-                        "city": {
-                            "type": "string",
-                            "example": "Stockholm"
-                        },
-                        "postal_code": {
-                            "type": "string",
-                            "example": "01003"
-                        },
-                        "municipality": {
-                            "type": "string",
-                            "example": "1995-11-10T00:00:00+01:00"
-                        },
-                        "passport_number": {
-                            "type": "string"
-                        },
-                        "phone_number_cell": {
-                            "type": "string",
-                            "example": "+46734100450"
-                        },
-                        "phone_number_home": {
-                            "type": "string",
-                            "example": "+46734100450"
-                        },
-                        "phone_number_work": {
-                            "type": "string",
-                            "example": "+46734100450"
-                        },
-                        "fax_number": {
-                            "type": "string"
-                        },
-                        "deleted": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "created_at": {
-                            "type": "string",
-                            "example": "2017-09-11T14:51:52+02:00"
-                        },
-                        "updated_at": {
-                            "type": "string",
-                            "example": "2024-09-10T09:32:14+02:00"
-                        },
-                        "active": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "prescriber_code": {
-                            "type": "string"
-                        },
-                        "professional_statement": {
-                            "type": "string"
-                        },
-                        "title": {
-                            "type": "string",
-                            "example": "Supportmedarbetare, Muntra"
-                        },
-                        "hide_reviews": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "hide_reviews_discreetly": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "number_of_reviews": {
-                            "type": "number",
-                            "example": 4.5
-                        },
-                        "overall_rating": {
-                            "type": "number",
-                            "example": 4.5
                         }
                     },
                     "type": "object"
