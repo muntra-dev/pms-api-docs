@@ -8725,6 +8725,336 @@
                 }
             }
         },
+        "/api/patient-invoice-rows": {
+            "get": {
+                "tags": [
+                    "patient-invoice-rows"
+                ],
+                "summary": "List patient-invoice-rows",
+                "description": "Returns list of patient invoice rows based on the given filters",
+                "operationId": "getPatientInvoiceRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient_invoices', 'user', 'price', 'patient_payment_method', 'journal_entry'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-invoice-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-invoice-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "patient-invoice-rows"
+                ],
+                "summary": "Create a patient-invoice-row",
+                "description": "Returns created patient invoice row based on the given filters",
+                "operationId": "postPatientInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-invoice-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a patient-invoice-row",
+                                            "properties": {
+                                                "vat_code_id": {
+                                                    "description": "Create a patient-invoice-row",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "patient_invoices": {
+                                                    "description": "Create a patient-invoice-row",
+                                                    "properties": {
+                                                        "patient_invoice_row_id": {
+                                                            "description": "Create a patient-invoice-row",
+                                                            "type": "number",
+                                                            "example": 1
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-invoice-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a patient-invoice-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-invoice-rows/{id}": {
+            "get": {
+                "tags": [
+                    "patient-invoice-rows"
+                ],
+                "summary": "Retrieve a patient-invoice-rows",
+                "description": "Returns certain patient invoice row based on the given filters",
+                "operationId": "getPatientInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient_invoices', 'user', 'price', 'patient_payment_method', 'journal_entry'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a patient-invoice-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a patient-invoice-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "patient-invoice-rows"
+                ],
+                "summary": "Edit a patient-invoice-row",
+                "description": "Returns edited patient invoice row based on the given filters",
+                "operationId": "patchPatientInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-invoice-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a patient-invoice-row",
+                                            "properties": {
+                                                "vat_code_id": {
+                                                    "description": "Edit a patient-invoice-row",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "patient_invoices": {
+                                                    "description": "Edit a patient-invoice-row",
+                                                    "properties": {
+                                                        "patient_invoice_row_id": {
+                                                            "description": "Edit a patient-invoice-row",
+                                                            "type": "number",
+                                                            "example": 1
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-invoice-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a patient-invoice-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patient-invoices": {
             "get": {
                 "tags": [
@@ -15758,7 +16088,7 @@
                     "users"
                 ],
                 "summary": "List users",
-                "description": "Returns a list users based on the given filters",
+                "description": "Returns a list of users based on the given filters",
                 "operationId": "getUsers",
                 "consumes": [
                     "application/json"
@@ -15966,6 +16296,74 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a user",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/current": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Retrieve the current user",
+                "description": "Retrieve the current user based on the given filters",
+                "operationId": "getUserCurrent",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'role', 'eprescription_role', 'specialities', 'educations', 'languages', 'clinics', 'last_selected_clinic', 'clinics_where_all_user', 'preferences', 'user_at_clinics', 'change_logs', 'user_images', 'default_user_image', 'signed_received_remittances', 'signed_sent_remittances', 'received_remittances', 'sent_remittances', 'message_sender', 'notifications', 'tasks', 'two_factor_authentication_setup', 'email_addresses', 'default_email_address'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve the current user",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UserResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve the current user",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -18946,6 +19344,28 @@
                         "has_unpaid_invoices": {
                             "type": "string",
                             "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientInvoiceRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_invoice_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "treatment_date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
                         }
                     },
                     "type": "object"
