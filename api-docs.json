@@ -20872,7 +20872,8 @@
                             "example": true
                         },
                         "deleted": {
-                            "type": false
+                            "type": "boolean",
+                            "example": true
                         },
                         "wait_number_of_hours_after_send": {
                             "type": "number",
