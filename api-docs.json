@@ -13199,14 +13199,14 @@
                 }
             }
         },
-        "/api/sms-invitation/{id}/schedule": {
+        "/api/sms-reminders/{id}/schedule": {
             "post": {
                 "tags": [
-                    "sms-invitations"
+                    "sms-reminders"
                 ],
-                "summary": "Schedule sms-invitations",
-                "description": "Returns scheduled sms invitation",
-                "operationId": "postSmsInvitationSchedule",
+                "summary": "Schedule sms-reminder",
+                "description": "Returns scheduled sms reminder based on the given filters",
+                "operationId": "postSmsReminderSchedule",
                 "consumes": [
                     "application/json"
                 ],
@@ -13224,7 +13224,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "'id' token",
+                        "description": "'id' field",
                         "required": true,
                         "type": "string"
                     }
@@ -13235,10 +13235,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Schedule sms-invitation",
+                                    "description": "Schedule sms-reminder",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/SmsInvitationResponse"
+                                        "$ref": "#/definitions/SmsReminderResponse"
                                     }
                                 }
                             },
@@ -13250,7 +13250,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Schedule sms-invitation",
+                                    "description": "Schedule sms-reminder",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13261,14 +13261,14 @@
                 }
             }
         },
-        "/api/sms-invitations/{id}/unschedule": {
+        "/api/sms-reminders/{id}/unschedule": {
             "post": {
                 "tags": [
-                    "sms-invitations"
+                    "sms-reminders"
                 ],
-                "summary": "Unschedule sms-invitation",
-                "description": "Returns unscheduled sms invitation",
-                "operationId": "postSmsInvitationUnschedule",
+                "summary": "Unchedule sms-reminder",
+                "description": "Returns unscheduled sms reminder based on the given filters",
+                "operationId": "postSmsReminderUnschedule",
                 "consumes": [
                     "application/json"
                 ],
@@ -13286,7 +13286,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "'id' token",
+                        "description": "'id' field",
                         "required": true,
                         "type": "string"
                     }
@@ -13297,10 +13297,10 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Unschedule sms-invitation",
+                                    "description": "Unchedule sms-reminder",
                                     "type": "array",
                                     "items": {
-                                        "$ref": "#/definitions/SmsInvitationResponse"
+                                        "$ref": "#/definitions/SmsReminderResponse"
                                     }
                                 }
                             },
@@ -13312,7 +13312,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Unschedule sms-invitation",
+                                    "description": "Unchedule sms-reminder",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -20824,11 +20824,11 @@
             },
             "type": "object"
         },
-        "SmsInvitationResponse": {
+        "SmsReminderResponse": {
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "sms_invitation"
+                    "example": "sms_reminder"
                 },
                 "id": {
                     "type": "string",
@@ -20836,52 +20836,104 @@
                 },
                 "attributes": {
                     "properties": {
-                        "sender_id": {
+                        "social_security_number": {
                             "type": "string"
                         },
-                        "from": {
-                            "type": "string"
-                        },
-                        "to": {
-                            "type": "string"
-                        },
-                        "body": {
+                        "first_name": {
                             "type": "string",
-                            "example": "Test message"
+                            "example": "John"
                         },
-                        "segments": {
-                            "type": "number",
-                            "example": 3
+                        "last_name": {
+                            "type": "string",
+                            "example": "Otto"
                         },
-                        "message_status": {
+                        "maiden_name": {
+                            "type": "string",
+                            "example": "Forester"
+                        },
+                        "gender": {
+                            "type": "string",
+                            "example": "male"
+                        },
+                        "address_1": {
+                            "type": "string",
+                            "example": "Testgatan"
+                        },
+                        "address_2": {
+                            "type": "string",
+                            "example": "Testgatan 2"
+                        },
+                        "city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "postal_code": {
+                            "type": "string",
+                            "example": "01003"
+                        },
+                        "municipality": {
+                            "type": "string",
+                            "example": "1995-11-10T00:00:00+01:00"
+                        },
+                        "passport_number": {
                             "type": "string"
                         },
-                        "error_code": {
+                        "phone_number_cell": {
+                            "type": "string",
+                            "example": "+46734100450"
+                        },
+                        "phone_number_home": {
+                            "type": "string",
+                            "example": "+46734100450"
+                        },
+                        "phone_number_work": {
+                            "type": "string",
+                            "example": "+46734100450"
+                        },
+                        "fax_number": {
                             "type": "string"
-                        },
-                        "sent_at": {
-                            "type": "string",
-                            "example": "2024-09-17T00:00:00+02:00"
-                        },
-                        "created_at": {
-                            "type": "string",
-                            "example": "2024-09-18T10:26:13+02:00"
-                        },
-                        "scheduled": {
-                            "type": "boolean",
-                            "example": true
                         },
                         "deleted": {
                             "type": "boolean",
                             "example": true
                         },
-                        "wait_number_of_hours_after_send": {
-                            "type": "number",
-                            "example": 1
+                        "created_at": {
+                            "type": "string",
+                            "example": "2017-09-11T14:51:52+02:00"
                         },
-                        "only_send_if_booking_unconfirmed": {
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-09-10T09:32:14+02:00"
+                        },
+                        "active": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "prescriber_code": {
+                            "type": "string"
+                        },
+                        "professional_statement": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string",
+                            "example": "Supportmedarbetare, Muntra"
+                        },
+                        "hide_reviews": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "hide_reviews_discreetly": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "number_of_reviews": {
                             "type": "number",
-                            "example": 1
+                            "example": 4.5
+                        },
+                        "overall_rating": {
+                            "type": "number",
+                            "example": 4.5
                         }
                     },
                     "type": "object"
