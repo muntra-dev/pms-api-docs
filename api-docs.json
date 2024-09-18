@@ -13199,6 +13199,130 @@
                 }
             }
         },
+        "/api/sms-invitation/{id}/schedule": {
+            "post": {
+                "tags": [
+                    "sms-invitations"
+                ],
+                "summary": "Schedule sms-invitations",
+                "description": "Returns scheduled sms invitation",
+                "operationId": "postSmsInvitationSchedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Schedule sms-invitation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsInvitationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Schedule sms-invitation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sms-invitations/{id}/unschedule": {
+            "post": {
+                "tags": [
+                    "sms-invitations"
+                ],
+                "summary": "Unschedule sms-invitation",
+                "description": "Returns unscheduled sms invitation",
+                "operationId": "postSmsInvitationUnschedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Unschedule sms-invitation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsInvitationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Unschedule sms-invitation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/sms/{id}": {
             "get": {
                 "tags": [
@@ -16296,74 +16420,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a user",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/users/current": {
-            "get": {
-                "tags": [
-                    "users"
-                ],
-                "summary": "Retrieve the current user",
-                "description": "Retrieve the current user based on the given filters",
-                "operationId": "getUserCurrent",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'role', 'eprescription_role', 'specialities', 'educations', 'languages', 'clinics', 'last_selected_clinic', 'clinics_where_all_user', 'preferences', 'user_at_clinics', 'change_logs', 'user_images', 'default_user_image', 'signed_received_remittances', 'signed_sent_remittances', 'received_remittances', 'sent_remittances', 'message_sender', 'notifications', 'tasks', 'two_factor_authentication_setup', 'email_addresses', 'default_email_address'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve the current user",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/UserResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve the current user",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -20761,6 +20817,70 @@
                         "organization_number": {
                             "type": "string",
                             "example": "556935-2726"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SmsInvitationResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "sms_invitation"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "sender_id": {
+                            "type": "string"
+                        },
+                        "from": {
+                            "type": "string"
+                        },
+                        "to": {
+                            "type": "string"
+                        },
+                        "body": {
+                            "type": "string",
+                            "example": "Test message"
+                        },
+                        "segments": {
+                            "type": "number",
+                            "example": 3
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-09-17T00:00:00+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-18T10:26:13+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": false
+                        },
+                        "wait_number_of_hours_after_send": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "only_send_if_booking_unconfirmed": {
+                            "type": "number",
+                            "example": 1
                         }
                     },
                     "type": "object"
