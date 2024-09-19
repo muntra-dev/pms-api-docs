@@ -843,7 +843,7 @@
                 "tags": [
                     "bookings"
                 ],
-                "summary": "Change booking",
+                "summary": "Change a booking",
                 "description": "Returns changed booking based on the given filters",
                 "operationId": "postBookingChange",
                 "consumes": [
@@ -875,45 +875,45 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Change booking",
+                                    "description": "Change a booking",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Change booking",
+                                            "description": "Change a booking",
                                             "properties": {
                                                 "dtstart": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string",
                                                     "example": "2024-08-01 11:35:33"
                                                 },
                                                 "dtend": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string",
                                                     "example": "2024-08-02 12:55:53"
                                                 },
                                                 "booking_type_id": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "number",
                                                     "example": 12
                                                 },
                                                 "clinic_id": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "number",
                                                     "example": 312
                                                 },
                                                 "caregiver_ids": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string"
                                                 },
                                                 "room_ids": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string"
                                                 },
                                                 "resource_ids": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string"
                                                 },
                                                 "patient_ids": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string"
                                                 }
                                             },
@@ -932,7 +932,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Change booking",
+                                    "description": "Change a booking",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/BookingResponse"
@@ -947,7 +947,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Change booking",
+                                    "description": "Change a booking",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1734,6 +1734,130 @@
                 }
             }
         },
+        "/api/email-ics/{id}/schedule": {
+            "post": {
+                "tags": [
+                    "email-ics"
+                ],
+                "summary": "Schedule an email-ics",
+                "description": "Returns scheduled email ics based on the given filters",
+                "operationId": "postEmailScheduleIcs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Schedule an email-ics",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailIcsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Schedule an email-ics",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/email-ics/{id}/unschedule": {
+            "post": {
+                "tags": [
+                    "email-ics"
+                ],
+                "summary": "Unschedule an email-ics",
+                "description": "Returns unscheduled email ics based on the given filters",
+                "operationId": "postEmailUnscheduleIcs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Unschedule an email-ics",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailIcsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Unschedule an email-ics",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/emails": {
             "get": {
                 "tags": [
@@ -1845,7 +1969,7 @@
                 "tags": [
                     "emails"
                 ],
-                "summary": "Create email",
+                "summary": "Create an email",
                 "description": "Returns created email based on the given filters",
                 "operationId": "postEmail",
                 "consumes": [
@@ -1870,18 +1994,18 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create email",
+                                    "description": "Create an email",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create email",
+                                            "description": "Create an email",
                                             "properties": {
                                                 "subject": {
-                                                    "description": "Create email",
+                                                    "description": "Create an email",
                                                     "type": "string",
                                                     "example": "Test subject"
                                                 },
                                                 "body": {
-                                                    "description": "Create email",
+                                                    "description": "Create an email",
                                                     "type": "string",
                                                     "example": "Test body"
                                                 }
@@ -1901,7 +2025,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create email",
+                                    "description": "Create an email",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailsResponse"
@@ -1916,7 +2040,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create email",
+                                    "description": "Create an email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1932,7 +2056,7 @@
                 "tags": [
                     "emails"
                 ],
-                "summary": "Retrieve email",
+                "summary": "Retrieve an email",
                 "description": "Returns certain email based on the given filters",
                 "operationId": "getEmail",
                 "consumes": [
@@ -1976,7 +2100,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve email",
+                                    "description": "Retrieve an email",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailsResponse"
@@ -1991,7 +2115,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve email",
+                                    "description": "Retrieve an email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2005,7 +2129,7 @@
                 "tags": [
                     "emails"
                 ],
-                "summary": "Edit email",
+                "summary": "Edit an email",
                 "description": "Returns edited email based on the given filters",
                 "operationId": "patchEmail",
                 "consumes": [
@@ -2037,18 +2161,18 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit email",
+                                    "description": "Edit an email",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit email",
+                                            "description": "Edit an email",
                                             "properties": {
                                                 "subject": {
-                                                    "description": "Edit email",
+                                                    "description": "Edit an email",
                                                     "type": "string",
                                                     "example": "Test subject"
                                                 },
                                                 "body": {
-                                                    "description": "Edit email",
+                                                    "description": "Edit an email",
                                                     "type": "string",
                                                     "example": "Test body"
                                                 }
@@ -2077,7 +2201,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit email",
+                                    "description": "Edit an email",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailsResponse"
@@ -2092,7 +2216,131 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit email",
+                                    "description": "Edit an email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/emails/{id}/schedule": {
+            "post": {
+                "tags": [
+                    "emails"
+                ],
+                "summary": "Schedule an email",
+                "description": "Returns scheduled email based on the given filters",
+                "operationId": "postEmailSchedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Schedule an email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Schedule an email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/emails/{id}/unschedule": {
+            "post": {
+                "tags": [
+                    "emails"
+                ],
+                "summary": "Unschedule an email",
+                "description": "Returns unscheduled email based on the given filters",
+                "operationId": "postEmailUnschedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Unschedule an email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Unschedule an email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2870,7 +3118,7 @@
                 "tags": [
                     "invoice-payments"
                 ],
-                "summary": "Create a invoice-payments",
+                "summary": "Create an invoice-payment",
                 "description": "Returns created invoice payment based on the given filters",
                 "operationId": "postInvoicePayment",
                 "consumes": [
@@ -2904,23 +3152,23 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a invoice-payments",
+                                    "description": "Create an invoice-payment",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a invoice-payments",
+                                            "description": "Create an invoice-payment",
                                             "properties": {
                                                 "currency_id": {
-                                                    "description": "Create a invoice-payments",
+                                                    "description": "Create an invoice-payment",
                                                     "type": "number",
                                                     "example": 123
                                                 },
                                                 "payment_type_id": {
-                                                    "description": "Create a invoice-payments",
+                                                    "description": "Create an invoice-payment",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "fiscal_year_id": {
-                                                    "description": "Create a invoice-payments",
+                                                    "description": "Create an invoice-payment",
                                                     "type": "number",
                                                     "example": 3
                                                 }
@@ -2940,7 +3188,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a invoice-payments",
+                                    "description": "Create an invoice-payment",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/InvoicePaymentResponse"
@@ -2955,7 +3203,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a invoice-payments",
+                                    "description": "Create an invoice-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2971,7 +3219,7 @@
                 "tags": [
                     "invoice-payments"
                 ],
-                "summary": "Retrieve a invoice-payment",
+                "summary": "Retrieve an invoice-payment",
                 "description": "Returns certain invoice payment based on the given filters",
                 "operationId": "getInvoicePayment",
                 "consumes": [
@@ -3015,7 +3263,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a invoice-payment",
+                                    "description": "Retrieve an invoice-payment",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/InvoicePaymentResponse"
@@ -3030,7 +3278,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a invoice-payment",
+                                    "description": "Retrieve an invoice-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -3044,7 +3292,7 @@
                 "tags": [
                     "invoice-payments"
                 ],
-                "summary": "Edit a invoice-payment",
+                "summary": "Edit an invoice-payment",
                 "description": "Returns edited invoice payment based on the given filters",
                 "operationId": "patchInvoicePayment",
                 "consumes": [
@@ -3085,23 +3333,23 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a invoice-payment",
+                                    "description": "Edit an invoice-payment",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit a invoice-payment",
+                                            "description": "Edit an invoice-payment",
                                             "properties": {
                                                 "currency_id": {
-                                                    "description": "Edit a invoice-payment",
+                                                    "description": "Edit an invoice-payment",
                                                     "type": "number",
                                                     "example": 123
                                                 },
                                                 "payment_type_id": {
-                                                    "description": "Edit a invoice-payment",
+                                                    "description": "Edit an invoice-payment",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "fiscal_year_id": {
-                                                    "description": "Edit a invoice-payment",
+                                                    "description": "Edit an invoice-payment",
                                                     "type": "number",
                                                     "example": 3
                                                 }
@@ -3121,7 +3369,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a invoice-payment",
+                                    "description": "Edit an invoice-payment",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/InvoicePaymentResponse"
@@ -3136,7 +3384,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit a invoice-payment",
+                                    "description": "Edit an invoice-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -4815,7 +5063,7 @@
                 "tags": [
                     "muntra-accepts-review-requests-email-settings"
                 ],
-                "summary": "Create a muntra-accepts-review-requests-email-settings",
+                "summary": "Create a muntra-accepts-review-requests-email-setting",
                 "description": "Returns created Muntra accepts review requests email settings based on the given filters",
                 "operationId": "postMuntraAcceptsReviewRequestsEmailSettings",
                 "consumes": [
@@ -4833,13 +5081,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-setting",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a muntra-accepts-review-requests-email-settings",
+                                            "description": "Create a muntra-accepts-review-requests-email-setting",
                                             "properties": {
                                                 "external_id": {
-                                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                                    "description": "Create a muntra-accepts-review-requests-email-setting",
                                                     "type": "string",
                                                     "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
                                                 }
@@ -4859,7 +5107,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-setting",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraAcceptsReviewRequestsEmailSettingsResponse"
@@ -4874,7 +5122,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-setting",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -5068,7 +5316,7 @@
                 "tags": [
                     "muntra-booking-attendees"
                 ],
-                "summary": "Confirm muntra-booking-attendee",
+                "summary": "Confirm a muntra-booking-attendee",
                 "description": "Returns confirmed Muntra booking attendee based on the given filters",
                 "operationId": "postMuntraBookingAttendeeConfirm",
                 "consumes": [
@@ -5093,13 +5341,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Confirm muntra-booking-attendee",
+                                    "description": "Confirm a muntra-booking-attendee",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Confirm muntra-booking-attendee",
+                                            "description": "Confirm a muntra-booking-attendee",
                                             "properties": {
                                                 "external_id": {
-                                                    "description": "Confirm muntra-booking-attendee",
+                                                    "description": "Confirm a muntra-booking-attendee",
                                                     "type": "string",
                                                     "example": "123"
                                                 }
@@ -5119,7 +5367,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Confirm muntra-booking-attendee",
+                                    "description": "Confirm a muntra-booking-attendee",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraBookingAttendeesResponse"
@@ -5134,7 +5382,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Confirm muntra-booking-attendee",
+                                    "description": "Confirm a muntra-booking-attendee",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7502,7 +7750,7 @@
                 "tags": [
                     "muntra-patient-clinic-curations"
                 ],
-                "summary": "Edit muntra-patient-clinic-curation",
+                "summary": "Edit a muntra-patient-clinic-curation",
                 "description": "Returns edited Muntra patient clinic curation based on the given filters",
                 "operationId": "patchMuntraPatientClinicCuration",
                 "consumes": [
@@ -7534,18 +7782,18 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit muntra-patient-clinic-curation",
+                                    "description": "Edit a muntra-patient-clinic-curation",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit muntra-patient-clinic-curation",
+                                            "description": "Edit a muntra-patient-clinic-curation",
                                             "properties": {
                                                 "external_id": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "type": "string",
                                                     "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
                                                 },
                                                 "accepts_children": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7553,7 +7801,7 @@
                                                     "example": true
                                                 },
                                                 "accessible_via_elevator": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7561,7 +7809,7 @@
                                                     "example": false
                                                 },
                                                 "accessible_via_stairs": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7569,7 +7817,7 @@
                                                     "example": true
                                                 },
                                                 "capable_of_handling_fear_of_medical_procedures": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7577,7 +7825,7 @@
                                                     "example": true
                                                 },
                                                 "handicap_accessible": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7585,7 +7833,7 @@
                                                     "example": false
                                                 },
                                                 "has_drinks": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7593,7 +7841,7 @@
                                                     "example": true
                                                 },
                                                 "has_free_parking_directly_outside_of_clinic": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7601,7 +7849,7 @@
                                                     "example": false
                                                 },
                                                 "has_free_parking_near_the_clinic": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7609,7 +7857,7 @@
                                                     "example": false
                                                 },
                                                 "has_magazines": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7617,7 +7865,7 @@
                                                     "example": true
                                                 },
                                                 "has_music": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7625,7 +7873,7 @@
                                                     "example": true
                                                 },
                                                 "phas_paid_parking_directly_outside_of_clinic": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7633,7 +7881,7 @@
                                                     "example": true
                                                 },
                                                 "has_paid_parking_near_the_clinic": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7641,7 +7889,7 @@
                                                     "example": false
                                                 },
                                                 "has_restroom": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7649,7 +7897,7 @@
                                                     "example": false
                                                 },
                                                 "has_toys": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7657,7 +7905,7 @@
                                                     "example": false
                                                 },
                                                 "has_tv": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7665,7 +7913,7 @@
                                                     "example": false
                                                 },
                                                 "has_waiting_room": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7673,7 +7921,7 @@
                                                     "example": false
                                                 },
                                                 "has_wifi": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7696,7 +7944,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit muntra-patient-clinic-curation",
+                                    "description": "Edit a muntra-patient-clinic-curation",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/PatientClinicCurationResponse"
@@ -7711,7 +7959,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit muntra-patient-clinic-curation",
+                                    "description": "Edit a muntra-patient-clinic-curation",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -8888,7 +9136,7 @@
                 "tags": [
                     "patient-invoice-rows"
                 ],
-                "summary": "Retrieve a patient-invoice-rows",
+                "summary": "Retrieve a patient-invoice-row",
                 "description": "Returns certain patient invoice row based on the given filters",
                 "operationId": "getPatientInvoiceRow",
                 "consumes": [
@@ -8932,7 +9180,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a patient-invoice-rows",
+                                    "description": "Retrieve a patient-invoice-row",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/PatientInvoiceRowResponse"
@@ -8947,7 +9195,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a patient-invoice-rows",
+                                    "description": "Retrieve a patient-invoice-row",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10738,7 +10986,7 @@
                 "tags": [
                     "prices"
                 ],
-                "summary": "Edit a specific price",
+                "summary": "Edit a price",
                 "description": "Returns edited price based on the given filters",
                 "operationId": "patchPrices",
                 "produces": [
@@ -13199,6 +13447,254 @@
                 }
             }
         },
+        "/api/sms-invitation/{id}/schedule": {
+            "post": {
+                "tags": [
+                    "sms-invitations"
+                ],
+                "summary": "Schedule a sms-invitation",
+                "description": "Returns scheduled sms invitation",
+                "operationId": "postSmsInvitationSchedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Schedule a sms-invitation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsInvitationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Schedule a sms-invitation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sms-invitations/{id}/unschedule": {
+            "post": {
+                "tags": [
+                    "sms-invitations"
+                ],
+                "summary": "Unschedule a sms-invitation",
+                "description": "Returns unscheduled sms invitation",
+                "operationId": "postSmsInvitationUnschedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Unschedule a sms-invitation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsInvitationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Unschedule a sms-invitation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sms-reminders/{id}/schedule": {
+            "post": {
+                "tags": [
+                    "sms-reminders"
+                ],
+                "summary": "Schedule a sms-reminder",
+                "description": "Returns scheduled sms reminder based on the given filters",
+                "operationId": "postSmsReminderSchedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Schedule a sms-reminder",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsReminderResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Schedule a sms-reminder",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sms-reminders/{id}/unschedule": {
+            "post": {
+                "tags": [
+                    "sms-reminders"
+                ],
+                "summary": "Unchedule a sms-reminder",
+                "description": "Returns unscheduled sms reminder based on the given filters",
+                "operationId": "postSmsReminderUnschedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Unchedule a sms-reminder",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsReminderResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Unchedule a sms-reminder",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/sms/{id}": {
             "get": {
                 "tags": [
@@ -13372,6 +13868,130 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a sms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sms/{id}/schedule": {
+            "post": {
+                "tags": [
+                    "sms"
+                ],
+                "summary": "Schedule a sms",
+                "description": "Returns scheduled sms",
+                "operationId": "postSmsSchedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Schedule a sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Schedule a sms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sms/{id}/unschedule": {
+            "post": {
+                "tags": [
+                    "sms"
+                ],
+                "summary": "Unschedule a sms",
+                "description": "Returns unscheduled sms",
+                "operationId": "postSmsUnschedule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Unschedule a sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Unschedule a sms",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13882,7 +14502,7 @@
                 "tags": [
                     "snail-mails"
                 ],
-                "summary": "Schedule snail-mail",
+                "summary": "Schedule a snail-mail",
                 "description": "Returns scheduled snail mail based on the given filters",
                 "operationId": "postSnailEmailSchedule",
                 "consumes": [
@@ -13913,7 +14533,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Schedule snail-mail",
+                                    "description": "Schedule a snail-mail",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SnailMailResponse"
@@ -13928,7 +14548,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Schedule snail-mail",
+                                    "description": "Schedule a snail-mail",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13944,7 +14564,7 @@
                 "tags": [
                     "snail-mails"
                 ],
-                "summary": "Unschedule snail-mail",
+                "summary": "Unschedule a snail-mail",
                 "description": "Returns unscheduled snail mail based on the given filters",
                 "operationId": "postSnailEmailUnschedule",
                 "consumes": [
@@ -13975,7 +14595,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Unschedule snail-mail",
+                                    "description": "Unschedule a snail-mail",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SnailMailResponse"
@@ -13990,7 +14610,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Unschedule snail-mail",
+                                    "description": "Unschedule a snail-mail",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -15779,7 +16399,7 @@
                 "tags": [
                     "user-at-clinics"
                 ],
-                "summary": "Create a user-at-clinics",
+                "summary": "Create a user-at-clinic",
                 "description": "Returns created user at clinics based on the given filters",
                 "operationId": "postUserAtClinics",
                 "consumes": [
@@ -15804,27 +16424,27 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a user-at-clinics",
+                                    "description": "Create a user-at-clinic",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a user-at-clinics",
+                                            "description": "Create a user-at-clinic",
                                             "properties": {
                                                 "clinic_id": {
-                                                    "description": "Create a user-at-clinics",
+                                                    "description": "Create a user-at-clinic",
                                                     "type": "integer",
                                                     "example": 5771
                                                 },
                                                 "user_id": {
-                                                    "description": "Create a user-at-clinics",
+                                                    "description": "Create a user-at-clinic",
                                                     "type": "integer",
                                                     "example": 11223
                                                 },
                                                 "organizations_authorized_for_invoicing": {
-                                                    "description": "Create a user-at-clinics",
+                                                    "description": "Create a user-at-clinic",
                                                     "type": "string"
                                                 },
                                                 "default_organization_id": {
-                                                    "description": "Create a user-at-clinics",
+                                                    "description": "Create a user-at-clinic",
                                                     "type": "integer",
                                                     "example": 3331
                                                 }
@@ -15920,7 +16540,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a user-at-clinics",
+                                    "description": "Create a user-at-clinic",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/UserAtClinicsResponse"
@@ -15935,7 +16555,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a user-at-clinics",
+                                    "description": "Create a user-at-clinic",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -15951,7 +16571,7 @@
                 "tags": [
                     "user-at-clinics"
                 ],
-                "summary": "Retrieve the current user at clinics",
+                "summary": "Retrieve the current user-at-clinic",
                 "description": "Returns a the current user at clinics based on the given filters",
                 "operationId": "getCurrentUserAtClinic",
                 "consumes": [
@@ -15988,7 +16608,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve the current user at clinics",
+                                    "description": "Retrieve the current user-at-clinic",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/UserAtClinicsResponse"
@@ -16003,7 +16623,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve the current user at clinics",
+                                    "description": "Retrieve the current user-at-clinic",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -16019,7 +16639,7 @@
                 "tags": [
                     "user-at-clinics"
                 ],
-                "summary": "Retrieve user-at-clinic",
+                "summary": "Retrieve a user-at-clinic",
                 "description": "Returns certain user at clinics based on the given filters",
                 "operationId": "getUserAtClinic",
                 "consumes": [
@@ -16071,7 +16691,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve user-at-clinic",
+                                    "description": "Retrieve a user-at-clinic",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/UserAtClinicsResponse"
@@ -16086,7 +16706,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve user-at-clinic",
+                                    "description": "Retrieve a user-at-clinic",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -16420,6 +17040,74 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a user",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/users/current": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Retrieve the current user",
+                "description": "Retrieve the current user based on the given filters",
+                "operationId": "getUserCurrent",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'role', 'eprescription_role', 'specialities', 'educations', 'languages', 'clinics', 'last_selected_clinic', 'clinics_where_all_user', 'preferences', 'user_at_clinics', 'change_logs', 'user_images', 'default_user_image', 'signed_received_remittances', 'signed_sent_remittances', 'received_remittances', 'sent_remittances', 'message_sender', 'notifications', 'tasks', 'two_factor_authentication_setup', 'email_addresses', 'default_email_address'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve the current user",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UserResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve the current user",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -18743,6 +19431,64 @@
             },
             "type": "object"
         },
+        "EmailIcsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "email_ics"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "to": {
+                            "type": "string"
+                        },
+                        "to_name": {
+                            "type": "string",
+                            "example": "Gordon"
+                        },
+                        "subject": {
+                            "type": "string",
+                            "example": "Test subject"
+                        },
+                        "body": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-11T29:25:31+02:00"
+                        },
+                        "wait_number_of_hours_after_send": {
+                            "type": "number",
+                            "example": 20
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "EmailsResponse": {
             "properties": {
                 "type": {
@@ -20824,6 +21570,130 @@
             },
             "type": "object"
         },
+        "SmsInvitationResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "sms_invitation"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "sender_id": {
+                            "type": "string"
+                        },
+                        "from": {
+                            "type": "string"
+                        },
+                        "to": {
+                            "type": "string"
+                        },
+                        "body": {
+                            "type": "string",
+                            "example": "Test message"
+                        },
+                        "segments": {
+                            "type": "number",
+                            "example": 3
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-09-17T00:00:00+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-18T10:26:13+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "wait_number_of_hours_after_send": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "only_send_if_booking_unconfirmed": {
+                            "type": "number",
+                            "example": 1
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SmsReminderResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "sms_reminder"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "sender_id": {
+                            "type": "string"
+                        },
+                        "from": {
+                            "type": "string"
+                        },
+                        "to": {
+                            "type": "string"
+                        },
+                        "body": {
+                            "type": "string"
+                        },
+                        "segments": {
+                            "type": "number"
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-09-18T00:00:00+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-18T17:06:51+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "send_number_of_hours_before_booking": {
+                            "type": "number",
+                            "example": 20
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "SmsResponse": {
             "properties": {
                 "type": {
@@ -21588,7 +22458,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "room"
+                    "example": "user"
                 },
                 "id": {
                     "type": "string",
