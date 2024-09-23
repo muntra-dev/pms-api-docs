@@ -5852,6 +5852,374 @@
                 }
             }
         },
+        "/api/journal-entry-text-templates": {
+            "get": {
+                "tags": [
+                    "journal-entry-text-templates"
+                ],
+                "summary": "List journal-entry-text-templates",
+                "description": "Returns list of journal entry text templates based on the given filters",
+                "operationId": "getJournalEntryTextTemplates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'tenant_database'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "tenant_database_id",
+                        "in": "query",
+                        "description": "'tenant_database_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "elements",
+                        "in": "query",
+                        "description": "'elements' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List journal-entry-text-templates",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List journal-entry-text-templates",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "journal-entry-text-templates"
+                ],
+                "summary": "Create a journal-entry-text-template",
+                "description": "Returns created journal entry text template based on the given filters",
+                "operationId": "postJournalEntryTextTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry-text-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a journal-entry-text-template",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create a journal-entry-text-template",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "tenant_database_id",
+                        "in": "query",
+                        "description": "'tenant_database_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry-text-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a journal-entry-text-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-entry-text-templates/{id}": {
+            "get": {
+                "tags": [
+                    "journal-entry-text-templates"
+                ],
+                "summary": "Retrieve a journal-entry-text-template",
+                "description": "Returns certain journal entry text template based on the given filters",
+                "operationId": "getJournalEntryTextTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'tenant_database'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a journal-entry-text-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a journal-entry-text-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "journal-entry-text-templates"
+                ],
+                "summary": "Edit a journal-entry-text-template",
+                "description": "Returns edited journal entry text template based on the given filters",
+                "operationId": "patchJournalEntryTextTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry-text-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a journal-entry-text-template",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a journal-entry-text-template",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry-text-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a journal-entry-text-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/latest-monitored-journal-entries": {
             "get": {
                 "tags": [
@@ -16019,123 +16387,6 @@
                 }
             }
         },
-        "/api/surfaces": {
-            "get": {
-                "tags": [
-                    "surfaces"
-                ],
-                "summary": "List surfaces",
-                "description": "Returns a list of surfaces based on the given filters",
-                "operationId": "getListSurfaces",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List surfaces",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SurfacesResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List surfaces",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/surfaces/{id}": {
-            "get": {
-                "tags": [
-                    "surfaces"
-                ],
-                "summary": "Retrieve a surface",
-                "description": "Returns certain surface based on the given filters",
-                "operationId": "getSurface",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a surface",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/SurfacesResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a surface",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/tanden-checks": {
             "get": {
                 "tags": [
@@ -23832,38 +24083,6 @@
             },
             "type": "object"
         },
-        "SurfacesResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "surface"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "surface": {
-                            "type": "string"
-                        },
-                        "selectable": {
-                            "type": "string",
-                            "example": "tooth"
-                        },
-                        "tooth": {
-                            "type": "string",
-                            "example": "11"
-                        },
-                        "points": {
-                            "type": "string"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
         "TandenCheckResponse": {
             "properties": {
                 "type": {
@@ -23988,6 +24207,30 @@
                         "database": {
                             "type": "string",
                             "example": "prodentor_823"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "JournalEntryTextTemplateResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "journal_entry_text_template"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "220731"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
