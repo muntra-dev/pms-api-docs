@@ -843,7 +843,7 @@
                 "tags": [
                     "bookings"
                 ],
-                "summary": "Change booking",
+                "summary": "Change a booking",
                 "description": "Returns changed booking based on the given filters",
                 "operationId": "postBookingChange",
                 "consumes": [
@@ -875,45 +875,45 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Change booking",
+                                    "description": "Change a booking",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Change booking",
+                                            "description": "Change a booking",
                                             "properties": {
                                                 "dtstart": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string",
                                                     "example": "2024-08-01 11:35:33"
                                                 },
                                                 "dtend": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string",
                                                     "example": "2024-08-02 12:55:53"
                                                 },
                                                 "booking_type_id": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "number",
                                                     "example": 12
                                                 },
                                                 "clinic_id": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "number",
                                                     "example": 312
                                                 },
                                                 "caregiver_ids": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string"
                                                 },
                                                 "room_ids": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string"
                                                 },
                                                 "resource_ids": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string"
                                                 },
                                                 "patient_ids": {
-                                                    "description": "Change booking",
+                                                    "description": "Change a booking",
                                                     "type": "string"
                                                 }
                                             },
@@ -932,7 +932,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Change booking",
+                                    "description": "Change a booking",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/BookingResponse"
@@ -947,7 +947,445 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Change booking",
+                                    "description": "Change a booking",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/calendar-views": {
+            "get": {
+                "tags": [
+                    "calendar-views"
+                ],
+                "summary": "List calendar-views",
+                "description": "Returns list of calendar views based on the given filters",
+                "operationId": "getCalendarViews",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'clinics', 'users', 'rooms', 'hidden_weekdays'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List calendar-views",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CalendarViewResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List calendar-views",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "calendar-views"
+                ],
+                "summary": "Create a calendar-view",
+                "description": "Returns created calendar view based on the given filters",
+                "operationId": "postCalendarView",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a calendar-view",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a calendar-view",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create a calendar-view",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "days": {
+                                                    "description": "Create a calendar-view",
+                                                    "type": "number",
+                                                    "example": 10
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "clinics",
+                        "in": "query",
+                        "description": "'clinics' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "users",
+                        "in": "query",
+                        "description": "'users' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "rooms",
+                        "in": "query",
+                        "description": "'rooms' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "display_weekends",
+                        "in": "query",
+                        "description": "'display_weekends' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a calendar-view",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CalendarViewResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a calendar-view",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/calendar-views/{id}": {
+            "get": {
+                "tags": [
+                    "calendar-views"
+                ],
+                "summary": "Retrieve a calendar-view",
+                "description": "Returns certain calendar view based on the given filters",
+                "operationId": "getCalendarView",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'clinics', 'users', 'rooms', 'hidden_weekdays'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a calendar-view",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CalendarViewResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a calendar-view",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "calendar-views"
+                ],
+                "summary": "Edit a calendar-view",
+                "description": "Returns edited calendar view based on the given filters",
+                "operationId": "patchCalendarView",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a calendar-view",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a calendar-view",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a calendar-view",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "days": {
+                                                    "description": "Edit a calendar-view",
+                                                    "type": "number",
+                                                    "example": 10
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "clinics",
+                        "in": "query",
+                        "description": "'clinics' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "users",
+                        "in": "query",
+                        "description": "'users' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "rooms",
+                        "in": "query",
+                        "description": "'rooms' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "display_weekends",
+                        "in": "query",
+                        "description": "'display_weekends' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a calendar-view",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CalendarViewResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a calendar-view",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1016,6 +1454,457 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve the current clinic",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/county-council-prices": {
+            "get": {
+                "tags": [
+                    "county-council-prices"
+                ],
+                "summary": "List county-council-prices",
+                "description": "Returns a list of county council price based on the given filters",
+                "operationId": "getCountyCouncilPrices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'price_list', 'currency', 'vat_code', 'default_treatment'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "list_id",
+                        "in": "query",
+                        "description": "'list_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "list_ids",
+                        "in": "query",
+                        "description": "'list_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "county_council_id",
+                        "in": "query",
+                        "description": "'county_council_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "price_code",
+                        "in": "query",
+                        "description": "'price_code' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "elements",
+                        "in": "query",
+                        "description": "'elements' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "county_council_patient_category_ids",
+                        "in": "query",
+                        "description": "'county_council_patient_category_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List county-council-prices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountyCouncilPriceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List county-council-prices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "county-council-prices"
+                ],
+                "summary": "Create a county-council-price",
+                "description": "Returns created county council price based on the given filters",
+                "operationId": "postCountyCouncilPrice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a county-council-price",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a county-council-price",
+                                            "properties": {
+                                                "description": {
+                                                    "description": "Create a county-council-price",
+                                                    "type": "string"
+                                                },
+                                                "price_list_id": {
+                                                    "description": "Create a county-council-price",
+                                                    "type": "number",
+                                                    "example": 22
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "default_treatment_id",
+                        "in": "query",
+                        "description": "'default_treatment_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a county-council-price",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountyCouncilPriceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a county-council-price",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/county-council-prices/{id}": {
+            "get": {
+                "tags": [
+                    "county-council-prices"
+                ],
+                "summary": "Retrieve a county-council-price",
+                "description": "Returns certain county council price based on the given filters",
+                "operationId": "getCountyCouncilPrice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'price_list', 'currency', 'vat_code', 'default_treatment'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a county-council-price",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountyCouncilPriceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a county-council-price",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "county-council-prices"
+                ],
+                "summary": "Edit a county-council-price",
+                "description": "Returns edited county council price based on the given filters",
+                "operationId": "patchCountyCouncilPrice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a county-council-price",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a county-council-price",
+                                            "properties": {
+                                                "description": {
+                                                    "description": "Edit a county-council-price",
+                                                    "type": "string"
+                                                },
+                                                "price_list_id": {
+                                                    "description": "Edit a county-council-price",
+                                                    "type": "number",
+                                                    "example": 22
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "default_treatment_id",
+                        "in": "query",
+                        "description": "'default_treatment_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a county-council-price",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountyCouncilPriceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a county-council-price",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1739,7 +2628,7 @@
                 "tags": [
                     "email-ics"
                 ],
-                "summary": "Schedule email-ics",
+                "summary": "Schedule an email-ics",
                 "description": "Returns scheduled email ics based on the given filters",
                 "operationId": "postEmailScheduleIcs",
                 "consumes": [
@@ -1770,7 +2659,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Schedule email-ics",
+                                    "description": "Schedule an email-ics",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailIcsResponse"
@@ -1785,7 +2674,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Schedule email-ics",
+                                    "description": "Schedule an email-ics",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1801,7 +2690,7 @@
                 "tags": [
                     "email-ics"
                 ],
-                "summary": "Unschedule email-ics",
+                "summary": "Unschedule an email-ics",
                 "description": "Returns unscheduled email ics based on the given filters",
                 "operationId": "postEmailUnscheduleIcs",
                 "consumes": [
@@ -1832,7 +2721,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Unschedule email-ics",
+                                    "description": "Unschedule an email-ics",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailIcsResponse"
@@ -1847,7 +2736,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Unschedule email-ics",
+                                    "description": "Unschedule an email-ics",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1969,7 +2858,7 @@
                 "tags": [
                     "emails"
                 ],
-                "summary": "Create email",
+                "summary": "Create an email",
                 "description": "Returns created email based on the given filters",
                 "operationId": "postEmail",
                 "consumes": [
@@ -1994,18 +2883,18 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create email",
+                                    "description": "Create an email",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create email",
+                                            "description": "Create an email",
                                             "properties": {
                                                 "subject": {
-                                                    "description": "Create email",
+                                                    "description": "Create an email",
                                                     "type": "string",
                                                     "example": "Test subject"
                                                 },
                                                 "body": {
-                                                    "description": "Create email",
+                                                    "description": "Create an email",
                                                     "type": "string",
                                                     "example": "Test body"
                                                 }
@@ -2025,7 +2914,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create email",
+                                    "description": "Create an email",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailsResponse"
@@ -2040,7 +2929,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create email",
+                                    "description": "Create an email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2056,7 +2945,7 @@
                 "tags": [
                     "emails"
                 ],
-                "summary": "Retrieve email",
+                "summary": "Retrieve an email",
                 "description": "Returns certain email based on the given filters",
                 "operationId": "getEmail",
                 "consumes": [
@@ -2100,7 +2989,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve email",
+                                    "description": "Retrieve an email",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailsResponse"
@@ -2115,7 +3004,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve email",
+                                    "description": "Retrieve an email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2129,7 +3018,7 @@
                 "tags": [
                     "emails"
                 ],
-                "summary": "Edit email",
+                "summary": "Edit an email",
                 "description": "Returns edited email based on the given filters",
                 "operationId": "patchEmail",
                 "consumes": [
@@ -2161,18 +3050,18 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit email",
+                                    "description": "Edit an email",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit email",
+                                            "description": "Edit an email",
                                             "properties": {
                                                 "subject": {
-                                                    "description": "Edit email",
+                                                    "description": "Edit an email",
                                                     "type": "string",
                                                     "example": "Test subject"
                                                 },
                                                 "body": {
-                                                    "description": "Edit email",
+                                                    "description": "Edit an email",
                                                     "type": "string",
                                                     "example": "Test body"
                                                 }
@@ -2201,7 +3090,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit email",
+                                    "description": "Edit an email",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailsResponse"
@@ -2216,7 +3105,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit email",
+                                    "description": "Edit an email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2232,7 +3121,7 @@
                 "tags": [
                     "emails"
                 ],
-                "summary": "Schedule email",
+                "summary": "Schedule an email",
                 "description": "Returns scheduled email based on the given filters",
                 "operationId": "postEmailSchedule",
                 "consumes": [
@@ -2263,7 +3152,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Schedule email",
+                                    "description": "Schedule an email",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailsResponse"
@@ -2278,7 +3167,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Schedule email",
+                                    "description": "Schedule an email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -2294,7 +3183,7 @@
                 "tags": [
                     "emails"
                 ],
-                "summary": "Unschedule email",
+                "summary": "Unschedule an email",
                 "description": "Returns unscheduled email based on the given filters",
                 "operationId": "postEmailUnschedule",
                 "consumes": [
@@ -2325,7 +3214,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Unschedule email",
+                                    "description": "Unschedule an email",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/EmailsResponse"
@@ -2340,7 +3229,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Unschedule email",
+                                    "description": "Unschedule an email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -3118,7 +4007,7 @@
                 "tags": [
                     "invoice-payments"
                 ],
-                "summary": "Create a invoice-payments",
+                "summary": "Create an invoice-payment",
                 "description": "Returns created invoice payment based on the given filters",
                 "operationId": "postInvoicePayment",
                 "consumes": [
@@ -3152,23 +4041,23 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a invoice-payments",
+                                    "description": "Create an invoice-payment",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a invoice-payments",
+                                            "description": "Create an invoice-payment",
                                             "properties": {
                                                 "currency_id": {
-                                                    "description": "Create a invoice-payments",
+                                                    "description": "Create an invoice-payment",
                                                     "type": "number",
                                                     "example": 123
                                                 },
                                                 "payment_type_id": {
-                                                    "description": "Create a invoice-payments",
+                                                    "description": "Create an invoice-payment",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "fiscal_year_id": {
-                                                    "description": "Create a invoice-payments",
+                                                    "description": "Create an invoice-payment",
                                                     "type": "number",
                                                     "example": 3
                                                 }
@@ -3188,7 +4077,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a invoice-payments",
+                                    "description": "Create an invoice-payment",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/InvoicePaymentResponse"
@@ -3203,7 +4092,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a invoice-payments",
+                                    "description": "Create an invoice-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -3219,7 +4108,7 @@
                 "tags": [
                     "invoice-payments"
                 ],
-                "summary": "Retrieve a invoice-payment",
+                "summary": "Retrieve an invoice-payment",
                 "description": "Returns certain invoice payment based on the given filters",
                 "operationId": "getInvoicePayment",
                 "consumes": [
@@ -3263,7 +4152,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a invoice-payment",
+                                    "description": "Retrieve an invoice-payment",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/InvoicePaymentResponse"
@@ -3278,7 +4167,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a invoice-payment",
+                                    "description": "Retrieve an invoice-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -3292,7 +4181,7 @@
                 "tags": [
                     "invoice-payments"
                 ],
-                "summary": "Edit a invoice-payment",
+                "summary": "Edit an invoice-payment",
                 "description": "Returns edited invoice payment based on the given filters",
                 "operationId": "patchInvoicePayment",
                 "consumes": [
@@ -3333,23 +4222,23 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a invoice-payment",
+                                    "description": "Edit an invoice-payment",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit a invoice-payment",
+                                            "description": "Edit an invoice-payment",
                                             "properties": {
                                                 "currency_id": {
-                                                    "description": "Edit a invoice-payment",
+                                                    "description": "Edit an invoice-payment",
                                                     "type": "number",
                                                     "example": 123
                                                 },
                                                 "payment_type_id": {
-                                                    "description": "Edit a invoice-payment",
+                                                    "description": "Edit an invoice-payment",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "fiscal_year_id": {
-                                                    "description": "Edit a invoice-payment",
+                                                    "description": "Edit an invoice-payment",
                                                     "type": "number",
                                                     "example": 3
                                                 }
@@ -3369,7 +4258,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a invoice-payment",
+                                    "description": "Edit an invoice-payment",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/InvoicePaymentResponse"
@@ -3384,7 +4273,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit a invoice-payment",
+                                    "description": "Edit an invoice-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -5063,7 +5952,7 @@
                 "tags": [
                     "muntra-accepts-review-requests-email-settings"
                 ],
-                "summary": "Create a muntra-accepts-review-requests-email-settings",
+                "summary": "Create a muntra-accepts-review-requests-email-setting",
                 "description": "Returns created Muntra accepts review requests email settings based on the given filters",
                 "operationId": "postMuntraAcceptsReviewRequestsEmailSettings",
                 "consumes": [
@@ -5081,13 +5970,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-setting",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a muntra-accepts-review-requests-email-settings",
+                                            "description": "Create a muntra-accepts-review-requests-email-setting",
                                             "properties": {
                                                 "external_id": {
-                                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                                    "description": "Create a muntra-accepts-review-requests-email-setting",
                                                     "type": "string",
                                                     "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
                                                 }
@@ -5107,7 +5996,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-setting",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraAcceptsReviewRequestsEmailSettingsResponse"
@@ -5122,7 +6011,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a muntra-accepts-review-requests-email-settings",
+                                    "description": "Create a muntra-accepts-review-requests-email-setting",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -5316,7 +6205,7 @@
                 "tags": [
                     "muntra-booking-attendees"
                 ],
-                "summary": "Confirm muntra-booking-attendee",
+                "summary": "Confirm a muntra-booking-attendee",
                 "description": "Returns confirmed Muntra booking attendee based on the given filters",
                 "operationId": "postMuntraBookingAttendeeConfirm",
                 "consumes": [
@@ -5341,13 +6230,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Confirm muntra-booking-attendee",
+                                    "description": "Confirm a muntra-booking-attendee",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Confirm muntra-booking-attendee",
+                                            "description": "Confirm a muntra-booking-attendee",
                                             "properties": {
                                                 "external_id": {
-                                                    "description": "Confirm muntra-booking-attendee",
+                                                    "description": "Confirm a muntra-booking-attendee",
                                                     "type": "string",
                                                     "example": "123"
                                                 }
@@ -5367,7 +6256,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Confirm muntra-booking-attendee",
+                                    "description": "Confirm a muntra-booking-attendee",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/MuntraBookingAttendeesResponse"
@@ -5382,7 +6271,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Confirm muntra-booking-attendee",
+                                    "description": "Confirm a muntra-booking-attendee",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7750,7 +8639,7 @@
                 "tags": [
                     "muntra-patient-clinic-curations"
                 ],
-                "summary": "Edit muntra-patient-clinic-curation",
+                "summary": "Edit a muntra-patient-clinic-curation",
                 "description": "Returns edited Muntra patient clinic curation based on the given filters",
                 "operationId": "patchMuntraPatientClinicCuration",
                 "consumes": [
@@ -7782,18 +8671,18 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit muntra-patient-clinic-curation",
+                                    "description": "Edit a muntra-patient-clinic-curation",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit muntra-patient-clinic-curation",
+                                            "description": "Edit a muntra-patient-clinic-curation",
                                             "properties": {
                                                 "external_id": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "type": "string",
                                                     "example": "RR2GEVn08i21zRslMuvz6KmM9K16cg60ot"
                                                 },
                                                 "accepts_children": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7801,7 +8690,7 @@
                                                     "example": true
                                                 },
                                                 "accessible_via_elevator": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7809,7 +8698,7 @@
                                                     "example": false
                                                 },
                                                 "accessible_via_stairs": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7817,7 +8706,7 @@
                                                     "example": true
                                                 },
                                                 "capable_of_handling_fear_of_medical_procedures": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7825,7 +8714,7 @@
                                                     "example": true
                                                 },
                                                 "handicap_accessible": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7833,7 +8722,7 @@
                                                     "example": false
                                                 },
                                                 "has_drinks": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7841,7 +8730,7 @@
                                                     "example": true
                                                 },
                                                 "has_free_parking_directly_outside_of_clinic": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7849,7 +8738,7 @@
                                                     "example": false
                                                 },
                                                 "has_free_parking_near_the_clinic": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7857,7 +8746,7 @@
                                                     "example": false
                                                 },
                                                 "has_magazines": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7865,7 +8754,7 @@
                                                     "example": true
                                                 },
                                                 "has_music": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7873,7 +8762,7 @@
                                                     "example": true
                                                 },
                                                 "phas_paid_parking_directly_outside_of_clinic": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7881,7 +8770,7 @@
                                                     "example": true
                                                 },
                                                 "has_paid_parking_near_the_clinic": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7889,7 +8778,7 @@
                                                     "example": false
                                                 },
                                                 "has_restroom": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7897,7 +8786,7 @@
                                                     "example": false
                                                 },
                                                 "has_toys": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7905,7 +8794,7 @@
                                                     "example": false
                                                 },
                                                 "has_tv": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7913,7 +8802,7 @@
                                                     "example": false
                                                 },
                                                 "has_waiting_room": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7921,7 +8810,7 @@
                                                     "example": false
                                                 },
                                                 "has_wifi": {
-                                                    "description": "Edit muntra-patient-clinic-curation",
+                                                    "description": "Edit a muntra-patient-clinic-curation",
                                                     "required": [
                                                         "false"
                                                     ],
@@ -7944,7 +8833,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit muntra-patient-clinic-curation",
+                                    "description": "Edit a muntra-patient-clinic-curation",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/PatientClinicCurationResponse"
@@ -7959,7 +8848,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit muntra-patient-clinic-curation",
+                                    "description": "Edit a muntra-patient-clinic-curation",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -8831,6 +9720,268 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a muntra-role",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/notifications": {
+            "get": {
+                "tags": [
+                    "notifications"
+                ],
+                "summary": "List notifications",
+                "description": "Returns list of notifications based on the given filters",
+                "operationId": "getNotifications",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'clinic', 'notification_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List notifications",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/NotificationsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List notifications",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/notifications/{id}": {
+            "get": {
+                "tags": [
+                    "notifications"
+                ],
+                "summary": "Retrieve an notification",
+                "description": "Returns certain notification based on the given filters",
+                "operationId": "getNotification",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'clinic', 'notification_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an notification",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/NotificationsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an notification",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "notifications"
+                ],
+                "summary": "Edit an notification",
+                "description": "Returns edited notification based on the given filters",
+                "operationId": "patchNotification",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an notification",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an notification",
+                                            "properties": {
+                                                "is_read": {
+                                                    "description": "Edit an notification",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "deleted": {
+                                                    "description": "Edit an notification",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an notification",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/NotificationsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an notification",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10986,7 +12137,7 @@
                 "tags": [
                     "prices"
                 ],
-                "summary": "Edit a specific price",
+                "summary": "Edit a price",
                 "description": "Returns edited price based on the given filters",
                 "operationId": "patchPrices",
                 "produces": [
@@ -13452,7 +14603,7 @@
                 "tags": [
                     "sms-invitations"
                 ],
-                "summary": "Schedule sms-invitations",
+                "summary": "Schedule a sms-invitation",
                 "description": "Returns scheduled sms invitation",
                 "operationId": "postSmsInvitationSchedule",
                 "consumes": [
@@ -13483,7 +14634,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Schedule sms-invitation",
+                                    "description": "Schedule a sms-invitation",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SmsInvitationResponse"
@@ -13498,7 +14649,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Schedule sms-invitation",
+                                    "description": "Schedule a sms-invitation",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13514,7 +14665,7 @@
                 "tags": [
                     "sms-invitations"
                 ],
-                "summary": "Unschedule sms-invitation",
+                "summary": "Unschedule a sms-invitation",
                 "description": "Returns unscheduled sms invitation",
                 "operationId": "postSmsInvitationUnschedule",
                 "consumes": [
@@ -13545,7 +14696,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Unschedule sms-invitation",
+                                    "description": "Unschedule a sms-invitation",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SmsInvitationResponse"
@@ -13560,7 +14711,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Unschedule sms-invitation",
+                                    "description": "Unschedule a sms-invitation",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13576,7 +14727,7 @@
                 "tags": [
                     "sms-reminders"
                 ],
-                "summary": "Schedule sms-reminder",
+                "summary": "Schedule a sms-reminder",
                 "description": "Returns scheduled sms reminder based on the given filters",
                 "operationId": "postSmsReminderSchedule",
                 "consumes": [
@@ -13607,7 +14758,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Schedule sms-reminder",
+                                    "description": "Schedule a sms-reminder",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SmsReminderResponse"
@@ -13622,7 +14773,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Schedule sms-reminder",
+                                    "description": "Schedule a sms-reminder",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13638,7 +14789,7 @@
                 "tags": [
                     "sms-reminders"
                 ],
-                "summary": "Unchedule sms-reminder",
+                "summary": "Unchedule a sms-reminder",
                 "description": "Returns unscheduled sms reminder based on the given filters",
                 "operationId": "postSmsReminderUnschedule",
                 "consumes": [
@@ -13669,7 +14820,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Unchedule sms-reminder",
+                                    "description": "Unchedule a sms-reminder",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SmsReminderResponse"
@@ -13684,7 +14835,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Unchedule sms-reminder",
+                                    "description": "Unchedule a sms-reminder",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13883,7 +15034,7 @@
                 "tags": [
                     "sms"
                 ],
-                "summary": "Schedule sms",
+                "summary": "Schedule a sms",
                 "description": "Returns scheduled sms",
                 "operationId": "postSmsSchedule",
                 "consumes": [
@@ -13914,7 +15065,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Schedule sms",
+                                    "description": "Schedule a sms",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SmsResponse"
@@ -13929,7 +15080,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Schedule sms",
+                                    "description": "Schedule a sms",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13945,7 +15096,7 @@
                 "tags": [
                     "sms"
                 ],
-                "summary": "Unschedule sms",
+                "summary": "Unschedule a sms",
                 "description": "Returns unscheduled sms",
                 "operationId": "postSmsUnschedule",
                 "consumes": [
@@ -13976,7 +15127,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Unschedule sms",
+                                    "description": "Unschedule a sms",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SmsResponse"
@@ -13991,7 +15142,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Unschedule sms",
+                                    "description": "Unschedule a sms",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -14502,7 +15653,7 @@
                 "tags": [
                     "snail-mails"
                 ],
-                "summary": "Schedule snail-mail",
+                "summary": "Schedule a snail-mail",
                 "description": "Returns scheduled snail mail based on the given filters",
                 "operationId": "postSnailEmailSchedule",
                 "consumes": [
@@ -14533,7 +15684,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Schedule snail-mail",
+                                    "description": "Schedule a snail-mail",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SnailMailResponse"
@@ -14548,7 +15699,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Schedule snail-mail",
+                                    "description": "Schedule a snail-mail",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -14564,7 +15715,7 @@
                 "tags": [
                     "snail-mails"
                 ],
-                "summary": "Unschedule snail-mail",
+                "summary": "Unschedule a snail-mail",
                 "description": "Returns unscheduled snail mail based on the given filters",
                 "operationId": "postSnailEmailUnschedule",
                 "consumes": [
@@ -14595,7 +15746,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Unschedule snail-mail",
+                                    "description": "Unschedule a snail-mail",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/SnailMailResponse"
@@ -14610,7 +15761,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Unschedule snail-mail",
+                                    "description": "Unschedule a snail-mail",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -15358,6 +16509,517 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a task",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tenant-databases/current": {
+            "get": {
+                "tags": [
+                    "tenant-databases"
+                ],
+                "summary": "Retrieve the current tenant database",
+                "description": "Returns current tenant database based on the given filters",
+                "operationId": "getCurrentTenantDatabase",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'clinics', 'allowed_ip_addresses'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve the current tenant database",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TenantDatabaseResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve the current tenant database",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tickets": {
+            "get": {
+                "tags": [
+                    "tickets"
+                ],
+                "summary": "List tickets",
+                "description": "Returns a list of tickets based on the given filters",
+                "operationId": "getTickets",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'responsible', 'message_rooms'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List tickets",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TicketResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List tickets",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tickets"
+                ],
+                "summary": "Create a ticket",
+                "description": "Returns created ticket based on the given filters",
+                "operationId": "postTicket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a ticket",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a ticket",
+                                            "properties": {
+                                                "subject": {
+                                                    "description": "Create a ticket",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "message_body",
+                        "in": "query",
+                        "description": "'message_body' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a ticket",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TicketResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a ticket",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tickets/latest": {
+            "get": {
+                "tags": [
+                    "tickets"
+                ],
+                "summary": "Get latest ticket",
+                "description": "Returns latest ticket based on the given filters",
+                "operationId": "getLatestTicket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'responsible', 'message_rooms'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Get latest ticket",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TicketResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Get latest ticket",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tickets/{id}": {
+            "get": {
+                "tags": [
+                    "tickets"
+                ],
+                "summary": "Retrieve a ticket",
+                "description": "Returns certain ticket based on the given filters",
+                "operationId": "getTicket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'responsible', 'message_rooms'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a ticket",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TicketResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a ticket",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "tickets"
+                ],
+                "summary": "Edit a ticket",
+                "description": "Returns edited ticket based on the given filters",
+                "operationId": "patchTicket",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a ticket",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a ticket",
+                                            "properties": {
+                                                "subject": {
+                                                    "description": "Edit a ticket",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a ticket",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TicketResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a ticket",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -16276,328 +17938,6 @@
                 }
             }
         },
-        "/api/treatments": {
-            "get": {
-                "tags": [
-                    "treatments"
-                ],
-                "summary": "List treatments",
-                "description": "Returns a list of treatments based on the given filters",
-                "operationId": "getTreatments",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "clinic_id",
-                        "in": "query",
-                        "description": "'clinic_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "elements",
-                        "in": "query",
-                        "description": "'elements' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "description": "'per_page' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List treatments",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TreatmentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List treatments",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "treatments"
-                ],
-                "summary": "Create a treatment",
-                "description": "Returns created treatment based on the given filters",
-                "operationId": "postTreatment",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a treatment",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a treatment",
-                                            "properties": {
-                                                "text": {
-                                                    "description": "Create a treatment",
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a treatment",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TreatmentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a treatment",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/treatments/{id}": {
-            "get": {
-                "tags": [
-                    "treatments"
-                ],
-                "summary": "Retrieve a treatment",
-                "description": "Returns certain treatment based on the given filters",
-                "operationId": "getTreatment",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a treatment",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TreatmentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a treatment",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "treatments"
-                ],
-                "summary": "Edit a treatment",
-                "description": "Returns edited treatment based on the given filters",
-                "operationId": "patchTreatment",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a treatment",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a treatment",
-                                            "properties": {
-                                                "text": {
-                                                    "description": "Edit a treatment",
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a treatment",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TreatmentResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a treatment",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/user-at-clinics": {
             "get": {
                 "tags": [
@@ -16721,7 +18061,7 @@
                 "tags": [
                     "user-at-clinics"
                 ],
-                "summary": "Create a user-at-clinics",
+                "summary": "Create a user-at-clinic",
                 "description": "Returns created user at clinics based on the given filters",
                 "operationId": "postUserAtClinics",
                 "consumes": [
@@ -16746,27 +18086,27 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a user-at-clinics",
+                                    "description": "Create a user-at-clinic",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a user-at-clinics",
+                                            "description": "Create a user-at-clinic",
                                             "properties": {
                                                 "clinic_id": {
-                                                    "description": "Create a user-at-clinics",
+                                                    "description": "Create a user-at-clinic",
                                                     "type": "integer",
                                                     "example": 5771
                                                 },
                                                 "user_id": {
-                                                    "description": "Create a user-at-clinics",
+                                                    "description": "Create a user-at-clinic",
                                                     "type": "integer",
                                                     "example": 11223
                                                 },
                                                 "organizations_authorized_for_invoicing": {
-                                                    "description": "Create a user-at-clinics",
+                                                    "description": "Create a user-at-clinic",
                                                     "type": "string"
                                                 },
                                                 "default_organization_id": {
-                                                    "description": "Create a user-at-clinics",
+                                                    "description": "Create a user-at-clinic",
                                                     "type": "integer",
                                                     "example": 3331
                                                 }
@@ -16862,7 +18202,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a user-at-clinics",
+                                    "description": "Create a user-at-clinic",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/UserAtClinicsResponse"
@@ -16877,7 +18217,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a user-at-clinics",
+                                    "description": "Create a user-at-clinic",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -16893,7 +18233,7 @@
                 "tags": [
                     "user-at-clinics"
                 ],
-                "summary": "Retrieve the current user at clinics",
+                "summary": "Retrieve the current user-at-clinic",
                 "description": "Returns a the current user at clinics based on the given filters",
                 "operationId": "getCurrentUserAtClinic",
                 "consumes": [
@@ -16930,7 +18270,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve the current user at clinics",
+                                    "description": "Retrieve the current user-at-clinic",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/UserAtClinicsResponse"
@@ -16945,7 +18285,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve the current user at clinics",
+                                    "description": "Retrieve the current user-at-clinic",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -17616,6 +18956,74 @@
                 }
             }
         },
+        "/api/vat-codes": {
+            "get": {
+                "tags": [
+                    "vat-codes"
+                ],
+                "summary": "List vat-codes",
+                "description": "Returns a list of vat codes based on the given filters",
+                "operationId": "getVatCodes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List vat-codes",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/VatCodeWebhookRequest"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List vat-codes",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/webhooks:booking": {
             "post": {
                 "tags": [
@@ -18077,6 +19485,52 @@
                         "archived_at": {
                             "type": "string",
                             "example": "2024-02-01T09:11:00+01:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CalendarViewResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "calendar_view"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "days": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "status": {
+                            "type": "string",
+                            "example": "CONFIRMED,TENTATIVE"
+                        },
+                        "display_recurring_bookings": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "display_weekends": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "from_minute": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "to_minute": {
+                            "type": "boolean",
+                            "example": 20
                         }
                     },
                     "type": "object"
@@ -19125,6 +20579,50 @@
                             "type": "string",
                             "format": "date",
                             "example": "2024-07-02T19:17:48+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CountyCouncilPriceResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "county_council_price"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "price_code": {
+                            "type": "string"
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "Test description"
+                        },
+                        "total_excluding_vat": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "included_material": {
+                            "type": "string"
+                        },
+                        "multi_tooth": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
@@ -20337,6 +21835,42 @@
                         "signed_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "NotificationsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "notification"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "model_type": {
+                            "type": "string"
+                        },
+                        "model_id": {
+                            "type": "string"
+                        },
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-11T29:25:31+02:00"
+                        },
+                        "is_read": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
                         }
                     },
                     "type": "object"
@@ -22181,6 +23715,38 @@
             },
             "type": "object"
         },
+        "SurfacesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "surface"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "surface": {
+                            "type": "string"
+                        },
+                        "selectable": {
+                            "type": "string",
+                            "example": "tooth"
+                        },
+                        "tooth": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "points": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "TandenCheckResponse": {
             "properties": {
                 "type": {
@@ -22283,6 +23849,61 @@
                         "deleted_at": {
                             "type": "string",
                             "example": "2024-09-02T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TenantDatabaseResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "tenant_database"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "database": {
+                            "type": "string",
+                            "example": "prodentor_823"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TicketResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "ticket"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "subject": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-09-31T00:00:00+02:00"
+                        },
+                        "closed_at": {
+                            "type": "string",
+                            "example": "2024-10-31T00:00:00+02:00"
                         }
                     },
                     "type": "object"
@@ -22463,67 +24084,6 @@
                         "updated_at": {
                             "type": "string",
                             "example": "2024-06-28T12:14:26+02:00"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "TreatmentResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "treatment"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "text": {
-                            "type": "string",
-                            "example": "Amalgam"
-                        },
-                        "code": {
-                            "type": "string",
-                            "example": "AM"
-                        },
-                        "selectable": {
-                            "type": "string",
-                            "example": "surface"
-                        },
-                        "crown_background_color": {
-                            "type": "string",
-                            "example": "rgba(0,0,0,0.8)"
-                        },
-                        "crown_border_color": {
-                            "type": "string",
-                            "example": "rgba(255,255,255,1)"
-                        },
-                        "root_background_color": {
-                            "type": "string",
-                            "example": "rgba(255,255,255,1)"
-                        },
-                        "root_border_color": {
-                            "type": "string",
-                            "example": "rgba(255,255,255,1)"
-                        },
-                        "clear_history": {
-                            "type": "boolean",
-                            "example": true
-                        },
-                        "surface_text": {
-                            "type": "string",
-                            "example": "Test text"
-                        },
-                        "surface_text_color": {
-                            "type": "string",
-                            "example": "rgba(255,255,255,1)"
-                        },
-                        "tooth_status": {
-                            "type": "string"
                         }
                     },
                     "type": "object"
