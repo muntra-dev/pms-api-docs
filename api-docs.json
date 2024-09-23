@@ -3856,6 +3856,272 @@
                 }
             }
         },
+        "/api/images": {
+            "get": {
+                "tags": [
+                    "images"
+                ],
+                "summary": "List images",
+                "description": "Returns list of images based on the given filters",
+                "operationId": "getImages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'mount_item', 'remittances', 'image_annotations','caries'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "has_mount",
+                        "in": "query",
+                        "description": "'has_mount' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List images",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List images",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/images/{id}": {
+            "get": {
+                "tags": [
+                    "images"
+                ],
+                "summary": "Retrieve an image",
+                "description": "Returns certain image based on the given filters",
+                "operationId": "getImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'mount_item', 'remittances', 'image_annotations','caries'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "images"
+                ],
+                "summary": "Edit an image",
+                "description": "Returns edited image based on the given filters",
+                "operationId": "patchImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an image",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an image",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit an image",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/invoice-payments": {
             "get": {
                 "tags": [
@@ -5637,7 +5903,7 @@
                                                 "name": {
                                                     "description": "Create a journal-entry-macro",
                                                     "type": "string",
-                                                    "example": "Test bane"
+                                                    "example": "Test nane"
                                                 }
                                             },
                                             "type": "object"
@@ -5808,7 +6074,7 @@
                                                 "name": {
                                                     "description": "Edit a journal-entry-macro",
                                                     "type": "string",
-                                                    "example": "Test bane"
+                                                    "example": "Test name"
                                                 }
                                             },
                                             "type": "object"
@@ -5842,374 +6108,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a journal-entry-macro",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/journal-entry-text-templates": {
-            "get": {
-                "tags": [
-                    "journal-entry-text-templates"
-                ],
-                "summary": "List journal-entry-text-templates",
-                "description": "Returns list of journal entry text templates based on the given filters",
-                "operationId": "getJournalEntryTextTemplates",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'user', 'tenant_database'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "tenant_database_id",
-                        "in": "query",
-                        "description": "'tenant_database_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "user_id",
-                        "in": "query",
-                        "description": "'user_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "elements",
-                        "in": "query",
-                        "description": "'elements' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "description": "'per_page' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List journal-entry-text-templates",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List journal-entry-text-templates",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "journal-entry-text-templates"
-                ],
-                "summary": "Create a journal-entry-text-template",
-                "description": "Returns created journal entry text template based on the given filters",
-                "operationId": "postJournalEntryTextTemplate",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": false,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a journal-entry-text-template",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a journal-entry-text-template",
-                                            "properties": {
-                                                "name": {
-                                                    "description": "Create a journal-entry-text-template",
-                                                    "type": "string",
-                                                    "example": "Test name"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "name": "tenant_database_id",
-                        "in": "query",
-                        "description": "'tenant_database_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a journal-entry-text-template",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a journal-entry-text-template",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/journal-entry-text-templates/{id}": {
-            "get": {
-                "tags": [
-                    "journal-entry-text-templates"
-                ],
-                "summary": "Retrieve a journal-entry-text-template",
-                "description": "Returns certain journal entry text template based on the given filters",
-                "operationId": "getJournalEntryTextTemplate",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'user', 'tenant_database'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a journal-entry-text-template",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a journal-entry-text-template",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "journal-entry-text-templates"
-                ],
-                "summary": "Edit a journal-entry-text-template",
-                "description": "Returns edited journal entry text template based on the given filters",
-                "operationId": "patchJournalEntryTextTemplate",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": false,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a journal-entry-text-template",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a journal-entry-text-template",
-                                            "properties": {
-                                                "name": {
-                                                    "description": "Edit a journal-entry-text-template",
-                                                    "type": "string",
-                                                    "example": "Test name"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a journal-entry-text-template",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a journal-entry-text-template",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -21956,6 +21854,103 @@
             },
             "type": "object"
         },
+        "ImageResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "image"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string",
+                            "example": "image/png"
+                        },
+                        "size_in_bytes": {
+                            "type": "string",
+                            "example": "136941"
+                        },
+                        "backup": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "backup_path": {
+                            "type": "string"
+                        },
+                        "st_ctim": {
+                            "type": "string"
+                        },
+                        "st_gid": {
+                            "type": "string"
+                        },
+                        "st_ino": {
+                            "type": "string"
+                        },
+                        "st_mode": {
+                            "type": "string"
+                        },
+                        "st_mtim": {
+                            "type": "string"
+                        },
+                        "st_size": {
+                            "type": "string"
+                        },
+                        "st_uid": {
+                            "type": "string"
+                        },
+                        "creation_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "width": {
+                            "type": "number",
+                            "example": 1024
+                        },
+                        "height": {
+                            "type": "number",
+                            "example": 768
+                        },
+                        "actual_width_in_mm": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "actual_height_in_mm": {
+                            "type": "number",
+                            "example": 2
+                        },
+                        "treatment_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "original": {
+                            "type": "string"
+                        },
+                        "small_thumbnail": {
+                            "type": "string"
+                        },
+                        "large_thumbnail": {
+                            "type": "string"
+                        },
+                        "path": {
+                            "type": "string"
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "InvoicePaymentResponse": {
             "properties": {
                 "type": {
@@ -24207,30 +24202,6 @@
                         "database": {
                             "type": "string",
                             "example": "prodentor_823"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "JournalEntryTextTemplateResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "journal_entry_text_template"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "220731"
-                },
-                "attributes": {
-                    "properties": {
-                        "name": {
-                            "type": "string"
-                        },
-                        "text": {
-                            "type": "string"
                         }
                     },
                     "type": "object"
