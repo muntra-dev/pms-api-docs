@@ -11,149 +11,6 @@
         "https"
     ],
     "paths": {
-        "/api/List devices": {
-            "get": {
-                "tags": [
-                    "List devices"
-                ],
-                "summary": "List devices",
-                "description": "Returns list of devices based on the given filters",
-                "operationId": "getDevices",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'device_type', 'supplier', 'file_types', 'mount_templates', 'twain_data_sources', 'computers_where_default'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List devices",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/DeviceResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List devices",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/List devices/{id}": {
-            "get": {
-                "tags": [
-                    "List devices"
-                ],
-                "summary": "Retrieve a device",
-                "description": "Returns certain device based on the given filters",
-                "operationId": "getDevice",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'device_type', 'supplier', 'file_types', 'mount_templates', 'twain_data_sources', 'computers_where_default'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a device",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/DeviceResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a device",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
         "/api/booking-attendees": {
             "get": {
                 "tags": [
@@ -3087,6 +2944,149 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a health declaration",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices": {
+            "get": {
+                "tags": [
+                    "devices"
+                ],
+                "summary": "List devices",
+                "description": "Returns list of devices based on the given filters",
+                "operationId": "getDevices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'device_type', 'supplier', 'file_types', 'mount_templates', 'twain_data_sources', 'computers_where_default'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List devices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeviceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List devices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/devices/{id}": {
+            "get": {
+                "tags": [
+                    "devices"
+                ],
+                "summary": "Retrieve a device",
+                "description": "Returns certain device based on the given filters",
+                "operationId": "getDevice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'device_type', 'supplier', 'file_types', 'mount_templates', 'twain_data_sources', 'computers_where_default'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a device",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeviceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a device",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
