@@ -11,6 +11,149 @@
         "https"
     ],
     "paths": {
+        "/api/List devices": {
+            "get": {
+                "tags": [
+                    "List devices"
+                ],
+                "summary": "List devices",
+                "description": "Returns list of devices based on the given filters",
+                "operationId": "getDevices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'device_type', 'supplier', 'file_types', 'mount_templates', 'twain_data_sources', 'computers_where_default'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List devices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeviceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List devices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/List devices/{id}": {
+            "get": {
+                "tags": [
+                    "List devices"
+                ],
+                "summary": "Retrieve a device",
+                "description": "Returns certain device based on the given filters",
+                "operationId": "getDevice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'device_type', 'supplier', 'file_types', 'mount_templates', 'twain_data_sources', 'computers_where_default'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a device",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeviceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a device",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/booking-attendees": {
             "get": {
                 "tags": [
@@ -2436,6 +2579,337 @@
                 }
             }
         },
+        "/api/dashboard-reports": {
+            "get": {
+                "tags": [
+                    "dashboard-reports"
+                ],
+                "summary": "List dashboard-reports",
+                "description": "Returns a list of dashboard reports based on the given filters",
+                "operationId": "getDashboardReports",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user_at_clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_at_clinic_id",
+                        "in": "query",
+                        "description": "'user_at_clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dashboard-reports",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DashboardReportResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dashboard-reports",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/declaration-item-templates": {
+            "get": {
+                "tags": [
+                    "declaration-item-templates"
+                ],
+                "summary": "List declaration-item-templates",
+                "description": "Returns list of declaration item templates based on the given filters",
+                "operationId": "getDeclarationItemTemplates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'declaration_item_category'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "declaration_item_category_id",
+                        "in": "query",
+                        "description": "'declaration_item_category_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List declaration-item-templates",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationItemTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List declaration-item-templates",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "declaration-item-templates"
+                ],
+                "summary": "Create a declaration-item-template",
+                "description": "Returns created declaration item templates based on the given filters",
+                "operationId": "postDeclarationItemTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a declaration-item-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a declaration-item-template",
+                                            "properties": {
+                                                "declaration_item_category_id": {
+                                                    "description": "Create a declaration-item-template",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "label": {
+                                                    "description": "Create a declaration-item-template",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a declaration-item-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationItemTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a declaration-item-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/declaration-item-templates/{id}": {
+            "get": {
+                "tags": [
+                    "declaration-item-templates"
+                ],
+                "summary": "Retrieve a declaration-item-template",
+                "description": "Returns certain declaration item templates based on the given filters",
+                "operationId": "getDeclarationItemTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'declaration_item_category'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a declaration-item-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationItemTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a declaration-item-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/declarations": {
             "get": {
                 "tags": [
@@ -2613,6 +3087,79 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a health declaration",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/draft-sms-report-rows": {
+            "get": {
+                "tags": [
+                    "draft-sms-report-rows"
+                ],
+                "summary": "List draft-sms-report-rows",
+                "description": "Returns a list of draft sms report rows report rows based on the given filters",
+                "operationId": "getDraftSmsReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List draft-sms-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DraftSmsReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List draft-sms-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -5903,7 +6450,7 @@
                                                 "name": {
                                                     "description": "Create a journal-entry-macro",
                                                     "type": "string",
-                                                    "example": "Test nane"
+                                                    "example": "Test name"
                                                 }
                                             },
                                             "type": "object"
@@ -6118,6 +6665,374 @@
                 }
             }
         },
+        "/api/journal-entry-text-templates": {
+            "get": {
+                "tags": [
+                    "journal-entry-text-templates"
+                ],
+                "summary": "List journal-entry-text-templates",
+                "description": "Returns list of journal entry text templates based on the given filters",
+                "operationId": "getJournalEntryTextTemplates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'tenant_database'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "tenant_database_id",
+                        "in": "query",
+                        "description": "'tenant_database_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "elements",
+                        "in": "query",
+                        "description": "'elements' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List journal-entry-text-templates",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List journal-entry-text-templates",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "journal-entry-text-templates"
+                ],
+                "summary": "Create a journal-entry-text-template",
+                "description": "Returns created journal entry text template based on the given filters",
+                "operationId": "postJournalEntryTextTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry-text-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a journal-entry-text-template",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create a journal-entry-text-template",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "tenant_database_id",
+                        "in": "query",
+                        "description": "'tenant_database_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-entry-text-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a journal-entry-text-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-entry-text-templates/{id}": {
+            "get": {
+                "tags": [
+                    "journal-entry-text-templates"
+                ],
+                "summary": "Retrieve a journal-entry-text-template",
+                "description": "Returns certain journal entry text template based on the given filters",
+                "operationId": "getJournalEntryTextTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'tenant_database'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a journal-entry-text-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a journal-entry-text-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "journal-entry-text-templates"
+                ],
+                "summary": "Edit a journal-entry-text-template",
+                "description": "Returns edited journal entry text template based on the given filters",
+                "operationId": "patchJournalEntryTextTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry-text-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a journal-entry-text-template",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a journal-entry-text-template",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-entry-text-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryTextTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a journal-entry-text-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/latest-monitored-journal-entries": {
             "get": {
                 "tags": [
@@ -6203,6 +7118,346 @@
                             "properties": {
                                 "message": {
                                     "description": "List latest-monitored-journal-entries",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/mounts": {
+            "get": {
+                "tags": [
+                    "mounts"
+                ],
+                "summary": "List mounts",
+                "description": "Returns a list of mounts based on the given filters",
+                "operationId": "getMounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'signer', 'mount_items'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List mounts",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List mounts",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "mounts"
+                ],
+                "summary": "Create a mount",
+                "description": "Returns created mount based on the given filters",
+                "operationId": "postMounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a mount",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a mount",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a mount",
+                                                    "type": "number",
+                                                    "example": 212
+                                                },
+                                                "name": {
+                                                    "description": "Create a mount",
+                                                    "type": "string"
+                                                },
+                                                "mount_template_id": {
+                                                    "description": "Create a mount",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a mount",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a mount",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/mounts/{id}": {
+            "get": {
+                "tags": [
+                    "mounts"
+                ],
+                "summary": "Retrieve a mount",
+                "description": "Returns certain mount based on the given filters",
+                "operationId": "getMount",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'signer', 'mount_items'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a mount",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a mount",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "mounts"
+                ],
+                "summary": "Edit a mount",
+                "description": "Returns edited mount based on the given filters",
+                "operationId": "patchMount",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a mount",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a mount",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Edit a mount",
+                                                    "type": "number",
+                                                    "example": 212
+                                                },
+                                                "name": {
+                                                    "description": "Edit a mount",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a mount",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a mount",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10096,7 +11351,7 @@
                 "tags": [
                     "notifications"
                 ],
-                "summary": "Retrieve an notification",
+                "summary": "Retrieve a notification",
                 "description": "Returns certain notification based on the given filters",
                 "operationId": "getNotification",
                 "consumes": [
@@ -10140,7 +11395,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve an notification",
+                                    "description": "Retrieve a notification",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/NotificationsResponse"
@@ -10155,7 +11410,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve an notification",
+                                    "description": "Retrieve a notification",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10169,7 +11424,7 @@
                 "tags": [
                     "notifications"
                 ],
-                "summary": "Edit an notification",
+                "summary": "Edit a notification",
                 "description": "Returns edited notification based on the given filters",
                 "operationId": "patchNotification",
                 "consumes": [
@@ -10201,18 +11456,18 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit an notification",
+                                    "description": "Edit a notification",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit an notification",
+                                            "description": "Edit a notification",
                                             "properties": {
                                                 "is_read": {
-                                                    "description": "Edit an notification",
+                                                    "description": "Edit a notification",
                                                     "type": "boolean",
                                                     "example": true
                                                 },
                                                 "deleted": {
-                                                    "description": "Edit an notification",
+                                                    "description": "Edit a notification",
                                                     "type": "boolean",
                                                     "example": false
                                                 }
@@ -10232,7 +11487,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit an notification",
+                                    "description": "Edit a notification",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/NotificationsResponse"
@@ -10247,7 +11502,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit an notification",
+                                    "description": "Edit a notification",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10380,6 +11635,123 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve the current organization",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parod-entry-types": {
+            "get": {
+                "tags": [
+                    "parod-entry-types"
+                ],
+                "summary": "List parod-entry-types",
+                "description": "Returns list of parod entry types based on the given filters",
+                "operationId": "getParodEntryTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List parod-entry-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodEntryTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List parod-entry-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parod-entry-types/{id}": {
+            "get": {
+                "tags": [
+                    "parod-entry-types"
+                ],
+                "summary": "Retrieve a parod-entry-type",
+                "description": "Returns certain parod entry type based on the given filters",
+                "operationId": "getParodEntryType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a parod-entry-type",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodEntryTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a parod-entry-type",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -11306,6 +12678,83 @@
                 }
             }
         },
+        "/api/patient-total-receivables": {
+            "get": {
+                "tags": [
+                    "patient-total-receivables"
+                ],
+                "summary": "List patient-total-receivables",
+                "description": "Returns a list of patient total receivables based on the given filters",
+                "operationId": "getPatientTotalReceivables",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-total-receivables",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientTotalReceivableResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-total-receivables",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patients": {
             "get": {
                 "tags": [
@@ -12026,6 +13475,276 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a payment-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pdfs": {
+            "get": {
+                "tags": [
+                    "pdfs"
+                ],
+                "summary": "List pdfs",
+                "description": "Returns list of pdfs based on the given filters",
+                "operationId": "getPdfs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List pdfs",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PdfResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List pdfs",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/pdfs/{id}": {
+            "get": {
+                "tags": [
+                    "pdfs"
+                ],
+                "summary": "Retrieve a pdf",
+                "description": "Returns certain pdf based on the given filters",
+                "operationId": "getPdf",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a pdf",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PdfResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a pdf",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "pdfs"
+                ],
+                "summary": "Edit a pdf",
+                "description": "Returns edited pdf based on the given filters",
+                "operationId": "patchPdf",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a pdf",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a pdf",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a pdf",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "treatment_date": {
+                                                    "description": "Edit a pdf",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a pdf",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PdfResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a pdf",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -16285,6 +18004,123 @@
                 }
             }
         },
+        "/api/surfaces": {
+            "get": {
+                "tags": [
+                    "surfaces"
+                ],
+                "summary": "List surfaces",
+                "description": "Returns a list of surfaces based on the given filters",
+                "operationId": "getListSurfaces",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List surfaces",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SurfacesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List surfaces",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/surfaces/{id}": {
+            "get": {
+                "tags": [
+                    "surfaces"
+                ],
+                "summary": "Retrieve a surface",
+                "description": "Returns certain surface based on the given filters",
+                "operationId": "getSurface",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a surface",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SurfacesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a surface",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/tanden-checks": {
             "get": {
                 "tags": [
@@ -16853,6 +18689,261 @@
                 }
             }
         },
+        "/api/three-d-images": {
+            "get": {
+                "tags": [
+                    "three-d-images"
+                ],
+                "summary": "List three-d-images",
+                "description": "Returns list of three-d-images based on the given filters",
+                "operationId": "get3dImages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'remittances'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List three-d-images",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ThreeDImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List three-d-images",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "three-d-images"
+                ],
+                "summary": "Edit a three-d-image",
+                "description": "Returns edited three-d-image based on the given filters",
+                "operationId": "patch3dImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a three-d-image",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a three-d-image",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a three-d-image",
+                                                    "type": "string"
+                                                },
+                                                "treatment_date": {
+                                                    "description": "Edit a three-d-image",
+                                                    "type": "string"
+                                                },
+                                                "device_id": {
+                                                    "description": "Edit a three-d-image",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a three-d-image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ThreeDImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a three-d-image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/three-d-images/{id}": {
+            "get": {
+                "tags": [
+                    "three-d-images"
+                ],
+                "summary": "Retrieve a three-d-image",
+                "description": "Returns certain three-d-image based on the given filters",
+                "operationId": "get3dImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'remittances'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a three-d-image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ThreeDImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a three-d-image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/tickets": {
             "get": {
                 "tags": [
@@ -17054,7 +19145,7 @@
                 "tags": [
                     "tickets"
                 ],
-                "summary": "Get latest ticket",
+                "summary": "Get the latest ticket",
                 "description": "Returns latest ticket based on the given filters",
                 "operationId": "getLatestTicket",
                 "consumes": [
@@ -17109,7 +19200,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Get latest ticket",
+                                    "description": "Get the latest ticket",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/TicketResponse"
@@ -17124,7 +19215,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Get latest ticket",
+                                    "description": "Get the latest ticket",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -17286,6 +19377,123 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a ticket",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tooth-sides": {
+            "get": {
+                "tags": [
+                    "tooth-sides"
+                ],
+                "summary": "List tooth-sides",
+                "description": "Returns list of tooth sides based on the given filters",
+                "operationId": "getToothSides",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List tooth-sides",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ToothSideResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List tooth-sides",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/tooth-sides/{id}": {
+            "get": {
+                "tags": [
+                    "tooth-sides"
+                ],
+                "summary": "Retrieve a tooth-side",
+                "description": "Returns certain tooth side based on the given filters",
+                "operationId": "getToothSide",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a tooth-side",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ToothSideResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a tooth-side",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -18194,6 +20402,432 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a treatment-plan",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/treatments": {
+            "get": {
+                "tags": [
+                    "treatments"
+                ],
+                "summary": "List treatments",
+                "description": "Returns a list of treatments based on the given filters",
+                "operationId": "getTreatments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "elements",
+                        "in": "query",
+                        "description": "'elements' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List treatments",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List treatments",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "treatments"
+                ],
+                "summary": "Create a treatment",
+                "description": "Returns created treatment based on the given filters",
+                "operationId": "postTreatment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a treatment",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a treatment",
+                                            "properties": {
+                                                "text": {
+                                                    "description": "Create a treatment",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a treatment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a treatment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/treatments/{id}": {
+            "get": {
+                "tags": [
+                    "treatments"
+                ],
+                "summary": "Retrieve a treatment",
+                "description": "Returns certain treatment based on the given filters",
+                "operationId": "getTreatment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a treatment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a treatment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "treatments"
+                ],
+                "summary": "Edit a treatment",
+                "description": "Returns edited treatment based on the given filters",
+                "operationId": "patchTreatment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a treatment",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a treatment",
+                                            "properties": {
+                                                "text": {
+                                                    "description": "Edit a treatment",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a treatment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a treatment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/uninvoiced-journal-entry-report-rows": {
+            "get": {
+                "tags": [
+                    "uninvoiced-journal-entry-report-rows"
+                ],
+                "summary": "List uninvoiced-journal-entry-report-rows",
+                "description": "Returns a list of uninvoiced journal entry report rows based on the given filters",
+                "operationId": "getUninvoicedJournalEntryReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List uninvoiced-journal-entry-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List uninvoiced-journal-entry-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -20983,6 +23617,62 @@
             },
             "type": "object"
         },
+        "DashboardReportResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dashboard_report"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "model_name": {
+                            "type": "string",
+                            "example": "action-needed-patient-report-row"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DeclarationItemTemplateResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "declaration_item_template"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Astma"
+                        },
+                        "stub": {
+                            "type": "string",
+                            "example": "astma"
+                        },
+                        "cave": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "DeclarationsResponse": {
             "properties": {
                 "type": {
@@ -21510,6 +24200,70 @@
                         },
                         "next_history_id": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DeviceResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "device"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "active_area_height_in_millimeters": {
+                            "type": "number",
+                            "example": 20
+                        },
+                        "active_area_width_in_millimeters": {
+                            "type": "number",
+                            "example": 30
+                        },
+                        "primary_device_identifier_number": {
+                            "type": "string",
+                            "example": "EKAV101038841"
+                        },
+                        "product_name": {
+                            "type": "string",
+                            "example": "Gendex GXS-700"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DraftSmsReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "draft_sms_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
                         }
                     },
                     "type": "object"
@@ -22053,6 +24807,10 @@
                         "text": {
                             "type": "string"
                         },
+                        "quantity": {
+                            "type": "number",
+                            "example": 1
+                        },
                         "fee": {
                             "type": "number",
                             "example": 33
@@ -22067,6 +24825,10 @@
                         "referral": {
                             "type": "boolean",
                             "example": true
+                        },
+                        "duration_in_minutes": {
+                            "type": "integer",
+                            "example": 30
                         },
                         "multi_tooth": {
                             "type": "boolean",
@@ -22113,6 +24875,36 @@
                         "updated_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "JournalEntryReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "uninvoiced_journal_entry_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "802"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
                         }
                     },
                     "type": "object"
@@ -22198,6 +24990,42 @@
                         "signed_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MountResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "mount"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "aspect_ratio": {
+                            "type": "number"
+                        },
+                        "treatment_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-09-31T00:00:00+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
                         }
                     },
                     "type": "object"
@@ -22364,6 +25192,32 @@
                         },
                         "has_unpaid_invoices": {
                             "type": "string",
+                            "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ParodEntryTypeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "parod_entry_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "pocket"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "pocket"
+                        },
+                        "detail_type": {
+                            "type": "boolean",
                             "example": false
                         }
                     },
@@ -22560,6 +25414,28 @@
                         "printed_at": {
                             "type": "string",
                             "example": "2024-06-28T11:10:21+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientTotalReceivableResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_total_receivable"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "d3d9446802a44259755d38e6d163e811"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 0
                         }
                     },
                     "type": "object"
@@ -22779,6 +25655,66 @@
                         "label": {
                             "type": "string",
                             "example": "Bankgiro"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PdfResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "pdf"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string"
+                        },
+                        "size_in_bytes": {
+                            "type": "string",
+                            "example": "201941"
+                        },
+                        "backup": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "backup_path": {
+                            "type": "string"
+                        },
+                        "st_ctim": {
+                            "type": "string"
+                        },
+                        "st_gid": {
+                            "type": "string"
+                        },
+                        "st_ino": {
+                            "type": "string"
+                        },
+                        "st_mode": {
+                            "type": "string"
+                        },
+                        "st_mtim": {
+                            "type": "string"
+                        },
+                        "st_size": {
+                            "type": "string"
+                        },
+                        "st_uid": {
+                            "type": "string"
+                        },
+                        "creation_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
                         }
                     },
                     "type": "object"
@@ -24078,6 +27014,38 @@
             },
             "type": "object"
         },
+        "SurfacesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "surface"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "surface": {
+                            "type": "string"
+                        },
+                        "selectable": {
+                            "type": "string",
+                            "example": "tooth"
+                        },
+                        "tooth": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "points": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "TandenCheckResponse": {
             "properties": {
                 "type": {
@@ -24209,6 +27177,114 @@
             },
             "type": "object"
         },
+        "JournalEntryTextTemplateResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "journal_entry_text_template"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "220731"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ThreeDImageResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "three-d-image"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string"
+                        },
+                        "type": {
+                            "type": "string",
+                            "example": "application/octet-stream"
+                        },
+                        "size_in_bytes": {
+                            "type": "string",
+                            "example": "136941"
+                        },
+                        "backup": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "backup_path": {
+                            "type": "string"
+                        },
+                        "st_ctim": {
+                            "type": "string"
+                        },
+                        "st_gid": {
+                            "type": "string"
+                        },
+                        "st_ino": {
+                            "type": "string"
+                        },
+                        "st_mode": {
+                            "type": "string"
+                        },
+                        "st_mtim": {
+                            "type": "string"
+                        },
+                        "st_size": {
+                            "type": "string"
+                        },
+                        "st_uid": {
+                            "type": "string"
+                        },
+                        "creation_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "width": {
+                            "type": "number",
+                            "example": 1024
+                        },
+                        "height": {
+                            "type": "number",
+                            "example": 768
+                        },
+                        "actual_width_in_mm": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "actual_height_in_mm": {
+                            "type": "number",
+                            "example": 2
+                        },
+                        "treatment_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "original": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "TicketResponse": {
             "properties": {
                 "type": {
@@ -24235,6 +27311,40 @@
                         "closed_at": {
                             "type": "string",
                             "example": "2024-10-31T00:00:00+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ToothSideResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "buccal"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "buccal"
+                        },
+                        "two_side": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "four_side": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "six_side": {
+                            "type": "boolean",
+                            "example": false
                         }
                     },
                     "type": "object"
@@ -24314,6 +27424,10 @@
                             "type": "boolean",
                             "example": true
                         },
+                        "quantity": {
+                            "type": "number",
+                            "example": 1
+                        },
                         "fee": {
                             "type": "number",
                             "example": 11
@@ -24329,6 +27443,10 @@
                         "vat_percentage": {
                             "type": "number",
                             "example": 11.4
+                        },
+                        "duration_in_minutes": {
+                            "type": "integer",
+                            "example": 30
                         },
                         "multi_tooth": {
                             "type": "boolean",
@@ -24415,6 +27533,67 @@
                         "updated_at": {
                             "type": "string",
                             "example": "2024-06-28T12:14:26+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TreatmentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "treatment"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "text": {
+                            "type": "string",
+                            "example": "Amalgam"
+                        },
+                        "code": {
+                            "type": "string",
+                            "example": "AM"
+                        },
+                        "selectable": {
+                            "type": "string",
+                            "example": "surface"
+                        },
+                        "crown_background_color": {
+                            "type": "string",
+                            "example": "rgba(0,0,0,0.8)"
+                        },
+                        "crown_border_color": {
+                            "type": "string",
+                            "example": "rgba(255,255,255,1)"
+                        },
+                        "root_background_color": {
+                            "type": "string",
+                            "example": "rgba(255,255,255,1)"
+                        },
+                        "root_border_color": {
+                            "type": "string",
+                            "example": "rgba(255,255,255,1)"
+                        },
+                        "clear_history": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "surface_text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "surface_text_color": {
+                            "type": "string",
+                            "example": "rgba(255,255,255,1)"
+                        },
+                        "tooth_status": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
