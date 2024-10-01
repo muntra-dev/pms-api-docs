@@ -97,6 +97,435 @@
                 }
             }
         },
+        "/api/anonymous-patient-invoices": {
+            "get": {
+                "tags": [
+                    "anonymous-patient-invoices"
+                ],
+                "summary": "List anonymous-patient-invoices",
+                "description": "Returns a list of anonymous patient invoices based on the given filters",
+                "operationId": "getAnonymousPatientInvoices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'user', 'fiscal_year', 'verification', 'invoice_type', 'payment_type', 'currency', 'patient', 'county_council'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "invoice_type_ids",
+                        "in": "query",
+                        "description": "'invoice_type_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "category",
+                        "in": "query",
+                        "description": "'category' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "only_third_party_tags",
+                        "in": "query",
+                        "description": "'only_third_party_tags' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "exclude_third_party_tags",
+                        "in": "query",
+                        "description": "'exclude_third_party_tags' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "printed",
+                        "in": "query",
+                        "description": "'printed' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "only_include_unbooked_patients",
+                        "in": "query",
+                        "description": "'only_include_unbooked_patients' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "has_reminder",
+                        "in": "query",
+                        "description": "'has_reminder' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field (required when 'from_date' provided)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "receipt_from_date",
+                        "in": "query",
+                        "description": "'receipt_from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "caregiver_ids",
+                        "in": "query",
+                        "description": "'caregiver_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "location_ids",
+                        "in": "query",
+                        "description": "'location_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-patient-invoices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousPatientInvoicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-patient-invoices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-patient-invoices/{id}": {
+            "get": {
+                "tags": [
+                    "anonymous-patient-invoices"
+                ],
+                "summary": "Retrieve a anonymous-patient-invoice",
+                "description": "Returns a certain anonymous patient invoice based on the given filters",
+                "operationId": "getAnonymousPatientInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'user', 'fiscal_year', 'verification', 'invoice_type', 'payment_type', 'currency', 'patient', 'county_council'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a anonymous-patient-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousPatientInvoicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a anonymous-patient-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "anonymous-patient-invoices"
+                ],
+                "summary": "Edit a anonymous-patient-invoice",
+                "description": "Returns a edited anonymous patient invoice based on the given filters",
+                "operationId": "patchAnonymousPatientInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a anonymous-patient-invoice",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a anonymous-patient-invoice",
+                                            "properties": {
+                                                "invoice_type_id": {
+                                                    "description": "Edit a anonymous-patient-invoice",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a anonymous-patient-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousPatientInvoicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a anonymous-patient-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/booking-attendees": {
             "get": {
                 "tags": [
@@ -5229,6 +5658,117 @@
                             "properties": {
                                 "message": {
                                     "description": "Create an invoice-payment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-payments/send-to-terminal": {
+            "post": {
+                "tags": [
+                    "invoice-payments"
+                ],
+                "summary": "Invoice payment send-to-terminal",
+                "description": "Returns invoice payment send-to-terminal based on the given filters",
+                "operationId": "postInvoicePaymentSendToTerminal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "paid_at",
+                        "in": "query",
+                        "description": "'paid_at' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Invoice payment send-to-terminal",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Invoice payment send-to-terminal",
+                                            "properties": {
+                                                "currency_id": {
+                                                    "description": "Invoice payment send-to-terminal",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "payment_type_id": {
+                                                    "description": "Invoice payment send-to-terminal",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Invoice payment send-to-terminal",
+                                                    "type": "number",
+                                                    "example": 3
+                                                },
+                                                "terminal_id": {
+                                                    "description": "Invoice payment send-to-terminal",
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "invoice_id": {
+                                                    "description": "Invoice payment send-to-terminal",
+                                                    "type": "number",
+                                                    "example": 5
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Invoice payment send-to-terminal",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoicePaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Invoice payment send-to-terminal",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13489,7 +14029,7 @@
                 "tags": [
                     "patient-invoices"
                 ],
-                "summary": "Post a credit-copy-and-debt-collect-remainder",
+                "summary": "Credit, copy and debt-collect remainder for a patient-invoice",
                 "description": "Returns credit copy and debt collect reminder based on the given filters",
                 "operationId": "postCreditCopyAndDebtCollectRemainder",
                 "consumes": [
@@ -13521,13 +14061,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Post a credit-copy-and-debt-collect-remainder",
+                                    "description": "Credit, copy and debt-collect remainder for a patient-invoice",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Post a credit-copy-and-debt-collect-remainder",
+                                            "description": "Credit, copy and debt-collect remainder for a patient-invoice",
                                             "properties": {
                                                 "remainder_amount": {
-                                                    "description": "Post a credit-copy-and-debt-collect-remainder",
+                                                    "description": "Credit, copy and debt-collect remainder for a patient-invoice",
                                                     "type": "number",
                                                     "example": 100
                                                 }
@@ -13547,7 +14087,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Post a credit-copy-and-debt-collect-remainder",
+                                    "description": "Credit, copy and debt-collect remainder for a patient-invoice",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/PatientInvoiceResponse"
@@ -13562,7 +14102,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Post a credit-copy-and-debt-collect-remainder",
+                                    "description": "Credit, copy and debt-collect remainder for a patient-invoice",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -21186,7 +21726,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'verification', 'account', 'cost_center'.",
+                        "description": "Including 'locale'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -22701,6 +23241,92 @@
                             "properties": {
                                 "message": {
                                     "description": "List unbookkept-patient-invoice-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/unclaimed-journal-entry-report-rows": {
+            "get": {
+                "tags": [
+                    "unclaimed-journal-entry-report-rows"
+                ],
+                "summary": "List unclaimed-journal-entry-report-rows",
+                "description": "Returns a list unclaimed journal entry report rows based on the given filters",
+                "operationId": "getUnclaimedJournalEntryReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unclaimed-journal-entry-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnclaimedJournalEntryReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unclaimed-journal-entry-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -24606,6 +25232,87 @@
                         "patient_name": {
                             "type": "string",
                             "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnonymousPatientInvoicesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_patient_invoice"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "patient_street_address_1": {
+                            "type": "string"
+                        },
+                        "patient_street_address_2": {
+                            "type": "string"
+                        },
+                        "patient_postal_code": {
+                            "type": "string"
+                        },
+                        "patient_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "patient_country": {
+                            "type": "string"
+                        },
+                        "patient_reference": {
+                            "type": "string"
+                        },
+                        "third_party_city": {
+                            "type": "string",
+                            "example": "Kyiv"
+                        },
+                        "third_party_name": {
+                            "type": "string",
+                            "example": "Boom"
+                        },
+                        "third_party_postal_code": {
+                            "type": "string"
+                        },
+                        "third_party_address_1": {
+                            "type": "string"
+                        },
+                        "third_party_address_2": {
+                            "type": "string"
+                        },
+                        "third_party_organization_id": {
+                            "type": "string"
+                        },
+                        "generic_dental_subsidy": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "specific_dental_subsidy": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "state_dental_subsidy": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "read_by_recipient_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "printed_at": {
+                            "type": "string",
+                            "example": "2024-09-11T00:00:00+02:00"
                         }
                     },
                     "type": "object"
@@ -27449,6 +28156,36 @@
             },
             "type": "object"
         },
+        "UnclaimedJournalEntryReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unclaimed_journal_entry_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "802"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "JournalEntryResponse": {
             "properties": {
                 "type": {
@@ -30036,22 +30773,11 @@
                 },
                 "attributes": {
                     "properties": {
-                        "amount": {
-                            "type": "number",
-                            "example": 1
-                        },
-                        "account_number": {
-                            "type": "number",
-                            "example": 123
-                        },
-                        "account_name": {
+                        "key": {
                             "type": "string"
                         },
-                        "cost_center_code": {
-                            "type": "string"
-                        },
-                        "cost_center_name": {
-                            "type": "string"
+                        "value": {
+                            "type": "number"
                         }
                     },
                     "type": "object"
