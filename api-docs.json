@@ -7996,7 +7996,8 @@
                                                 },
                                                 "label": {
                                                     "description": "Create a journal-pharmacy",
-                                                    "type": "RECEPTBREVL\u00c5DAN"
+                                                    "type": "string",
+                                                    "example": "RECEPTBREVL\u00c5DAN"
                                                 }
                                             },
                                             "type": "object"
@@ -8154,7 +8155,8 @@
                                                 },
                                                 "label": {
                                                     "description": "Edit a journal-pharmacy",
-                                                    "type": "RECEPTBREVL\u00c5DAN"
+                                                    "type": "string",
+                                                    "example": "RECEPTBREVL\u00c5DAN"
                                                 }
                                             },
                                             "type": "object"
