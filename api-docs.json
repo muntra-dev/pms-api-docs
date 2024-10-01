@@ -29017,7 +29017,8 @@
                             "example": "7350045512239"
                         },
                         "label": {
-                            "type": "RECEPTBREVL\u00c5DAN"
+                            "type": "string",
+                            "example": "RECEPTBREVL\u00c5DAN"
                         }
                     },
                     "type": "object"
