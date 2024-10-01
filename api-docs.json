@@ -11,6 +11,92 @@
         "https"
     ],
     "paths": {
+        "/api/action-needed-patient-report-rows": {
+            "get": {
+                "tags": [
+                    "action-needed-patient-report-rows"
+                ],
+                "summary": "List action-needed-patient-report-rows",
+                "description": "Returns a list of action needed patient report rows based on the given filters",
+                "operationId": "getActionNeededPatientReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List action-needed-patient-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ActionNeededPatientReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List action-needed-patient-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/booking-attendees": {
             "get": {
                 "tags": [
@@ -3097,13 +3183,86 @@
                 }
             }
         },
+        "/api/draft-email-report-rows": {
+            "get": {
+                "tags": [
+                    "draft-email-report-rows"
+                ],
+                "summary": "List draft-email-report-rows",
+                "description": "Returns a list of draft email report rows report rows based on the given filters",
+                "operationId": "getDraftEmailReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List draft-email-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DraftEmailReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List draft-email-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/draft-sms-report-rows": {
             "get": {
                 "tags": [
                     "draft-sms-report-rows"
                 ],
                 "summary": "List draft-sms-report-rows",
-                "description": "Returns a list of draft sms report rows report rows based on the given filters",
+                "description": "Returns a list of draft sms report rows based on the given filters",
                 "operationId": "getDraftSmsReportRows",
                 "consumes": [
                     "application/json"
@@ -3160,6 +3319,79 @@
                             "properties": {
                                 "message": {
                                     "description": "List draft-sms-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/draft-snail-mail-report-rows": {
+            "get": {
+                "tags": [
+                    "draft-snail-mail-report-rows"
+                ],
+                "summary": "List draft-snail-mail-report-rows",
+                "description": "Returns a list of draft snail mail report rows based on the given filters",
+                "operationId": "getDraftSnailMailReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List draft-snail-mail-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DraftSnailMailReportResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List draft-snail-mail-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -4659,6 +4891,97 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/incomplete-received-remittance-report-rows": {
+            "get": {
+                "tags": [
+                    "incomplete-received-remittance-report-rows"
+                ],
+                "summary": "List incomplete-received-remittance-report-rows",
+                "description": "Returns a list of incomplete received remittance report rows based on the given filters",
+                "operationId": "getIncompleteReceivedRemittanceReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_group_id",
+                        "in": "query",
+                        "description": "'user_group_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List incomplete-received-remittance-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/IncompleteReceivedRemittanceReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List incomplete-received-remittance-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7033,6 +7356,308 @@
                 }
             }
         },
+        "/api/journal-pharmacies": {
+            "get": {
+                "tags": [
+                    "journal-pharmacies"
+                ],
+                "summary": "List journal-pharmacies",
+                "description": "Returns a list journal pharmacies based on the given filters",
+                "operationId": "getJournalFarmacies",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List journal-pharmacies",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalPharmacyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List journal-pharmacies",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "journal-pharmacies"
+                ],
+                "summary": "Create a journal-pharmacy",
+                "description": "Returns a created journal pharmacy based on the given filters",
+                "operationId": "postJournalFarmacy",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-pharmacy",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a journal-pharmacy",
+                                            "properties": {
+                                                "city": {
+                                                    "description": "Create a journal-pharmacy",
+                                                    "type": "string",
+                                                    "example": "Stockholm"
+                                                },
+                                                "code": {
+                                                    "description": "Create a journal-pharmacy",
+                                                    "type": "string",
+                                                    "example": "7350045512239"
+                                                },
+                                                "label": {
+                                                    "description": "Create a journal-pharmacy",
+                                                    "type": "RECEPTBREVL\u00c5DAN"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-pharmacy",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalPharmacyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a journal-pharmacy",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-pharmacies/{id}": {
+            "get": {
+                "tags": [
+                    "journal-pharmacies"
+                ],
+                "summary": "Retrieve a journal-pharmacy",
+                "description": "Returns a certain journal pharmacy based on the given filters",
+                "operationId": "getJournalFarmacy",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a journal-pharmacy",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalPharmacyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a journal-pharmacy",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "journal-pharmacies"
+                ],
+                "summary": "Edit a journal-pharmacy",
+                "description": "Returns eduted journal pharmacy based on the given filters",
+                "operationId": "patchJournalFarmacy",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-pharmacy",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a journal-pharmacy",
+                                            "properties": {
+                                                "city": {
+                                                    "description": "Edit a journal-pharmacy",
+                                                    "type": "string",
+                                                    "example": "Stockholm"
+                                                },
+                                                "code": {
+                                                    "description": "Edit a journal-pharmacy",
+                                                    "type": "string",
+                                                    "example": "7350045512239"
+                                                },
+                                                "label": {
+                                                    "description": "Edit a journal-pharmacy",
+                                                    "type": "RECEPTBREVL\u00c5DAN"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-pharmacy",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalPharmacyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a journal-pharmacy",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/latest-monitored-journal-entries": {
             "get": {
                 "tags": [
@@ -7118,6 +7743,187 @@
                             "properties": {
                                 "message": {
                                     "description": "List latest-monitored-journal-entries",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/missing-booking-epicrisis-report-rows": {
+            "get": {
+                "tags": [
+                    "missing-booking-epicrisis-report-rows"
+                ],
+                "summary": "List missing-booking-epicrisis-report-rows",
+                "description": "Returns a list of missing booking epicrisis report rows based on the given filters",
+                "operationId": "getMissingBookingEpicrisisReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include_archive",
+                        "in": "query",
+                        "description": "'include_archive' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List missing-booking-epicrisis-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/JournalEntryMissingBookingEpicrisisResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List missing-booking-epicrisis-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/missing-epicrisis-report-rows": {
+            "get": {
+                "tags": [
+                    "missing-epicrisis-report-rows"
+                ],
+                "summary": "List missing-epicrisis-report-rows",
+                "description": "Returns a list of missing epicrisis report rows based on the given filters",
+                "operationId": "getMissingEpicrisisReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List missing-epicrisis-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MissingEpicrisisReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List missing-epicrisis-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -12678,6 +13484,95 @@
                 }
             }
         },
+        "/api/patient-invoices/{id}/credit-copy-and-debt-collect-remainder": {
+            "post": {
+                "tags": [
+                    "patient-invoices"
+                ],
+                "summary": "Post a credit-copy-and-debt-collect-remainder",
+                "description": "Returns credit copy and debt collect reminder based on the given filters",
+                "operationId": "postCreditCopyAndDebtCollectRemainder",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Post a credit-copy-and-debt-collect-remainder",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Post a credit-copy-and-debt-collect-remainder",
+                                            "properties": {
+                                                "remainder_amount": {
+                                                    "description": "Post a credit-copy-and-debt-collect-remainder",
+                                                    "type": "number",
+                                                    "example": 100
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Post a credit-copy-and-debt-collect-remainder",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Post a credit-copy-and-debt-collect-remainder",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patient-total-receivables": {
             "get": {
                 "tags": [
@@ -14200,6 +15095,686 @@
                                     "description": "Edit a price",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/proposal-responses": {
+            "get": {
+                "tags": [
+                    "proposal-responses"
+                ],
+                "summary": "List proposal responses",
+                "description": "Returns a list of proposal responses based on the given filters",
+                "operationId": "getProposalResponses",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "Filter by patient ID",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "Filter by user ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "proposal_id",
+                        "in": "query",
+                        "description": "Filter by proposal ID",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "gives_consent",
+                        "in": "query",
+                        "description": "Filter by consent status",
+                        "required": false,
+                        "type": "boolean"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number for pagination",
+                        "required": false,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "Number of items per page for pagination",
+                        "required": false,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List proposal responses",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProposalResponseResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error or resource not found",
+                        "schema": {
+                            "properties": {
+                                "errors": {
+                                    "description": "List proposal responses",
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "status": {
+                                                "description": "List proposal responses",
+                                                "type": "integer",
+                                                "example": 422
+                                            },
+                                            "title": {
+                                                "description": "List proposal responses",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            },
+                                            "detail": {
+                                                "description": "List proposal responses",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proposal-responses"
+                ],
+                "summary": "Create a new proposal response",
+                "description": "Creates a new proposal response",
+                "operationId": "createProposalResponse",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "required": [
+                                "proposal_id",
+                                "patient_id",
+                                "gives_consent"
+                            ],
+                            "properties": {
+                                "proposal_id": {
+                                    "description": "ID of the proposal",
+                                    "type": "integer"
+                                },
+                                "patient_id": {
+                                    "description": "ID of the patient",
+                                    "type": "integer"
+                                },
+                                "gives_consent": {
+                                    "description": "Consent status",
+                                    "type": "boolean"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Store a new proposal response",
+                                    "$ref": "#/definitions/ProposalResponseResponse"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error or resource not found",
+                        "schema": {
+                            "properties": {
+                                "errors": {
+                                    "description": "Store a new proposal response",
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "status": {
+                                                "description": "Store a new proposal response",
+                                                "type": "integer",
+                                                "example": 422
+                                            },
+                                            "title": {
+                                                "description": "Store a new proposal response",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            },
+                                            "detail": {
+                                                "description": "Store a new proposal response",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/proposal-responses/{id}": {
+            "delete": {
+                "tags": [
+                    "proposal-responses"
+                ],
+                "summary": "Soft delete a specific proposal response",
+                "description": "Marks a specific proposal response as deleted (soft delete)",
+                "operationId": "deleteProposalResponse",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the proposal response to delete",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content",
+                        "schema": {
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error or resource not found",
+                        "schema": {
+                            "properties": {
+                                "errors": {
+                                    "description": "Remove the specified resource from storage",
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "status": {
+                                                "description": "Remove the specified resource from storage",
+                                                "type": "integer",
+                                                "example": 422
+                                            },
+                                            "title": {
+                                                "description": "Remove the specified resource from storage",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            },
+                                            "detail": {
+                                                "description": "Remove the specified resource from storage",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/proposal-responses/{proposalResponseId}": {
+            "get": {
+                "tags": [
+                    "proposal-responses"
+                ],
+                "summary": "Get a specific proposal response",
+                "description": "Returns details of a specific proposal response",
+                "operationId": "getProposalResponse",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proposalResponseId",
+                        "in": "path",
+                        "description": "ID of the proposal response",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Display the specified proposal response",
+                                    "$ref": "#/definitions/ProposalResponseResponse"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error or resource not found",
+                        "schema": {
+                            "properties": {
+                                "errors": {
+                                    "description": "Display the specified proposal response",
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "status": {
+                                                "description": "Display the specified proposal response",
+                                                "type": "integer",
+                                                "example": 422
+                                            },
+                                            "title": {
+                                                "description": "Display the specified proposal response",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            },
+                                            "detail": {
+                                                "description": "Display the specified proposal response",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/proposals": {
+            "get": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "List proposals",
+                "description": "Returns a list of proposals for the current organization",
+                "operationId": "getProposals",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field (optional, used to filter by a specific organization)",
+                        "required": false,
+                        "type": "integer",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List proposals",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProposalResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List proposals",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "Create a new proposal",
+                "description": "Creates a new proposal for the current organization",
+                "operationId": "postProposal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a proposal",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a proposal",
+                                            "properties": {
+                                                "organization_id": {
+                                                    "description": "Create a proposal",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "title": {
+                                                    "description": "Create a proposal",
+                                                    "type": "string",
+                                                    "example": "Test title"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a proposal",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProposalResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a proposal",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/proposals/{id}": {
+            "get": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "Get a proposal by ID",
+                "description": "Retrieves a specific proposal by its ID",
+                "operationId": "getProposal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a proposal",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProposalResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a proposal",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "proposals"
+                ],
+                "summary": "Soft delete a proposal by ID",
+                "description": "Soft deletes a specific proposal by its ID",
+                "operationId": "deleteProposal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "ID of the proposal to delete",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No Content",
+                        "schema": {
+                            "type": "null"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error or resource not found",
+                        "schema": {
+                            "properties": {
+                                "errors": {
+                                    "description": "Delete a proposal (soft delete)",
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "status": {
+                                                "description": "Delete a proposal (soft delete)",
+                                                "type": "integer",
+                                                "example": 422
+                                            },
+                                            "title": {
+                                                "description": "Delete a proposal (soft delete)",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            },
+                                            "detail": {
+                                                "description": "Delete a proposal (soft delete)",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
                                 }
                             },
                             "type": "object"
@@ -19586,6 +21161,98 @@
                 }
             }
         },
+        "/api/translations": {
+            "get": {
+                "tags": [
+                    "translations"
+                ],
+                "summary": "List translations",
+                "description": "Returns a list of translations based on the given filters",
+                "operationId": "getTranslations",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'verification', 'account', 'cost_center'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "'locale' field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "frontend",
+                        "in": "query",
+                        "description": "'frontend' field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "route_name",
+                        "in": "query",
+                        "description": "'route_name' field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List translations",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TranslationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List translations",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/treatment-plan-items": {
             "get": {
                 "tags": [
@@ -20734,6 +22401,316 @@
                 }
             }
         },
+        "/api/unassigned-received-remittance-report-rows": {
+            "get": {
+                "tags": [
+                    "unassigned-received-remittance-report-rows"
+                ],
+                "summary": "List unassigned-received-remittance-report-rows",
+                "description": "Returns a list of unassigned received remittance report rows based on the given filters",
+                "operationId": "getUnassignedReceivedRemittanceReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_group_id",
+                        "in": "query",
+                        "description": "'user_group_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unassigned-received-remittance-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnassignedReceivedRemittanceReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unassigned-received-remittance-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/unbookkept-claim-payment-report-rows": {
+            "get": {
+                "tags": [
+                    "unbookkept-claim-payment-report-rows"
+                ],
+                "summary": "List unbookkept-claim-payment-report-rows",
+                "description": "Returns a list of unbookkept claim payment report rows based on the given filters",
+                "operationId": "getUnbookkeptClaimPaymentReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unbookkept-claim-payment-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnbookkeptClaimPaymentReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unbookkept-claim-payment-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/unbookkept-claim-report-rows": {
+            "get": {
+                "tags": [
+                    "unbookkept-claim-report-rows"
+                ],
+                "summary": "List unbookkept-claim-report-rows",
+                "description": "Returns a list of unbookkept claim report rows based on the given filters",
+                "operationId": "getUnbookkeptClaimReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unbookkept-claim-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnbookkeptClaimReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unbookkept-claim-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/unbookkept-patient-invoice-report-rows": {
+            "get": {
+                "tags": [
+                    "unbookkept-patient-invoice-report-rows"
+                ],
+                "summary": "List unbookkept-patient-invoice-report-rows",
+                "description": "Returns a list of unbookkept patient invoice report rows based on the given filters",
+                "operationId": "getUnbookkeptPatientInvoiceReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unbookkept-patient-invoice-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnbookkeptPatientInvoiceReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unbookkept-patient-invoice-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/uninvoiced-journal-entry-report-rows": {
             "get": {
                 "tags": [
@@ -20828,6 +22805,356 @@
                             "properties": {
                                 "message": {
                                     "description": "List uninvoiced-journal-entry-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/unread-dental-lab-order-report-rows": {
+            "get": {
+                "tags": [
+                    "unread-dental-lab-order-report-rows"
+                ],
+                "summary": "List unread-dental-lab-order-report-rows",
+                "description": "Returns a list of unread dental lab order report rows based on the given filters",
+                "operationId": "getUnreadDentalLabOrderReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unread-dental-lab-order-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnreadDentalLabOrderReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unread-dental-lab-order-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/unread-received-remittance-report-rows": {
+            "get": {
+                "tags": [
+                    "unread-received-remittance-report-rows"
+                ],
+                "summary": "List unread-received-remittance-report-rows",
+                "description": "Returns a list of unread received remittance report rows based on the given filters",
+                "operationId": "getUnreadReceivedRemittanceReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_group_id",
+                        "in": "query",
+                        "description": "'user_group_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unread-received-remittance-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnreadReceivedRemittanceReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unread-received-remittance-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/unread-sent-remittance-report-rows": {
+            "get": {
+                "tags": [
+                    "unread-sent-remittance-report-rows"
+                ],
+                "summary": "List unread-sent-remittance-report-rows",
+                "description": "Returns a list of unread sent remittance report rows based on the given filters",
+                "operationId": "getUnreadSentRemittanceReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_group_id",
+                        "in": "query",
+                        "description": "'user_group_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unread-sent-remittance-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnreadSentRemittanceReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unread-sent-remittance-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/unsigned-journal-entry-report-rows": {
+            "get": {
+                "tags": [
+                    "unsigned-journal-entry-report-rows"
+                ],
+                "summary": "List unsigned-journal-entry-report-rows",
+                "description": "Returns a list of unsigned journal entry report rows based on the given filters",
+                "operationId": "getUnsignedJournalEntryReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List unsigned-journal-entry-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UnsignedJournalEntryReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List unsigned-journal-entry-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -22256,6 +24583,36 @@
         }
     },
     "definitions": {
+        "ActionNeededPatientReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "action_needed_patient_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "BookingAttendeeResponse": {
             "properties": {
                 "type": {
@@ -24241,11 +26598,71 @@
             },
             "type": "object"
         },
+        "DraftEmailReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "draft_email_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "DraftSmsReportRowResponse": {
             "properties": {
                 "type": {
                     "type": "string",
                     "example": "draft_sms_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DraftSnailMailReportResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "draft_snail_mail_report_row"
                 },
                 "id": {
                     "type": "string",
@@ -24705,6 +27122,36 @@
             },
             "type": "object"
         },
+        "IncompleteReceivedRemittanceReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "incomplete_received_remittance_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "InvoicePaymentResponse": {
             "properties": {
                 "type": {
@@ -24887,6 +27334,96 @@
                 "type": {
                     "type": "string",
                     "example": "uninvoiced_journal_entry_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "802"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "JournalEntryMissingBookingEpicrisisResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "missing_booking_epicrisis_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "802"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MissingEpicrisisReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "missing_epicrisis_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "802"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UnsignedJournalEntryReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unsigned_journal_entry_report_row"
                 },
                 "id": {
                     "type": "string",
@@ -25722,6 +28259,35 @@
             },
             "type": "object"
         },
+        "JournalPharmacyResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "journal_pharmacy"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "code": {
+                            "type": "string",
+                            "example": "7350045512239"
+                        },
+                        "label": {
+                            "type": "RECEPTBREVL\u00c5DAN"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "PricesResponse": {
             "properties": {
                 "type": {
@@ -25811,6 +28377,66 @@
                         "name": {
                             "type": "string",
                             "example": "Tandblekning"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ProposalResponseResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "property_response"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "gives_consent": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ProposalResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "proposal"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "title": {
+                            "type": "string",
+                            "example": "New Project Proposal"
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "This is a detailed description of the proposal."
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
                         }
                     },
                     "type": "object"
@@ -27398,6 +30024,41 @@
             },
             "type": "object"
         },
+        "TranslationResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "translation"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "account_number": {
+                            "type": "number",
+                            "example": 123
+                        },
+                        "account_name": {
+                            "type": "string"
+                        },
+                        "cost_center_code": {
+                            "type": "string"
+                        },
+                        "cost_center_name": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "TreatmentPlanItemResponse": {
             "properties": {
                 "type": {
@@ -27594,6 +30255,216 @@
                         },
                         "tooth_status": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UnassignedReceivedRemittanceReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unassigned_received_remittance_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UnbookkeptClaimPaymentReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unbookkept_claim_payment_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UnbookkeptClaimReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unbookkept_claim_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UnbookkeptPatientInvoiceReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unbookkept_patient_invoice_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UnreadDentalLabOrderReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unread_dental_lab_order_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UnreadReceivedRemittanceReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unread_received_remittance_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "UnreadSentRemittanceReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "unread_sent_remittance_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "11"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
                         }
                     },
                     "type": "object"
