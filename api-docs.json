@@ -15465,7 +15465,7 @@
                     "proposals"
                 ],
                 "summary": "List proposals",
-                "description": "Returns a list of proposals for the current organization",
+                "description": "Returns a list of proposals based on the given filters",
                 "operationId": "getProposals",
                 "consumes": [
                     "application/json"
@@ -15556,8 +15556,8 @@
                 "tags": [
                     "proposals"
                 ],
-                "summary": "Create a new proposal",
-                "description": "Creates a new proposal for the current organization",
+                "summary": "Create a proposal",
+                "description": "Creates a new proposal for the current organization based on the given filters",
                 "operationId": "postProposal",
                 "consumes": [
                     "application/json"
@@ -15643,8 +15643,8 @@
                 "tags": [
                     "proposals"
                 ],
-                "summary": "Get a proposal by ID",
-                "description": "Retrieves a specific proposal by its ID",
+                "summary": "Retrieve a proposal",
+                "description": "Returns certain proposal based on the given filters",
                 "operationId": "getProposal",
                 "consumes": [
                     "application/json"
