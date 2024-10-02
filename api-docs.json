@@ -15650,7 +15650,7 @@
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "List proposal responses",
+                "summary": "List proposal-responses",
                 "description": "Returns a list of proposal responses based on the given filters",
                 "operationId": "getProposalResponses",
                 "consumes": [
@@ -15668,55 +15668,73 @@
                         "type": "string"
                     },
                     {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient', 'proposal'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
                         "name": "patient_id",
                         "in": "query",
-                        "description": "Filter by patient ID",
+                        "description": "'patient_id' field",
                         "required": true,
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "user_id",
                         "in": "query",
-                        "description": "Filter by user ID",
+                        "description": "'user_id' field",
                         "required": false,
-                        "type": "integer"
+                        "type": "number",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "proposal_id",
                         "in": "query",
-                        "description": "Filter by proposal ID",
+                        "description": "'proposal_id' field",
                         "required": false,
-                        "type": "integer"
+                        "type": "number",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "gives_consent",
                         "in": "query",
-                        "description": "Filter by consent status",
+                        "description": "'gives_consent' field",
                         "required": false,
-                        "type": "boolean"
+                        "type": "boolean",
+                        "allowEmptyValue": true
                     },
                     {
-                        "name": "page",
+                        "name": "sort_by",
                         "in": "query",
-                        "description": "Page number for pagination",
+                        "description": "'sort_by' field",
                         "required": false,
-                        "type": "integer"
+                        "type": "string",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "per_page",
                         "in": "query",
-                        "description": "Number of items per page for pagination",
+                        "description": "'per_page' field",
                         "required": false,
-                        "type": "integer"
+                        "type": "number",
+                        "allowEmptyValue": true
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "OK",
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List proposal responses",
+                                    "description": "List proposal-responses",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/ProposalResponseResponse"
@@ -15727,32 +15745,13 @@
                         }
                     },
                     "422": {
-                        "description": "Validation error or resource not found",
+                        "description": "Validation error",
                         "schema": {
                             "properties": {
-                                "errors": {
-                                    "description": "List proposal responses",
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "status": {
-                                                "description": "List proposal responses",
-                                                "type": "integer",
-                                                "example": 422
-                                            },
-                                            "title": {
-                                                "description": "List proposal responses",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            },
-                                            "detail": {
-                                                "description": "List proposal responses",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
+                                "message": {
+                                    "description": "List proposal-responses",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
                                 }
                             },
                             "type": "object"
@@ -15764,9 +15763,9 @@
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "Create a new proposal response",
-                "description": "Creates a new proposal response",
-                "operationId": "createProposalResponse",
+                "summary": "Create a proposal-response",
+                "description": "Returns created proposal response based on the given filters",
+                "operationId": "postProposalResponse",
                 "consumes": [
                     "application/json"
                 ],
@@ -15784,71 +15783,65 @@
                     {
                         "name": "body",
                         "in": "body",
+                        "description": "Body of request (obligatory)",
                         "required": true,
                         "schema": {
-                            "required": [
-                                "proposal_id",
-                                "patient_id",
-                                "gives_consent"
-                            ],
                             "properties": {
-                                "proposal_id": {
-                                    "description": "ID of the proposal",
-                                    "type": "integer"
-                                },
-                                "patient_id": {
-                                    "description": "ID of the patient",
-                                    "type": "integer"
-                                },
-                                "gives_consent": {
-                                    "description": "Consent status",
-                                    "type": "boolean"
+                                "data": {
+                                    "description": "Create a proposal-response",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a proposal-response",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a proposal-response",
+                                                    "type": "number",
+                                                    "example": 1211
+                                                },
+                                                "proposal_id": {
+                                                    "description": "Create a proposal-response",
+                                                    "type": "number",
+                                                    "example": 1237
+                                                },
+                                                "gives_consent": {
+                                                    "description": "Create a proposal-response",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
-                            },
-                            "type": "object"
+                            }
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "OK",
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Store a new proposal response",
-                                    "$ref": "#/definitions/ProposalResponseResponse"
+                                    "description": "Create a proposal-response",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProposalResponseResponse"
+                                    }
                                 }
                             },
                             "type": "object"
                         }
                     },
                     "422": {
-                        "description": "Validation error or resource not found",
+                        "description": "Validation error",
                         "schema": {
                             "properties": {
-                                "errors": {
-                                    "description": "Store a new proposal response",
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "status": {
-                                                "description": "Store a new proposal response",
-                                                "type": "integer",
-                                                "example": 422
-                                            },
-                                            "title": {
-                                                "description": "Store a new proposal response",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            },
-                                            "detail": {
-                                                "description": "Store a new proposal response",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
+                                "message": {
+                                    "description": "Create a proposal-response",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
                                 }
                             },
                             "type": "object"
@@ -15858,11 +15851,84 @@
             }
         },
         "/api/proposal-responses/{id}": {
+            "get": {
+                "tags": [
+                    "proposal-responses"
+                ],
+                "summary": "Retrieve a proposal-response",
+                "description": "Returns certain proposal response based on the given filters",
+                "operationId": "getProposalResponse",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient', 'proposal'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a proposal-response",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProposalResponseResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a proposal-response",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "Soft delete a specific proposal response",
+                "summary": "Soft-delete a proposal-responses",
                 "description": "Marks a specific proposal response as deleted (soft delete)",
                 "operationId": "deleteProposalResponse",
                 "produces": [
@@ -15896,97 +15962,22 @@
                         "schema": {
                             "properties": {
                                 "errors": {
-                                    "description": "Remove the specified resource from storage",
+                                    "description": "Soft-delete a proposal-responses",
                                     "type": "array",
                                     "items": {
                                         "properties": {
                                             "status": {
-                                                "description": "Remove the specified resource from storage",
+                                                "description": "Soft-delete a proposal-responses",
                                                 "type": "integer",
                                                 "example": 422
                                             },
                                             "title": {
-                                                "description": "Remove the specified resource from storage",
+                                                "description": "Soft-delete a proposal-responses",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             },
                                             "detail": {
-                                                "description": "Remove the specified resource from storage",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/proposal-responses/{proposalResponseId}": {
-            "get": {
-                "tags": [
-                    "proposal-responses"
-                ],
-                "summary": "Get a specific proposal response",
-                "description": "Returns details of a specific proposal response",
-                "operationId": "getProposalResponse",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "proposalResponseId",
-                        "in": "path",
-                        "description": "ID of the proposal response",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Display the specified proposal response",
-                                    "$ref": "#/definitions/ProposalResponseResponse"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error or resource not found",
-                        "schema": {
-                            "properties": {
-                                "errors": {
-                                    "description": "Display the specified proposal response",
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "status": {
-                                                "description": "Display the specified proposal response",
-                                                "type": "integer",
-                                                "example": 422
-                                            },
-                                            "title": {
-                                                "description": "Display the specified proposal response",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            },
-                                            "detail": {
-                                                "description": "Display the specified proposal response",
+                                                "description": "Soft-delete a proposal-responses",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             }
@@ -29128,7 +29119,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "property_response"
+                    "example": "proposal_response"
                 },
                 "id": {
                     "type": "integer",
