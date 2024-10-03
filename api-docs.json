@@ -15650,7 +15650,7 @@
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "List proposal-responses",
+                "summary": "List proposal responses",
                 "description": "Returns a list of proposal responses based on the given filters",
                 "operationId": "getProposalResponses",
                 "consumes": [
@@ -15668,73 +15668,55 @@
                         "type": "string"
                     },
                     {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'user', 'patient', 'proposal'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
                         "name": "patient_id",
                         "in": "query",
-                        "description": "'patient_id' field",
+                        "description": "Filter by patient ID",
                         "required": true,
-                        "type": "number"
+                        "type": "integer"
                     },
                     {
                         "name": "user_id",
                         "in": "query",
-                        "description": "'user_id' field",
+                        "description": "Filter by user ID",
                         "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true
+                        "type": "integer"
                     },
                     {
                         "name": "proposal_id",
                         "in": "query",
-                        "description": "'proposal_id' field",
+                        "description": "Filter by proposal ID",
                         "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true
+                        "type": "integer"
                     },
                     {
                         "name": "gives_consent",
                         "in": "query",
-                        "description": "'gives_consent' field",
+                        "description": "Filter by consent status",
                         "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true
+                        "type": "boolean"
                     },
                     {
-                        "name": "sort_by",
+                        "name": "page",
                         "in": "query",
-                        "description": "'sort_by' field",
+                        "description": "Page number for pagination",
                         "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true
+                        "type": "integer"
                     },
                     {
                         "name": "per_page",
                         "in": "query",
-                        "description": "'per_page' field",
+                        "description": "Number of items per page for pagination",
                         "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true
+                        "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Successful response",
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List proposal-responses",
+                                    "description": "List proposal responses",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/ProposalResponseResponse"
@@ -15745,13 +15727,32 @@
                         }
                     },
                     "422": {
-                        "description": "Validation error",
+                        "description": "Validation error or resource not found",
                         "schema": {
                             "properties": {
-                                "message": {
-                                    "description": "List proposal-responses",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
+                                "errors": {
+                                    "description": "List proposal responses",
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "status": {
+                                                "description": "List proposal responses",
+                                                "type": "integer",
+                                                "example": 422
+                                            },
+                                            "title": {
+                                                "description": "List proposal responses",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            },
+                                            "detail": {
+                                                "description": "List proposal responses",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
                                 }
                             },
                             "type": "object"
@@ -15763,9 +15764,9 @@
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "Create a proposal-response",
-                "description": "Returns created proposal response based on the given filters",
-                "operationId": "postProposalResponse",
+                "summary": "Create a new proposal response",
+                "description": "Creates a new proposal response",
+                "operationId": "createProposalResponse",
                 "consumes": [
                     "application/json"
                 ],
@@ -15783,65 +15784,71 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Body of request (obligatory)",
                         "required": true,
                         "schema": {
+                            "required": [
+                                "proposal_id",
+                                "patient_id",
+                                "gives_consent"
+                            ],
                             "properties": {
-                                "data": {
-                                    "description": "Create a proposal-response",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a proposal-response",
-                                            "properties": {
-                                                "patient_id": {
-                                                    "description": "Create a proposal-response",
-                                                    "type": "number",
-                                                    "example": 1211
-                                                },
-                                                "proposal_id": {
-                                                    "description": "Create a proposal-response",
-                                                    "type": "number",
-                                                    "example": 1237
-                                                },
-                                                "gives_consent": {
-                                                    "description": "Create a proposal-response",
-                                                    "type": "boolean",
-                                                    "example": true
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
+                                "proposal_id": {
+                                    "description": "ID of the proposal",
+                                    "type": "integer"
+                                },
+                                "patient_id": {
+                                    "description": "ID of the patient",
+                                    "type": "integer"
+                                },
+                                "gives_consent": {
+                                    "description": "Consent status",
+                                    "type": "boolean"
                                 }
-                            }
+                            },
+                            "type": "object"
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "OK",
+                        "description": "Successful response",
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a proposal-response",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ProposalResponseResponse"
-                                    }
+                                    "description": "Store a new proposal response",
+                                    "$ref": "#/definitions/ProposalResponseResponse"
                                 }
                             },
                             "type": "object"
                         }
                     },
                     "422": {
-                        "description": "Validation error",
+                        "description": "Validation error or resource not found",
                         "schema": {
                             "properties": {
-                                "message": {
-                                    "description": "Create a proposal-response",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
+                                "errors": {
+                                    "description": "Store a new proposal response",
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "status": {
+                                                "description": "Store a new proposal response",
+                                                "type": "integer",
+                                                "example": 422
+                                            },
+                                            "title": {
+                                                "description": "Store a new proposal response",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            },
+                                            "detail": {
+                                                "description": "Store a new proposal response",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
                                 }
                             },
                             "type": "object"
@@ -15851,84 +15858,11 @@
             }
         },
         "/api/proposal-responses/{id}": {
-            "get": {
-                "tags": [
-                    "proposal-responses"
-                ],
-                "summary": "Retrieve a proposal-response",
-                "description": "Returns certain proposal response based on the given filters",
-                "operationId": "getProposalResponse",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "number"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'user', 'patient', 'proposal'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a proposal-response",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ProposalResponseResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a proposal-response",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
             "delete": {
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "Soft-delete a proposal-responses",
+                "summary": "Soft delete a specific proposal response",
                 "description": "Marks a specific proposal response as deleted (soft delete)",
                 "operationId": "deleteProposalResponse",
                 "produces": [
@@ -15962,22 +15896,97 @@
                         "schema": {
                             "properties": {
                                 "errors": {
-                                    "description": "Soft-delete a proposal-responses",
+                                    "description": "Remove the specified resource from storage",
                                     "type": "array",
                                     "items": {
                                         "properties": {
                                             "status": {
-                                                "description": "Soft-delete a proposal-responses",
+                                                "description": "Remove the specified resource from storage",
                                                 "type": "integer",
                                                 "example": 422
                                             },
                                             "title": {
-                                                "description": "Soft-delete a proposal-responses",
+                                                "description": "Remove the specified resource from storage",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             },
                                             "detail": {
-                                                "description": "Soft-delete a proposal-responses",
+                                                "description": "Remove the specified resource from storage",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            }
+                                        },
+                                        "type": "object"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/proposal-responses/{proposalResponseId}": {
+            "get": {
+                "tags": [
+                    "proposal-responses"
+                ],
+                "summary": "Get a specific proposal response",
+                "description": "Returns details of a specific proposal response",
+                "operationId": "getProposalResponse",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "proposalResponseId",
+                        "in": "path",
+                        "description": "ID of the proposal response",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful response",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Display the specified proposal response",
+                                    "$ref": "#/definitions/ProposalResponseResponse"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error or resource not found",
+                        "schema": {
+                            "properties": {
+                                "errors": {
+                                    "description": "Display the specified proposal response",
+                                    "type": "array",
+                                    "items": {
+                                        "properties": {
+                                            "status": {
+                                                "description": "Display the specified proposal response",
+                                                "type": "integer",
+                                                "example": 422
+                                            },
+                                            "title": {
+                                                "description": "Display the specified proposal response",
+                                                "type": "string",
+                                                "example": "This action is unauthorized."
+                                            },
+                                            "detail": {
+                                                "description": "Display the specified proposal response",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             }
@@ -21684,6 +21693,378 @@
                             "properties": {
                                 "message": {
                                     "description": "List tooth-surface-snapshots",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/transactions": {
+            "get": {
+                "tags": [
+                    "transactions"
+                ],
+                "summary": "List transactions",
+                "description": "Returns a list of transactions based on the given filters",
+                "operationId": "getTransactions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'verification', 'account', 'cost_center'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "account_id",
+                        "in": "query",
+                        "description": "'account_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "account_number",
+                        "in": "query",
+                        "description": "'account_number' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "cost_center_ids",
+                        "in": "query",
+                        "description": "'cost_center_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List transactions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TransactionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List transactions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "transactions"
+                ],
+                "summary": "Create a transaction",
+                "description": "Returns created transaction based on the given filters",
+                "operationId": "postTransaction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a transaction",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a transaction",
+                                            "properties": {
+                                                "account_id": {
+                                                    "description": "Create a transaction",
+                                                    "type": "number"
+                                                },
+                                                "verification_id": {
+                                                    "description": "Create a transaction",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "cost_center_id",
+                        "in": "query",
+                        "description": "'cost_center_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a transaction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TransactionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a transaction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/transactions/{id}": {
+            "get": {
+                "tags": [
+                    "transactions"
+                ],
+                "summary": "Retrieve a transaction",
+                "description": "Returns certain transaction based on the given filters",
+                "operationId": "getTransaction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'verification', 'account', 'cost_center'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a transaction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TransactionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a transaction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "transactions"
+                ],
+                "summary": "Edit a transaction",
+                "description": "Returns edited transaction based on the given filters",
+                "operationId": "patchTransaction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a transaction",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a transaction",
+                                            "properties": {
+                                                "account_id": {
+                                                    "description": "Edit a transaction",
+                                                    "type": "number"
+                                                },
+                                                "verification_id": {
+                                                    "description": "Edit a transaction",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a transaction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TransactionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a transaction",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -29119,7 +29500,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "proposal_response"
+                    "example": "property_response"
                 },
                 "id": {
                     "type": "integer",
@@ -30748,6 +31129,42 @@
                         "deepest_pocket": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TransactionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "transaction"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "account_number": {
+                            "type": "string",
+                            "example": "1040"
+                        },
+                        "account_name": {
+                            "type": "string",
+                            "example": "Licenser"
+                        },
+                        "cost_center_code": {
+                            "type": "string"
+                        },
+                        "cost_center_name": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
