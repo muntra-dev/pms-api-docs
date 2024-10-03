@@ -97,6 +97,271 @@
                 }
             }
         },
+        "/api/anonymous-invoice-payments": {
+            "get": {
+                "tags": [
+                    "anonymous-invoice-payments"
+                ],
+                "summary": "List anonymous-invoice-payments",
+                "description": "Returns a list of anonymous invoice payments based on the given filters",
+                "operationId": "getAnonymouseInvoicePayments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'patient_invoice', 'payments_per_invoices', 'patient_payment_method', 'daily_reconciliation', 'payment_service'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-invoice-payments",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymouseInvoicePaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-invoice-payments",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "anonymous-invoice-payments"
+                ],
+                "summary": "Create a anonymous-invoice-payment",
+                "description": "Returns created anonymous invoice payment based on the given filters",
+                "operationId": "postAnonymouseInvoicePayment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a anonymous-invoice-payment",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a anonymous-invoice-payment",
+                                            "properties": {
+                                                "currency_id": {
+                                                    "description": "Create a anonymous-invoice-payment",
+                                                    "type": "string"
+                                                },
+                                                "payment_type_id": {
+                                                    "description": "Create a anonymous-invoice-payment",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Create a anonymous-invoice-payment",
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "custom_payment_type_id": {
+                                                    "description": "Create a anonymous-invoice-payment",
+                                                    "type": "string",
+                                                    "example": "Otto"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a anonymous-invoice-payment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymouseInvoicePaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a anonymous-invoice-payment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-invoice-payments/{id}": {
+            "patch": {
+                "tags": [
+                    "anonymous-invoice-payments"
+                ],
+                "summary": "Edit a anonymous-invoice-payment",
+                "description": "Returns edited anonymous invoice payment based on the given filters",
+                "operationId": "patchAnonymouseInvoicePayment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a anonymous-invoice-payment",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a anonymous-invoice-payment",
+                                            "properties": {
+                                                "currency_id": {
+                                                    "description": "Edit a anonymous-invoice-payment",
+                                                    "type": "string"
+                                                },
+                                                "payment_type_id": {
+                                                    "description": "Edit a anonymous-invoice-payment",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Edit a anonymous-invoice-payment",
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "custom_payment_type_id": {
+                                                    "description": "Edit a anonymous-invoice-payment",
+                                                    "type": "string",
+                                                    "example": "Otto"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a anonymous-invoice-payment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymouseInvoicePaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a anonymous-invoice-payment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/anonymous-patient-invoices": {
             "get": {
                 "tags": [
@@ -11380,6 +11645,18 @@
                         "default": ""
                     },
                     {
+                        "name": "include",
+                        "in": "query",
+                        "description": "List of additional includes in response.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
                         "name": "procedure_ids",
                         "in": "query",
                         "description": "List of procedures for filtering caregiver_at_locations records.",
@@ -12716,77 +12993,6 @@
             }
         },
         "/api/muntra-patient-reviews": {
-            "get": {
-                "tags": [
-                    "muntra-patient-reviews"
-                ],
-                "summary": "List muntra-patient-reviews",
-                "description": "Returns a list of patient reviews for a caregiver based on the given filters",
-                "operationId": "getMuntraPatientReviewForCaregiver",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "caregiver_id",
-                        "in": "query",
-                        "description": "Parameter for certain caregiver id.",
-                        "required": true,
-                        "type": "integer"
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "description": "'per_page' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List muntra-patient-reviews",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MuntraPatientReviewCaregiver"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List muntra-patient-reviews",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
             "post": {
                 "tags": [
                     "muntra-patient-reviews"
@@ -13043,6 +13249,61 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a muntra-patient-review",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/muntra-patient-reviews/{caregiver_id}": {
+            "get": {
+                "tags": [
+                    "muntra-patient-reviews"
+                ],
+                "summary": "List muntra-patient-reviews",
+                "description": "Returns a list of patient reviews for a caregiver based on the given filters",
+                "operationId": "getMuntraPatientReviewForCaregiver",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "caregiver_id",
+                        "in": "query",
+                        "description": "Parameter for certain caregiver id.",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List muntra-patient-reviews",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraPatientReviewCaregiver"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List muntra-patient-reviews",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -17818,6 +18079,15 @@
                         "default": ""
                     },
                     {
+                        "name": "booking_status",
+                        "in": "query",
+                        "description": "'booking_status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
                         "name": "sort_by",
                         "in": "query",
                         "description": "'sort_by' field",
@@ -21385,7 +21655,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "path",
+                        "in": "header",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -21905,7 +22175,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "path",
+                        "in": "header",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -21978,7 +22248,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "path",
+                        "in": "header",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -22205,81 +22475,6 @@
                         }
                     }
                 }
-            }
-        },
-        "/api/three-d-images/{id}": {
-            "get": {
-                "tags": [
-                    "three-d-images"
-                ],
-                "summary": "Retrieve a three-d-image",
-                "description": "Returns certain three-d-image based on the given filters",
-                "operationId": "get3dImage",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'remittances'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a three-d-image",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ThreeDImageResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a three-d-image",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
             },
             "patch": {
                 "tags": [
@@ -22366,6 +22561,81 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a three-d-image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/three-d-images/{id}": {
+            "get": {
+                "tags": [
+                    "three-d-images"
+                ],
+                "summary": "Retrieve a three-d-image",
+                "description": "Returns certain three-d-image based on the given filters",
+                "operationId": "get3dImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'remittances'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a three-d-image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ThreeDImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a three-d-image",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -26549,6 +26819,55 @@
                         "patient_name": {
                             "type": "string",
                             "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnonymouseInvoicePaymentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_invoice_payment"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "Test description"
+                        },
+                        "succeeded": {
+                            "type": "string"
+                        },
+                        "paid_at": {
+                            "type": "string",
+                            "example": "2024-07-12T10:43:49+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-08-12T10:43:49+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-07-22T10:43:49+02:00"
+                        },
+                        "advance_payment": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
                         }
                     },
                     "type": "object"
