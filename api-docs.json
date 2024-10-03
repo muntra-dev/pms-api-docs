@@ -370,7 +370,7 @@
                 "tags": [
                     "anonymous-patient-invoices"
                 ],
-                "summary": "Retrieve a anonymous-patient-invoice",
+                "summary": "Retrieve an anonymous-patient-invoice",
                 "description": "Returns a certain anonymous patient invoice based on the given filters",
                 "operationId": "getAnonymousPatientInvoice",
                 "consumes": [
@@ -414,7 +414,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a anonymous-patient-invoice",
+                                    "description": "Retrieve an anonymous-patient-invoice",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/AnonymousPatientInvoicesResponse"
@@ -429,7 +429,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a anonymous-patient-invoice",
+                                    "description": "Retrieve an anonymous-patient-invoice",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -443,7 +443,7 @@
                 "tags": [
                     "anonymous-patient-invoices"
                 ],
-                "summary": "Edit a anonymous-patient-invoice",
+                "summary": "Edit an anonymous-patient-invoice",
                 "description": "Returns a edited anonymous patient invoice based on the given filters",
                 "operationId": "patchAnonymousPatientInvoice",
                 "consumes": [
@@ -475,13 +475,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a anonymous-patient-invoice",
+                                    "description": "Edit an anonymous-patient-invoice",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit a anonymous-patient-invoice",
+                                            "description": "Edit an anonymous-patient-invoice",
                                             "properties": {
                                                 "invoice_type_id": {
-                                                    "description": "Edit a anonymous-patient-invoice",
+                                                    "description": "Edit an anonymous-patient-invoice",
                                                     "type": "number"
                                                 }
                                             },
@@ -500,7 +500,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a anonymous-patient-invoice",
+                                    "description": "Edit an anonymous-patient-invoice",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/AnonymousPatientInvoicesResponse"
@@ -515,7 +515,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit a anonymous-patient-invoice",
+                                    "description": "Edit an anonymous-patient-invoice",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -820,6 +820,996 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a booking attendee",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/booking-exdates": {
+            "get": {
+                "tags": [
+                    "booking-exdates"
+                ],
+                "summary": "List booking-exdates",
+                "description": "Returns a list of booking exdates based on the given filters",
+                "operationId": "getBookingExdates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "booking_id",
+                        "in": "query",
+                        "description": "'booking_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List booking-exdates",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingExdateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List booking-exdates",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "booking-exdates"
+                ],
+                "summary": "Create a booking-exdate",
+                "description": "Returns certain booking exdate based on the given filters",
+                "operationId": "postBookingExdate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking-exdate",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a booking-exdate",
+                                            "properties": {
+                                                "booking_id": {
+                                                    "description": "Create a booking-exdate",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "date": {
+                                                    "description": "Create a booking-exdate",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking-exdate",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingExdateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a booking-exdate",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/booking-exdates/{id}": {
+            "get": {
+                "tags": [
+                    "booking-exdates"
+                ],
+                "summary": "Retrieve a booking-exdate",
+                "description": "Returns certain booking exdate based on the given filters",
+                "operationId": "getBookingExdate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a booking-exdate",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingExdateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a booking-exdate",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "booking-exdates"
+                ],
+                "summary": "Edit a booking-exdate",
+                "description": "Returns edited booking exdate based on the given filters",
+                "operationId": "patchBookingExdate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a booking-exdate",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a booking-exdate",
+                                            "properties": {
+                                                "booking_id": {
+                                                    "description": "Edit a booking-exdate",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "date": {
+                                                    "description": "Edit a booking-exdate",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a booking-exdate",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingExdateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a booking-exdate",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/booking-rrule-by-days": {
+            "get": {
+                "tags": [
+                    "booking-rrule-by-days"
+                ],
+                "summary": "List booking-rrule-by-days",
+                "description": "Returns a list of booking rrule by days based on the given filters",
+                "operationId": "getBookingRruleByDays",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking_rrule'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "booking_rrule_id",
+                        "in": "query",
+                        "description": "'booking_rrule_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List booking-rrule-by-days",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingRruleByDayResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List booking-rrule-by-days",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "booking-rrule-by-days"
+                ],
+                "summary": "Create a booking-rrule-by-day",
+                "description": "Returns created booking rrule by day based on the given filters",
+                "operationId": "postBookingRruleByDay",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking-rrule-by-day",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a booking-rrule-by-day",
+                                            "properties": {
+                                                "booking_rrule_id": {
+                                                    "description": "Create a booking-rrule-by-day",
+                                                    "type": "number",
+                                                    "example": 1211
+                                                },
+                                                "day": {
+                                                    "description": "Create a booking-rrule-by-day",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking-rrule-by-day",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingRruleByDayResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a booking-rrule-by-day",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/booking-rrule-by-days/{id}": {
+            "get": {
+                "tags": [
+                    "booking-rrule-by-days"
+                ],
+                "summary": "Retrieve a booking-rrule-by-day",
+                "description": "Returns certain booking rrule by day based on the given filters",
+                "operationId": "getBookingRruleByDay",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking_rrule'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a booking-rrule-by-day",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingRruleByDayResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a booking-rrule-by-day",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "booking-rrule-by-days"
+                ],
+                "summary": "Edit a booking-rrule-by-day",
+                "description": "Returns edited booking rrule by day based on the given filters",
+                "operationId": "patchBookingRruleByDay",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a booking-rrule-by-day",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a booking-rrule-by-day",
+                                            "properties": {
+                                                "booking_rrule_id": {
+                                                    "description": "Edit a booking-rrule-by-day",
+                                                    "type": "number",
+                                                    "example": 1211
+                                                },
+                                                "day": {
+                                                    "description": "Edit a booking-rrule-by-day",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a booking-rrule-by-day",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingRruleByDayResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a booking-rrule-by-day",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/booking-rrules": {
+            "get": {
+                "tags": [
+                    "booking-rrules"
+                ],
+                "summary": "List booking-rrules",
+                "description": "Returns a list of booking rrules based on the given filters",
+                "operationId": "getBookingRrules",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "booking_id",
+                        "in": "query",
+                        "description": "'booking_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List booking-rrules",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingRruleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List booking-rrules",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "booking-rrules"
+                ],
+                "summary": "Create booking-rrule",
+                "description": "Returns a created booking rrule based on the given filters",
+                "operationId": "postBookingRrule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create booking-rrule",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create booking-rrule",
+                                            "properties": {
+                                                "booking_id": {
+                                                    "description": "Create booking-rrule",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "freq": {
+                                                    "description": "Create booking-rrule",
+                                                    "type": "string"
+                                                },
+                                                "interval": {
+                                                    "description": "Create booking-rrule",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create booking-rrule",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingRruleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create booking-rrule",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/booking-rrules/{id}": {
+            "get": {
+                "tags": [
+                    "booking-rrules"
+                ],
+                "summary": "Retrieve booking-rrule",
+                "description": "Returns certain booking rrule based on the given filters",
+                "operationId": "getBookingRrule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve booking-rrule",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingRruleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve booking-rrule",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "booking-rrules"
+                ],
+                "summary": "Edit a booking-rrule",
+                "description": "Returns edited booking rrule based on the given filters",
+                "operationId": "patchBookingRrule",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a booking-rrule",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a booking-rrule",
+                                            "properties": {
+                                                "booking_id": {
+                                                    "description": "Edit a booking-rrule",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "freq": {
+                                                    "description": "Edit a booking-rrule",
+                                                    "type": "string"
+                                                },
+                                                "interval": {
+                                                    "description": "Edit a booking-rrule",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a booking-rrule",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingRruleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a booking-rrule",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -6211,6 +7201,15 @@
                         "default": ""
                     },
                     {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "list of user's ids",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
                         "name": "reimbursable",
                         "in": "query",
                         "description": "'reimbursable' field",
@@ -10381,18 +11380,6 @@
                         "default": ""
                     },
                     {
-                        "name": "include",
-                        "in": "query",
-                        "description": "List of additional includes in response.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "default": ""
-                    },
-                    {
                         "name": "procedure_ids",
                         "in": "query",
                         "description": "List of procedures for filtering caregiver_at_locations records.",
@@ -11729,6 +12716,77 @@
             }
         },
         "/api/muntra-patient-reviews": {
+            "get": {
+                "tags": [
+                    "muntra-patient-reviews"
+                ],
+                "summary": "List muntra-patient-reviews",
+                "description": "Returns a list of patient reviews for a caregiver based on the given filters",
+                "operationId": "getMuntraPatientReviewForCaregiver",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "caregiver_id",
+                        "in": "query",
+                        "description": "Parameter for certain caregiver id.",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List muntra-patient-reviews",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraPatientReviewCaregiver"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List muntra-patient-reviews",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "muntra-patient-reviews"
@@ -11985,61 +13043,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a muntra-patient-review",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/muntra-patient-reviews/{caregiver_id}": {
-            "get": {
-                "tags": [
-                    "muntra-patient-reviews"
-                ],
-                "summary": "List muntra-patient-reviews",
-                "description": "Returns a list of patient reviews for a caregiver based on the given filters",
-                "operationId": "getMuntraPatientReviewForCaregiver",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "caregiver_id",
-                        "in": "query",
-                        "description": "Parameter for certain caregiver id.",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List muntra-patient-reviews",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MuntraPatientReviewCaregiver"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List muntra-patient-reviews",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -12915,6 +13918,336 @@
                             "properties": {
                                 "message": {
                                     "description": "List number-of-unread-message-rooms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/opening-hours": {
+            "get": {
+                "tags": [
+                    "opening-hours"
+                ],
+                "summary": "List opening-hours",
+                "description": "Returns list of opening hours based on the given filters",
+                "operationId": "getOpeningHours",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'weekday'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List opening-hours",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OpeningHourResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List opening-hours",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "opening-hours"
+                ],
+                "summary": "Create an opening-hours",
+                "description": "Returns created opening hours based on the given filters",
+                "operationId": "postOpeningHours",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an opening-hours",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an opening-hours",
+                                            "properties": {
+                                                "weekday_id": {
+                                                    "description": "Create an opening-hours",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "dtstart_in_minutes": {
+                                                    "description": "Create an opening-hours",
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "dtend_in_minutes": {
+                                                    "description": "Create an opening-hours",
+                                                    "type": "number",
+                                                    "example": 20
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an opening-hours",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OpeningHourResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an opening-hours",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/opening-hours/{id}": {
+            "get": {
+                "tags": [
+                    "opening-hours"
+                ],
+                "summary": "Retrieve an opening-hours",
+                "description": "Returns certain opening hours based on the given filters",
+                "operationId": "getOpeningHour",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'weekday'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an opening-hours",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OpeningHourResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an opening-hours",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "opening-hours"
+                ],
+                "summary": "Edit an opening-hours",
+                "description": "Returns edited opening hours based on the given filters",
+                "operationId": "patchOpeningHour",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an opening-hours",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an opening-hours",
+                                            "properties": {
+                                                "weekday_id": {
+                                                    "description": "Edit an opening-hours",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "dtstart_in_minutes": {
+                                                    "description": "Edit an opening-hours",
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "dtend_in_minutes": {
+                                                    "description": "Edit an opening-hours",
+                                                    "type": "number",
+                                                    "example": 20
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an opening-hours",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OpeningHourResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an opening-hours",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -15650,7 +16983,7 @@
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "List proposal responses",
+                "summary": "List proposal-responses",
                 "description": "Returns a list of proposal responses based on the given filters",
                 "operationId": "getProposalResponses",
                 "consumes": [
@@ -15668,55 +17001,73 @@
                         "type": "string"
                     },
                     {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient', 'proposal'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
                         "name": "patient_id",
                         "in": "query",
-                        "description": "Filter by patient ID",
+                        "description": "'patient_id' field",
                         "required": true,
-                        "type": "integer"
+                        "type": "number"
                     },
                     {
                         "name": "user_id",
                         "in": "query",
-                        "description": "Filter by user ID",
+                        "description": "'user_id' field",
                         "required": false,
-                        "type": "integer"
+                        "type": "number",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "proposal_id",
                         "in": "query",
-                        "description": "Filter by proposal ID",
+                        "description": "'proposal_id' field",
                         "required": false,
-                        "type": "integer"
+                        "type": "number",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "gives_consent",
                         "in": "query",
-                        "description": "Filter by consent status",
+                        "description": "'gives_consent' field",
                         "required": false,
-                        "type": "boolean"
+                        "type": "boolean",
+                        "allowEmptyValue": true
                     },
                     {
-                        "name": "page",
+                        "name": "sort_by",
                         "in": "query",
-                        "description": "Page number for pagination",
+                        "description": "'sort_by' field",
                         "required": false,
-                        "type": "integer"
+                        "type": "string",
+                        "allowEmptyValue": true
                     },
                     {
                         "name": "per_page",
                         "in": "query",
-                        "description": "Number of items per page for pagination",
+                        "description": "'per_page' field",
                         "required": false,
-                        "type": "integer"
+                        "type": "number",
+                        "allowEmptyValue": true
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "OK",
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List proposal responses",
+                                    "description": "List proposal-responses",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/ProposalResponseResponse"
@@ -15727,32 +17078,13 @@
                         }
                     },
                     "422": {
-                        "description": "Validation error or resource not found",
+                        "description": "Validation error",
                         "schema": {
                             "properties": {
-                                "errors": {
-                                    "description": "List proposal responses",
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "status": {
-                                                "description": "List proposal responses",
-                                                "type": "integer",
-                                                "example": 422
-                                            },
-                                            "title": {
-                                                "description": "List proposal responses",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            },
-                                            "detail": {
-                                                "description": "List proposal responses",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
+                                "message": {
+                                    "description": "List proposal-responses",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
                                 }
                             },
                             "type": "object"
@@ -15764,9 +17096,9 @@
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "Create a new proposal response",
-                "description": "Creates a new proposal response",
-                "operationId": "createProposalResponse",
+                "summary": "Create a proposal-response",
+                "description": "Returns created proposal response based on the given filters",
+                "operationId": "postProposalResponse",
                 "consumes": [
                     "application/json"
                 ],
@@ -15784,71 +17116,65 @@
                     {
                         "name": "body",
                         "in": "body",
+                        "description": "Body of request (obligatory)",
                         "required": true,
                         "schema": {
-                            "required": [
-                                "proposal_id",
-                                "patient_id",
-                                "gives_consent"
-                            ],
                             "properties": {
-                                "proposal_id": {
-                                    "description": "ID of the proposal",
-                                    "type": "integer"
-                                },
-                                "patient_id": {
-                                    "description": "ID of the patient",
-                                    "type": "integer"
-                                },
-                                "gives_consent": {
-                                    "description": "Consent status",
-                                    "type": "boolean"
+                                "data": {
+                                    "description": "Create a proposal-response",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a proposal-response",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a proposal-response",
+                                                    "type": "number",
+                                                    "example": 1211
+                                                },
+                                                "proposal_id": {
+                                                    "description": "Create a proposal-response",
+                                                    "type": "number",
+                                                    "example": 1237
+                                                },
+                                                "gives_consent": {
+                                                    "description": "Create a proposal-response",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
-                            },
-                            "type": "object"
+                            }
                         }
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "Successful response",
+                        "description": "OK",
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Store a new proposal response",
-                                    "$ref": "#/definitions/ProposalResponseResponse"
+                                    "description": "Create a proposal-response",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProposalResponseResponse"
+                                    }
                                 }
                             },
                             "type": "object"
                         }
                     },
                     "422": {
-                        "description": "Validation error or resource not found",
+                        "description": "Validation error",
                         "schema": {
                             "properties": {
-                                "errors": {
-                                    "description": "Store a new proposal response",
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "status": {
-                                                "description": "Store a new proposal response",
-                                                "type": "integer",
-                                                "example": 422
-                                            },
-                                            "title": {
-                                                "description": "Store a new proposal response",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            },
-                                            "detail": {
-                                                "description": "Store a new proposal response",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
+                                "message": {
+                                    "description": "Create a proposal-response",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
                                 }
                             },
                             "type": "object"
@@ -15858,11 +17184,84 @@
             }
         },
         "/api/proposal-responses/{id}": {
+            "get": {
+                "tags": [
+                    "proposal-responses"
+                ],
+                "summary": "Retrieve a proposal-response",
+                "description": "Returns certain proposal response based on the given filters",
+                "operationId": "getProposalResponse",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient', 'proposal'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a proposal-response",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProposalResponseResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a proposal-response",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "delete": {
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "Soft delete a specific proposal response",
+                "summary": "Soft-delete a proposal-responses",
                 "description": "Marks a specific proposal response as deleted (soft delete)",
                 "operationId": "deleteProposalResponse",
                 "produces": [
@@ -15896,97 +17295,22 @@
                         "schema": {
                             "properties": {
                                 "errors": {
-                                    "description": "Remove the specified resource from storage",
+                                    "description": "Soft-delete a proposal-responses",
                                     "type": "array",
                                     "items": {
                                         "properties": {
                                             "status": {
-                                                "description": "Remove the specified resource from storage",
+                                                "description": "Soft-delete a proposal-responses",
                                                 "type": "integer",
                                                 "example": 422
                                             },
                                             "title": {
-                                                "description": "Remove the specified resource from storage",
+                                                "description": "Soft-delete a proposal-responses",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             },
                                             "detail": {
-                                                "description": "Remove the specified resource from storage",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            }
-                                        },
-                                        "type": "object"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/proposal-responses/{proposalResponseId}": {
-            "get": {
-                "tags": [
-                    "proposal-responses"
-                ],
-                "summary": "Get a specific proposal response",
-                "description": "Returns details of a specific proposal response",
-                "operationId": "getProposalResponse",
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "proposalResponseId",
-                        "in": "path",
-                        "description": "ID of the proposal response",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Successful response",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Display the specified proposal response",
-                                    "$ref": "#/definitions/ProposalResponseResponse"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error or resource not found",
-                        "schema": {
-                            "properties": {
-                                "errors": {
-                                    "description": "Display the specified proposal response",
-                                    "type": "array",
-                                    "items": {
-                                        "properties": {
-                                            "status": {
-                                                "description": "Display the specified proposal response",
-                                                "type": "integer",
-                                                "example": 422
-                                            },
-                                            "title": {
-                                                "description": "Display the specified proposal response",
-                                                "type": "string",
-                                                "example": "This action is unauthorized."
-                                            },
-                                            "detail": {
-                                                "description": "Display the specified proposal response",
+                                                "description": "Soft-delete a proposal-responses",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             }
@@ -16026,7 +17350,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'organization.",
+                        "description": "Including 'organization'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -16212,7 +17536,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'organization.",
+                        "description": "Including 'organization'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -16258,7 +17582,7 @@
                 "tags": [
                     "proposals"
                 ],
-                "summary": "Soft delete a proposal by ID",
+                "summary": "Soft-delete a proposal",
                 "description": "Soft deletes a specific proposal by its ID",
                 "operationId": "deleteProposal",
                 "consumes": [
@@ -16295,22 +17619,22 @@
                         "schema": {
                             "properties": {
                                 "errors": {
-                                    "description": "Delete a proposal (soft delete)",
+                                    "description": "Soft-delete a proposal",
                                     "type": "array",
                                     "items": {
                                         "properties": {
                                             "status": {
-                                                "description": "Delete a proposal (soft delete)",
+                                                "description": "Soft-delete a proposal",
                                                 "type": "integer",
                                                 "example": 422
                                             },
                                             "title": {
-                                                "description": "Delete a proposal (soft delete)",
+                                                "description": "Soft-delete a proposal",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             },
                                             "detail": {
-                                                "description": "Delete a proposal (soft delete)",
+                                                "description": "Soft-delete a proposal",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             }
@@ -16479,15 +17803,6 @@
                         "name": "status",
                         "in": "query",
                         "description": "'status' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "booking_status",
-                        "in": "query",
-                        "description": "'booking_status' field",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": true,
@@ -20070,7 +21385,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "header",
+                        "in": "path",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -20590,7 +21905,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "header",
+                        "in": "path",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -20663,7 +21978,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "header",
+                        "in": "path",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -20890,6 +22205,81 @@
                         }
                     }
                 }
+            }
+        },
+        "/api/three-d-images/{id}": {
+            "get": {
+                "tags": [
+                    "three-d-images"
+                ],
+                "summary": "Retrieve a three-d-image",
+                "description": "Returns certain three-d-image based on the given filters",
+                "operationId": "get3dImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'remittances'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a three-d-image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ThreeDImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a three-d-image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             },
             "patch": {
                 "tags": [
@@ -20976,81 +22366,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a three-d-image",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/three-d-images/{id}": {
-            "get": {
-                "tags": [
-                    "three-d-images"
-                ],
-                "summary": "Retrieve a three-d-image",
-                "description": "Returns certain three-d-image based on the given filters",
-                "operationId": "get3dImage",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'remittances'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a three-d-image",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ThreeDImageResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a three-d-image",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -21693,378 +23008,6 @@
                             "properties": {
                                 "message": {
                                     "description": "List tooth-surface-snapshots",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/transactions": {
-            "get": {
-                "tags": [
-                    "transactions"
-                ],
-                "summary": "List transactions",
-                "description": "Returns a list of transactions based on the given filters",
-                "operationId": "getTransactions",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'verification', 'account', 'cost_center'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "from_date",
-                        "in": "query",
-                        "description": "'from_date' field",
-                        "required": true,
-                        "type": "string",
-                        "default": ""
-                    },
-                    {
-                        "name": "to_date",
-                        "in": "query",
-                        "description": "'to_date' field",
-                        "required": true,
-                        "type": "string",
-                        "default": ""
-                    },
-                    {
-                        "name": "account_id",
-                        "in": "query",
-                        "description": "'account_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "account_number",
-                        "in": "query",
-                        "description": "'account_number' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "cost_center_ids",
-                        "in": "query",
-                        "description": "'cost_center_ids' field",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List transactions",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TransactionResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List transactions",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "transactions"
-                ],
-                "summary": "Create a transaction",
-                "description": "Returns created transaction based on the given filters",
-                "operationId": "postTransaction",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a transaction",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a transaction",
-                                            "properties": {
-                                                "account_id": {
-                                                    "description": "Create a transaction",
-                                                    "type": "number"
-                                                },
-                                                "verification_id": {
-                                                    "description": "Create a transaction",
-                                                    "type": "number"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "name": "cost_center_id",
-                        "in": "query",
-                        "description": "'cost_center_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a transaction",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TransactionResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a transaction",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/transactions/{id}": {
-            "get": {
-                "tags": [
-                    "transactions"
-                ],
-                "summary": "Retrieve a transaction",
-                "description": "Returns certain transaction based on the given filters",
-                "operationId": "getTransaction",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'verification', 'account', 'cost_center'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a transaction",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TransactionResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a transaction",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "transactions"
-                ],
-                "summary": "Edit a transaction",
-                "description": "Returns edited transaction based on the given filters",
-                "operationId": "patchTransaction",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a transaction",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit a transaction",
-                                            "properties": {
-                                                "account_id": {
-                                                    "description": "Edit a transaction",
-                                                    "type": "number"
-                                                },
-                                                "verification_id": {
-                                                    "description": "Edit a transaction",
-                                                    "type": "number"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit a transaction",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/TransactionResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit a transaction",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -25732,6 +26675,82 @@
             },
             "type": "object"
         },
+        "BookingExdateResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_exdate"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingRruleByDayResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_rrule_by_day"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "day": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingRruleResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_rrule"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "count": {
+                            "type": "number",
+                            "example": 123
+                        },
+                        "freq": {
+                            "type": "string"
+                        },
+                        "interval": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "until": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "BookingResponse": {
             "properties": {
                 "type": {
@@ -28739,6 +29758,32 @@
             },
             "type": "object"
         },
+        "OpeningHourResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "opening_hours"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "40098"
+                },
+                "attributes": {
+                    "properties": {
+                        "dtstart_in_minutes": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "dtend_in_minutes": {
+                            "type": "number",
+                            "example": 20
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "MuntraOrganizationsCurrentResponse": {
             "properties": {
                 "type": {
@@ -29500,7 +30545,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "property_response"
+                    "example": "proposal_response"
                 },
                 "id": {
                     "type": "integer",
@@ -31129,42 +32174,6 @@
                         "deepest_pocket": {
                             "type": "boolean",
                             "example": true
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "TransactionResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "transaction"
-                },
-                "id": {
-                    "type": "integer",
-                    "example": 1
-                },
-                "attributes": {
-                    "properties": {
-                        "amount": {
-                            "type": "number",
-                            "example": 10
-                        },
-                        "account_number": {
-                            "type": "string",
-                            "example": "1040"
-                        },
-                        "account_name": {
-                            "type": "string",
-                            "example": "Licenser"
-                        },
-                        "cost_center_code": {
-                            "type": "string"
-                        },
-                        "cost_center_name": {
-                            "type": "string"
                         }
                     },
                     "type": "object"
