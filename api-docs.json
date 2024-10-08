@@ -97,6 +97,1110 @@
                 }
             }
         },
+        "/api/animal-prescriptions": {
+            "get": {
+                "tags": [
+                    "animal-prescriptions"
+                ],
+                "summary": "List animal-prescriptions",
+                "description": "Returns a list of animal prescriptions based on the given filters",
+                "operationId": "getAnimalPrescriptions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'animal_owner', 'animal_prescription_rows', 'animal_journal_entries', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_owner_id",
+                        "in": "query",
+                        "description": "'animal_owner_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "animal_id",
+                        "in": "query",
+                        "description": "'animal_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-prescriptions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-prescriptions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-prescriptions"
+                ],
+                "summary": "Create an animal-prescription",
+                "description": "Returns created animal prescription based on the given filters",
+                "operationId": "postAnimalPrescription",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'animal_owner', 'animal_prescription_rows', 'animal_journal_entries', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "order_line_id",
+                        "in": "query",
+                        "description": "'order_line_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-prescription",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-prescription",
+                                            "properties": {
+                                                "accepted": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "date": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "delivery_method": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_cit": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_code": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_name": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_number_or_name_of_house": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_postal_code": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_qualification_code": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_telecommunication": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescribers_comment": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_city": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_family_name": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_first_given_name": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_scheme": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_value": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_postal_code": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_street_name": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_phone_number": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "test_indicator": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "callback_url": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "uuid": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_city": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string",
+                                                    "example": "Stockholm"
+                                                },
+                                                "delivery_location_id": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_postal_code": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_street_name": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_telecommunication": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "include_prescription_fee": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "prescription_fee_including_vat": {
+                                                    "description": "Create an animal-prescription",
+                                                    "type": "number",
+                                                    "example": 10
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-prescription",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-prescriptions/{id}": {
+            "get": {
+                "tags": [
+                    "animal-prescriptions"
+                ],
+                "summary": "Retrieve an animal-prescription",
+                "description": "Returns certain animal prescription based on the given filters",
+                "operationId": "getAnimalPrescription",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'animal_owner', 'animal_prescription_rows', 'animal_journal_entries', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-prescription",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "animal-prescriptions"
+                ],
+                "summary": "Edit an animal-prescription",
+                "description": "Returns edited animal prescription based on the given filters",
+                "operationId": "patchAnimalPrescription",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "order_line_id",
+                        "in": "query",
+                        "description": "'order_line_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-prescription",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-prescription",
+                                            "properties": {
+                                                "accepted": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "date": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "delivery_method": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_cit": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_code": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_name": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_number_or_name_of_house": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_postal_code": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_qualification_code": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_telecommunication": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescribers_comment": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_city": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_family_name": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_first_given_name": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_scheme": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_value": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_postal_code": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_street_name": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_phone_number": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "test_indicator": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "callback_url": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "uuid": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_city": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string",
+                                                    "example": "Stockholm"
+                                                },
+                                                "delivery_location_id": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_postal_code": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_street_name": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_telecommunication": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "include_prescription_fee": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "prescription_fee_including_vat": {
+                                                    "description": "Edit an animal-prescription",
+                                                    "type": "number",
+                                                    "example": 10
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-prescription",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-claim-payments": {
+            "get": {
+                "tags": [
+                    "anonymous-claim-payments"
+                ],
+                "summary": "List anonymous-claim-payments",
+                "description": "Returns list of anonymous claim payments based on the given filters",
+                "operationId": "getAnonymousClaimPayments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'claim_payment_specification', 'claim'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "claim_payment_specification_id",
+                        "in": "query",
+                        "description": "'claim_payment_specification_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-claim-payments",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousClaimPaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-claim-payments",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-claim-payments/{id}": {
+            "get": {
+                "tags": [
+                    "anonymous-claim-payments"
+                ],
+                "summary": "Retrieve a anonymous-claim-payment",
+                "description": "Returns certain anonymous claim payment based on the given filters",
+                "operationId": "getAnonymousClaimPayment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'claim_payment_specification', 'claim'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a anonymous-claim-payment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousClaimPaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a anonymous-claim-payment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-claims": {
+            "get": {
+                "tags": [
+                    "anonymous-claims"
+                ],
+                "summary": "List anonymous-claims",
+                "description": "Returns list of anonymous claims based on the given filters",
+                "operationId": "getAnonymousClaims",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "submitted",
+                        "in": "query",
+                        "description": "'submitted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "validated",
+                        "in": "query",
+                        "description": "'validated' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-claims",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousClaimResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-claims",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-claims/{id}": {
+            "get": {
+                "tags": [
+                    "anonymous-claims"
+                ],
+                "summary": "Retrieve a anonymous-claim",
+                "description": "Returns certain anonymous claim based on the given filters",
+                "operationId": "getAnonymousClaim",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a anonymous-claim",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousClaimResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a anonymous-claim",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "anonymous-claims"
+                ],
+                "summary": "Edit a anonymous-claim",
+                "description": "Returns edited anonymous claim based on the given filters",
+                "operationId": "patchAnonymousClaim",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a anonymous-claim",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a anonymous-claim",
+                                            "properties": {
+                                                "verification_id": {
+                                                    "description": "Edit a anonymous-claim",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a anonymous-claim",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousClaimResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a anonymous-claim",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/anonymous-invoice-payments": {
             "get": {
                 "tags": [
@@ -168,7 +1272,7 @@
                 "tags": [
                     "anonymous-invoice-payments"
                 ],
-                "summary": "Create a anonymous-invoice-payment",
+                "summary": "Create an anonymous-invoice-payment",
                 "description": "Returns created anonymous invoice payment based on the given filters",
                 "operationId": "postAnonymouseInvoicePayment",
                 "consumes": [
@@ -193,27 +1297,27 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a anonymous-invoice-payment",
+                                    "description": "Create an anonymous-invoice-payment",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create a anonymous-invoice-payment",
+                                            "description": "Create an anonymous-invoice-payment",
                                             "properties": {
                                                 "currency_id": {
-                                                    "description": "Create a anonymous-invoice-payment",
+                                                    "description": "Create an anonymous-invoice-payment",
                                                     "type": "string"
                                                 },
                                                 "payment_type_id": {
-                                                    "description": "Create a anonymous-invoice-payment",
+                                                    "description": "Create an anonymous-invoice-payment",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "fiscal_year_id": {
-                                                    "description": "Create a anonymous-invoice-payment",
+                                                    "description": "Create an anonymous-invoice-payment",
                                                     "type": "string",
                                                     "example": "John"
                                                 },
                                                 "custom_payment_type_id": {
-                                                    "description": "Create a anonymous-invoice-payment",
+                                                    "description": "Create an anonymous-invoice-payment",
                                                     "type": "string",
                                                     "example": "Otto"
                                                 }
@@ -233,7 +1337,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create a anonymous-invoice-payment",
+                                    "description": "Create an anonymous-invoice-payment",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/AnonymouseInvoicePaymentResponse"
@@ -248,7 +1352,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create a anonymous-invoice-payment",
+                                    "description": "Create an anonymous-invoice-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -264,7 +1368,7 @@
                 "tags": [
                     "anonymous-invoice-payments"
                 ],
-                "summary": "Edit a anonymous-invoice-payment",
+                "summary": "Edit an anonymous-invoice-payment",
                 "description": "Returns edited anonymous invoice payment based on the given filters",
                 "operationId": "patchAnonymouseInvoicePayment",
                 "consumes": [
@@ -296,27 +1400,27 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a anonymous-invoice-payment",
+                                    "description": "Edit an anonymous-invoice-payment",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Edit a anonymous-invoice-payment",
+                                            "description": "Edit an anonymous-invoice-payment",
                                             "properties": {
                                                 "currency_id": {
-                                                    "description": "Edit a anonymous-invoice-payment",
+                                                    "description": "Edit an anonymous-invoice-payment",
                                                     "type": "string"
                                                 },
                                                 "payment_type_id": {
-                                                    "description": "Edit a anonymous-invoice-payment",
+                                                    "description": "Edit an anonymous-invoice-payment",
                                                     "type": "number",
                                                     "example": 1
                                                 },
                                                 "fiscal_year_id": {
-                                                    "description": "Edit a anonymous-invoice-payment",
+                                                    "description": "Edit an anonymous-invoice-payment",
                                                     "type": "string",
                                                     "example": "John"
                                                 },
                                                 "custom_payment_type_id": {
-                                                    "description": "Edit a anonymous-invoice-payment",
+                                                    "description": "Edit an anonymous-invoice-payment",
                                                     "type": "string",
                                                     "example": "Otto"
                                                 }
@@ -336,7 +1440,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Edit a anonymous-invoice-payment",
+                                    "description": "Edit an anonymous-invoice-payment",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/AnonymouseInvoicePaymentResponse"
@@ -351,7 +1455,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Edit a anonymous-invoice-payment",
+                                    "description": "Edit an anonymous-invoice-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -781,6 +1885,74 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an anonymous-patient-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-payment-report-rows": {
+            "get": {
+                "tags": [
+                    "anonymous-payment-report-rows"
+                ],
+                "summary": "List anonymous-payment-report-rows",
+                "description": "Returns a list of anonymous payment report rows based on the given filters",
+                "operationId": "getAnonymousPaymentReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-payment-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousPaymentReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-payment-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1830,7 +3002,7 @@
                 "tags": [
                     "booking-rrules"
                 ],
-                "summary": "Create booking-rrule",
+                "summary": "Create a booking-rrule",
                 "description": "Returns a created booking rrule based on the given filters",
                 "operationId": "postBookingRrule",
                 "consumes": [
@@ -1855,22 +3027,22 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create booking-rrule",
+                                    "description": "Create a booking-rrule",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Create booking-rrule",
+                                            "description": "Create a booking-rrule",
                                             "properties": {
                                                 "booking_id": {
-                                                    "description": "Create booking-rrule",
+                                                    "description": "Create a booking-rrule",
                                                     "type": "number",
                                                     "example": 12
                                                 },
                                                 "freq": {
-                                                    "description": "Create booking-rrule",
+                                                    "description": "Create a booking-rrule",
                                                     "type": "string"
                                                 },
                                                 "interval": {
-                                                    "description": "Create booking-rrule",
+                                                    "description": "Create a booking-rrule",
                                                     "type": "number"
                                                 }
                                             },
@@ -1889,7 +3061,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Create booking-rrule",
+                                    "description": "Create a booking-rrule",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/BookingRruleResponse"
@@ -1904,7 +3076,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Create booking-rrule",
+                                    "description": "Create a booking-rrule",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1920,7 +3092,7 @@
                 "tags": [
                     "booking-rrules"
                 ],
-                "summary": "Retrieve booking-rrule",
+                "summary": "Retrieve a booking-rrule",
                 "description": "Returns certain booking rrule based on the given filters",
                 "operationId": "getBookingRrule",
                 "consumes": [
@@ -1964,7 +3136,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve booking-rrule",
+                                    "description": "Retrieve a booking-rrule",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/BookingRruleResponse"
@@ -1979,7 +3151,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve booking-rrule",
+                                    "description": "Retrieve a booking-rrule",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7578,6 +8750,15 @@
                         "default": ""
                     },
                     {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
                         "name": "sort_by",
                         "in": "query",
                         "description": "'sort_by' field",
@@ -11645,18 +12826,6 @@
                         "default": ""
                     },
                     {
-                        "name": "include",
-                        "in": "query",
-                        "description": "List of additional includes in response.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "default": ""
-                    },
-                    {
                         "name": "procedure_ids",
                         "in": "query",
                         "description": "List of procedures for filtering caregiver_at_locations records.",
@@ -12993,6 +14162,77 @@
             }
         },
         "/api/muntra-patient-reviews": {
+            "get": {
+                "tags": [
+                    "muntra-patient-reviews"
+                ],
+                "summary": "List muntra-patient-reviews",
+                "description": "Returns a list of patient reviews for a caregiver based on the given filters",
+                "operationId": "getMuntraPatientReviewForCaregiver",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "caregiver_id",
+                        "in": "query",
+                        "description": "Parameter for certain caregiver id.",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List muntra-patient-reviews",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraPatientReviewCaregiver"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List muntra-patient-reviews",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
             "post": {
                 "tags": [
                     "muntra-patient-reviews"
@@ -13249,61 +14489,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a muntra-patient-review",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/muntra-patient-reviews/{caregiver_id}": {
-            "get": {
-                "tags": [
-                    "muntra-patient-reviews"
-                ],
-                "summary": "List muntra-patient-reviews",
-                "description": "Returns a list of patient reviews for a caregiver based on the given filters",
-                "operationId": "getMuntraPatientReviewForCaregiver",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "caregiver_id",
-                        "in": "query",
-                        "description": "Parameter for certain caregiver id.",
-                        "required": true,
-                        "type": "integer"
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List muntra-patient-reviews",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MuntraPatientReviewCaregiver"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List muntra-patient-reviews",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -17522,7 +18707,7 @@
                 "tags": [
                     "proposal-responses"
                 ],
-                "summary": "Soft-delete a proposal-responses",
+                "summary": "Soft-delete a proposal-response",
                 "description": "Marks a specific proposal response as deleted (soft delete)",
                 "operationId": "deleteProposalResponse",
                 "produces": [
@@ -17556,22 +18741,22 @@
                         "schema": {
                             "properties": {
                                 "errors": {
-                                    "description": "Soft-delete a proposal-responses",
+                                    "description": "Soft-delete a proposal-response",
                                     "type": "array",
                                     "items": {
                                         "properties": {
                                             "status": {
-                                                "description": "Soft-delete a proposal-responses",
+                                                "description": "Soft-delete a proposal-response",
                                                 "type": "integer",
                                                 "example": 422
                                             },
                                             "title": {
-                                                "description": "Soft-delete a proposal-responses",
+                                                "description": "Soft-delete a proposal-response",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             },
                                             "detail": {
-                                                "description": "Soft-delete a proposal-responses",
+                                                "description": "Soft-delete a proposal-response",
                                                 "type": "string",
                                                 "example": "This action is unauthorized."
                                             }
@@ -18064,15 +19249,6 @@
                         "name": "status",
                         "in": "query",
                         "description": "'status' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "booking_status",
-                        "in": "query",
-                        "description": "'booking_status' field",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": true,
@@ -21655,7 +22831,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "header",
+                        "in": "path",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -22175,7 +23351,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "header",
+                        "in": "path",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -22248,7 +23424,7 @@
                     },
                     {
                         "name": "id",
-                        "in": "header",
+                        "in": "path",
                         "description": "'id' field",
                         "required": true,
                         "type": "string"
@@ -22475,6 +23651,81 @@
                         }
                     }
                 }
+            }
+        },
+        "/api/three-d-images/{id}": {
+            "get": {
+                "tags": [
+                    "three-d-images"
+                ],
+                "summary": "Retrieve a three-d-image",
+                "description": "Returns certain three-d-image based on the given filters",
+                "operationId": "get3dImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'remittances'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a three-d-image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ThreeDImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a three-d-image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
             },
             "patch": {
                 "tags": [
@@ -22561,81 +23812,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a three-d-image",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/three-d-images/{id}": {
-            "get": {
-                "tags": [
-                    "three-d-images"
-                ],
-                "summary": "Retrieve a three-d-image",
-                "description": "Returns certain three-d-image based on the given filters",
-                "operationId": "get3dImage",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'patient', 'twain_data_source', 'device', 'file_type', 'remittances'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a three-d-image",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/ThreeDImageResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a three-d-image",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -23278,6 +24454,378 @@
                             "properties": {
                                 "message": {
                                     "description": "List tooth-surface-snapshots",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/transactions": {
+            "get": {
+                "tags": [
+                    "transactions"
+                ],
+                "summary": "List transactions",
+                "description": "Returns a list of transactions based on the given filters",
+                "operationId": "getTransactions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'verification', 'account', 'cost_center'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": true,
+                        "type": "string",
+                        "default": ""
+                    },
+                    {
+                        "name": "account_id",
+                        "in": "query",
+                        "description": "'account_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "account_number",
+                        "in": "query",
+                        "description": "'account_number' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "cost_center_ids",
+                        "in": "query",
+                        "description": "'cost_center_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List transactions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TransactionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List transactions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "transactions"
+                ],
+                "summary": "Create a transaction",
+                "description": "Returns created transaction based on the given filters",
+                "operationId": "postTransaction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a transaction",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a transaction",
+                                            "properties": {
+                                                "account_id": {
+                                                    "description": "Create a transaction",
+                                                    "type": "number"
+                                                },
+                                                "verification_id": {
+                                                    "description": "Create a transaction",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "cost_center_id",
+                        "in": "query",
+                        "description": "'cost_center_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a transaction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TransactionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a transaction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/transactions/{id}": {
+            "get": {
+                "tags": [
+                    "transactions"
+                ],
+                "summary": "Retrieve a transaction",
+                "description": "Returns certain transaction based on the given filters",
+                "operationId": "getTransaction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'verification', 'account', 'cost_center'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a transaction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TransactionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a transaction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "transactions"
+                ],
+                "summary": "Edit a transaction",
+                "description": "Returns edited transaction based on the given filters",
+                "operationId": "patchTransaction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a transaction",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a transaction",
+                                            "properties": {
+                                                "account_id": {
+                                                    "description": "Edit a transaction",
+                                                    "type": "number"
+                                                },
+                                                "verification_id": {
+                                                    "description": "Edit a transaction",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a transaction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TransactionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a transaction",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -26819,6 +28367,327 @@
                         "patient_name": {
                             "type": "string",
                             "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnimalPrescriptionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_prescription"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "accepted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "delivery_method": {
+                            "type": "string"
+                        },
+                        "prescriber_cit": {
+                            "type": "string"
+                        },
+                        "prescriber_code": {
+                            "type": "string"
+                        },
+                        "prescriber_name": {
+                            "type": "string"
+                        },
+                        "prescriber_number_or_name_of_house": {
+                            "type": "string"
+                        },
+                        "prescriber_postal_code": {
+                            "type": "string"
+                        },
+                        "prescriber_qualification_code": {
+                            "type": "string"
+                        },
+                        "prescriber_telecommunication": {
+                            "type": "string"
+                        },
+                        "prescribers_comment": {
+                            "type": "string"
+                        },
+                        "subject_of_care_city": {
+                            "type": "string"
+                        },
+                        "subject_of_care_family_name": {
+                            "type": "string"
+                        },
+                        "subject_of_care_first_given_name": {
+                            "type": "string"
+                        },
+                        "subject_of_care_id_scheme": {
+                            "type": "string"
+                        },
+                        "subject_of_care_id_value": {
+                            "type": "string"
+                        },
+                        "subject_of_care_postal_code": {
+                            "type": "string"
+                        },
+                        "subject_of_care_street_name": {
+                            "type": "string"
+                        },
+                        "subject_of_care_phone_number": {
+                            "type": "string"
+                        },
+                        "test_indicator": {
+                            "type": "string"
+                        },
+                        "callback_url": {
+                            "type": "string"
+                        },
+                        "uuid": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "delivery_location_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "delivery_location_id": {
+                            "type": "string"
+                        },
+                        "delivery_location_postal_code": {
+                            "type": "string"
+                        },
+                        "delivery_location_street_name": {
+                            "type": "string"
+                        },
+                        "delivery_location_telecommunication": {
+                            "type": "string"
+                        },
+                        "include_prescription_fee": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "prescription_fee_including_vat": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnonymousClaimPaymentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_claim_payment"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "deviating": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "done": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnonymousClaimResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_claim"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "FK_validate_claim_status": {
+                            "type": "string"
+                        },
+                        "FK_validate_claim_amount": {
+                            "type": "number"
+                        },
+                        "FK_claim_id": {
+                            "type": "string"
+                        },
+                        "FK_claim_amount": {
+                            "type": "number"
+                        },
+                        "FK_claim_status": {
+                            "type": "string"
+                        },
+                        "FK_submitted_amount": {
+                            "type": "number"
+                        },
+                        "FK_reverse_claim_status": {
+                            "type": "string"
+                        },
+                        "care_provider_org_number": {
+                            "type": "string"
+                        },
+                        "government_organization_id": {
+                            "type": "string"
+                        },
+                        "user_ssn": {
+                            "type": "string"
+                        },
+                        "patient_ssn": {
+                            "type": "string"
+                        },
+                        "patient_fin": {
+                            "type": "string"
+                        },
+                        "dentist_ssn": {
+                            "type": "string"
+                        },
+                        "treatment_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "eligible_from_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "high_cost_amount_before_treatments": {
+                            "type": "number"
+                        },
+                        "late_sending_reason": {
+                            "type": "string"
+                        },
+                        "atb_usage_atb_number": {
+                            "type": "string"
+                        },
+                        "atb_usage_teeth_count": {
+                            "type": "number"
+                        },
+                        "atb_usage_untreated_teeth_count": {
+                            "type": "number"
+                        },
+                        "new_atb_start_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "new_atb_amount_before_claim": {
+                            "type": "number",
+                            "example": 123
+                        },
+                        "was_new_atb_used_before_claim": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "old_atb_start_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "old_atb_amount_before_claim": {
+                            "type": "number",
+                            "example": 12
+                        },
+                        "was_old_atb_used_before_claim": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "stb_disease_code": {
+                            "type": "string"
+                        },
+                        "stb_amount_claimed": {
+                            "type": "number"
+                        },
+                        "stb_amount_available": {
+                            "type": "number"
+                        },
+                        "high_cost_reset": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "disregard_subscription": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "validated": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "validation_sent_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "submitted": {
+                            "type": "number"
+                        },
+                        "submitted_date": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "answered_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "error_text": {
+                            "type": "string"
+                        },
+                        "error_details": {
+                            "type": "string"
+                        },
+                        "reversed": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "reversed_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "reversal_error_code": {
+                            "type": "string"
+                        },
+                        "reversal_error_text": {
+                            "type": "string"
+                        },
+                        "reversal_error_details": {
+                            "type": "string"
+                        },
+                        "deducted_from_invoice": {
+                            "type": "string"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-08-31T00:00:00+02:00"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
@@ -30648,6 +32517,44 @@
             },
             "type": "object"
         },
+        "AnonymousPaymentReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_payment_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "account_number": {
+                            "type": "string"
+                        },
+                        "verification_number": {
+                            "type": "string"
+                        },
+                        "verification_date": {
+                            "type": "string",
+                            "example": "2024-09-11T29:25:31+02:00"
+                        },
+                        "verification_text": {
+                            "type": "string"
+                        },
+                        "patient_name": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "PaymentTypeResponse": {
             "properties": {
                 "type": {
@@ -32493,6 +34400,42 @@
                         "deepest_pocket": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TransactionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "transaction"
+                },
+                "id": {
+                    "type": "integer",
+                    "example": 1
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "account_number": {
+                            "type": "string",
+                            "example": "1040"
+                        },
+                        "account_name": {
+                            "type": "string",
+                            "example": "Licenser"
+                        },
+                        "cost_center_code": {
+                            "type": "string"
+                        },
+                        "cost_center_name": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
