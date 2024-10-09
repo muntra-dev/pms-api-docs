@@ -835,7 +835,7 @@
                                             "properties": {
                                                 "animal_owner": {
                                                     "description": "Shortcut for animal-prescription",
-                                                    "type": "array",
+                                                    "type": "object",
                                                     "items": {
                                                         "properties": {
                                                             "id": {
@@ -844,7 +844,7 @@
                                                             },
                                                             "legal_entity": {
                                                                 "description": "Shortcut for animal-prescription",
-                                                                "type": "array",
+                                                                "type": "object",
                                                                 "items": {
                                                                     "properties": {
                                                                         "organization_number": {
