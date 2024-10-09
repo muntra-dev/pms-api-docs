@@ -835,31 +835,27 @@
                                             "properties": {
                                                 "animal_owner": {
                                                     "description": "Shortcut for animal-prescription",
-                                                    "type": "object",
-                                                    "items": {
-                                                        "properties": {
-                                                            "id": {
-                                                                "description": "Shortcut for animal-prescription",
-                                                                "type": "number"
-                                                            },
-                                                            "legal_entity": {
-                                                                "description": "Shortcut for animal-prescription",
-                                                                "type": "object",
-                                                                "items": {
-                                                                    "properties": {
-                                                                        "organization_number": {
-                                                                            "description": "Shortcut for animal-prescription",
-                                                                            "type": "string"
-                                                                        },
-                                                                        "organization_name": {
-                                                                            "description": "Shortcut for animal-prescription",
-                                                                            "type": "string"
-                                                                        }
-                                                                    }
+                                                    "properties": {
+                                                        "id": {
+                                                            "description": "Shortcut for animal-prescription",
+                                                            "type": "number"
+                                                        },
+                                                        "legal_entity": {
+                                                            "description": "Shortcut for animal-prescription",
+                                                            "properties": {
+                                                                "organization_number": {
+                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "type": "string"
+                                                                },
+                                                                "organization_name": {
+                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "type": "string"
                                                                 }
-                                                            }
+                                                            },
+                                                            "type": "object"
                                                         }
-                                                    }
+                                                    },
+                                                    "type": "object"
                                                 }
                                             },
                                             "type": "object"
