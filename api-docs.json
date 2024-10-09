@@ -823,8 +823,8 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Body of request (not obligatory)",
-                        "required": false,
+                        "description": "Body of request (obligatory)",
+                        "required": true,
                         "schema": {
                             "properties": {
                                 "data": {
@@ -833,10 +833,33 @@
                                         "attributes": {
                                             "description": "Shortcut for animal-prescription",
                                             "properties": {
-                                                "accepted": {
+                                                "animal_owner": {
                                                     "description": "Shortcut for animal-prescription",
-                                                    "type": "boolean",
-                                                    "example": true
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "description": "Shortcut for animal-prescription",
+                                                                "type": "number"
+                                                            },
+                                                            "legal_entity": {
+                                                                "description": "Shortcut for animal-prescription",
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "properties": {
+                                                                        "organization_number": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "type": "string"
+                                                                        },
+                                                                        "organization_name": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 },
                                                 "date": {
                                                     "description": "Shortcut for animal-prescription",
