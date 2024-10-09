@@ -846,11 +846,13 @@
                                                             "properties": {
                                                                 "organization_number": {
                                                                     "description": "Shortcut for animal-prescription",
-                                                                    "type": "string"
+                                                                    "type": "string",
+                                                                    "example": "1234123415"
                                                                 },
                                                                 "organization_name": {
                                                                     "description": "Shortcut for animal-prescription",
-                                                                    "type": "string"
+                                                                    "type": "string",
+                                                                    "example": "Test AB"
                                                                 }
                                                             },
                                                             "type": "object"
