@@ -838,7 +838,8 @@
                                                     "properties": {
                                                         "id": {
                                                             "description": "Shortcut for animal-prescription",
-                                                            "type": "number"
+                                                            "type": "number",
+                                                            "example": 1
                                                         },
                                                         "legal_entity": {
                                                             "description": "Shortcut for animal-prescription",
