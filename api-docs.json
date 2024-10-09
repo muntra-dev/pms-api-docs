@@ -924,14 +924,14 @@
                                                                                     "description": "Shortcut for animal-prescription",
                                                                                     "type": "string",
                                                                                     "example": "051"
-                                                                                },
-                                                                                "npl_pack_id": {
-                                                                                    "description": "Shortcut for animal-prescription",
-                                                                                    "type": "string",
-                                                                                    "example": "20101220100540"
                                                                                 }
                                                                             },
                                                                             "type": "object"
+                                                                        },
+                                                                        "npl_pack_id": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "type": "string",
+                                                                            "example": "20101220100540"
                                                                         }
                                                                     },
                                                                     "type": "object"
