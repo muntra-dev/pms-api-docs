@@ -856,6 +856,91 @@
                                                         }
                                                     },
                                                     "type": "object"
+                                                },
+                                                "delivery_location_city": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string",
+                                                    "example": "Stockholm"
+                                                },
+                                                "delivery_location_postal_code": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string",
+                                                    "example": "10316"
+                                                },
+                                                "delivery_location_street_name": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string",
+                                                    "example": "Test street"
+                                                },
+                                                "animal_prescription_rows": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "properties": {
+                                                        "data": {
+                                                            "description": "Shortcut for animal-prescription",
+                                                            "properties": {
+                                                                "journal_pharmaceutical_article": {
+                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "properties": {
+                                                                        "article_code": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "type": "string",
+                                                                            "example": "166278"
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                },
+                                                                "dispensing_repeat_number": {
+                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "type": "number",
+                                                                    "example": 1
+                                                                },
+                                                                "number_of_packages": {
+                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "type": "number",
+                                                                    "example": 1
+                                                                },
+                                                                "unstructured_dosage_admin": {
+                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "type": "string",
+                                                                    "example": "Injiceras subcutant enligt schema. Mot allergi."
+                                                                },
+                                                                "animal": {
+                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "properties": {
+                                                                        "animal_identification": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "type": "string",
+                                                                            "example": "Nytt test"
+                                                                        },
+                                                                        "animal_id_qualifier": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "type": "string",
+                                                                            "example": "IND"
+                                                                        },
+                                                                        "animal_species": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "properties": {
+                                                                                "code": {
+                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                    "type": "string",
+                                                                                    "example": "051"
+                                                                                },
+                                                                                "npl_pack_id": {
+                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                    "type": "string",
+                                                                                    "example": "20101220100540"
+                                                                                }
+                                                                            },
+                                                                            "type": "object"
+                                                                        }
+                                                                    },
+                                                                    "type": "object"
+                                                                }
+                                                            },
+                                                            "type": "object"
+                                                        }
+                                                    },
+                                                    "type": "object"
                                                 }
                                             },
                                             "type": "object"
