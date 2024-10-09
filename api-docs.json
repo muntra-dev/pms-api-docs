@@ -823,8 +823,8 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Body of request (not obligatory)",
-                        "required": false,
+                        "description": "Body of request (obligatory)",
+                        "required": true,
                         "schema": {
                             "properties": {
                                 "data": {
@@ -833,126 +833,33 @@
                                         "attributes": {
                                             "description": "Shortcut for animal-prescription",
                                             "properties": {
-                                                "accepted": {
+                                                "animal_owner": {
                                                     "description": "Shortcut for animal-prescription",
-                                                    "type": "boolean",
-                                                    "example": true
-                                                },
-                                                "date": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string",
-                                                    "example": "2024-09-01T19:25:31+02:00"
-                                                },
-                                                "delivery_method": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "prescriber_cit": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "prescriber_code": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "prescriber_name": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "prescriber_number_or_name_of_house": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "prescriber_postal_code": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "prescriber_qualification_code": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "prescriber_telecommunication": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "prescribers_comment": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "subject_of_care_city": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "subject_of_care_family_name": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "subject_of_care_first_given_name": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "subject_of_care_id_scheme": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "subject_of_care_id_value": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "subject_of_care_postal_code": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "subject_of_care_street_name": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "subject_of_care_phone_number": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "test_indicator": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "callback_url": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "uuid": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "delivery_location_city": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string",
-                                                    "example": "Stockholm"
-                                                },
-                                                "delivery_location_id": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "delivery_location_postal_code": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "delivery_location_street_name": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "delivery_location_telecommunication": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "string"
-                                                },
-                                                "include_prescription_fee": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "boolean",
-                                                    "example": true
-                                                },
-                                                "prescription_fee_including_vat": {
-                                                    "description": "Shortcut for animal-prescription",
-                                                    "type": "number",
-                                                    "example": 10
+                                                    "type": "array",
+                                                    "items": {
+                                                        "properties": {
+                                                            "id": {
+                                                                "description": "Shortcut for animal-prescription",
+                                                                "type": "number"
+                                                            },
+                                                            "legal_entity": {
+                                                                "description": "Shortcut for animal-prescription",
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "properties": {
+                                                                        "organization_number": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "type": "string"
+                                                                        },
+                                                                        "organization_name": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "type": "string"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
                                                 }
                                             },
                                             "type": "object"
