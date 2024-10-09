@@ -97,6 +97,316 @@
                 }
             }
         },
+        "/api/animal-prescription-rows": {
+            "get": {
+                "tags": [
+                    "animal-prescription-rows"
+                ],
+                "summary": "List animal-prescription-rows",
+                "description": "Returns a list of animal prescription rows based on the given filters",
+                "operationId": "getAnimalPrescriptionRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_prescription', 'animal', 'license_pharmacy', 'animal_prescription_row_waiting_times'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-prescription-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-prescription-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-prescription-rows"
+                ],
+                "summary": "Create an animal-prescription-row",
+                "description": "Returns created animal prescription row based on the given filters",
+                "operationId": "postAnimalPrescriptionRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-prescription-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-prescription-row",
+                                            "properties": {
+                                                "animal_prescription_id": {
+                                                    "description": "Create an animal-prescription-row",
+                                                    "type": "number",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-prescription-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-prescription-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-prescription-rows/{id}": {
+            "get": {
+                "tags": [
+                    "animal-prescription-rows"
+                ],
+                "summary": "Retrieve an animal-prescription-row",
+                "description": "Returns certain animal prescription rows based on the given filters",
+                "operationId": "getAnimalPrescriptionRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_prescription', 'animal', 'license_pharmacy', 'animal_prescription_row_waiting_times'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-prescription-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-prescription-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "animal-prescription-rows"
+                ],
+                "summary": "Edit an animal-prescription-row",
+                "description": "Returns edited animal prescription rows based on the given filters",
+                "operationId": "patchAnimalPrescriptionRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-prescription-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-prescription-row",
+                                            "properties": {
+                                                "animal_prescription_id": {
+                                                    "description": "Edit an animal-prescription-row",
+                                                    "type": "number",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-prescription-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-prescription-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/animal-prescriptions": {
             "get": {
                 "tags": [
@@ -258,19 +568,6 @@
                         "description": "Bearer token",
                         "required": true,
                         "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'animal_owner', 'animal_prescription_rows', 'animal_journal_entries', 'clinic'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
                     },
                     {
                         "name": "order_line_id",
@@ -446,6 +743,249 @@
                             "properties": {
                                 "message": {
                                     "description": "Create an animal-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-prescriptions/shortcut": {
+            "post": {
+                "tags": [
+                    "animal-prescriptions"
+                ],
+                "summary": "Shortcut for animal-prescription",
+                "description": "Returns shortcut for animal-prescription based on the given filters",
+                "operationId": "postAnimalPrescriptionShortcut",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "designated_message_receiver",
+                        "in": "query",
+                        "description": "'designated_message_receiver' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "delivery_location_city",
+                        "in": "query",
+                        "description": "'delivery_location_city' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "delivery_location_postal_code",
+                        "in": "query",
+                        "description": "'delivery_location_postal_code' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "delivery_location_street_name",
+                        "in": "query",
+                        "description": "'delivery_location_street_name' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Shortcut for animal-prescription",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Shortcut for animal-prescription",
+                                            "properties": {
+                                                "accepted": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "date": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "delivery_method": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_cit": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_code": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_name": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_number_or_name_of_house": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_postal_code": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_qualification_code": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_telecommunication": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescribers_comment": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_city": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_family_name": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_first_given_name": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_scheme": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_value": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_postal_code": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_street_name": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_phone_number": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "test_indicator": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "callback_url": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "uuid": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_city": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string",
+                                                    "example": "Stockholm"
+                                                },
+                                                "delivery_location_id": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_postal_code": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_street_name": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "delivery_location_telecommunication": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "string"
+                                                },
+                                                "include_prescription_fee": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "prescription_fee_including_vat": {
+                                                    "description": "Shortcut for animal-prescription",
+                                                    "type": "number",
+                                                    "example": 10
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Shortcut for animal-prescription",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Shortcut for animal-prescription",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -5009,6 +5549,129 @@
                 }
             }
         },
+        "/api/credit-checks": {
+            "post": {
+                "tags": [
+                    "credit-checks"
+                ],
+                "summary": "Create a credit-check",
+                "description": "Returns created credit check based on the given filters",
+                "operationId": "postCreditCheck",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'organization', 'supplier', 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "valid_until",
+                        "in": "query",
+                        "description": "'valid_until' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "supplier_id",
+                        "in": "query",
+                        "description": "'supplier_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a credit-check",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a credit-check",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a credit-check",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "organization_id": {
+                                                    "description": "Create a credit-check",
+                                                    "type": "number",
+                                                    "example": 124
+                                                },
+                                                "amount": {
+                                                    "description": "Create a credit-check",
+                                                    "type": "number",
+                                                    "example": 100
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a credit-check",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CreditChecksResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a credit-check",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/custom-payment-types": {
             "get": {
                 "tags": [
@@ -7086,6 +7749,316 @@
                 }
             }
         },
+        "/api/human-prescription-rows": {
+            "get": {
+                "tags": [
+                    "human-prescription-rows"
+                ],
+                "summary": "List human-prescription-rows",
+                "description": "Returns a list of human prescription rows based on the given filters",
+                "operationId": "getHumanPrescriptionRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'human_prescription'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List human-prescription-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List human-prescription-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "human-prescription-rows"
+                ],
+                "summary": "Create a human-prescription-row",
+                "description": "Returns created human prescription row based on the given filters",
+                "operationId": "postHumanPrescriptionRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a human-prescription-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a human-prescription-row",
+                                            "properties": {
+                                                "human_prescription_id": {
+                                                    "description": "Create a human-prescription-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a human-prescription-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a human-prescription-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/human-prescription-rows/{id}": {
+            "get": {
+                "tags": [
+                    "human-prescription-rows"
+                ],
+                "summary": "Retrieve a human-prescription-row",
+                "description": "Returns certain human prescription row based on the given filters",
+                "operationId": "getHumanPrescriptionRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'human_prescription'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a human-prescription-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a human-prescription-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "human-prescription-rows"
+                ],
+                "summary": "Edit a human-prescription-row",
+                "description": "Returns edited human prescription row based on the given filters",
+                "operationId": "patchHumanPrescriptionRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a human-prescription-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a human-prescription-row",
+                                            "properties": {
+                                                "human_prescription_id": {
+                                                    "description": "Edit a human-prescription-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a human-prescription-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HumanPrescriptionRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a human-prescription-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/human-prescriptions": {
             "get": {
                 "tags": [
@@ -7111,7 +8084,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'patient'.",
+                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'patient', 'human_prescription_rows'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -7248,23 +8221,116 @@
                                         "attributes": {
                                             "description": "Create a human-prescription",
                                             "properties": {
-                                                "supplier_article_id": {
-                                                    "description": "Create a human-prescription",
-                                                    "type": "integer",
-                                                    "example": 123
-                                                },
-                                                "organization_id": {
-                                                    "description": "Create a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "order_line_id": {
-                                                    "description": "Create a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "deleted": {
+                                                "accepted": {
                                                     "description": "Create a human-prescription",
                                                     "type": "boolean",
                                                     "example": true
+                                                },
+                                                "date": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string",
+                                                    "example": "2024-06-28T12:14:26+02:00"
+                                                },
+                                                "delivery_method": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "designated_message_receiver": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_city": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_code": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_name": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_number_or_name_of_house": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_postal_code": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_qualification_code": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_street_name": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_telecommunication": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescribers_comment": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_city": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_family_name": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_first_given_name": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_scheme": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_value": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_postal_code": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_street_name": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_phone_number": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "test_indicator": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "callback_url": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "uuid": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "healthcare_agent_id": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_sex": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "signed_at": {
+                                                    "description": "Create a human-prescription",
+                                                    "type": "string",
+                                                    "example": "2024-06-28T12:14:26+02:00"
                                                 }
                                             },
                                             "type": "object"
@@ -7340,7 +8406,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'patient'.",
+                        "description": "Including 'user', 'language', 'journal_pharmacy', 'journal_entry', 'patient', 'human_prescription_rows'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -7423,31 +8489,116 @@
                                         "attributes": {
                                             "description": "Edit a human-prescription",
                                             "properties": {
-                                                "journal_entry_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "country_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "supplier_article_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "integer",
-                                                    "example": 123
-                                                },
-                                                "organization_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "order_line_id": {
-                                                    "description": "Edit a human-prescription",
-                                                    "type": "string"
-                                                },
-                                                "deleted": {
+                                                "accepted": {
                                                     "description": "Edit a human-prescription",
                                                     "type": "boolean",
                                                     "example": true
+                                                },
+                                                "date": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string",
+                                                    "example": "2024-06-28T12:14:26+02:00"
+                                                },
+                                                "delivery_method": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "designated_message_receiver": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_city": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_code": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_name": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_number_or_name_of_house": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_postal_code": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_qualification_code": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_street_name": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescriber_telecommunication": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "prescribers_comment": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_city": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_family_name": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_first_given_name": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_scheme": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_id_value": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_postal_code": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_street_name": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_phone_number": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "test_indicator": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "callback_url": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "uuid": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "healthcare_agent_id": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "subject_of_care_sex": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string"
+                                                },
+                                                "signed_at": {
+                                                    "description": "Edit a human-prescription",
+                                                    "type": "string",
+                                                    "example": "2024-06-28T12:14:26+02:00"
                                                 }
                                             },
                                             "type": "object"
@@ -7925,6 +9076,15 @@
                             "type": "string"
                         },
                         "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "filter.ids",
+                        "in": "query",
+                        "description": "'filter.ids' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
                         "default": ""
                     },
                     {
@@ -28374,6 +29534,97 @@
             },
             "type": "object"
         },
+        "AnimalPrescriptionRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_prescription_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "animal_identification": {
+                            "type": "string"
+                        },
+                        "animal_id_qualifier": {
+                            "type": "string"
+                        },
+                        "animal_species": {
+                            "type": "string"
+                        },
+                        "dosage_form": {
+                            "type": "string"
+                        },
+                        "indication_for_prescription": {
+                            "type": "string"
+                        },
+                        "license_id": {
+                            "type": "string"
+                        },
+                        "package_content": {
+                            "type": "string"
+                        },
+                        "pharmacy_id": {
+                            "type": "string"
+                        },
+                        "quantity": {
+                            "type": "number"
+                        },
+                        "quantity_unit": {
+                            "type": "string"
+                        },
+                        "strength": {
+                            "type": "string"
+                        },
+                        "supplementary_information": {
+                            "type": "string"
+                        },
+                        "delegated": {
+                            "type": "boolean"
+                        },
+                        "dispensing_repeat_number": {
+                            "type": "number"
+                        },
+                        "dispensing_repeat_time_unit": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "dispensing_repeat_time_value": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "latest_requested_time_for_dispensing": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "npl_id": {
+                            "type": "string"
+                        },
+                        "npl_pack_id": {
+                            "type": "string"
+                        },
+                        "nvn": {
+                            "type": "string"
+                        },
+                        "number_of_packages": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "prescription_item_id": {
+                            "type": "string"
+                        },
+                        "unstructured_dosage_admin": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AnimalPrescriptionResponse": {
             "properties": {
                 "type": {
@@ -30213,6 +31464,40 @@
             },
             "type": "object"
         },
+        "CreditChecksResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "credit_check"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "approved": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "valid_until": {
+                            "type": "string",
+                            "example": "2025-11-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "CurrencyWebhookRequest": {
             "properties": {
                 "type": {
@@ -31285,6 +32570,70 @@
             },
             "type": "object"
         },
+        "HumanPrescriptionRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "human_prescription_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "dispensing_repeat_number": {
+                            "type": "number"
+                        },
+                        "dispensing_repeat_time_unit": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "dispensing_repeat_time_value": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "latest_requested_time_for_dispensing": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "npl_id": {
+                            "type": "string"
+                        },
+                        "npl_pack_id": {
+                            "type": "string"
+                        },
+                        "nvn": {
+                            "type": "string"
+                        },
+                        "number_of_packages": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "prescription_item_id": {
+                            "type": "string"
+                        },
+                        "unstructured_dosage_admin": {
+                            "type": "string"
+                        },
+                        "exchangable": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "include_intro_pack": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "reimbursed": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "HumanPrescriptionResponse": {
             "properties": {
                 "type": {
@@ -31293,10 +32642,88 @@
                 },
                 "id": {
                     "type": "string",
-                    "example": "1"
+                    "example": "5"
                 },
                 "attributes": {
                     "properties": {
+                        "accepted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "date": {
+                            "type": "string",
+                            "example": "2024-06-28T12:14:26+02:00"
+                        },
+                        "delivery_method": {
+                            "type": "string"
+                        },
+                        "designated_message_receiver": {
+                            "type": "string"
+                        },
+                        "prescriber_city": {
+                            "type": "string"
+                        },
+                        "prescriber_code": {
+                            "type": "string"
+                        },
+                        "prescriber_name": {
+                            "type": "string"
+                        },
+                        "prescriber_number_or_name_of_house": {
+                            "type": "string"
+                        },
+                        "prescriber_postal_code": {
+                            "type": "string"
+                        },
+                        "prescriber_qualification_code": {
+                            "type": "string"
+                        },
+                        "prescriber_street_name": {
+                            "type": "string"
+                        },
+                        "prescriber_telecommunication": {
+                            "type": "string"
+                        },
+                        "prescribers_comment": {
+                            "type": "string"
+                        },
+                        "subject_of_care_city": {
+                            "type": "string"
+                        },
+                        "subject_of_care_family_name": {
+                            "type": "string"
+                        },
+                        "subject_of_care_first_given_name": {
+                            "type": "string"
+                        },
+                        "subject_of_care_id_scheme": {
+                            "type": "string"
+                        },
+                        "subject_of_care_id_value": {
+                            "type": "string"
+                        },
+                        "subject_of_care_postal_code": {
+                            "type": "string"
+                        },
+                        "subject_of_care_street_name": {
+                            "type": "string"
+                        },
+                        "subject_of_care_phone_number": {
+                            "type": "string"
+                        },
+                        "test_indicator": {
+                            "type": "string"
+                        },
+                        "callback_url": {
+                            "type": "string"
+                        },
+                        "uuid": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
                         "healthcare_agent_id": {
                             "type": "string"
                         },
