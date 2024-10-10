@@ -876,7 +876,7 @@
                                                                                 "data": {
                                                                                     "description": "Shortcut for animal-prescription",
                                                                                     "properties": {
-                                                                                        "type1": {
+                                                                                        "type": {
                                                                                             "description": "Shortcut for animal-prescription",
                                                                                             "type": "string",
                                                                                             "example": "legal_entity"
@@ -997,7 +997,7 @@
                                                                             "latest_requested_time_for_dispensing": {
                                                                                 "description": "Shortcut for animal-prescription",
                                                                                 "type": "string",
-                                                                                "example": "2024-10-12T00:00:00+02:00"
+                                                                                "example": "2029-10-12T00:00:00+02:00"
                                                                             },
                                                                             "nvn": {
                                                                                 "description": "Shortcut for animal-prescription",
@@ -1053,6 +1053,170 @@
                                                                                 "description": "Shortcut for animal-prescription",
                                                                                 "type": "boolean",
                                                                                 "example": true
+                                                                            }
+                                                                        },
+                                                                        "type": "object"
+                                                                    },
+                                                                    "relationships": {
+                                                                        "description": "Shortcut for animal-prescription",
+                                                                        "properties": {
+                                                                            "journal_pharmaceutical_article": {
+                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                        "properties": {
+                                                                                            "type": {
+                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "type": "string",
+                                                                                                "example": "journal_pharmaceutical_article"
+                                                                                            },
+                                                                                            "attributes": {
+                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "properties": {
+                                                                                                    "npl_pack_id": {
+                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "type": "string",
+                                                                                                        "example": "20101220100540"
+                                                                                                    },
+                                                                                                    "npl_id": {
+                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "type": "string",
+                                                                                                        "example": "20050505000030"
+                                                                                                    }
+                                                                                                },
+                                                                                                "type": "object"
+                                                                                            }
+                                                                                        },
+                                                                                        "type": "object"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "animal": {
+                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                        "properties": {
+                                                                                            "type": {
+                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "type": "string",
+                                                                                                "example": "animal"
+                                                                                            },
+                                                                                            "attributes": {
+                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "properties": {
+                                                                                                    "animal_identification": {
+                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "type": "string",
+                                                                                                        "example": "Nytt test2"
+                                                                                                    },
+                                                                                                    "animal_id_qualifier": {
+                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "type": "string",
+                                                                                                        "example": "IND2"
+                                                                                                    }
+                                                                                                },
+                                                                                                "type": "object"
+                                                                                            },
+                                                                                            "relationships": {
+                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "properties": {
+                                                                                                    "animal_species": {
+                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "properties": {
+                                                                                                            "data": {
+                                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                                "properties": {
+                                                                                                                    "type": {
+                                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                                        "type": "string",
+                                                                                                                        "example": "animal_species"
+                                                                                                                    },
+                                                                                                                    "attributes": {
+                                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                                        "properties": {
+                                                                                                                            "code": {
+                                                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                                                "type": "string",
+                                                                                                                                "example": "051"
+                                                                                                                            }
+                                                                                                                        },
+                                                                                                                        "type": "object"
+                                                                                                                    }
+                                                                                                                },
+                                                                                                                "type": "object"
+                                                                                                            }
+                                                                                                        },
+                                                                                                        "type": "object"
+                                                                                                    }
+                                                                                                },
+                                                                                                "type": "object"
+                                                                                            }
+                                                                                        },
+                                                                                        "type": "object"
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
+                                                                            },
+                                                                            "animal_prescription_row_waiting_times": {
+                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "properties": {
+                                                                                    "data": {
+                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                        "properties": {
+                                                                                            "type": {
+                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "type": "string",
+                                                                                                "example": "animal_prescription_row_waiting_time"
+                                                                                            },
+                                                                                            "attributes": {
+                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "properties": {
+                                                                                                    "number_of_days": {
+                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "type": "number",
+                                                                                                        "example": 0
+                                                                                                    },
+                                                                                                    "type": {
+                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "type": "string",
+                                                                                                        "example": "SLAKT"
+                                                                                                    }
+                                                                                                },
+                                                                                                "type": "object"
+                                                                                            }
+                                                                                        },
+                                                                                        "type": "array",
+                                                                                        "items": {
+                                                                                            "properties": {
+                                                                                                "type": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string",
+                                                                                                    "example": "animal_prescription_row_waiting_time"
+                                                                                                },
+                                                                                                "attributes": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "properties": {
+                                                                                                        "number_of_days": {
+                                                                                                            "description": "Shortcut for animal-prescription",
+                                                                                                            "type": "number",
+                                                                                                            "example": 1
+                                                                                                        },
+                                                                                                        "type": {
+                                                                                                            "description": "Shortcut for animal-prescription",
+                                                                                                            "type": "string",
+                                                                                                            "example": "MJOLK"
+                                                                                                        }
+                                                                                                    },
+                                                                                                    "type": "object"
+                                                                                                }
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "type": "object"
                                                                             }
                                                                         },
                                                                         "type": "object"
