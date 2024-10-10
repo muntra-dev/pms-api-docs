@@ -876,7 +876,7 @@
                                                                                 "data": {
                                                                                     "description": "Shortcut for animal-prescription",
                                                                                     "properties": {
-                                                                                        "type": {
+                                                                                        "type1": {
                                                                                             "description": "Shortcut for animal-prescription",
                                                                                             "type": "string",
                                                                                             "example": "legal_entity"
