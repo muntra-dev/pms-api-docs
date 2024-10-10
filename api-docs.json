@@ -940,16 +940,16 @@
                                                                                         }
                                                                                     },
                                                                                     "type": "object"
-                                                                                },
-                                                                                "person": {
+                                                                                }
+                                                                            },
+                                                                            "type": "object"
+                                                                        },
+                                                                        "person": {
+                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "properties": {
+                                                                                "data": {
                                                                                     "description": "Shortcut for animal-prescription",
-                                                                                    "properties": {
-                                                                                        "data": {
-                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                            "type": "string"
-                                                                                        }
-                                                                                    },
-                                                                                    "type": "object"
+                                                                                    "type": "string"
                                                                                 }
                                                                             },
                                                                             "type": "object"
