@@ -849,91 +849,91 @@
                                                     "description": "Shortcut for animal-prescription",
                                                     "type": "string",
                                                     "example": "https://vetmanager.se/erecetps/253/approved"
-                                                },
-                                                "relationships": {
+                                                }
+                                            },
+                                            "type": "object"
+                                        },
+                                        "relationships": {
+                                            "description": "Shortcut for animal-prescription",
+                                            "properties": {
+                                                "animal_owner": {
                                                     "description": "Shortcut for animal-prescription",
                                                     "properties": {
-                                                        "animal_owner": {
+                                                        "data": {
                                                             "description": "Shortcut for animal-prescription",
                                                             "properties": {
-                                                                "data": {
+                                                                "type": {
+                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "type": "string",
+                                                                    "example": "animal_owner"
+                                                                },
+                                                                "relationships": {
                                                                     "description": "Shortcut for animal-prescription",
                                                                     "properties": {
-                                                                        "type": {
-                                                                            "description": "Shortcut for animal-prescription",
-                                                                            "type": "string",
-                                                                            "example": "animal_owner"
-                                                                        },
-                                                                        "relationships": {
+                                                                        "legal_entity": {
                                                                             "description": "Shortcut for animal-prescription",
                                                                             "properties": {
-                                                                                "legal_entity": {
+                                                                                "data": {
                                                                                     "description": "Shortcut for animal-prescription",
                                                                                     "properties": {
-                                                                                        "data": {
+                                                                                        "type": {
+                                                                                            "description": "Shortcut for animal-prescription",
+                                                                                            "type": "string",
+                                                                                            "example": "legal_entity"
+                                                                                        },
+                                                                                        "attributes": {
                                                                                             "description": "Shortcut for animal-prescription",
                                                                                             "properties": {
-                                                                                                "type": {
+                                                                                                "organization_number": {
                                                                                                     "description": "Shortcut for animal-prescription",
                                                                                                     "type": "string",
-                                                                                                    "example": "legal_entity"
+                                                                                                    "example": "1234123415"
                                                                                                 },
-                                                                                                "attributes": {
+                                                                                                "organization_name": {
                                                                                                     "description": "Shortcut for animal-prescription",
-                                                                                                    "properties": {
-                                                                                                        "organization_number": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string",
-                                                                                                            "example": "1234123415"
-                                                                                                        },
-                                                                                                        "organization_name": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string",
-                                                                                                            "example": "Test AB"
-                                                                                                        },
-                                                                                                        "invoice_address_1": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string",
-                                                                                                            "example": "Katarinav\u00e4gen 15"
-                                                                                                        },
-                                                                                                        "invoice_address_2": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string"
-                                                                                                        },
-                                                                                                        "invoice_postal_code": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string",
-                                                                                                            "example": "11645"
-                                                                                                        },
-                                                                                                        "invoice_city": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string",
-                                                                                                            "example": "STOCKHOLM"
-                                                                                                        },
-                                                                                                        "invoice_email_address": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string",
-                                                                                                            "example": "test@emailtest.com"
-                                                                                                        },
-                                                                                                        "invoice_phone_number": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string"
-                                                                                                        },
-                                                                                                        "invoice_phone_number_2": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string"
-                                                                                                        },
-                                                                                                        "invoice_phone_mobile": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string",
-                                                                                                            "example": "46734100450"
-                                                                                                        },
-                                                                                                        "invoice_fax": {
-                                                                                                            "description": "Shortcut for animal-prescription",
-                                                                                                            "type": "string"
-                                                                                                        }
-                                                                                                    },
-                                                                                                    "type": "object"
+                                                                                                    "type": "string",
+                                                                                                    "example": "Test AB"
+                                                                                                },
+                                                                                                "invoice_address_1": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string",
+                                                                                                    "example": "Katarinav\u00e4gen 15"
+                                                                                                },
+                                                                                                "invoice_address_2": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "invoice_postal_code": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string",
+                                                                                                    "example": "11645"
+                                                                                                },
+                                                                                                "invoice_city": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string",
+                                                                                                    "example": "STOCKHOLM"
+                                                                                                },
+                                                                                                "invoice_email_address": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string",
+                                                                                                    "example": "test@emailtest.com"
+                                                                                                },
+                                                                                                "invoice_phone_number": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "invoice_phone_number_2": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string"
+                                                                                                },
+                                                                                                "invoice_phone_mobile": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string",
+                                                                                                    "example": "46734100450"
+                                                                                                },
+                                                                                                "invoice_fax": {
+                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "type": "string"
                                                                                                 }
                                                                                             },
                                                                                             "type": "object"
