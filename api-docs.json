@@ -758,8 +758,8 @@
                 "tags": [
                     "animal-prescriptions"
                 ],
-                "summary": "Shortcut for animal-prescription",
-                "description": "Returns shortcut for animal-prescription based on the given filters",
+                "summary": "Create an animal-prescription and all required relations",
+                "description": "Returns created animal prescription, animal prescription rows and the following objects that are created if they don't already exist: animal, animal-owner, person, legal entity, pharmacy (based on designated_message_receiver) and pharmaceutical article (based on article_code, npl_pack_id or npl_id).",
                 "operationId": "postAnimalPrescriptionShortcut",
                 "consumes": [
                     "application/json"
@@ -783,70 +783,70 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Shortcut for animal-prescription",
+                                    "description": "Create an animal-prescription and all required relations",
                                     "properties": {
                                         "type": {
-                                            "description": "Shortcut for animal-prescription",
+                                            "description": "Create an animal-prescription and all required relations",
                                             "type": "string",
                                             "example": "animal_prescription"
                                         },
                                         "attributes": {
-                                            "description": "Shortcut for animal-prescription",
+                                            "description": "Create an animal-prescription and all required relations",
                                             "properties": {
                                                 "designated_message_receiver": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string",
                                                     "example": "7350045514448"
                                                 },
                                                 "delivery_method": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string",
                                                     "example": "ADR"
                                                 },
                                                 "delivery_location_city": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string",
                                                     "example": "Testort"
                                                 },
                                                 "delivery_location_id": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string"
                                                 },
                                                 "delivery_location_postal_code": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string",
                                                     "example": "12345"
                                                 },
                                                 "delivery_location_street_name": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string",
                                                     "example": "Testgatan 1034"
                                                 },
                                                 "delivery_location_telecommunication": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string"
                                                 },
                                                 "prescribers_comment": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string"
                                                 },
                                                 "include_prescription_fee": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "boolean",
                                                     "example": true
                                                 },
                                                 "prescription_fee_including_vat": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "number",
                                                     "example": 100
                                                 },
                                                 "test_indicator": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string",
                                                     "example": "false"
                                                 },
                                                 "callback_url": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "type": "string",
                                                     "example": "https://vetmanager.se/erecetps/253/approved"
                                                 }
@@ -854,85 +854,85 @@
                                             "type": "object"
                                         },
                                         "relationships": {
-                                            "description": "Shortcut for animal-prescription",
+                                            "description": "Create an animal-prescription and all required relations",
                                             "properties": {
                                                 "animal_owner": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "properties": {
                                                         "data": {
-                                                            "description": "Shortcut for animal-prescription",
+                                                            "description": "Create an animal-prescription and all required relations",
                                                             "properties": {
                                                                 "type": {
-                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "description": "Create an animal-prescription and all required relations",
                                                                     "type": "string",
                                                                     "example": "animal_owner"
                                                                 },
                                                                 "relationships": {
-                                                                    "description": "Shortcut for animal-prescription",
+                                                                    "description": "Create an animal-prescription and all required relations",
                                                                     "properties": {
                                                                         "legal_entity": {
-                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "description": "Create an animal-prescription and all required relations",
                                                                             "properties": {
                                                                                 "data": {
-                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                     "properties": {
                                                                                         "type": {
-                                                                                            "description": "Shortcut for animal-prescription",
+                                                                                            "description": "Create an animal-prescription and all required relations",
                                                                                             "type": "string",
                                                                                             "example": "legal_entity"
                                                                                         },
                                                                                         "attributes": {
-                                                                                            "description": "Shortcut for animal-prescription",
+                                                                                            "description": "Create an animal-prescription and all required relations",
                                                                                             "properties": {
                                                                                                 "organization_number": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string",
                                                                                                     "example": "1234123415"
                                                                                                 },
                                                                                                 "organization_name": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string",
                                                                                                     "example": "Test AB"
                                                                                                 },
                                                                                                 "invoice_address_1": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string",
                                                                                                     "example": "Katarinav\u00e4gen 15"
                                                                                                 },
                                                                                                 "invoice_address_2": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string"
                                                                                                 },
                                                                                                 "invoice_postal_code": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string",
                                                                                                     "example": "11645"
                                                                                                 },
                                                                                                 "invoice_city": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string",
                                                                                                     "example": "STOCKHOLM"
                                                                                                 },
                                                                                                 "invoice_email_address": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string",
                                                                                                     "example": "test@emailtest.com"
                                                                                                 },
                                                                                                 "invoice_phone_number": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string"
                                                                                                 },
                                                                                                 "invoice_phone_number_2": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string"
                                                                                                 },
                                                                                                 "invoice_phone_mobile": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string",
                                                                                                     "example": "46734100450"
                                                                                                 },
                                                                                                 "invoice_fax": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string"
                                                                                                 }
                                                                                             },
@@ -945,10 +945,10 @@
                                                                             "type": "object"
                                                                         },
                                                                         "person": {
-                                                                            "description": "Shortcut for animal-prescription",
+                                                                            "description": "Create an animal-prescription and all required relations",
                                                                             "properties": {
                                                                                 "data": {
-                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                     "type": "string"
                                                                                 }
                                                                             },
@@ -964,93 +964,93 @@
                                                     "type": "object"
                                                 },
                                                 "animal_prescription_rows": {
-                                                    "description": "Shortcut for animal-prescription",
+                                                    "description": "Create an animal-prescription and all required relations",
                                                     "properties": {
                                                         "data": {
-                                                            "description": "Shortcut for animal-prescription",
+                                                            "description": "Create an animal-prescription and all required relations",
                                                             "type": "array",
                                                             "items": {
                                                                 "properties": {
                                                                     "type": {
-                                                                        "description": "Shortcut for animal-prescription",
+                                                                        "description": "Create an animal-prescription and all required relations",
                                                                         "type": "string",
                                                                         "example": "animal_prescription_row"
                                                                     },
                                                                     "attributes": {
-                                                                        "description": "Shortcut for animal-prescription",
+                                                                        "description": "Create an animal-prescription and all required relations",
                                                                         "properties": {
                                                                             "dispensing_repeat_number": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "number",
                                                                                 "example": 1
                                                                             },
                                                                             "dispensing_repeat_time_unit": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "string",
                                                                                 "example": "Mn"
                                                                             },
                                                                             "dispensing_repeat_time_value": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "number",
                                                                                 "example": 12
                                                                             },
                                                                             "latest_requested_time_for_dispensing": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "string",
                                                                                 "example": "2029-10-12T00:00:00+02:00"
                                                                             },
                                                                             "nvn": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "number",
                                                                                 "example": 640000
                                                                             },
                                                                             "number_of_packages": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "number",
                                                                                 "example": 1
                                                                             },
                                                                             "unstructured_dosage_admin": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "string",
                                                                                 "example": "Injiceras subcutant enligt schema. Mot allergi."
                                                                             },
                                                                             "dosage_form": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "string",
                                                                                 "example": "injektionsl\u00f6sning"
                                                                             },
                                                                             "license_id": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "number",
                                                                                 "example": 2018320512
                                                                             },
                                                                             "package_content": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "number",
                                                                                 "example": 1
                                                                             },
                                                                             "quantity": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "number",
                                                                                 "example": 1
                                                                             },
                                                                             "quantity_unit": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "string",
                                                                                 "example": "st"
                                                                             },
                                                                             "strength": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "string",
                                                                                 "example": "individuell"
                                                                             },
                                                                             "supplementary_information": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "string",
                                                                                 "example": "immucept"
                                                                             },
                                                                             "delegated": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "type": "boolean",
                                                                                 "example": true
                                                                             }
@@ -1058,29 +1058,29 @@
                                                                         "type": "object"
                                                                     },
                                                                     "relationships": {
-                                                                        "description": "Shortcut for animal-prescription",
+                                                                        "description": "Create an animal-prescription and all required relations",
                                                                         "properties": {
                                                                             "journal_pharmaceutical_article": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "properties": {
                                                                                     "data": {
-                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                         "properties": {
                                                                                             "type": {
-                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                 "type": "string",
                                                                                                 "example": "journal_pharmaceutical_article"
                                                                                             },
                                                                                             "attributes": {
-                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                 "properties": {
                                                                                                     "npl_pack_id": {
-                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                         "type": "string",
                                                                                                         "example": "20101220100540"
                                                                                                     },
                                                                                                     "npl_id": {
-                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                         "type": "string",
                                                                                                         "example": "20050505000030"
                                                                                                     }
@@ -1094,26 +1094,26 @@
                                                                                 "type": "object"
                                                                             },
                                                                             "animal": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "properties": {
                                                                                     "data": {
-                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                         "properties": {
                                                                                             "type": {
-                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                 "type": "string",
                                                                                                 "example": "animal"
                                                                                             },
                                                                                             "attributes": {
-                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                 "properties": {
                                                                                                     "animal_identification": {
-                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                         "type": "string",
                                                                                                         "example": "Nytt test2"
                                                                                                     },
                                                                                                     "animal_id_qualifier": {
-                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                         "type": "string",
                                                                                                         "example": "IND2"
                                                                                                     }
@@ -1121,24 +1121,24 @@
                                                                                                 "type": "object"
                                                                                             },
                                                                                             "relationships": {
-                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                 "properties": {
                                                                                                     "animal_species": {
-                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                         "properties": {
                                                                                                             "data": {
-                                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                                 "properties": {
                                                                                                                     "type": {
-                                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                                         "type": "string",
                                                                                                                         "example": "animal_species"
                                                                                                                     },
                                                                                                                     "attributes": {
-                                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                                         "properties": {
                                                                                                                             "code": {
-                                                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                                                 "type": "string",
                                                                                                                                 "example": "051"
                                                                                                                             }
@@ -1161,26 +1161,26 @@
                                                                                 "type": "object"
                                                                             },
                                                                             "animal_prescription_row_waiting_times": {
-                                                                                "description": "Shortcut for animal-prescription",
+                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                 "properties": {
                                                                                     "data": {
-                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                         "properties": {
                                                                                             "type": {
-                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                 "type": "string",
                                                                                                 "example": "animal_prescription_row_waiting_time"
                                                                                             },
                                                                                             "attributes": {
-                                                                                                "description": "Shortcut for animal-prescription",
+                                                                                                "description": "Create an animal-prescription and all required relations",
                                                                                                 "properties": {
                                                                                                     "number_of_days": {
-                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                         "type": "number",
                                                                                                         "example": 0
                                                                                                     },
                                                                                                     "type": {
-                                                                                                        "description": "Shortcut for animal-prescription",
+                                                                                                        "description": "Create an animal-prescription and all required relations",
                                                                                                         "type": "string",
                                                                                                         "example": "SLAKT"
                                                                                                     }
@@ -1192,20 +1192,20 @@
                                                                                         "items": {
                                                                                             "properties": {
                                                                                                 "type": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "type": "string",
                                                                                                     "example": "animal_prescription_row_waiting_time"
                                                                                                 },
                                                                                                 "attributes": {
-                                                                                                    "description": "Shortcut for animal-prescription",
+                                                                                                    "description": "Create an animal-prescription and all required relations",
                                                                                                     "properties": {
                                                                                                         "number_of_days": {
-                                                                                                            "description": "Shortcut for animal-prescription",
+                                                                                                            "description": "Create an animal-prescription and all required relations",
                                                                                                             "type": "number",
                                                                                                             "example": 1
                                                                                                         },
                                                                                                         "type": {
-                                                                                                            "description": "Shortcut for animal-prescription",
+                                                                                                            "description": "Create an animal-prescription and all required relations",
                                                                                                             "type": "string",
                                                                                                             "example": "MJOLK"
                                                                                                         }
@@ -1243,7 +1243,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Shortcut for animal-prescription",
+                                    "description": "Create an animal-prescription and all required relations",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/AnimalPrescriptionResponse"
@@ -1258,7 +1258,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Shortcut for animal-prescription",
+                                    "description": "Create an animal-prescription and all required relations",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
