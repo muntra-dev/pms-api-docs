@@ -23298,6 +23298,19 @@
                         "default": ""
                     },
                     {
+                        "name": "query",
+                        "in": "query",
+                        "description": "Including 'query' field.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
                         "name": "active",
                         "in": "query",
                         "description": "'active' field",
@@ -23310,6 +23323,15 @@
                         "name": "sort_by",
                         "in": "query",
                         "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": true,
