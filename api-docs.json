@@ -102,7 +102,7 @@
                 "tags": [
                     "animal-journal-entries"
                 ],
-                "summary": "List an animal-journal-entries",
+                "summary": "List animal-journal-entries",
                 "description": "Returns list of animal journal entries based on the given filters",
                 "operationId": "getAnimalJournalEntries",
                 "consumes": [
@@ -202,7 +202,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "List an animal-journal-entries",
+                                    "description": "List animal-journal-entries",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/AnimalJournalEntryResponse"
@@ -217,7 +217,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "List an animal-journal-entries",
+                                    "description": "List animal-journal-entries",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -480,6 +480,367 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an animal-journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-owners": {
+            "get": {
+                "tags": [
+                    "animal-owners"
+                ],
+                "summary": "List animal-owners",
+                "description": "Returns list of animal owners based on the given filters",
+                "operationId": "getAnimalOwners",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'legal_entity', 'person', 'animals', 'animal_prescriptions'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_number",
+                        "in": "query",
+                        "description": "'organization_number' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "social_security_number",
+                        "in": "query",
+                        "description": "'social_security_number' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-owners",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-owners",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-owners"
+                ],
+                "summary": "Create an animal-owner",
+                "description": "Returns created animal owner based on the given filters",
+                "operationId": "postAnimalOwner",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-owner",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-owner",
+                                            "properties": {
+                                                "legal_entity_id": {
+                                                    "description": "Create an animal-owner",
+                                                    "type": "number",
+                                                    "example": "The legal entity id field is required when person id is empty."
+                                                },
+                                                "person_id": {
+                                                    "description": "Create an animal-owner",
+                                                    "type": "number",
+                                                    "example": "The person id field is required when legal entity id is empty."
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-owner",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-owner",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-owners/{id}": {
+            "get": {
+                "tags": [
+                    "animal-owners"
+                ],
+                "summary": "Retrieve an animal-owner",
+                "description": "Returns certain animal owner based on the given filters",
+                "operationId": "getAnimalOwner",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-owner",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-owner",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-owners"
+                ],
+                "summary": "Edit an animal-owner",
+                "description": "Returns edited animal owner based on the given filters",
+                "operationId": "patchAnimalOwner",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-owner",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-owner",
+                                            "properties": {
+                                                "legal_entity_id": {
+                                                    "description": "Edit an animal-owner",
+                                                    "type": "number",
+                                                    "example": "The legal entity id field is required when person id is empty."
+                                                },
+                                                "person_id": {
+                                                    "description": "Edit an animal-owner",
+                                                    "type": "number",
+                                                    "example": "The person id field is required when legal entity id is empty."
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-owner",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-owner",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -1938,6 +2299,132 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an animal-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-species": {
+            "get": {
+                "tags": [
+                    "animal-species"
+                ],
+                "summary": "List animal-species",
+                "description": "Returns list of animal species based on the given filters",
+                "operationId": "getAnimalSpecies",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "code",
+                        "in": "query",
+                        "description": "'code' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-species",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalSpeciesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-species",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-species/{id}": {
+            "get": {
+                "tags": [
+                    "animal-species"
+                ],
+                "summary": "Retrieve an animal-species",
+                "description": "Returns certain animal species based on the given filters",
+                "operationId": "getAnimalSpeciesById",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-species",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalSpeciesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-species",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -20126,6 +20613,343 @@
                 }
             }
         },
+        "/api/prescription-row-waiting-times": {
+            "get": {
+                "tags": [
+                    "prescription-row-waiting-times"
+                ],
+                "summary": "List animal-prescription-row-waiting-times",
+                "description": "Returns list of animal prescription row waiting times based on the given filters",
+                "operationId": "getAnimalPrescriptionRowWaitingTimes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_prescription_row'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_prescription_row_id",
+                        "in": "query",
+                        "description": "'animal_prescription_row_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-prescription-row-waiting-times",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-prescription-row-waiting-times",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "prescription-row-waiting-times"
+                ],
+                "summary": "Create an animal-prescription-row-waiting-time",
+                "description": "Returns created animal prescription row waiting time based on the given filters",
+                "operationId": "postAnimalPrescriptionRowWaitingTime",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-prescription-row-waiting-time",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-prescription-row-waiting-time",
+                                            "properties": {
+                                                "animal_prescription_row_id": {
+                                                    "description": "Create an animal-prescription-row-waiting-time",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "number_of_days": {
+                                                    "description": "Create an animal-prescription-row-waiting-time",
+                                                    "type": "number",
+                                                    "example": 2
+                                                },
+                                                "type": {
+                                                    "description": "Create an animal-prescription-row-waiting-time",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-prescription-row-waiting-time",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-prescription-row-waiting-time",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/prescription-row-waiting-times/{id}": {
+            "get": {
+                "tags": [
+                    "prescription-row-waiting-times"
+                ],
+                "summary": "Retrieve an animal-prescription-row-waiting-time",
+                "description": "Returns certain animal prescription row waiting times based on the given filters",
+                "operationId": "getAnimalPrescriptionRowWaitingTime",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_prescription_row'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-prescription-row-waiting-time",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-prescription-row-waiting-time",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "prescription-row-waiting-times"
+                ],
+                "summary": "Edit an animal-prescription-row-waiting-time",
+                "description": "Returns edited animal prescription row waiting time based on the given filters",
+                "operationId": "patchAnimalPrescriptionRowWaitingTime",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-prescription-row-waiting-time",
+                                            "properties": {
+                                                "animal_prescription_row_id": {
+                                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "number_of_days": {
+                                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                                    "type": "number",
+                                                    "example": 2
+                                                },
+                                                "type": {
+                                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/prices": {
             "get": {
                 "tags": [
@@ -23300,7 +24124,7 @@
                     {
                         "name": "query",
                         "in": "query",
-                        "description": "Including 'query' field.",
+                        "description": "Example: 'query=mike%20smith' (in case, when you are trying to find First and Last name of user). This field can accept any request.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -30774,6 +31598,28 @@
             },
             "type": "object"
         },
+        "AnimalOwnerResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_owner"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AnimalPrescriptionRowResponse": {
             "properties": {
                 "type": {
@@ -30857,6 +31703,31 @@
                             "type": "string"
                         },
                         "unstructured_dosage_admin": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnimalPrescriptionRowWaitingResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_prescription_row_waiting_time"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "number_of_days": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "type": {
                             "type": "string"
                         }
                     },
@@ -30972,6 +31843,36 @@
                         "prescription_fee_including_vat": {
                             "type": "number",
                             "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnimalSpeciesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_species"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "example": "052"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Hund"
+                        },
+                        "type": {
+                            "type": "string",
+                            "example": "pet"
                         }
                     },
                     "type": "object"
