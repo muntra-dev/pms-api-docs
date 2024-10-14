@@ -97,6 +97,399 @@
                 }
             }
         },
+        "/api/animal-journal-entries": {
+            "get": {
+                "tags": [
+                    "animal-journal-entries"
+                ],
+                "summary": "List an animal-journal-entries",
+                "description": "Returns list of animal journal entries based on the given filters",
+                "operationId": "getAnimalJournalEntries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'animal', 'price', 'vat_code', 'signer', 'animal_prescription', 'animal_owner_invoice_row'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_id",
+                        "in": "query",
+                        "description": "'animal_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List an animal-journal-entries",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalJournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List an animal-journal-entries",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-journal-entries"
+                ],
+                "summary": "Create an animal-journal-entry",
+                "description": "Returns created animal journal entry based on the given filters",
+                "operationId": "postAnimalJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-journal-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-journal-entry",
+                                            "properties": {
+                                                "user_id": {
+                                                    "description": "Create an animal-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "animal_id": {
+                                                    "description": "Create an animal-journal-entry",
+                                                    "type": "number",
+                                                    "example": 2
+                                                },
+                                                "entry_date": {
+                                                    "description": "Create an animal-journal-entry",
+                                                    "type": "string",
+                                                    "example": "2028-10-22T00:00:00+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalJournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-journal-entries/{id}": {
+            "get": {
+                "tags": [
+                    "animal-journal-entries"
+                ],
+                "summary": "Retrieve an animal-journal-entry",
+                "description": "Returns certain animal journal entry based on the given filters",
+                "operationId": "getAnimalJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'animal', 'price', 'vat_code', 'signer', 'animal_prescription', 'animal_owner_invoice_row'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalJournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "animal-journal-entries"
+                ],
+                "summary": "Edit an animal-journal-entry",
+                "description": "Returns edited animal journal entry based on the given filters",
+                "operationId": "patchAnimalJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-journal-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-journal-entry",
+                                            "properties": {
+                                                "user_id": {
+                                                    "description": "Edit an animal-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "animal_id": {
+                                                    "description": "Edit an animal-journal-entry",
+                                                    "type": "number",
+                                                    "example": 2
+                                                },
+                                                "entry_date": {
+                                                    "description": "Edit an animal-journal-entry",
+                                                    "type": "string",
+                                                    "example": "2028-10-22T00:00:00+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalJournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/animal-prescription-rows": {
             "get": {
                 "tags": [
@@ -1545,6 +1938,335 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an animal-prescription",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animals": {
+            "get": {
+                "tags": [
+                    "animals"
+                ],
+                "summary": "List an animals",
+                "description": "Returns a list of animals based on the given filters",
+                "operationId": "getAnimals",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_owner', 'animal_species'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_owner_id",
+                        "in": "query",
+                        "description": "'animal_owner_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List an animals",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List an animals",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animals"
+                ],
+                "summary": "Create an animal",
+                "description": "Returns created animal based on the given filters",
+                "operationId": "postAnimal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal",
+                                            "properties": {
+                                                "animal_owner_id": {
+                                                    "description": "Create an animal",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "animal_species_id": {
+                                                    "description": "Create an animal",
+                                                    "type": "number",
+                                                    "example": 2
+                                                },
+                                                "animal_identification": {
+                                                    "description": "Create an animal",
+                                                    "type": "number",
+                                                    "example": 3
+                                                },
+                                                "animal_id_qualifier": {
+                                                    "description": "Create an animal",
+                                                    "type": "number",
+                                                    "example": 4
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animals/{id}": {
+            "get": {
+                "tags": [
+                    "animals"
+                ],
+                "summary": "Retrieve an animal",
+                "description": "Returns certain animal based on the given filters",
+                "operationId": "getAnimal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_owner', 'animal_species'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "animals"
+                ],
+                "summary": "Edit an animal",
+                "description": "Returns edited animal based on the given filters",
+                "operationId": "patchAnimal",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_owner', 'animal_species'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -22531,6 +23253,185 @@
                 }
             }
         },
+        "/api/search-users": {
+            "get": {
+                "tags": [
+                    "search-users"
+                ],
+                "summary": "List search-users",
+                "description": "Returns list of search users based on the given filters",
+                "operationId": "getSearchUsers",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'default_user_image', 'role'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "personal_id",
+                        "in": "query",
+                        "description": "'personal_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "active",
+                        "in": "query",
+                        "description": "'active' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List search-users",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SearchUserResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List search-users",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/search-users/{id}": {
+            "get": {
+                "tags": [
+                    "search-users"
+                ],
+                "summary": "Retrieve a search-user",
+                "description": "Returns certain search user based on the given filters",
+                "operationId": "getSearchUser",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'default_user_image', 'role'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a search-user",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SearchUserResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a search-user",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/sent-remittances": {
             "get": {
                 "tags": [
@@ -29807,6 +30708,50 @@
             },
             "type": "object"
         },
+        "AnimalJournalEntryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_journal_entry"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "entry_date": {
+                            "type": "string",
+                            "example": "2028-10-22T00:00:00+02:00"
+                        },
+                        "entry_type": {
+                            "type": "string"
+                        },
+                        "text": {
+                            "type": "string"
+                        },
+                        "fee": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "discount_excluding_vat": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2028-10-22T00:00:00+02:00"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AnimalPrescriptionRowResponse": {
             "properties": {
                 "type": {
@@ -30005,6 +30950,36 @@
                         "prescription_fee_including_vat": {
                             "type": "number",
                             "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnimalResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "animal_identification": {
+                            "type": "string",
+                            "example": "Nytt test"
+                        },
+                        "animal_id_qualifier": {
+                            "type": "string",
+                            "example": "IND"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
                         }
                     },
                     "type": "object"
@@ -35427,6 +36402,42 @@
                         "organization_number": {
                             "type": "string",
                             "example": "556935-2726"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SearchUserResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "search_user"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "first_name": {
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "last_name": {
+                            "type": "string",
+                            "example": "Otto"
+                        },
+                        "role_name": {
+                            "type": "string"
+                        },
+                        "title": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
