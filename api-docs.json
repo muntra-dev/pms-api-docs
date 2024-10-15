@@ -24124,7 +24124,7 @@
                     {
                         "name": "query",
                         "in": "query",
-                        "description": "Example: 'query=mike%20smith' (in case, when you are trying to find First and Last name of user). This field can accept any request.",
+                        "description": "Example: 'query=mike%20smith' (in case, when you are trying to find First and Last name of user). Available properties for search: 'first_name', 'last_name', 'title'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
