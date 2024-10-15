@@ -24124,7 +24124,7 @@
                     {
                         "name": "query",
                         "in": "query",
-                        "description": "Query:\r\nFilters results by users' first name, last name and title.",
+                        "description": "Filters results by users' first name, last name and title.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
