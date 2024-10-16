@@ -3985,6 +3985,87 @@
                 }
             }
         },
+        "/api/booking-attendee-external-bindings": {
+            "post": {
+                "tags": [
+                    "booking-attendee-external-bindings"
+                ],
+                "summary": "Create a booking-attendee-external-binding",
+                "description": "Returns created booking attendee external binding based on the given filters",
+                "operationId": "postBookingAttendeeExternalBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking-attendee-external-binding",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a booking-attendee-external-binding",
+                                            "properties": {
+                                                "booking_attendee_id": {
+                                                    "description": "Create a booking-attendee-external-binding",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking-attendee-external-binding",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingAttendeeExternalBindingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a booking-attendee-external-binding",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/booking-attendees": {
             "get": {
                 "tags": [
@@ -4607,6 +4688,87 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a booking-exdate",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/booking-external-bindings": {
+            "post": {
+                "tags": [
+                    "booking-external-bindings"
+                ],
+                "summary": "Create a booking-external-binding",
+                "description": "Returns created booking external binding based on the given filters",
+                "operationId": "postBookingExternalBinding",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking-external-binding",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a booking-external-binding",
+                                            "properties": {
+                                                "booking_id": {
+                                                    "description": "Create a booking-external-binding",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking-external-binding",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingExternalBindingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a booking-external-binding",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -6360,6 +6522,336 @@
                 }
             }
         },
+        "/api/change-logs": {
+            "get": {
+                "tags": [
+                    "change-logs"
+                ],
+                "summary": "List change-logs",
+                "description": "Returns list of change logs based on the given filters",
+                "operationId": "getChangeLogs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "record_id",
+                        "in": "query",
+                        "description": "'record_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "route_name",
+                        "in": "query",
+                        "description": "'route_name' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List change-logs",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ChangeLogsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List change-logs",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "change-logs"
+                ],
+                "summary": "Create a change-log",
+                "description": "Returns created change log based on the given filters",
+                "operationId": "postChangeLog",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a change-log",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a change-log",
+                                            "properties": {
+                                                "user_id": {
+                                                    "description": "Create a change-log",
+                                                    "type": "number",
+                                                    "example": "2024"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a change-log",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ChangeLogsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a change-log",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/change-logs/{id}": {
+            "get": {
+                "tags": [
+                    "change-logs"
+                ],
+                "summary": "Retrieve a change-log",
+                "description": "Returns certain change log based on the given filters",
+                "operationId": "getChangeLog",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a change-log",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ChangeLogsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a change-log",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/clinics/current": {
             "get": {
                 "tags": [
@@ -6418,6 +6910,361 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve the current clinic",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cost-centers": {
+            "get": {
+                "tags": [
+                    "cost-centers"
+                ],
+                "summary": "List cost-centers",
+                "description": "Returns list of cost centers based on the given filters",
+                "operationId": "getCostCenters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'organization_with_default'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List cost-centers",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CostCentersResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List cost-centers",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "cost-centers"
+                ],
+                "summary": "Create a cost-center",
+                "description": "Returns created cost center based on the given filters",
+                "operationId": "postCostCenter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a cost-center",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a cost-center",
+                                            "properties": {
+                                                "organization_id": {
+                                                    "description": "Create a cost-center",
+                                                    "type": "number",
+                                                    "example": 7
+                                                },
+                                                "code": {
+                                                    "description": "Create a cost-center",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "name": {
+                                                    "description": "Create a cost-center",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a cost-center",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CostCentersResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a cost-center",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cost-centers/{id}": {
+            "get": {
+                "tags": [
+                    "cost-centers"
+                ],
+                "summary": "Retrieve a cost-center",
+                "description": "Returns certain cost center based on the given filters",
+                "operationId": "getCostCenter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'organization_with_default'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a cost-center",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CostCentersResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a cost-center",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "cost-centers"
+                ],
+                "summary": "Edit a cost-center",
+                "description": "Returns edited cost center based on the given filters",
+                "operationId": "patchCostCenter",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a cost-center",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a cost-center",
+                                            "properties": {
+                                                "organization_id": {
+                                                    "description": "Edit a cost-center",
+                                                    "type": "number",
+                                                    "example": 7
+                                                },
+                                                "code": {
+                                                    "description": "Edit a cost-center",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "name": {
+                                                    "description": "Edit a cost-center",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a cost-center",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CostCentersResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a cost-center",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -31124,6 +31971,76 @@
                 }
             }
         },
+        "/api/users/{id}/add-prescriber-code": {
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Add prescriber code",
+                "description": "Add prescriber code to user",
+                "operationId": "addPrescriberCode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "prescriber_code",
+                        "in": "query",
+                        "description": "'prescriber_code' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": false
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Add prescriber code",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/UserResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Add prescriber code",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/vat-codes": {
             "get": {
                 "tags": [
@@ -33407,6 +34324,44 @@
             },
             "type": "object"
         },
+        "ChangeLogsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "change_log"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "created_date": {
+                            "type": "string",
+                            "example": "2024-06-20T17:03:59+02:00"
+                        },
+                        "record_id": {
+                            "type": "string",
+                            "example": "1"
+                        },
+                        "route_name": {
+                            "type": "string",
+                            "example": "patient"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Hund"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ClinicCurrentResponse": {
             "properties": {
                 "type": {
@@ -33546,6 +34501,32 @@
                             "type": "string",
                             "format": "date",
                             "example": "2024-07-02T19:17:48+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CostCentersResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "cost-center"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "example": "052"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Hund"
                         }
                     },
                     "type": "object"
@@ -34600,6 +35581,66 @@
                             "type": "string"
                         },
                         "resource_ids": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingExternalBindingResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_external_binding"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "internal_id": {
+                            "type": "number"
+                        },
+                        "internal_type": {
+                            "type": "string"
+                        },
+                        "external_id": {
+                            "type": "number"
+                        },
+                        "external_type": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingAttendeeExternalBindingResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_attendee_external_binding"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "internal_id": {
+                            "type": "number"
+                        },
+                        "internal_type": {
+                            "type": "string"
+                        },
+                        "external_id": {
+                            "type": "number"
+                        },
+                        "external_type": {
                             "type": "string"
                         }
                     },
