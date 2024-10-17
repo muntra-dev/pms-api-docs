@@ -851,6 +851,343 @@
                 }
             }
         },
+        "/api/animal-prescription-row-waiting-times": {
+            "get": {
+                "tags": [
+                    "animal-prescription-row-waiting-times"
+                ],
+                "summary": "List animal-prescription-row-waiting-times",
+                "description": "Returns list of animal prescription row waiting times based on the given filters",
+                "operationId": "getAnimalPrescriptionRowWaitingTimes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_prescription_row'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_prescription_row_id",
+                        "in": "query",
+                        "description": "'animal_prescription_row_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-prescription-row-waiting-times",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-prescription-row-waiting-times",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-prescription-row-waiting-times"
+                ],
+                "summary": "Create an animal-prescription-row-waiting-time",
+                "description": "Returns created animal prescription row waiting time based on the given filters",
+                "operationId": "postAnimalPrescriptionRowWaitingTime",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-prescription-row-waiting-time",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-prescription-row-waiting-time",
+                                            "properties": {
+                                                "animal_prescription_row_id": {
+                                                    "description": "Create an animal-prescription-row-waiting-time",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "number_of_days": {
+                                                    "description": "Create an animal-prescription-row-waiting-time",
+                                                    "type": "number",
+                                                    "example": 2
+                                                },
+                                                "type": {
+                                                    "description": "Create an animal-prescription-row-waiting-time",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-prescription-row-waiting-time",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-prescription-row-waiting-time",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-prescription-row-waiting-times/{id}": {
+            "get": {
+                "tags": [
+                    "animal-prescription-row-waiting-times"
+                ],
+                "summary": "Retrieve an animal-prescription-row-waiting-time",
+                "description": "Returns certain animal prescription row waiting times based on the given filters",
+                "operationId": "getAnimalPrescriptionRowWaitingTime",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_prescription_row'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-prescription-row-waiting-time",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-prescription-row-waiting-time",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "animal-prescription-row-waiting-times"
+                ],
+                "summary": "Edit an animal-prescription-row-waiting-time",
+                "description": "Returns edited animal prescription row waiting time based on the given filters",
+                "operationId": "patchAnimalPrescriptionRowWaitingTime",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-prescription-row-waiting-time",
+                                            "properties": {
+                                                "animal_prescription_row_id": {
+                                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "number_of_days": {
+                                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                                    "type": "number",
+                                                    "example": 2
+                                                },
+                                                "type": {
+                                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-prescription-row-waiting-time",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/animal-prescription-rows": {
             "get": {
                 "tags": [
@@ -6602,15 +6939,6 @@
                         "default": ""
                     },
                     {
-                        "name": "patient_id",
-                        "in": "query",
-                        "description": "'patient_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
                         "name": "route_name",
                         "in": "query",
                         "description": "'route_name' field",
@@ -6842,6 +7170,376 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a change-log",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/clinic-price-lists": {
+            "get": {
+                "tags": [
+                    "clinic-price-lists"
+                ],
+                "summary": "List clinic-price-lists",
+                "description": "Returns list of clinic price lists based on the given filters",
+                "operationId": "getClinicPriceLists",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'clinic_uses'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "reimbursement_type_id",
+                        "in": "query",
+                        "description": "'reimbursement_type_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "used",
+                        "in": "query",
+                        "description": "'used' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List clinic-price-lists",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ClinicPriceListResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List clinic-price-lists",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "clinic-price-lists"
+                ],
+                "summary": "Create a clinic-price-list",
+                "description": "Returns created clinic price list based on the given filters",
+                "operationId": "postClinicPriceList",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a clinic-price-list",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a clinic-price-list",
+                                            "properties": {
+                                                "reimbursement_type_id": {
+                                                    "description": "Create a clinic-price-list",
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "description": "Create a clinic-price-list",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a clinic-price-list",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ClinicPriceListResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a clinic-price-list",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/clinic-price-lists/{id}": {
+            "get": {
+                "tags": [
+                    "clinic-price-lists"
+                ],
+                "summary": "Retrieve a clinic-price-list",
+                "description": "Returns certain clinic price list based on the given filters",
+                "operationId": "getClinicPriceList",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'clinic_uses'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a clinic-price-list",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ClinicPriceListResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a clinic-price-list",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "clinic-price-lists"
+                ],
+                "summary": "Edit a clinic-price-list",
+                "description": "Returns edited clinic price list based on the given filters",
+                "operationId": "patchClinicPriceList",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a clinic-price-list",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a clinic-price-list",
+                                            "properties": {
+                                                "reimbursement_type_id": {
+                                                    "description": "Edit a clinic-price-list",
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "description": "Edit a clinic-price-list",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a clinic-price-list",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ClinicPriceListResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a clinic-price-list",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7265,6 +7963,217 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a cost-center",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/countries": {
+            "get": {
+                "tags": [
+                    "countries"
+                ],
+                "summary": "List countries",
+                "description": "Returns list of countries on the given filters",
+                "operationId": "getCountries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'default_id_service', 'location_of_reimbursement_organization', 'id_services', 'currencies', 'official_languages', 'reimbursement_types', 'county_councils', 'vat_codes', 'state_price_lists', 'used_state_price_list', 'roles'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List countries",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List countries",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/countries/find-by-ip-address": {
+            "get": {
+                "tags": [
+                    "countries"
+                ],
+                "summary": "Retrieve a country by ip address",
+                "description": "Returns certain country according to current ip address the given filters",
+                "operationId": "getCountry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'default_id_service', 'location_of_reimbursement_organization', 'id_services', 'currencies', 'official_languages', 'reimbursement_types', 'county_councils', 'vat_codes', 'state_price_lists', 'used_state_price_list', 'roles'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a country by ip address",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a country by ip address",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/countries/{id}": {
+            "get": {
+                "tags": [
+                    "countries"
+                ],
+                "summary": "Retrieve a country",
+                "description": "Returns certain country on the given filters",
+                "operationId": "getCountry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'default_id_service', 'location_of_reimbursement_organization', 'id_services', 'currencies', 'official_languages', 'reimbursement_types', 'county_councils', 'vat_codes', 'state_price_lists', 'used_state_price_list', 'roles'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a country",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a country",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -7828,7 +8737,7 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Bearer token",
+                        "description": "'id' field",
                         "required": true,
                         "type": "string"
                     },
@@ -7991,6 +8900,74 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a credit-check",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/currencies": {
+            "get": {
+                "tags": [
+                    "currencies"
+                ],
+                "summary": "List currencies",
+                "description": "Returns list of currencies based on the given filters",
+                "operationId": "getCurrencies",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'countries'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List currencies",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CurrencyWebhookRequest"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List currencies",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -8447,6 +9424,369 @@
                 }
             }
         },
+        "/api/declaration-emails": {
+            "get": {
+                "tags": [
+                    "declaration-emails"
+                ],
+                "summary": "List declaration-emails",
+                "description": "Returns list of declaration emails based on the given filters",
+                "operationId": "getDeclarationEmails",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking_attendee'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "booking_attendee_id",
+                        "in": "query",
+                        "description": "'booking_attendee_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List declaration-emails",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List declaration-emails",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "declaration-emails"
+                ],
+                "summary": "Create a declaration-email",
+                "description": "Returns created declaration email based on the given filters",
+                "operationId": "postDeclarationEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a declaration-email",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a declaration-email",
+                                            "properties": {
+                                                "subject": {
+                                                    "description": "Create a declaration-email",
+                                                    "type": "string"
+                                                },
+                                                "booking_attendee_id": {
+                                                    "description": "Create a declaration-email",
+                                                    "type": "number",
+                                                    "example": 123
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "sent_at",
+                        "in": "query",
+                        "description": "'sent_at' field. Example: '2024-10-12T15:20:00'.",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a declaration-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a declaration-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/declaration-emails/{id}": {
+            "get": {
+                "tags": [
+                    "declaration-emails"
+                ],
+                "summary": "Retrieve a declaration-email",
+                "description": "Returns certain declaration email based on the given filters",
+                "operationId": "getDeclarationEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'booking_attendee'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a declaration-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a declaration-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "declaration-emails"
+                ],
+                "summary": "Edit a declaration-email",
+                "description": "Returns edited declaration email based on the given filters",
+                "operationId": "patchDeclarationEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a declaration-email",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a declaration-email",
+                                            "properties": {
+                                                "subject": {
+                                                    "description": "Edit a declaration-email",
+                                                    "type": "string"
+                                                },
+                                                "booking_attendee_id": {
+                                                    "description": "Edit a declaration-email",
+                                                    "type": "number",
+                                                    "example": 123
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a declaration-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a declaration-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/declaration-item-templates": {
             "get": {
                 "tags": [
@@ -8691,6 +10031,414 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a declaration-item-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/declaration-sms": {
+            "get": {
+                "tags": [
+                    "declaration-sms"
+                ],
+                "summary": "List declaration-sms",
+                "description": "Returns list of declaration sms based on the given filters",
+                "operationId": "getListDeclarationSms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_article', 'booking_attendee'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "booking_attendee_id",
+                        "in": "query",
+                        "description": "'booking_attendee_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "scheduled",
+                        "in": "query",
+                        "description": "'scheduled' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List declaration-sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationSmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List declaration-sms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "declaration-sms"
+                ],
+                "summary": "Create a declaration-sms",
+                "description": "Returns created declaration sms based on the given filters",
+                "operationId": "postDeclarationSms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a declaration-sms",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a declaration-sms",
+                                            "properties": {
+                                                "from": {
+                                                    "description": "Create a declaration-sms",
+                                                    "type": "string"
+                                                },
+                                                "to": {
+                                                    "description": "Create a declaration-sms",
+                                                    "type": "string"
+                                                },
+                                                "body": {
+                                                    "description": "Create a declaration-sms",
+                                                    "type": "string"
+                                                },
+                                                "sent_at": {
+                                                    "description": "Create a declaration-sms",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "supplier_article_id": {
+                                                    "description": "Create a declaration-sms",
+                                                    "type": "number"
+                                                },
+                                                "booking_attendee_id": {
+                                                    "description": "Create a declaration-sms",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "booking_attendee_id",
+                        "in": "query",
+                        "description": "'booking_attendee_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "scheduled",
+                        "in": "query",
+                        "description": "'scheduled' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a declaration-sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationSmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a declaration-sms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/declaration-sms/{id}": {
+            "get": {
+                "tags": [
+                    "declaration-sms"
+                ],
+                "summary": "Retrieve a declaration-sms",
+                "description": "Returns certain declaration sms based on the given filters",
+                "operationId": "getDeclarationSms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_article', 'booking_attendee'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a declaration-sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationSmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a declaration-sms",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "declaration-sms"
+                ],
+                "summary": "Edit a declaration-sms",
+                "description": "Returns edited declaration sms based on the given filters",
+                "operationId": "patchDeclarationSms",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a declaration-sms",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a declaration-sms",
+                                            "properties": {
+                                                "from": {
+                                                    "description": "Edit a declaration-sms",
+                                                    "type": "string"
+                                                },
+                                                "to": {
+                                                    "description": "Edit a declaration-sms",
+                                                    "type": "string"
+                                                },
+                                                "body": {
+                                                    "description": "Edit a declaration-sms",
+                                                    "type": "string"
+                                                },
+                                                "sent_at": {
+                                                    "description": "Edit a declaration-sms",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "supplier_article_id": {
+                                                    "description": "Edit a declaration-sms",
+                                                    "type": "number"
+                                                },
+                                                "booking_attendee_id": {
+                                                    "description": "Edit a declaration-sms",
+                                                    "type": "number"
+                                                },
+                                                "deleted": {
+                                                    "description": "Edit a declaration-sms",
+                                                    "type": "boolean"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a declaration-sms",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeclarationSmsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a declaration-sms",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10068,6 +11816,255 @@
                             "properties": {
                                 "message": {
                                     "description": "List events",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/export-requests": {
+            "get": {
+                "tags": [
+                    "export-requests"
+                ],
+                "summary": "List export-requests",
+                "description": "Returns list of export requests based on the given filters",
+                "operationId": "getExportRequests",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'export_request_type', 'organization', 'file'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List export-requests",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ExportRequestResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List export-requests",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "export-requests"
+                ],
+                "summary": "Create an export-request",
+                "description": "Returns created export request based on the given filters",
+                "operationId": "postExportRequest",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an export-request",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an export-request",
+                                            "properties": {
+                                                "export_request_type_id": {
+                                                    "description": "Create an export-request",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an export-request",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ExportRequestResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an export-request",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/export-requests/{id}": {
+            "get": {
+                "tags": [
+                    "export-requests"
+                ],
+                "summary": "Retrieve an export-request",
+                "description": "Returns certain export request based on the given filters",
+                "operationId": "getExportRequest",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'export_request_type', 'organization', 'file'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an export-request",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ExportRequestResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an export-request",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -21450,343 +23447,6 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a pdf",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/prescription-row-waiting-times": {
-            "get": {
-                "tags": [
-                    "prescription-row-waiting-times"
-                ],
-                "summary": "List animal-prescription-row-waiting-times",
-                "description": "Returns list of animal prescription row waiting times based on the given filters",
-                "operationId": "getAnimalPrescriptionRowWaitingTimes",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'animal_prescription_row'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "animal_prescription_row_id",
-                        "in": "query",
-                        "description": "'animal_prescription_row_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List animal-prescription-row-waiting-times",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List animal-prescription-row-waiting-times",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "prescription-row-waiting-times"
-                ],
-                "summary": "Create an animal-prescription-row-waiting-time",
-                "description": "Returns created animal prescription row waiting time based on the given filters",
-                "operationId": "postAnimalPrescriptionRowWaitingTime",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create an animal-prescription-row-waiting-time",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create an animal-prescription-row-waiting-time",
-                                            "properties": {
-                                                "animal_prescription_row_id": {
-                                                    "description": "Create an animal-prescription-row-waiting-time",
-                                                    "type": "number",
-                                                    "example": 1
-                                                },
-                                                "number_of_days": {
-                                                    "description": "Create an animal-prescription-row-waiting-time",
-                                                    "type": "number",
-                                                    "example": 2
-                                                },
-                                                "type": {
-                                                    "description": "Create an animal-prescription-row-waiting-time",
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create an animal-prescription-row-waiting-time",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create an animal-prescription-row-waiting-time",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/prescription-row-waiting-times/{id}": {
-            "get": {
-                "tags": [
-                    "prescription-row-waiting-times"
-                ],
-                "summary": "Retrieve an animal-prescription-row-waiting-time",
-                "description": "Returns certain animal prescription row waiting times based on the given filters",
-                "operationId": "getAnimalPrescriptionRowWaitingTime",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'animal_prescription_row'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve an animal-prescription-row-waiting-time",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve an animal-prescription-row-waiting-time",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "prescription-row-waiting-times"
-                ],
-                "summary": "Edit an animal-prescription-row-waiting-time",
-                "description": "Returns edited animal prescription row waiting time based on the given filters",
-                "operationId": "patchAnimalPrescriptionRowWaitingTime",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit an animal-prescription-row-waiting-time",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Edit an animal-prescription-row-waiting-time",
-                                            "properties": {
-                                                "animal_prescription_row_id": {
-                                                    "description": "Edit an animal-prescription-row-waiting-time",
-                                                    "type": "number",
-                                                    "example": 1
-                                                },
-                                                "number_of_days": {
-                                                    "description": "Edit an animal-prescription-row-waiting-time",
-                                                    "type": "number",
-                                                    "example": 2
-                                                },
-                                                "type": {
-                                                    "description": "Edit an animal-prescription-row-waiting-time",
-                                                    "type": "string"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Edit an animal-prescription-row-waiting-time",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/AnimalPrescriptionRowWaitingResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Edit an animal-prescription-row-waiting-time",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -34362,6 +36022,44 @@
             },
             "type": "object"
         },
+        "ClinicPriceListResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "clinic_price_list"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "used": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-10-17T07:49:16+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-10-17T07:49:16+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ClinicCurrentResponse": {
             "properties": {
                 "type": {
@@ -34534,6 +36232,65 @@
             },
             "type": "object"
         },
+        "CountryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "country"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Sverige"
+                        },
+                        "code": {
+                            "type": "string",
+                            "example": "SE"
+                        },
+                        "calling_code": {
+                            "type": "string",
+                            "example": "+46"
+                        },
+                        "personal_id_min_length": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "personal_id_placeholder": {
+                            "type": "string",
+                            "example": "\u00e5\u00e5\u00e5\u00e5mmddxxxx"
+                        },
+                        "personal_id_regex": {
+                            "type": "string",
+                            "example": "/^(18|19|[2-9]\\\\d)\\\\d{2}(0[1-9]|1[0-2])[0-9]\\\\d{5}$/"
+                        },
+                        "legal_entity_id_regex": {
+                            "type": "string"
+                        },
+                        "postal_code_length": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "postal_code_regex": {
+                            "type": "string"
+                        },
+                        "general_information": {
+                            "type": "string",
+                            "example": "Planerat underh\u00e5ll tisdagen den 21 januari 22:00-02:00 p\u00e5 servrar f\u00f6r l\u00e4kemedelsartiklar och apotek\\r\\n\\r\\nGl\u00f6m inte att prenumera p\u00e5 v\u00e5rt nyhetsbrev f\u00f6r produktnyheter, <a href=\\'https://hs.muntra.se/prenumerera\\'>anm\u00e4l dig h\u00e4r</a>"
+                        },
+                        "muntra_support_phone_number": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "CountyCouncilPriceResponse": {
             "properties": {
                 "type": {
@@ -34654,7 +36411,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "task"
+                    "example": "currency"
                 },
                 "id": {
                     "type": "integer",
@@ -34663,14 +36420,15 @@
                 "attributes": {
                     "properties": {
                         "code": {
-                            "type": "string"
+                            "type": "string",
+                            "example": "SEK"
                         },
                         "name": {
                             "type": "string",
-                            "example": "Test title"
+                            "example": "Svenska kroner"
                         },
                         "suffix": {
-                            "type": "string"
+                            "type": "kr"
                         }
                     },
                     "type": "object"
@@ -34721,6 +36479,61 @@
             },
             "type": "object"
         },
+        "DeclarationEmailResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "declaration_email"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "to": {
+                            "type": "string"
+                        },
+                        "to_name": {
+                            "type": "string"
+                        },
+                        "subject": {
+                            "type": "string"
+                        },
+                        "body": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-10-16T14:49:00+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-10-16T14:49:45+02:00"
+                        },
+                        "send_number_of_hours_before_booking": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "DeclarationItemTemplateResponse": {
             "properties": {
                 "type": {
@@ -34748,6 +36561,66 @@
                         "deleted_at": {
                             "type": "string",
                             "example": "2024-08-31T00:00:00+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DeclarationSmsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "declaration_sms"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "sender_id": {
+                            "type": "string",
+                            "example": "123"
+                        },
+                        "from": {
+                            "type": "string"
+                        },
+                        "to": {
+                            "type": "string"
+                        },
+                        "body": {
+                            "type": "string"
+                        },
+                        "segments": {
+                            "type": "string"
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-09-03T19:25:31+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "send_number_of_hours_before_booking": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
@@ -35582,6 +37455,36 @@
                         },
                         "resource_ids": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ExportRequestResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "export_request"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "status": {
+                            "type": "string",
+                            "example": "done"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-08-02T09:16:31+02:00"
+                        },
+                        "expired_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
                         }
                     },
                     "type": "object"
