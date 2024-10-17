@@ -36428,7 +36428,7 @@
                             "example": "Svenska kroner"
                         },
                         "suffix": {
-                            "type": "kr"
+                            "type": "string"
                         }
                     },
                     "type": "object"
