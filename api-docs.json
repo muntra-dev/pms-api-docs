@@ -8184,6 +8184,527 @@
                 }
             }
         },
+        "/api/county-council-patient-categories": {
+            "get": {
+                "tags": [
+                    "county-council-patient-categories"
+                ],
+                "summary": "List county-council-patient-categories",
+                "description": "Returns list of county council patient categories based on the given filters",
+                "operationId": "getCountyCouncilPatientCategories",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country', 'county_councils'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "'country_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "active",
+                        "in": "query",
+                        "description": "'active' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List county-council-patient-categories",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryCouncilPatientCategoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List county-council-patient-categories",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/county-council-patient-categories/{id}": {
+            "get": {
+                "tags": [
+                    "county-council-patient-categories"
+                ],
+                "summary": "Retrieve a county-council-patient-category",
+                "description": "Returns certain county council patient category based on the given filters",
+                "operationId": "getCountyCouncilPatientCategory",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country', 'county_councils'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a county-council-patient-category",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountryCouncilPatientCategoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a county-council-patient-category",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/county-council-price-lists": {
+            "get": {
+                "tags": [
+                    "county-council-price-lists"
+                ],
+                "summary": "List county-council-price-lists",
+                "description": "Returns list of county council price lists based on the given filters",
+                "operationId": "getCountyCouncilPriceLists",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'county_council', 'county_council_uses'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "county_council_id",
+                        "in": "query",
+                        "description": "'county_council_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "reimbursement_type_id",
+                        "in": "query",
+                        "description": "'reimbursement_type_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "used",
+                        "in": "query",
+                        "description": "'used' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List county-council-price-lists",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountyCouncilPriceListResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List county-council-price-lists",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "county-council-price-lists"
+                ],
+                "summary": "Create a county-council-price-list",
+                "description": "Returns created county council price list based on the given filters",
+                "operationId": "postCountyCouncilPriceList",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a county-council-price-list",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a county-council-price-list",
+                                            "properties": {
+                                                "reimbursement_type_id": {
+                                                    "description": "Create a county-council-price-list",
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "description": "Create a county-council-price-list",
+                                                    "type": "string"
+                                                },
+                                                "county_council_id": {
+                                                    "description": "Create a county-council-price-list",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a county-council-price-list",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountyCouncilPriceListResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a county-council-price-list",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/county-council-price-lists/{id}": {
+            "get": {
+                "tags": [
+                    "county-council-price-lists"
+                ],
+                "summary": "Retrieve a county-council-price-list",
+                "description": "Returns certain county council price lists based on the given filters",
+                "operationId": "getCountyCouncilPriceList",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'county_council', 'county_council_uses'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a county-council-price-list",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountyCouncilPriceListResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a county-council-price-list",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "county-council-price-lists"
+                ],
+                "summary": "Edit a county-council-price-list",
+                "description": "Returns edited county council price list based on the given filters",
+                "operationId": "patchCountyCouncilPriceList",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a county-council-price-list",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a county-council-price-list",
+                                            "properties": {
+                                                "reimbursement_type_id": {
+                                                    "description": "Edit a county-council-price-list",
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "description": "Edit a county-council-price-list",
+                                                    "type": "string"
+                                                },
+                                                "county_council_id": {
+                                                    "description": "Edit a county-council-price-list",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a county-council-price-list",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CountyCouncilPriceListResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a county-council-price-list",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/county-council-prices": {
             "get": {
                 "tags": [
@@ -9337,6 +9858,495 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a custom-payment-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/daily-reconciliations": {
+            "get": {
+                "tags": [
+                    "daily-reconciliations"
+                ],
+                "summary": "List daily-reconciliations",
+                "description": "Returns list of daily reconciliations based on the given filters",
+                "operationId": "getDailyReconciliations",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'fiscal_year', 'clinic', 'currency', 'cash_register', 'signer', 'card_invoice_payments', 'cash_invoice_payments', 'mobile_invoice_payments', 'depositions', 'cash_supplier_payments', 'patient_invoices'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List daily-reconciliations",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DailyReconciliationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List daily-reconciliations",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "daily-reconciliations"
+                ],
+                "summary": "Create a daily-reconciliation",
+                "description": "Returns created daily reconciliation based on the given filters",
+                "operationId": "postDailyReconciliation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a daily-reconciliation",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a daily-reconciliation",
+                                            "properties": {
+                                                "fiscal_year_id": {
+                                                    "description": "Create a daily-reconciliation",
+                                                    "type": "number"
+                                                },
+                                                "clinic_id": {
+                                                    "description": "Create a daily-reconciliation",
+                                                    "type": "number"
+                                                },
+                                                "currency_id": {
+                                                    "description": "Create a daily-reconciliation",
+                                                    "type": "number"
+                                                },
+                                                "date": {
+                                                    "description": "Create a daily-reconciliation",
+                                                    "type": "string",
+                                                    "example": "2024-08-02T09:16:31+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a daily-reconciliation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DailyReconciliationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a daily-reconciliation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/daily-reconciliations/{id}": {
+            "get": {
+                "tags": [
+                    "daily-reconciliations"
+                ],
+                "summary": "Retrieve a daily-reconciliation",
+                "description": "Returns certain daily reconciliation based on the given filters",
+                "operationId": "getDailyReconciliation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'fiscal_year', 'clinic', 'currency', 'cash_register', 'signer', 'card_invoice_payments', 'cash_invoice_payments', 'mobile_invoice_payments', 'depositions', 'cash_supplier_payments', 'patient_invoices'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a daily-reconciliation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DailyReconciliationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a daily-reconciliation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "daily-reconciliations"
+                ],
+                "summary": "Edit a daily-reconciliation",
+                "description": "Returns edited daily reconciliation based on the given filters",
+                "operationId": "patchDailyReconciliation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a daily-reconciliation",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a daily-reconciliation",
+                                            "properties": {
+                                                "fiscal_year_id": {
+                                                    "description": "Edit a daily-reconciliation",
+                                                    "type": "number"
+                                                },
+                                                "clinic_id": {
+                                                    "description": "Edit a daily-reconciliation",
+                                                    "type": "number"
+                                                },
+                                                "currency_id": {
+                                                    "description": "Edit a daily-reconciliation",
+                                                    "type": "number"
+                                                },
+                                                "date": {
+                                                    "description": "Edit a daily-reconciliation",
+                                                    "type": "string",
+                                                    "example": "2024-08-02T09:16:31+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a daily-reconciliation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DailyReconciliationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a daily-reconciliation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/daily-reconciliations/{id}/sign": {
+            "post": {
+                "tags": [
+                    "daily-reconciliations"
+                ],
+                "summary": "Sign a daily-reconciliation",
+                "description": "Returns signed daily reconciliation based on the given filters",
+                "operationId": "postDailyReconciliationSign",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Sign a daily-reconciliation",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Sign a daily-reconciliation",
+                                            "properties": {
+                                                "signing_password": {
+                                                    "description": "Sign a daily-reconciliation",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Sign a daily-reconciliation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DailyReconciliationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Sign a daily-reconciliation",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -10636,6 +11646,382 @@
                 }
             }
         },
+        "/api/deductions/{id}": {
+            "patch": {
+                "tags": [
+                    "deductions"
+                ],
+                "summary": "Edit a deduction",
+                "description": "Returns edited deduction based on the given filters",
+                "operationId": "patchDeducation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a deduction",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a deduction",
+                                            "properties": {
+                                                "deducted_from_invoice": {
+                                                    "description": "Edit a deduction",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a deduction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeductionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a deduction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/depositions": {
+            "get": {
+                "tags": [
+                    "depositions"
+                ],
+                "summary": "List depositions",
+                "description": "Returns list of depositions based on the given filters",
+                "operationId": "getDepositions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'fiscal_year', 'verification', 'currency', 'daily_reconciliation'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List depositions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DepositionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List depositions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "depositions"
+                ],
+                "summary": "Create a deposition",
+                "description": "Returns created deposition based on the given filters",
+                "operationId": "postDeposition",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a deposition",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a deposition",
+                                            "properties": {
+                                                "fiscal_year_id": {
+                                                    "description": "Create a deposition",
+                                                    "type": "number"
+                                                },
+                                                "currency_id": {
+                                                    "description": "Create a deposition",
+                                                    "type": "number"
+                                                },
+                                                "date": {
+                                                    "description": "Create a deposition",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a deposition",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DepositionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a deposition",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/depositions/{id}": {
+            "get": {
+                "tags": [
+                    "depositions"
+                ],
+                "summary": "Retrieve a deposition",
+                "description": "Returns certain deposition based on the given filters",
+                "operationId": "getDeposition",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'fiscal_year', 'verification', 'currency', 'daily_reconciliation'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a deposition",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DepositionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a deposition",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/devices": {
             "get": {
                 "tags": [
@@ -11826,6 +13212,61 @@
                 }
             }
         },
+        "/api/export-request-types": {
+            "get": {
+                "tags": [
+                    "export-request-types"
+                ],
+                "summary": "List export-request-types",
+                "description": "Returns list of export-request-types based on the given filters",
+                "operationId": "getExportRequestTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List export-request-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ExportRequestTypesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List export-request-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/export-requests": {
             "get": {
                 "tags": [
@@ -11866,7 +13307,7 @@
                         "in": "query",
                         "description": "'sort_by' field",
                         "required": false,
-                        "type": "number",
+                        "type": "string",
                         "allowEmptyValue": true,
                         "default": ""
                     },
@@ -12065,6 +13506,402 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve an export-request",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/files": {
+            "get": {
+                "tags": [
+                    "files"
+                ],
+                "summary": "List files",
+                "description": "Returns list of files based on the given filters",
+                "operationId": "getFiles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "backup",
+                        "in": "query",
+                        "description": "'backup' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "backup_directory",
+                        "in": "query",
+                        "description": "'backup_directory' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List files",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FilesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List files",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/files/{id}": {
+            "get": {
+                "tags": [
+                    "files"
+                ],
+                "summary": "Retrieve a file",
+                "description": "Returns certain file based on the given filters",
+                "operationId": "getFile",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a file",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FilesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a file",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "files"
+                ],
+                "summary": "Edit a file",
+                "description": "Returns edited file based on the given filters",
+                "operationId": "patchFile",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'name' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a file",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a file",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a file",
+                                                    "type": "string",
+                                                    "example": "your_image.png"
+                                                },
+                                                "backup": {
+                                                    "description": "Edit a file",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "backup_path": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_ctim": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_gid": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_ino": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_mode": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_mtim": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_size": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_uid": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "creation_date": {
+                                                    "description": "Edit a file",
+                                                    "type": "string",
+                                                    "example": "2024-07-11T06:36:32+02:00"
+                                                },
+                                                "treatment_date": {
+                                                    "description": "Edit a file",
+                                                    "type": "string",
+                                                    "example": "2024-07-11T06:36:32+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a file",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FilesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a file",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/first-bookable-slots": {
+            "get": {
+                "tags": [
+                    "first-bookable-slots"
+                ],
+                "summary": "List first-bookable-slots",
+                "description": "Returns list of export requests based on the given filters",
+                "operationId": "getFrirstBookableSlots",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "The user id field is required when room id is not present",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "duration_in_minutes",
+                        "in": "query",
+                        "description": "'duration_in_minutes' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "room_id",
+                        "in": "query",
+                        "description": "The room id field is required when user id is not present",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List first-bookable-slots",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FirstBookableSlotResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List first-bookable-slots",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -12968,6 +14805,83 @@
                 }
             }
         },
+        "/api/id-services": {
+            "get": {
+                "tags": [
+                    "id-services"
+                ],
+                "summary": "List id-services",
+                "description": "Returns list of id services based on the given filters",
+                "operationId": "getIdServices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'countries', 'country_with_default'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "display_type",
+                        "in": "query",
+                        "description": "'display_type' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List id-services",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/IdServiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List id-services",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/images": {
             "get": {
                 "tags": [
@@ -13224,6 +15138,405 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/incidents": {
+            "get": {
+                "tags": [
+                    "incidents"
+                ],
+                "summary": "List incidents",
+                "description": "Returns list of incidents based on the given filters",
+                "operationId": "getIncidents",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'signer', 'tasks'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "status",
+                        "in": "query",
+                        "description": "'status' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List incidents",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/IncidentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List incidents",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "incidents"
+                ],
+                "summary": "Create an incident",
+                "description": "Returns created incident based on the given filters",
+                "operationId": "postIncident",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an incident",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an incident",
+                                            "properties": {
+                                                "date": {
+                                                    "description": "Create an incident",
+                                                    "type": "string",
+                                                    "example": "2024-09-08T23:59:59+02:00"
+                                                },
+                                                "description": {
+                                                    "description": "Create an incident",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "corrective_action": {
+                                                    "description": "Create an incident",
+                                                    "type": "string"
+                                                },
+                                                "preventive_action": {
+                                                    "description": "Create an incident",
+                                                    "type": "string"
+                                                },
+                                                "signed_at": {
+                                                    "description": "Create an incident",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an incident",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/IncidentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an incident",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/incidents/{id}": {
+            "get": {
+                "tags": [
+                    "incidents"
+                ],
+                "summary": "Retrieve an incident",
+                "description": "Returns certain incident based on the given filters",
+                "operationId": "getIncident",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'signer', 'tasks'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an incident",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/IncidentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an incident",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "incidents"
+                ],
+                "summary": "Edit an incident",
+                "description": "Returns edited incident based on the given filters",
+                "operationId": "patchIncident",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an incident",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an incident",
+                                            "properties": {
+                                                "date": {
+                                                    "description": "Edit an incident",
+                                                    "type": "string",
+                                                    "example": "2024-09-08T23:59:59+02:00"
+                                                },
+                                                "description": {
+                                                    "description": "Edit an incident",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "corrective_action": {
+                                                    "description": "Edit an incident",
+                                                    "type": "string"
+                                                },
+                                                "preventive_action": {
+                                                    "description": "Edit an incident",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an incident",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/IncidentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an incident",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -36291,6 +38604,70 @@
             },
             "type": "object"
         },
+        "CountryCouncilPatientCategoryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "county_council_patient_category"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "example": "S1"
+                        },
+                        "label": {
+                            "type": "string",
+                            "example": "Medf\u00f6dd missbildning i k\u00e4komr\u00e5det eller ansiktet, om inte missbildningen endast \u00e4r av ringa omfattning"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CountyCouncilPriceListResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "county_council_price_list"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Stockholm 2018"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "used": {
+                            "type": "string",
+                            "example": false
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2017-10-23T12:05:37+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-01-30T15:54:10+01:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "CountyCouncilPriceResponse": {
             "properties": {
                 "type": {
@@ -36450,6 +38827,61 @@
                     "properties": {
                         "label": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DailyReconciliationResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "daily_reconciliation"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "106794"
+                },
+                "attributes": {
+                    "properties": {
+                        "card_rounding": {
+                            "type": "number"
+                        },
+                        "card_total": {
+                            "type": "number",
+                            "example": 1000
+                        },
+                        "mobile_total": {
+                            "type": "number"
+                        },
+                        "date": {
+                            "type": "string",
+                            "example": "2024-08-02T09:16:31+02:00"
+                        },
+                        "incoming_cash_balance": {
+                            "type": "number"
+                        },
+                        "outgoing_cash_balance": {
+                            "type": "number"
+                        },
+                        "cash_register_designation": {
+                            "type": "string"
+                        },
+                        "grand_total_sales": {
+                            "type": "number"
+                        },
+                        "grand_total_credits": {
+                            "type": "number"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-09-02T23:59:59+02:00"
                         }
                     },
                     "type": "object"
@@ -37162,6 +39594,66 @@
             },
             "type": "object"
         },
+        "DeductionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "deduction"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Test label"
+                        },
+                        "amount": {
+                            "type": "number",
+                            "example": 111
+                        },
+                        "deducted_from_invoice": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DepositionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "deduction"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-02T23:59:59+02:00"
+                        },
+                        "amount": {
+                            "type": "number",
+                            "example": 111
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "DeviceResponse": {
             "properties": {
                 "type": {
@@ -37492,6 +39984,32 @@
             },
             "type": "object"
         },
+        "ExportRequestTypesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "export_request_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Patienter med FK-data"
+                        },
+                        "requires_organization": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "BookingExternalBindingResponse": {
             "properties": {
                 "type": {
@@ -37545,6 +40063,98 @@
                         },
                         "external_type": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "FilesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "file"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "your_image.png"
+                        },
+                        "type": {
+                            "type": "string",
+                            "example": "image/png"
+                        },
+                        "size_in_bytes": {
+                            "type": "string",
+                            "example": "136941"
+                        },
+                        "backup": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "backup_path": {
+                            "type": "string"
+                        },
+                        "st_ctim": {
+                            "type": "string"
+                        },
+                        "st_gid": {
+                            "type": "string"
+                        },
+                        "st_ino": {
+                            "type": "string"
+                        },
+                        "st_mode": {
+                            "type": "string"
+                        },
+                        "st_mtim": {
+                            "type": "string"
+                        },
+                        "st_size": {
+                            "type": "string"
+                        },
+                        "st_uid": {
+                            "type": "string"
+                        },
+                        "creation_date": {
+                            "type": "string",
+                            "example": "2024-07-11T06:36:32+02:00"
+                        },
+                        "treatment_date": {
+                            "type": "string",
+                            "example": "2024-07-11T06:36:32+02:00"
+                        },
+                        "path": {
+                            "type": "string",
+                            "example": "patients/771121/668f61506c72eeefb59313a80c3d213e8f8b0921fe4f4.png"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "FirstBookableSlotResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "first_bookable_slot"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "dtstart": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
                         }
                     },
                     "type": "object"
@@ -37855,6 +40465,41 @@
             },
             "type": "object"
         },
+        "IdServiceResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "id_service"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "code": {
+                            "type": "string",
+                            "example": "google-authenticator"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Google Authenticator"
+                        },
+                        "personal_id_regex": {
+                            "type": "string"
+                        },
+                        "personal_id_placeholder": {
+                            "type": "string"
+                        },
+                        "personal_id_min_length": {
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ImageResponse": {
             "properties": {
                 "type": {
@@ -37945,6 +40590,42 @@
                         "deleted_at": {
                             "type": "string",
                             "example": "2024-08-31T00:00:00+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "IncidentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "incident"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-08T23:59:59+02:00"
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "Test description"
+                        },
+                        "corrective_action": {
+                            "type": "string"
+                        },
+                        "preventive_action": {
+                            "type": "string"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
                         }
                     },
                     "type": "object"
@@ -40288,10 +42969,6 @@
                 },
                 "attributes": {
                     "properties": {
-                        "city": {
-                            "type": "string",
-                            "example": "Stockholm"
-                        },
                         "first_name": {
                             "type": "string",
                             "example": "John"
