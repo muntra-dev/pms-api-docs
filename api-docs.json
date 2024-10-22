@@ -10274,7 +10274,7 @@
                 "tags": [
                     "daily-reconciliations"
                 ],
-                "summary": "Sign a daily-reconciliation",
+                "summary": "Sign daily-reconciliation",
                 "description": "Returns signed daily reconciliation based on the given filters",
                 "operationId": "postDailyReconciliationSign",
                 "consumes": [
@@ -10306,13 +10306,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Sign a daily-reconciliation",
+                                    "description": "Sign daily-reconciliation",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Sign a daily-reconciliation",
+                                            "description": "Sign daily-reconciliation",
                                             "properties": {
                                                 "signing_password": {
-                                                    "description": "Sign a daily-reconciliation",
+                                                    "description": "Sign daily-reconciliation",
                                                     "type": "string"
                                                 }
                                             },
@@ -10331,7 +10331,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Sign a daily-reconciliation",
+                                    "description": "Sign daily-reconciliation",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/DailyReconciliationResponse"
@@ -10346,7 +10346,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Sign a daily-reconciliation",
+                                    "description": "Sign daily-reconciliation",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13717,7 +13717,7 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Body of request (only 'name' is obligatory)",
+                        "description": "Body of request (obligatory)",
                         "required": true,
                         "schema": {
                             "properties": {
@@ -13729,55 +13729,7 @@
                                             "properties": {
                                                 "name": {
                                                     "description": "Edit a file",
-                                                    "type": "string",
-                                                    "example": "your_image.png"
-                                                },
-                                                "backup": {
-                                                    "description": "Edit a file",
-                                                    "type": "boolean",
-                                                    "example": false
-                                                },
-                                                "backup_path": {
-                                                    "description": "Edit a file",
                                                     "type": "string"
-                                                },
-                                                "st_ctim": {
-                                                    "description": "Edit a file",
-                                                    "type": "string"
-                                                },
-                                                "st_gid": {
-                                                    "description": "Edit a file",
-                                                    "type": "string"
-                                                },
-                                                "st_ino": {
-                                                    "description": "Edit a file",
-                                                    "type": "string"
-                                                },
-                                                "st_mode": {
-                                                    "description": "Edit a file",
-                                                    "type": "string"
-                                                },
-                                                "st_mtim": {
-                                                    "description": "Edit a file",
-                                                    "type": "string"
-                                                },
-                                                "st_size": {
-                                                    "description": "Edit a file",
-                                                    "type": "string"
-                                                },
-                                                "st_uid": {
-                                                    "description": "Edit a file",
-                                                    "type": "string"
-                                                },
-                                                "creation_date": {
-                                                    "description": "Edit a file",
-                                                    "type": "string",
-                                                    "example": "2024-07-11T06:36:32+02:00"
-                                                },
-                                                "treatment_date": {
-                                                    "description": "Edit a file",
-                                                    "type": "string",
-                                                    "example": "2024-07-11T06:36:32+02:00"
                                                 }
                                             },
                                             "type": "object"
