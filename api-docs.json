@@ -10274,7 +10274,7 @@
                 "tags": [
                     "daily-reconciliations"
                 ],
-                "summary": "Sign daily-reconciliation",
+                "summary": "Sign a daily-reconciliation",
                 "description": "Returns signed daily reconciliation based on the given filters",
                 "operationId": "postDailyReconciliationSign",
                 "consumes": [
@@ -10306,13 +10306,13 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Sign daily-reconciliation",
+                                    "description": "Sign a daily-reconciliation",
                                     "properties": {
                                         "attributes": {
-                                            "description": "Sign daily-reconciliation",
+                                            "description": "Sign a daily-reconciliation",
                                             "properties": {
                                                 "signing_password": {
-                                                    "description": "Sign daily-reconciliation",
+                                                    "description": "Sign a daily-reconciliation",
                                                     "type": "string"
                                                 }
                                             },
@@ -10331,7 +10331,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Sign daily-reconciliation",
+                                    "description": "Sign a daily-reconciliation",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/DailyReconciliationResponse"
@@ -10346,7 +10346,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Sign daily-reconciliation",
+                                    "description": "Sign a daily-reconciliation",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -13717,7 +13717,7 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Body of request (obligatory)",
+                        "description": "Body of request (only 'name' is obligatory)",
                         "required": true,
                         "schema": {
                             "properties": {
@@ -13729,7 +13729,55 @@
                                             "properties": {
                                                 "name": {
                                                     "description": "Edit a file",
+                                                    "type": "string",
+                                                    "example": "your_image.png"
+                                                },
+                                                "backup": {
+                                                    "description": "Edit a file",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "backup_path": {
+                                                    "description": "Edit a file",
                                                     "type": "string"
+                                                },
+                                                "st_ctim": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_gid": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_ino": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_mode": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_mtim": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_size": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "st_uid": {
+                                                    "description": "Edit a file",
+                                                    "type": "string"
+                                                },
+                                                "creation_date": {
+                                                    "description": "Edit a file",
+                                                    "type": "string",
+                                                    "example": "2024-07-11T06:36:32+02:00"
+                                                },
+                                                "treatment_date": {
+                                                    "description": "Edit a file",
+                                                    "type": "string",
+                                                    "example": "2024-07-11T06:36:32+02:00"
                                                 }
                                             },
                                             "type": "object"
@@ -15590,6 +15638,433 @@
                 }
             }
         },
+        "/api/invoice-emails": {
+            "get": {
+                "tags": [
+                    "invoice-emails"
+                ],
+                "summary": "List invoice-emails",
+                "description": "Returns list of invoice emails based on the given filters",
+                "operationId": "getInvoiceEmails",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'invoice'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "invoice_id",
+                        "in": "query",
+                        "description": "'invoice_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "backup_directory",
+                        "in": "query",
+                        "description": "'backup_directory' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoice-emails",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoice-emails",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "invoice-emails"
+                ],
+                "summary": "Create a invoice-email",
+                "description": "Returns created invoice email based on the given filters",
+                "operationId": "postInvoiceEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Only 'subject' and 'invoice_id' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an invoice-email",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an invoice-email",
+                                            "properties": {
+                                                "subject": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "invoice_id": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "to": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "to_name": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "body": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "sent_at": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string",
+                                                    "example": "2024-10-22T10:04:00+02:00"
+                                                },
+                                                "message_status": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "error_code": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "deleted": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "created_at": {
+                                                    "description": "Create an invoice-email",
+                                                    "type": "string",
+                                                    "example": "2024-10-22T10:04:25+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an invoice-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an invoice-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-emails/{id}": {
+            "get": {
+                "tags": [
+                    "invoice-emails"
+                ],
+                "summary": "Retrieve an invoice-email",
+                "description": "Returns certain invoice emails based on the given filters",
+                "operationId": "getInvoiceEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'invoice'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an invoice-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an invoice-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "invoice-emails"
+                ],
+                "summary": "Edit an invoice-email",
+                "description": "Returns edited invoice emails based on the given filters",
+                "operationId": "patchInvoiceEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an invoice-email",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an invoice-email",
+                                            "properties": {
+                                                "subject": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "to": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "to_name": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "body": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "sent_at": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "string",
+                                                    "example": "2024-10-22T10:04:00+02:00"
+                                                },
+                                                "message_status": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "error_code": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "string"
+                                                },
+                                                "deleted": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "created_at": {
+                                                    "description": "Edit an invoice-email",
+                                                    "type": "string",
+                                                    "example": "2024-10-22T10:04:25+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an invoice-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an invoice-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/invoice-payments": {
             "get": {
                 "tags": [
@@ -16128,6 +16603,344 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an invoice-payment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-reminders": {
+            "get": {
+                "tags": [
+                    "invoice-reminders"
+                ],
+                "summary": "List invoice-reminders",
+                "description": "Returns list of invoice reminders based on the given filters",
+                "operationId": "getInvoiceReminders",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'invoice', 'verification'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "invoice_id",
+                        "in": "query",
+                        "description": "'invoice_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoice-reminders",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceReminderResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoice-reminders",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "invoice-reminders"
+                ],
+                "summary": "Create an invoice-reminder",
+                "description": "Returns created invoice reminders based on the given filters",
+                "operationId": "postInvoiceReminder",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an invoice-reminder",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an invoice-reminder",
+                                            "properties": {
+                                                "date": {
+                                                    "description": "Create an invoice-reminder",
+                                                    "type": "string",
+                                                    "example": "2024-09-08T23:59:59+02:00"
+                                                },
+                                                "invoice_id": {
+                                                    "description": "Create an invoice-reminder",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "verification_id",
+                        "in": "query",
+                        "description": "'verification_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an invoice-reminder",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceReminderResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an invoice-reminder",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-reminders/{id}": {
+            "get": {
+                "tags": [
+                    "invoice-reminders"
+                ],
+                "summary": "Retrieve an invoice-reminder",
+                "description": "Returns certain invoice reminder based on the given filters",
+                "operationId": "getInvoiceReminder",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'invoice', 'verification'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an invoice-reminder",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceReminderResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an invoice-reminder",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "invoice-reminders"
+                ],
+                "summary": "Edit an invoice-reminder",
+                "description": "Returns edited invoice reminder based on the given filters",
+                "operationId": "patchInvoiceReminder",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an invoice-reminder",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an invoice-reminder",
+                                            "properties": {
+                                                "date": {
+                                                    "description": "Edit an invoice-reminder",
+                                                    "type": "string",
+                                                    "example": "2024-09-08T23:59:59+02:00"
+                                                },
+                                                "invoice_id": {
+                                                    "description": "Edit an invoice-reminder",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an invoice-reminder",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceReminderResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an invoice-reminder",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -17865,7 +18678,7 @@
                         "name": "body",
                         "in": "body",
                         "description": "Body of request (obligatory)",
-                        "required": false,
+                        "required": true,
                         "schema": {
                             "properties": {
                                 "data": {
@@ -18036,7 +18849,7 @@
                         "name": "body",
                         "in": "body",
                         "description": "Body of request (obligatory)",
-                        "required": false,
+                        "required": true,
                         "schema": {
                             "properties": {
                                 "data": {
@@ -18386,6 +19199,190 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a journal-pharmacy",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/last-selected-patients": {
+            "get": {
+                "tags": [
+                    "last-selected-patients"
+                ],
+                "summary": "List last-selected-patients",
+                "description": "Returns list of last selected patients based on the given filters",
+                "operationId": "getLastSelectedPatients",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List last-selected-patients",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/LastSelectedPatientResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List last-selected-patients",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "last-selected-patients"
+                ],
+                "summary": "Create a last-selected-patient",
+                "description": "Returns list of last selected patients based on the given filters",
+                "operationId": "postLastSelectedPatient",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a last-selected-patient",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a last-selected-patient",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a last-selected-patient",
+                                                    "type": "number",
+                                                    "example": 123
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a last-selected-patient",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/LastSelectedPatientResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a last-selected-patient",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -24747,7 +25744,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'user', 'country', 'stb_disease', 'county_council', 'county_council_patient_category', 'default_reimbursement_type', 'patient_tags'.",
+                        "description": "Including 'user', 'country', 'stb_disease', 'county_council', 'county_council_patient_category', 'default_reimbursement_type', 'patient_tags', 'booking_attendees.booking', 'booking_preferences.weekdays', 'county_council.used_county_council_price_list', 'last_credit_check.currency', 'last_credit_check.supplier', 'last_insurance_contract', 'last_tanden_check.currency', 'last_tanden_check.insurance_contract.journal_diagnoses', 'last_tanden_check.new_atb', 'last_tanden_check.old_atb,locale.language', 'location.third_party', 'rebooking_defaults.booking_type', 'rebooking_defaults.clinic', 'rebooking_defaults.user', 'rebookings.booking', 'signer.role', 'state_registration.country', 'state_registration.sender.role,stb_disease', 'patient_third_party_patient_categories.third_party_patient_category.third_party', 'proposal_responses.proposal'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -24760,7 +25757,25 @@
                     {
                         "name": "history_id",
                         "in": "query",
-                        "description": "History id field",
+                        "description": "'history_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
                         "required": false,
                         "type": "number",
                         "allowEmptyValue": true,
@@ -24769,7 +25784,7 @@
                     {
                         "name": "deleted",
                         "in": "query",
-                        "description": "'Deleted' field",
+                        "description": "'deleted' field",
                         "required": false,
                         "type": "boolean",
                         "allowEmptyValue": true,
@@ -24850,7 +25865,7 @@
                     {
                         "name": "first_name",
                         "in": "query",
-                        "description": "First name field",
+                        "description": "'first_name' field",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": true,
@@ -25138,14 +26153,14 @@
                     {
                         "name": "id",
                         "in": "path",
-                        "description": "Patient id in query/url",
+                        "description": "'id' field",
                         "required": true,
                         "type": "number"
                     },
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'user', 'country', 'stb_disease', 'county_council', 'county_council_patient_category', 'default_reimbursement_type', 'patient_tags'.",
+                        "description": "Including 'user', 'country', 'stb_disease', 'county_council', 'county_council_patient_category', 'default_reimbursement_type', 'patient_tags', 'booking_attendees.booking', 'booking_preferences.weekdays', 'county_council.used_county_council_price_list', 'last_credit_check.currency', 'last_credit_check.supplier', 'last_insurance_contract', 'last_tanden_check.currency', 'last_tanden_check.insurance_contract.journal_diagnoses', 'last_tanden_check.new_atb', 'last_tanden_check.old_atb,locale.language', 'location.third_party', 'rebooking_defaults.booking_type', 'rebooking_defaults.clinic', 'rebooking_defaults.user', 'rebookings.booking', 'signer.role', 'state_registration.country', 'state_registration.sender.role,stb_disease', 'patient_third_party_patient_categories.third_party_patient_category.third_party', 'proposal_responses.proposal'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -40615,6 +41630,59 @@
             },
             "type": "object"
         },
+        "InvoiceEmailResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_email"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "to": {
+                            "type": "string"
+                        },
+                        "to_name": {
+                            "type": "string"
+                        },
+                        "subject": {
+                            "type": "string",
+                            "example": "Test subject"
+                        },
+                        "body": {
+                            "type": "string"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-10-22T10:04:00+02:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-10-22T10:04:25+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "InvoicePaymentResponse": {
             "properties": {
                 "type": {
@@ -40662,6 +41730,36 @@
                         "deleted": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InvoiceReminderResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_reminder"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-08T23:59:59+02:00"
+                        },
+                        "due_date": {
+                            "type": "string",
+                            "example": "2024-10-22T23:59:59+02:00"
+                        },
+                        "amount": {
+                            "type": "number",
+                            "example": 10
                         }
                     },
                     "type": "object"
@@ -41023,6 +42121,25 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "LastSelectedPatientResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "last_selected_patient"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "lsp6718dfd20707b"
+                },
+                "attributes": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
                 }
             },
             "type": "object"
