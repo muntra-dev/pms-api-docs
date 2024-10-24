@@ -13146,9 +13146,9 @@
                         "name": "clinic_ids",
                         "in": "query",
                         "description": "'clinic_ids' field",
-                        "required": false,
+                        "required": true,
                         "type": "array",
-                        "allowEmptyValue": true,
+                        "allowEmptyValue": false,
                         "items": {
                             "type": "string"
                         },
@@ -19209,6 +19209,74 @@
                 }
             }
         },
+        "/api/languages": {
+            "get": {
+                "tags": [
+                    "languages"
+                ],
+                "summary": "List languages",
+                "description": "Returns list of languages based on the given filters",
+                "operationId": "getLanguages",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'locales'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List languages",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/LanguageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List languages",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/last-selected-patients": {
             "get": {
                 "tags": [
@@ -19488,6 +19556,328 @@
                 }
             }
         },
+        "/api/locales": {
+            "get": {
+                "tags": [
+                    "locales"
+                ],
+                "summary": "List locales",
+                "description": "Returns list of locales based on the given filters",
+                "operationId": "getLocales",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'language'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "tag",
+                        "in": "query",
+                        "description": "'tag' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List locales",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/LocaleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List locales",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/locales/{id}": {
+            "get": {
+                "tags": [
+                    "locales"
+                ],
+                "summary": "Retrieve a locale",
+                "description": "Returns certain locale based on the given filters",
+                "operationId": "getLocale",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'language'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a locale",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/LocaleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a locale",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login-attempts": {
+            "get": {
+                "tags": [
+                    "login-attempts"
+                ],
+                "summary": "List login-attempts",
+                "description": "Returns list of login attempts based on the given filters",
+                "operationId": "getLoginAttempts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List login-attempts",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/LoginAttemptResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List login-attempts",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/login-attempts/{id}": {
+            "get": {
+                "tags": [
+                    "login-attempts"
+                ],
+                "summary": "List login-attempts",
+                "description": "Returns certain login attempt based on the given filters",
+                "operationId": "getLoginAttempt",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a login-attempt",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/LoginAttemptResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a login-attempt",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/missing-booking-epicrisis-report-rows": {
             "get": {
                 "tags": [
@@ -19659,6 +20049,272 @@
                             "properties": {
                                 "message": {
                                     "description": "List missing-epicrisis-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/mount-items": {
+            "get": {
+                "tags": [
+                    "mount-items"
+                ],
+                "summary": "List mount-items",
+                "description": "Returns list of mount items based on the given filters",
+                "operationId": "getMountItems",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'mount', 'image'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List mount-items",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountItemsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List mount-items",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/mount-items/{id}": {
+            "get": {
+                "tags": [
+                    "mount-items"
+                ],
+                "summary": "Retrieve a mount-item",
+                "description": "Returns certain mount item based on the given filters",
+                "operationId": "getMountItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'mount', 'image'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a mount-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountItemsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a mount-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "mount-items"
+                ],
+                "summary": "Patch a mount-item",
+                "description": "Returns edited mount item based on the given filters",
+                "operationId": "patchMountItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Patch a mount-item",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Patch a mount-item",
+                                            "properties": {
+                                                "mount_id": {
+                                                    "description": "Patch a mount-item",
+                                                    "type": "number",
+                                                    "example": 10
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "image_id",
+                        "in": "query",
+                        "description": "'image_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Patch a mount-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountItemsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Patch a mount-item",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -26133,7 +26789,7 @@
                 "tags": [
                     "patients"
                 ],
-                "summary": "Retrieve a patient",
+                "summary": "Retrieve a signed version of the patient",
                 "description": "Retrieve a specific patient",
                 "operationId": "getPatient",
                 "consumes": [
@@ -26171,6 +26827,24 @@
                         "default": ""
                     },
                     {
+                        "name": "history_id",
+                        "in": "query",
+                        "description": "'history_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
                         "name": "organization_id",
                         "in": "query",
                         "description": "Organization id field",
@@ -26186,7 +26860,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a patient",
+                                    "description": "Retrieve a signed version of the patient",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/PatientResponse"
@@ -26201,7 +26875,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a patient",
+                                    "description": "Retrieve a signed version of the patient",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -42125,6 +42799,40 @@
             },
             "type": "object"
         },
+        "LanguageResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_reminder"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "iso_code_639_3": {
+                            "type": "string",
+                            "example": "aar"
+                        },
+                        "iso_code_639_2": {
+                            "type": "string",
+                            "example": "aar/aar"
+                        },
+                        "iso_code": {
+                            "type": "string",
+                            "example": "aa"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Afar"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "LastSelectedPatientResponse": {
             "properties": {
                 "type": {
@@ -42140,6 +42848,108 @@
                     "items": {
                         "type": "string"
                     }
+                }
+            },
+            "type": "object"
+        },
+        "LocaleResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "locale"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "tag": {
+                            "type": "string",
+                            "example": "sv-se"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "LoginAttemptResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "login_attempt"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-06-20T12:02:27+00:00"
+                        },
+                        "version": {
+                            "type": "string",
+                            "example": "1.1.1456"
+                        },
+                        "machine_id": {
+                            "type": "string",
+                            "example": "Online"
+                        },
+                        "ip_address": {
+                            "type": "string",
+                            "example": "213.179.18.172"
+                        },
+                        "successful": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "MountItemsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "mount_item"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "height": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "rotate": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "sequence": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "width": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "x": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "y": {
+                            "type": "number",
+                            "example": 1
+                        }
+                    },
+                    "type": "object"
                 }
             },
             "type": "object"
@@ -42742,6 +43552,10 @@
                         "protected_identity": {
                             "type": "boolean",
                             "example": false
+                        },
+                        "risk_level": {
+                            "type": "string",
+                            "example": "1"
                         },
                         "warning": {
                             "type": "boolean",
