@@ -7180,6 +7180,137 @@
                 }
             }
         },
+        "/api/clinic-images/upload": {
+            "post": {
+                "tags": [
+                    "clinic-image-upload"
+                ],
+                "summary": "Upload clinic-image",
+                "description": "Returns uploaded clinic image based on the given filters",
+                "operationId": "postClinicImageUpload",
+                "consumes": [
+                    "multipart/form-data"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "formData",
+                        "description": "'clinic_id' field",
+                        "required": true,
+                        "type": "number"
+                    },
+                    {
+                        "name": "file",
+                        "in": "formData",
+                        "description": "Field for image (file should be uploaded)",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Upload clinic-image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ClinicImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Upload clinic-image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/clinic-images/{id}": {
+            "get": {
+                "tags": [
+                    "clinic-images"
+                ],
+                "summary": "Retrieve a clinic-image",
+                "description": "Returns certain clinic image based on the given filters",
+                "operationId": "getClinicImage",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a clinic-image",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ClinicImageResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a clinic-image",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/clinic-price-lists": {
             "get": {
                 "tags": [
@@ -20049,272 +20180,6 @@
                             "properties": {
                                 "message": {
                                     "description": "List missing-epicrisis-report-rows",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/mount-items": {
-            "get": {
-                "tags": [
-                    "mount-items"
-                ],
-                "summary": "List mount-items",
-                "description": "Returns list of mount items based on the given filters",
-                "operationId": "getMountItems",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'mount', 'image'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "'page' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "description": "'per_page' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List mount-items",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MountItemsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List mount-items",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/mount-items/{id}": {
-            "get": {
-                "tags": [
-                    "mount-items"
-                ],
-                "summary": "Retrieve a mount-item",
-                "description": "Returns certain mount item based on the given filters",
-                "operationId": "getMountItem",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'mount', 'image'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a mount-item",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MountItemsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a mount-item",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "patch": {
-                "tags": [
-                    "mount-items"
-                ],
-                "summary": "Patch a mount-item",
-                "description": "Returns edited mount item based on the given filters",
-                "operationId": "patchMountItem",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Patch a mount-item",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Patch a mount-item",
-                                            "properties": {
-                                                "mount_id": {
-                                                    "description": "Patch a mount-item",
-                                                    "type": "number",
-                                                    "example": 10
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    },
-                    {
-                        "name": "image_id",
-                        "in": "query",
-                        "description": "'image_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Patch a mount-item",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/MountItemsResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Patch a mount-item",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -39976,6 +39841,76 @@
             },
             "type": "object"
         },
+        "ClinicImageResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "clinic_image"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "test.png"
+                        },
+                        "type": {
+                            "type": "string",
+                            "example": "image/png"
+                        },
+                        "size_in_bytes": {
+                            "type": "string",
+                            "example": "19953"
+                        },
+                        "backup": {
+                            "type": "string"
+                        },
+                        "backup_path": {
+                            "type": "string"
+                        },
+                        "st_ctim": {
+                            "type": "string"
+                        },
+                        "st_gid": {
+                            "type": "string"
+                        },
+                        "st_ino": {
+                            "type": "string"
+                        },
+                        "st_mode": {
+                            "type": "string"
+                        },
+                        "st_mtim": {
+                            "type": "string"
+                        },
+                        "st_size": {
+                            "type": "string"
+                        },
+                        "st_uid": {
+                            "type": "string"
+                        },
+                        "creation_date": {
+                            "type": "string",
+                            "example": "2024-10-24T11:32:51+02:00"
+                        },
+                        "original": {
+                            "type": "string"
+                        },
+                        "small_thumbnail": {
+                            "type": "string"
+                        },
+                        "large_thumbnail": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ClinicPriceListResponse": {
             "properties": {
                 "type": {
@@ -42905,48 +42840,6 @@
                         "successful": {
                             "type": "boolean",
                             "example": true
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "MountItemsResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "mount_item"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "height": {
-                            "type": "number",
-                            "example": 1
-                        },
-                        "rotate": {
-                            "type": "number",
-                            "example": 1
-                        },
-                        "sequence": {
-                            "type": "number",
-                            "example": 0
-                        },
-                        "width": {
-                            "type": "number",
-                            "example": 0
-                        },
-                        "x": {
-                            "type": "number",
-                            "example": 1
-                        },
-                        "y": {
-                            "type": "number",
-                            "example": 1
                         }
                     },
                     "type": "object"
