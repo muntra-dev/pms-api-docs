@@ -7183,7 +7183,7 @@
         "/api/clinic-images/upload": {
             "post": {
                 "tags": [
-                    "clinic-image-upload"
+                    "clinic-images"
                 ],
                 "summary": "Upload clinic-image",
                 "description": "Returns uploaded clinic image based on the given filters",
@@ -7196,13 +7196,6 @@
                 ],
                 "parameters": [
                     {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "name": "clinic_id",
                         "in": "formData",
                         "description": "'clinic_id' field",
@@ -7214,7 +7207,8 @@
                         "in": "formData",
                         "description": "Field for image (file should be uploaded)",
                         "required": true,
-                        "type": "string"
+                        "type": "string",
+                        "format": "binary"
                     }
                 ],
                 "responses": {
