@@ -7196,6 +7196,13 @@
                 ],
                 "parameters": [
                     {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "clinic_id",
                         "in": "formData",
                         "description": "'clinic_id' field",
@@ -20942,13 +20949,6 @@
                     "application/json"
                 ],
                 "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
                     {
                         "name": "id",
                         "in": "path",
