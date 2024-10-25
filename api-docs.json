@@ -19940,7 +19940,7 @@
                 "tags": [
                     "login-attempts"
                 ],
-                "summary": "List login-attempts",
+                "summary": "Retrieve a login-attempt",
                 "description": "Returns certain login attempt based on the given filters",
                 "operationId": "getLoginAttempt",
                 "consumes": [
@@ -20181,6 +20181,272 @@
                             "properties": {
                                 "message": {
                                     "description": "List missing-epicrisis-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/mount-items": {
+            "get": {
+                "tags": [
+                    "mount-items"
+                ],
+                "summary": "List mount-items",
+                "description": "Returns list of mount items based on the given filters",
+                "operationId": "getMountItems",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'mount', 'image'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List mount-items",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountItemsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List mount-items",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/mount-items/{id}": {
+            "get": {
+                "tags": [
+                    "mount-items"
+                ],
+                "summary": "Retrieve a mount-item",
+                "description": "Returns certain mount item based on the given filters",
+                "operationId": "getMountItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'mount', 'image'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a mount-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountItemsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a mount-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "mount-items"
+                ],
+                "summary": "Edit a mount-item",
+                "description": "Returns edited mount item based on the given filters",
+                "operationId": "patchMountItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a mount-item",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a mount-item",
+                                            "properties": {
+                                                "mount_id": {
+                                                    "description": "Edit a mount-item",
+                                                    "type": "number",
+                                                    "example": 10
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "image_id",
+                        "in": "query",
+                        "description": "'image_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a mount-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MountItemsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a mount-item",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -24974,6 +25240,344 @@
                 }
             }
         },
+        "/api/organization-clinic-settings": {
+            "get": {
+                "tags": [
+                    "organization-clinic-settings"
+                ],
+                "summary": "List organization-clinic-settings",
+                "description": "Returns list of organization clinic settings based on the given filters",
+                "operationId": "getOrganizationClinicSettings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'clinic', 'cost_center', 'payment_terminals', 'cash_registers', 'third_party_organization_clinic_settings', 'third_party_ids'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List organization-clinic-settings",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OrganizationClinicSettingsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List organization-clinic-settings",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "organization-clinic-settings"
+                ],
+                "summary": "Create an organization-clinic-setting",
+                "description": "Returns created organization clinic setting based on the given filters",
+                "operationId": "postOrganizationClinicSetting",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an organization-clinic-setting",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an organization-clinic-setting",
+                                            "properties": {
+                                                "organization_id": {
+                                                    "description": "Create an organization-clinic-setting",
+                                                    "type": "string",
+                                                    "example": 810
+                                                },
+                                                "clinic_id": {
+                                                    "description": "Create an organization-clinic-setting",
+                                                    "type": "string",
+                                                    "example": 221
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an organization-clinic-setting",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OrganizationClinicSettingsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an organization-clinic-setting",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/organization-clinic-settings/{id}": {
+            "get": {
+                "tags": [
+                    "organization-clinic-settings"
+                ],
+                "summary": "Retrieve an organization-clinic-setting",
+                "description": "Returns certain organization clinic setting based on the given filters",
+                "operationId": "getOrganizationClinicSetting",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'clinic', 'cost_center', 'payment_terminals', 'cash_registers', 'third_party_organization_clinic_settings', 'third_party_ids'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an organization-clinic-setting",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OrganizationClinicSettingsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an organization-clinic-setting",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "organization-clinic-settings"
+                ],
+                "summary": "Edit an organization-clinic-setting",
+                "description": "Returns edited organization clinic setting based on the given filters",
+                "operationId": "patchOrganizationClinicSetting",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an organization-clinic-setting",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an organization-clinic-setting",
+                                            "properties": {
+                                                "invoice_bankgiro": {
+                                                    "description": "Edit an organization-clinic-setting",
+                                                    "type": "string"
+                                                },
+                                                "disable_state_api_cron_fetch": {
+                                                    "description": "Edit an organization-clinic-setting",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "auto_create_claim_payment_verifications": {
+                                                    "description": "Edit an organization-clinic-setting",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "include_mobile_payment_info_on_invoice": {
+                                                    "description": "Edit an organization-clinic-setting",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an organization-clinic-setting",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/OrganizationClinicSettingsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an organization-clinic-setting",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/organizations/current": {
             "get": {
                 "tags": [
@@ -26655,7 +27259,7 @@
                 "tags": [
                     "patients"
                 ],
-                "summary": "Retrieve a signed version of the patient",
+                "summary": "Retrieve a patient",
                 "description": "Retrieve a specific patient",
                 "operationId": "getPatient",
                 "consumes": [
@@ -26726,7 +27330,7 @@
                         "schema": {
                             "properties": {
                                 "data": {
-                                    "description": "Retrieve a signed version of the patient",
+                                    "description": "Retrieve a patient",
                                     "type": "array",
                                     "items": {
                                         "$ref": "#/definitions/PatientResponse"
@@ -26741,7 +27345,7 @@
                         "schema": {
                             "properties": {
                                 "message": {
-                                    "description": "Retrieve a signed version of the patient",
+                                    "description": "Retrieve a patient",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -42848,6 +43452,48 @@
             },
             "type": "object"
         },
+        "MountItemsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "mount_item"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "height": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "rotate": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "sequence": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "width": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "x": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "y": {
+                            "type": "number",
+                            "example": 1
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "MountResponse": {
             "properties": {
                 "type": {
@@ -42961,6 +43607,42 @@
                         "dtend_in_minutes": {
                             "type": "number",
                             "example": 20
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "OrganizationClinicSettingsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "organization_clinic_setting"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "12"
+                },
+                "attributes": {
+                    "properties": {
+                        "invoice_bankgiro": {
+                            "type": "string"
+                        },
+                        "government_clinic_id": {
+                            "type": "string"
+                        },
+                        "disable_state_api_cron_fetch": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "auto_create_claim_payment_verifications": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "include_mobile_payment_info_on_invoice": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
