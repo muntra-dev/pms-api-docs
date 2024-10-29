@@ -25763,6 +25763,1084 @@
                 }
             }
         },
+        "/api/parodont-entries": {
+            "get": {
+                "tags": [
+                    "parodont-entries"
+                ],
+                "summary": "List parodont-entries",
+                "description": "Returns list of parodont entries based on the given filters",
+                "operationId": "getParodontEntries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'journal_entry', 'tooth', 'group', 'side'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "history_id",
+                        "in": "query",
+                        "description": "'history_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "jaw",
+                        "in": "query",
+                        "description": "'jaw' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List parodont-entries",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List parodont-entries",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "parodont-entries"
+                ],
+                "summary": "Create a parodont-entry",
+                "description": "Returns created parodont entry based on the given filters",
+                "operationId": "postParodontEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Only 'journal_entry_id', 'tooth_id' and 'group_id' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a parodont-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a parodont-entry",
+                                            "properties": {
+                                                "journal_entry_id": {
+                                                    "description": "Create a parodont-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "tooth_id": {
+                                                    "description": "Create a parodont-entry",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "group_id": {
+                                                    "description": "Create a parodont-entry",
+                                                    "type": "string"
+                                                },
+                                                "side_id": {
+                                                    "description": "Create a parodont-entry",
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "description": "Create a parodont-entry",
+                                                    "type": "number",
+                                                    "example": 20
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    {
+                        "name": "history_id",
+                        "in": "query",
+                        "description": "'history_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "jaw",
+                        "in": "query",
+                        "description": "'jaw' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a parodont-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a parodont-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parodont-entries/{id}": {
+            "get": {
+                "tags": [
+                    "parodont-entries"
+                ],
+                "summary": "Retrieve a parodont-entry",
+                "description": "Returns certain parodont entry based on the given filters",
+                "operationId": "getParodontEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'journal_entry', 'tooth', 'group', 'side'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a parodont-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a parodont-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "parodont-entries"
+                ],
+                "summary": "Edit a parodont-entry",
+                "description": "Returns edited parodont entry based on the given filters",
+                "operationId": "patchParodontEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Not obligatory)",
+                        "required": false,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a parodont-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a parodont-entry",
+                                            "properties": {
+                                                "journal_entry_id": {
+                                                    "description": "Edit a parodont-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "tooth_id": {
+                                                    "description": "Edit a parodont-entry",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "group_id": {
+                                                    "description": "Edit a parodont-entry",
+                                                    "type": "string"
+                                                },
+                                                "side_id": {
+                                                    "description": "Edit a parodont-entry",
+                                                    "type": "string"
+                                                },
+                                                "value": {
+                                                    "description": "Edit a parodont-entry",
+                                                    "type": "number",
+                                                    "example": 20
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a parodont-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a parodont-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parodont-journal-entries": {
+            "get": {
+                "tags": [
+                    "parodont-journal-entries"
+                ],
+                "summary": "List parodont-journal-entries",
+                "description": "Returns list of parodont journal entries based on the given filters",
+                "operationId": "getParodontJournalEntries",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'parodont_entries', 'signer', 'user.role', 'signer.role'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "history_id",
+                        "in": "query",
+                        "description": "'history_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List parodont-journal-entries",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodontJournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List parodont-journal-entries",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "parodont-journal-entries"
+                ],
+                "summary": "Create a parodont-journal-entry",
+                "description": "Returns created parodont journal entry based on the given filters",
+                "operationId": "postParodontJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a parodont-journal-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a parodont-journal-entry",
+                                            "properties": {
+                                                "entry_date": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "2024-06-21T08:21:16+02:00"
+                                                },
+                                                "text": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "Registrering av parodontal status"
+                                                },
+                                                "printed_text": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "Test printed text"
+                                                },
+                                                "referral": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "quantity": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "fee": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "lab_fee": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "discount_excluding_vat": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "duration_in_minutes": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "entry_type": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "parodont"
+                                                },
+                                                "included_in_insurance": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "draft": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "imported": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "editable": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "deleted": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "status": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "string"
+                                                },
+                                                "signed_at": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "last_selected_sides": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "number"
+                                                },
+                                                "show_bleeding": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_furc": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_gr": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_mobility": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_plackindex": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_pocket_depth": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_pus": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_sub": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_supra": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_lower": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_upper": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "history_id": {
+                                                    "description": "Create a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "draft"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a parodont-journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodontJournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a parodont-journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parodont-journal-entries/{id}": {
+            "get": {
+                "tags": [
+                    "parodont-journal-entries"
+                ],
+                "summary": "Retrieve a parodont-journal-entry",
+                "description": "Returns certain parodont journal entry based on the given filters",
+                "operationId": "getParodontJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'parodont_entries', 'signer', 'user.role', 'signer.role'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a parodont-journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodontJournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a parodont-journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "parodont-journal-entries"
+                ],
+                "summary": "Edit a parodont-journal-entry",
+                "description": "Returns edited parodont journal entry based on the given filters",
+                "operationId": "editParodontJournalEntry",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a parodont-journal-entry",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a parodont-journal-entry",
+                                            "properties": {
+                                                "entry_date": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "2024-06-21T08:21:16+02:00"
+                                                },
+                                                "text": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "Registrering av parodontal status"
+                                                },
+                                                "printed_text": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "Test printed text"
+                                                },
+                                                "referral": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "quantity": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "fee": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "lab_fee": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "discount_excluding_vat": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "duration_in_minutes": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "entry_type": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "parodont"
+                                                },
+                                                "included_in_insurance": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "draft": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "imported": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "editable": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "deleted": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "status": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "string"
+                                                },
+                                                "signed_at": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "last_selected_sides": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "number"
+                                                },
+                                                "show_bleeding": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_furc": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_gr": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_mobility": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_plackindex": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_pocket_depth": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_pus": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_sub": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_supra": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_lower": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "show_upper": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "history_id": {
+                                                    "description": "Edit a parodont-journal-entry",
+                                                    "type": "string",
+                                                    "example": "draft"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a parodont-journal-entry",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodontJournalEntryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a parodont-journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parodont-journal-entry-versions": {
+            "get": {
+                "tags": [
+                    "parodont-journal-entry-versions"
+                ],
+                "summary": "List parodont-journal-entry-versions",
+                "description": "Returns list of parodont journal entry versions based on the given filters",
+                "operationId": "getParodontJournalEntryVersions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "parodont_journal_entry_id",
+                        "in": "query",
+                        "description": "'parodont_journal_entry_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List parodont-journal-entry-versions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodontJournalEntryVersionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List parodont-journal-entry-versions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patient-invoice-rows": {
             "get": {
                 "tags": [
@@ -26768,6 +27846,566 @@
                 }
             }
         },
+        "/api/patient-reviews": {
+            "get": {
+                "tags": [
+                    "patient-reviews"
+                ],
+                "summary": "List patient-reviews",
+                "description": "Returns list of patient reviews based on the given filters",
+                "operationId": "getPatientReviews",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-reviews",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientReviewResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-reviews",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-reviews/{id}": {
+            "get": {
+                "tags": [
+                    "patient-reviews"
+                ],
+                "summary": "Retrieve a patient-review",
+                "description": "Returns certain patient review based on the given filters",
+                "operationId": "getPatientReview",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a patient-review",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientReviewResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a patient-review",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-tags": {
+            "get": {
+                "tags": [
+                    "patient-tags"
+                ],
+                "summary": "List patient-tags",
+                "description": "Returns list of patient tags based on the given filters",
+                "operationId": "getPatientTags",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter.ids",
+                        "in": "query",
+                        "description": "'filter.ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-tags",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientTagResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-tags",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "patient-tags"
+                ],
+                "summary": "Create a patient-tag",
+                "description": "Returns created patient tag based on the given filters",
+                "operationId": "postPatientTag",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request ('name' and 'color' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-tag",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a patient-tag",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create a patient-tag",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "color": {
+                                                    "description": "Create a patient-tag",
+                                                    "type": "string",
+                                                    "example": "blue"
+                                                },
+                                                "text_color": {
+                                                    "description": "Create a patient-tag",
+                                                    "type": "string",
+                                                    "example": "yellow"
+                                                },
+                                                "expose": {
+                                                    "description": "Create a patient-tag",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-tag",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientTagResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a patient-tag",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-tags/{id}": {
+            "get": {
+                "tags": [
+                    "patient-tags"
+                ],
+                "summary": "Retrieve a patient-tag",
+                "description": "Returns certain patient tag based on the given filters",
+                "operationId": "getPatientTag",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a patient-tag",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientTagResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a patient-tag",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "patient-tags"
+                ],
+                "summary": "Edit a patient-tag",
+                "description": "Returns edited patient tag based on the given filters",
+                "operationId": "patchPatientTag",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request ('name' and 'color' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-tag",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a patient-tag",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a patient-tag",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "color": {
+                                                    "description": "Edit a patient-tag",
+                                                    "type": "string",
+                                                    "example": "blue"
+                                                },
+                                                "text_color": {
+                                                    "description": "Edit a patient-tag",
+                                                    "type": "string",
+                                                    "example": "yellow"
+                                                },
+                                                "expose": {
+                                                    "description": "Edit a patient-tag",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-tag",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientTagResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a patient-tag",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patient-total-receivables": {
             "get": {
                 "tags": [
@@ -26835,6 +28473,70 @@
                             "properties": {
                                 "message": {
                                     "description": "List patient-total-receivables",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-versions": {
+            "get": {
+                "tags": [
+                    "patient-versions"
+                ],
+                "summary": "List patient-versions",
+                "description": "Returns list of patient versions based on the given filters",
+                "operationId": "getPatientVersions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-versions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientVersionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-versions",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -28324,6 +30026,327 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a price",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/promo-codes": {
+            "get": {
+                "tags": [
+                    "promo-codes"
+                ],
+                "summary": "List promo-codes",
+                "description": "Returns list of promo codes based on the given filters",
+                "operationId": "getPromoCodes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List promo-codes",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PromoCodeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List promo-codes",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "promo-codes"
+                ],
+                "summary": "Create a promo-code",
+                "description": "Returns created promo code based on the given filters",
+                "operationId": "postPromoCode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'name' field is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a promo-code",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a promo-code",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create a promo-code",
+                                                    "type": "string",
+                                                    "example": "test promo code"
+                                                },
+                                                "code": {
+                                                    "description": "Create a promo-code",
+                                                    "type": "string",
+                                                    "example": "MPWIGX"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a promo-code",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PromoCodeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a promo-code",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/promo-codes/{id}": {
+            "get": {
+                "tags": [
+                    "promo-codes"
+                ],
+                "summary": "Retrieve a promo-code",
+                "description": "Returns certain promo code based on the given filters",
+                "operationId": "getPromoCode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a promo-code",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PromoCodeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a promo-code",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "promo-codes"
+                ],
+                "summary": "Edit a promo-code",
+                "description": "Returns edited promo code based on the given filters",
+                "operationId": "patchPromoCode",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'name' field is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a promo-code",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a promo-code",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a promo-code",
+                                                    "type": "string",
+                                                    "example": "test promo code"
+                                                },
+                                                "code": {
+                                                    "description": "Edit a promo-code",
+                                                    "type": "string",
+                                                    "example": "XQWRT"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a promo-code",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PromoCodeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a promo-code",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -43785,6 +45808,164 @@
             },
             "type": "object"
         },
+        "ParodEntryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "parodont_entry"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "value": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ParodontJournalEntryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "parodont_journal_entry"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "entry_date": {
+                            "type": "string",
+                            "example": "2024-06-21T08:21:16+02:00"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Registrering av parodontal status"
+                        },
+                        "printed_text": {
+                            "type": "string",
+                            "example": "Test printed text"
+                        },
+                        "referral": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "quantity": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "fee": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "discount_excluding_vat": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "duration_in_minutes": {
+                            "type": "number",
+                            "example": 10
+                        },
+                        "entry_type": {
+                            "type": "string",
+                            "example": "parodont"
+                        },
+                        "included_in_insurance": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "draft": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "imported": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "editable": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "last_selected_sides": {
+                            "type": "number"
+                        },
+                        "show_bleeding": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_furc": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_gr": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_mobility": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_plackindex": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_pocket_depth": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_pus": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_sub": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_supra": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_lower": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "show_upper": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "history_id": {
+                            "type": "string",
+                            "example": "draft"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "PatientInvoiceRowResponse": {
             "properties": {
                 "type": {
@@ -43973,6 +46154,157 @@
                         "printed_at": {
                             "type": "string",
                             "example": "2024-06-28T11:10:21+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientReviewResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_review"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "patient_name": {
+                            "type": "string",
+                            "example": "2"
+                        },
+                        "comparison_to_expectations": {
+                            "type": "string"
+                        },
+                        "created_date": {
+                            "type": "string"
+                        },
+                        "extra_special_amazing_amenities": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "extra_special_excellent_quality": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "extra_special_fast_and_painless": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "extra_special_no_waiting_time": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "extra_special_outstanding_treatment": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "extra_special_phenomenal_information": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "extra_special_useful_practical_tips": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "info_rating_advice_and_tips": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "info_rating_follow_up": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "info_rating_how_to_find_place": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "info_rating_patient_health": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "info_rating_patient_treatment": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "info_rating_pre_meeting": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "info_rating_pricing": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "overall_rating": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "private_comment_to_caregiver": {
+                            "type": "string"
+                        },
+                        "rating_quality": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "rating_bedside_manner": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "rating_hygiene": {
+                            "type": "string"
+                        },
+                        "rating_reception_on_arrival": {
+                            "type": "string"
+                        },
+                        "rating_thoroughness": {
+                            "type": "string",
+                            "example": 5
+                        },
+                        "rating_wait_time": {
+                            "type": "number",
+                            "example": 4
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientTagResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_tag"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "patient_tag"
+                },
+                "attributes": {
+                    "properties": {
+                        "color": {
+                            "type": "string",
+                            "example": "blue"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "text_color": {
+                            "type": "string",
+                            "example": "yellow"
+                        },
+                        "expose": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "deleted": {
+                            "type": "string",
+                            "example": false
                         }
                     },
                     "type": "object"
@@ -44442,6 +46774,32 @@
                         "name": {
                             "type": "string",
                             "example": "Tandblekning"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PromoCodeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "promo_code"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "eq"
+                        },
+                        "code": {
+                            "type": "string",
+                            "example": "UZSUXF"
                         }
                     },
                     "type": "object"
@@ -47058,6 +49416,50 @@
                         "date": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientVersionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_version"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "draft"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-07-01T15:42:36+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ParodontJournalEntryVersionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "parodont_journal_entry_version"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "draft"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-07-01T15:42:36+02:00"
                         }
                     },
                     "type": "object"
