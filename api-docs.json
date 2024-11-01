@@ -5,7 +5,7 @@
         "description": "Muntra Practice Management System API",
         "version": "3.5.234"
     },
-    "basePath": "https://api.muntra.com",
+    "basePath": "/api",
     "schemes": [
         "http",
         "https"
@@ -19037,6 +19037,509 @@
                 }
             }
         },
+        "/api/journal-pharmaceutical-articles": {
+            "get": {
+                "tags": [
+                    "journal-pharmaceutical-articles"
+                ],
+                "summary": "List journal-pharmaceutical-articles",
+                "description": "Returns list of journal pharmaceutical articles based on the given filters",
+                "operationId": "getJournalPharmaceuticalArticles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'parodont_entries', 'signer', 'user.role', 'signer.role'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "npl_pack_id",
+                        "in": "query",
+                        "description": "'npl_pack_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "article_code",
+                        "in": "query",
+                        "description": "'article_code' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "List of available queries: 'article_code', 'article_name', 'npl_pack_id', 'quantity_text', 'strength'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List journal-pharmaceutical-articles",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PharmaceuticalArticleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List journal-pharmaceutical-articles",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "journal-pharmaceutical-articles"
+                ],
+                "summary": "Create a journal-pharmaceutical-article",
+                "description": "Returns created journal pharmaceutical article based on the given filters",
+                "operationId": "postJournalPharmaceuticalArticle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'article_code' and 'article_name' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-pharmaceutical-article",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a journal-pharmaceutical-article",
+                                            "properties": {
+                                                "article_code": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "010777"
+                                                },
+                                                "article_name": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "Alvedon\u00ae"
+                                                },
+                                                "is_pharmaceutical": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "assortment_code": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string"
+                                                },
+                                                "manufacturer_name": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "Muntra"
+                                                },
+                                                "drug_form": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "Suppositorium"
+                                                },
+                                                "high_risk_pharmaceutical": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "is_reimbursed": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "non_approved": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "npl_pack_id": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "19780408400186"
+                                                },
+                                                "npl_id": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "25780408400116"
+                                                },
+                                                "package_text": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "Strip, 10 suppositorier"
+                                                },
+                                                "prescription_required": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "preventive_action": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string"
+                                                },
+                                                "quantity_text": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "10 styck"
+                                                },
+                                                "reference_price": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "0.00"
+                                                },
+                                                "sales_stopped": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "strength": {
+                                                    "description": "Create a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "500 mg"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a journal-pharmaceutical-article",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PharmaceuticalArticleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a journal-pharmaceutical-article",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/journal-pharmaceutical-articles/{id}": {
+            "get": {
+                "tags": [
+                    "journal-pharmaceutical-articles"
+                ],
+                "summary": "Retrieve a journal-pharmaceutical-article",
+                "description": "Returns certain journal pharmaceutical article based on the given filters",
+                "operationId": "getJournalPharmaceuticalArticle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'parodont_entries', 'signer', 'user.role', 'signer.role'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a journal-pharmaceutical-article",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PharmaceuticalArticleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a journal-pharmaceutical-article",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "journal-pharmaceutical-articles"
+                ],
+                "summary": "Edit a journal-pharmaceutical-article",
+                "description": "Returns edited journal pharmaceutical article based on the given filters",
+                "operationId": "patchJournalPharmaceuticalArticle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'article_code' and 'article_name' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-pharmaceutical-article",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a journal-pharmaceutical-article",
+                                            "properties": {
+                                                "article_code": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "010777"
+                                                },
+                                                "article_name": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "Alvedon\u00ae"
+                                                },
+                                                "is_pharmaceutical": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "assortment_code": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string"
+                                                },
+                                                "manufacturer_name": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "Muntra"
+                                                },
+                                                "drug_form": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "Suppositorium"
+                                                },
+                                                "high_risk_pharmaceutical": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "is_reimbursed": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "non_approved": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "npl_pack_id": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "19780408400186"
+                                                },
+                                                "npl_id": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "25780408400116"
+                                                },
+                                                "package_text": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "Strip, 10 suppositorier"
+                                                },
+                                                "prescription_required": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "preventive_action": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string"
+                                                },
+                                                "quantity_text": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "10 styck"
+                                                },
+                                                "reference_price": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "0.00"
+                                                },
+                                                "sales_stopped": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "strength": {
+                                                    "description": "Edit a journal-pharmaceutical-article",
+                                                    "type": "string",
+                                                    "example": "500 mg"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a journal-pharmaceutical-article",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PharmaceuticalArticleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a journal-pharmaceutical-article",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/journal-pharmacies": {
             "get": {
                 "tags": [
@@ -28406,6 +28909,362 @@
                 }
             }
         },
+        "/api/patient-third-party-patient-categories": {
+            "get": {
+                "tags": [
+                    "patient-third-party-patient-categories"
+                ],
+                "summary": "List patient-third-party-patient-categories",
+                "description": "Returns list of patient third party patient categories based on the given filters",
+                "operationId": "getPatientThirdPartyPatientCategories",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'third_party_patient_category'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-third-party-patient-categories",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientThirdPartyPatientCategoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-third-party-patient-categories",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "patient-third-party-patient-categories"
+                ],
+                "summary": "Create a patient-third-party-patient-category",
+                "description": "Returns created patient categories based on the given filters",
+                "operationId": "postPatientThirdPartyPatientCategory",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-third-party-patient-category",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a patient-third-party-patient-category",
+                                            "properties": {
+                                                "patient_third_party_patient_category_id": {
+                                                    "description": "Create a patient-third-party-patient-category",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "patient_id": {
+                                                    "description": "Create a patient-third-party-patient-category",
+                                                    "type": "number",
+                                                    "example": 123
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a patient-third-party-patient-category",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientThirdPartyPatientCategoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a patient-third-party-patient-category",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-third-party-patient-categories/{id}": {
+            "get": {
+                "tags": [
+                    "patient-third-party-patient-categories"
+                ],
+                "summary": "Retrieve a patient-third-party-patient-category",
+                "description": "Returns certain patient third party patient category based on the given filters",
+                "operationId": "getPatientThirdPartyPatientCategory",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'third_party_patient_category'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a patient-third-party-patient-category",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientThirdPartyPatientCategoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a patient-third-party-patient-category",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "patient-third-party-patient-categories"
+                ],
+                "summary": "Edit a patient-third-party-patient-category",
+                "description": "Returns edited patient third party patient category based on the given filters",
+                "operationId": "patchPatientThirdPartyPatientCategory",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-third-party-patient-category",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a patient-third-party-patient-category",
+                                            "properties": {
+                                                "patient_third_party_patient_category_id": {
+                                                    "description": "Edit a patient-third-party-patient-category",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "patient_id": {
+                                                    "description": "Edit a patient-third-party-patient-category",
+                                                    "type": "number",
+                                                    "example": 123
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a patient-third-party-patient-category",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientThirdPartyPatientCategoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a patient-third-party-patient-category",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patient-total-receivables": {
             "get": {
                 "tags": [
@@ -29313,6 +30172,419 @@
                 }
             }
         },
+        "/api/payments-per-invoices": {
+            "get": {
+                "tags": [
+                    "payments-per-invoices"
+                ],
+                "summary": "List payments-per-invoices",
+                "description": "Returns list of payments per invoices based on the given filters",
+                "operationId": "getPaymentsPerInvoices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'invoice', 'animal_owner_invoice', 'payment', 'animal_owner_payment', 'verification'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "invoice_id",
+                        "in": "query",
+                        "description": "'invoice_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_owner_invoice_id",
+                        "in": "query",
+                        "description": "'animal_owner_invoice_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "payment_id",
+                        "in": "query",
+                        "description": "'payment_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_owner_payment_id",
+                        "in": "query",
+                        "description": "'animal_owner_payment_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List payments-per-invoices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PaymentPerInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List payments-per-invoices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "payments-per-invoices"
+                ],
+                "summary": "Create a payments-per-invoice",
+                "description": "Returns created payments per invoices based on the given filters",
+                "operationId": "postPaymentsPerInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a payments-per-invoice",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a payments-per-invoice",
+                                            "properties": {
+                                                "invoice_id": {
+                                                    "description": "Create a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "payment_id": {
+                                                    "description": "Create a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "animal_owner_invoice_id": {
+                                                    "description": "Create a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 147
+                                                },
+                                                "animal_owner_payment_id": {
+                                                    "description": "Create a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 286
+                                                },
+                                                "verification_id": {
+                                                    "description": "Create a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 147
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a payments-per-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PaymentPerInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a payments-per-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payments-per-invoices/{id}": {
+            "get": {
+                "tags": [
+                    "payments-per-invoices"
+                ],
+                "summary": "Retrieve a payments-per-invoice",
+                "description": "Returns certain payments per invoice based on the given filters",
+                "operationId": "getPaymentsPerInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' fields",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'invoice', 'animal_owner_invoice', 'payment', 'animal_owner_payment', 'verification'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a payments-per-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PaymentPerInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a payments-per-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "payments-per-invoices"
+                ],
+                "summary": "Edit a payments-per-invoice",
+                "description": "Returns edited payments per invoice based on the given filters",
+                "operationId": "patchPaymentsPerInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' fields",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a payments-per-invoice",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a payments-per-invoice",
+                                            "properties": {
+                                                "invoice_id": {
+                                                    "description": "Edit a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "payment_id": {
+                                                    "description": "Edit a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "animal_owner_invoice_id": {
+                                                    "description": "Edit a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 147
+                                                },
+                                                "animal_owner_payment_id": {
+                                                    "description": "Edit a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 286
+                                                },
+                                                "verification_id": {
+                                                    "description": "Edit a payments-per-invoice",
+                                                    "type": "number",
+                                                    "example": 147
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a payments-per-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PaymentPerInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a payments-per-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/pdfs": {
             "get": {
                 "tags": [
@@ -30026,6 +31298,74 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a price",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/procedures": {
+            "get": {
+                "tags": [
+                    "procedures"
+                ],
+                "summary": "List procedures",
+                "description": "Returns list of procedures based on the given filters",
+                "operationId": "getProcedures",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "Can be passed 'name' property",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List procedures",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ProcedureResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List procedures",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -31028,6 +32368,448 @@
                 }
             }
         },
+        "/api/rebooking-defaults": {
+            "get": {
+                "tags": [
+                    "rebooking-defaults"
+                ],
+                "summary": "List rebooking-defaults",
+                "description": "Returns list of rebooking defaults based on the given filters",
+                "operationId": "getRebookingDefaults",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'patient', 'user', 'booking_type', 'rebookings'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "booking_type_ids",
+                        "in": "query",
+                        "description": "'booking_type_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List rebooking-defaults",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RebookingDefaultsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List rebooking-defaults",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "rebooking-defaults"
+                ],
+                "summary": "Create a rebooking-default",
+                "description": "Returns created rebooking defaults based on the given filters",
+                "operationId": "postRebookingDefaults",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'patient_id' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a rebooking-default",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a rebooking-default",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a rebooking-default",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "description": {
+                                                    "description": "Create a rebooking-default",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "status": {
+                                                    "description": "Create a rebooking-default",
+                                                    "type": "string"
+                                                },
+                                                "booking_duration": {
+                                                    "description": "Create a rebooking-default",
+                                                    "type": "number",
+                                                    "example": 30
+                                                },
+                                                "months_to_booking": {
+                                                    "description": "Create a rebooking-default",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "auto_rebook": {
+                                                    "description": "Create a rebooking-default",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a rebooking-default",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RebookingDefaultsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a rebooking-default",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/rebooking-defaults/{id}": {
+            "get": {
+                "tags": [
+                    "rebooking-defaults"
+                ],
+                "summary": "Retrieve a rebooking-default",
+                "description": "Returns certain rebooking default based on the given filters",
+                "operationId": "getRebookingDefault",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'patient', 'user', 'booking_type', 'rebookings'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a rebooking-default",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RebookingDefaultsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a rebooking-default",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "rebooking-defaults"
+                ],
+                "summary": "Edit a rebooking-default",
+                "description": "Returns edited rebooking default based on the given filters",
+                "operationId": "patchRebookingDefault",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'patient_id' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a rebooking-default",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a rebooking-default",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Edit a rebooking-default",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "description": {
+                                                    "description": "Edit a rebooking-default",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "status": {
+                                                    "description": "Edit a rebooking-default",
+                                                    "type": "string"
+                                                },
+                                                "booking_duration": {
+                                                    "description": "Edit a rebooking-default",
+                                                    "type": "number",
+                                                    "example": 30
+                                                },
+                                                "months_to_booking": {
+                                                    "description": "Edit a rebooking-default",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "auto_rebook": {
+                                                    "description": "Edit a rebooking-default",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a rebooking-default",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RebookingDefaultsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a rebooking-default",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/rebookings": {
             "get": {
                 "tags": [
@@ -31576,6 +33358,82 @@
                 }
             }
         },
+        "/api/reimbursement-rules": {
+            "get": {
+                "tags": [
+                    "reimbursement-rules"
+                ],
+                "summary": "List reimbursement-rules",
+                "description": "Returns list of reimbursement rules based on the given filters",
+                "operationId": "getReimbursementRules",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'reimbursement_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "reimbursement_type_id",
+                        "in": "query",
+                        "description": "'reimbursement_type_id' field",
+                        "required": true,
+                        "type": "number",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List reimbursement-rules",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ReimbursementRuleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List reimbursement-rules",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/reimbursement-types": {
             "get": {
                 "tags": [
@@ -31727,6 +33585,424 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a reimbursement-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/remittance-emails": {
+            "get": {
+                "tags": [
+                    "remittance-emails"
+                ],
+                "summary": "List remittance-emails",
+                "description": "Returns list of remittance emails based on the given filters",
+                "operationId": "getRemittanceEmails",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'remittance'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "remittance_id",
+                        "in": "query",
+                        "description": "'remittance_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List remittance-emails",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RemittanceEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List remittance-emails",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "remittance-emails"
+                ],
+                "summary": "Created remittance-email",
+                "description": "Returns created remittance email based on the given filters",
+                "operationId": "postRemittanceEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'subject' and 'remittance_id' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Created remittance-email",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Created remittance-email",
+                                            "properties": {
+                                                "to": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "string"
+                                                },
+                                                "to_name": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "string"
+                                                },
+                                                "subject": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "string",
+                                                    "example": "Test subject"
+                                                },
+                                                "body": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "string",
+                                                    "example": "Test text"
+                                                },
+                                                "sent_at": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "string",
+                                                    "example": "2024-10-30T15:00:00+01:00"
+                                                },
+                                                "message_status": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "string"
+                                                },
+                                                "error_code": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "string"
+                                                },
+                                                "deleted": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "created_at": {
+                                                    "description": "Created remittance-email",
+                                                    "type": "string",
+                                                    "example": "2024-10-30T15:00:43+01:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Created remittance-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RemittanceEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Created remittance-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/remittance-emails/{id}": {
+            "get": {
+                "tags": [
+                    "remittance-emails"
+                ],
+                "summary": "Retrieve a remittance-email",
+                "description": "Returns certain remittance email based on the given filters",
+                "operationId": "getRemittanceEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'remittance'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a remittance-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RemittanceEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a remittance-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "remittance-emails"
+                ],
+                "summary": "Edit a remittance-email",
+                "description": "Returns edited remittance email based on the given filters",
+                "operationId": "patchRemittanceEmail",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'subject' and 'remittance_id' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a remittance-email",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a remittance-email",
+                                            "properties": {
+                                                "to": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "string"
+                                                },
+                                                "to_name": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "string"
+                                                },
+                                                "subject": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "string",
+                                                    "example": "Test subject"
+                                                },
+                                                "body": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "string",
+                                                    "example": "Test text"
+                                                },
+                                                "sent_at": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "string",
+                                                    "example": "2024-10-30T15:00:00+01:00"
+                                                },
+                                                "message_status": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "string"
+                                                },
+                                                "error_code": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "string"
+                                                },
+                                                "deleted": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "created_at": {
+                                                    "description": "Edit a remittance-email",
+                                                    "type": "string",
+                                                    "example": "2024-10-30T15:00:43+01:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a remittance-email",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RemittanceEmailResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a remittance-email",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -32694,6 +34970,697 @@
                 }
             }
         },
+        "/api/risk-evaluations": {
+            "get": {
+                "tags": [
+                    "risk-evaluations"
+                ],
+                "summary": "List risk-evaluations",
+                "description": "Returns list of risk evaluations based on the given filters",
+                "operationId": "getRiskEvaluations",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'signer'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "history_id",
+                        "in": "query",
+                        "description": "'history_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List risk-evaluations",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RiskEvaluationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List risk-evaluations",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "risk-evaluations"
+                ],
+                "summary": "Create a risk-evaluation",
+                "description": "Returns created risk evaluation based on the given filters",
+                "operationId": "postRiskEvaluation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'patient_id' and 'date' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a risk-evaluation",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a risk-evaluation",
+                                            "properties": {
+                                                "date": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "string",
+                                                    "example": "2024-06-27T13:41:22+02:00"
+                                                },
+                                                "caries_diet": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_fluor_exposure": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_history": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_oral_hygiene": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_other": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_progression": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_saliva": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_age": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_cooperation_willingness": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_dental_fear": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_diseases": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_medications": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_activity": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_bleeding": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_oral_hygiene": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_plaque": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_tobacco_use": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_bite_physiology": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_erosion": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_fillings_and_crowns": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_other": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_prosthetics": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_root_fillings": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "signed_at": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "string",
+                                                    "example": "2024-07-27T12:41:22+02:00"
+                                                },
+                                                "created_at": {
+                                                    "description": "Create a risk-evaluation",
+                                                    "type": "string",
+                                                    "example": "2024-05-27T12:41:22+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a risk-evaluation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RiskEvaluationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a risk-evaluation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/risk-evaluations/{id}": {
+            "get": {
+                "tags": [
+                    "risk-evaluations"
+                ],
+                "summary": "Retrieve a risk-evaluation",
+                "description": "Returns certain risk evaluation based on the given filters",
+                "operationId": "getRiskEvaluation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'signer'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a risk-evaluation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RiskEvaluationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a risk-evaluation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "risk-evaluations"
+                ],
+                "summary": "Edit a risk-evaluation",
+                "description": "Returns edited risk evaluation based on the given filters",
+                "operationId": "patchRiskEvaluation",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'patient_id' and 'date' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a risk-evaluation",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a risk-evaluation",
+                                            "properties": {
+                                                "date": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "string",
+                                                    "example": "2024-06-27T13:41:22+02:00"
+                                                },
+                                                "caries_diet": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_fluor_exposure": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_history": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_oral_hygiene": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_other": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_progression": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "caries_saliva": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_age": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_cooperation_willingness": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_dental_fear": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_diseases": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "generic_medications": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_activity": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_bleeding": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_oral_hygiene": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_plaque": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "parodontal_tobacco_use": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_bite_physiology": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_erosion": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_fillings_and_crowns": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_other": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_prosthetics": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "technical_root_fillings": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "number",
+                                                    "example": 0
+                                                },
+                                                "signed_at": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "string",
+                                                    "example": "2024-07-27T12:41:22+02:00"
+                                                },
+                                                "created_at": {
+                                                    "description": "Edit a risk-evaluation",
+                                                    "type": "string",
+                                                    "example": "2024-05-27T12:41:22+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a risk-evaluation",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RiskEvaluationResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a risk-evaluation",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/roles": {
+            "get": {
+                "tags": [
+                    "roles"
+                ],
+                "summary": "List roles",
+                "description": "Returns list of roles based on the given filters",
+                "operationId": "getRoles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'specialities'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "'country_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "locale",
+                        "in": "query",
+                        "description": "'locale' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List roles",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/RoleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List roles",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/rooms": {
             "get": {
                 "tags": [
@@ -33021,6 +35988,242 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a room",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/safe-mode-configs": {
+            "get": {
+                "tags": [
+                    "safe-mode-configs"
+                ],
+                "summary": "List safe-mode-configs",
+                "description": "Returns list of safe mode configs based on the given filters",
+                "operationId": "getSafeModeConfigs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List safe-mode-configs",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SafeModeConfigResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List safe-mode-configs",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "safe-mode-configs"
+                ],
+                "summary": "Create a safe-mode-config",
+                "description": "Returns created safe mode config based on the given filters",
+                "operationId": "postSafeModeConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a safe-mode-config",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a safe-mode-config",
+                                            "properties": {
+                                                "email": {
+                                                    "description": "Create a safe-mode-config",
+                                                    "type": "string",
+                                                    "example": "test@testemail.com"
+                                                },
+                                                "password": {
+                                                    "description": "Create a safe-mode-config",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a safe-mode-config",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SafeModeConfigResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a safe-mode-config",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/safe-mode-configs/{id}": {
+            "get": {
+                "tags": [
+                    "safe-mode-configs"
+                ],
+                "summary": "Retrieve a safe-mode-config",
+                "description": "Returns certain safe mode config based on the given filters",
+                "operationId": "getSafeModeConfig",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a safe-mode-config",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SafeModeConfigResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a safe-mode-config",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -33365,6 +36568,106 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a sent-remittance",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/signing-tokens": {
+            "post": {
+                "tags": [
+                    "signing-tokens"
+                ],
+                "summary": "Create a signing-token",
+                "description": "Returns created signing token based on the given filters",
+                "operationId": "postSigningToken",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'id_service'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a signing-token",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a signing-token",
+                                            "properties": {
+                                                "government_clinic_id": {
+                                                    "description": "Create a signing-token",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "id_service_id": {
+                                                    "description": "Create a signing-token",
+                                                    "type": "number",
+                                                    "example": 10
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a signing-token",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SigningTokenResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a signing-token",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -46312,6 +49615,36 @@
             },
             "type": "object"
         },
+        "PatientThirdPartyPatientCategoryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_third_party_patient_category"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "draft"
+                },
+                "attributes": {
+                    "properties": {
+                        "valid_from": {
+                            "type": "string",
+                            "example": "2024-07-01T19:25:31+02:00"
+                        },
+                        "valid_to": {
+                            "type": "string",
+                            "example": "2024-08-01T19:25:31+02:00"
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-10-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "PatientTotalReceivableResponse": {
             "properties": {
                 "type": {
@@ -46531,6 +49864,32 @@
             },
             "type": "object"
         },
+        "PaymentPerInvoiceResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "payment_per_invoice"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "vat_amount": {
+                            "type": "number",
+                            "example": 2
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AnonymousPaymentReportRowResponse": {
             "properties": {
                 "type": {
@@ -46655,6 +50014,92 @@
             },
             "type": "object"
         },
+        "PharmaceuticalArticleResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "journal_pharmaceutical_article"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "article_code": {
+                            "type": "string",
+                            "example": "010777"
+                        },
+                        "article_name": {
+                            "type": "string",
+                            "example": "Alvedon\u00ae"
+                        },
+                        "is_pharmaceutical": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "assortment_code": {
+                            "type": "string"
+                        },
+                        "manufacturer_name": {
+                            "type": "string",
+                            "example": "Muntra"
+                        },
+                        "drug_form": {
+                            "type": "string"
+                        },
+                        "high_risk_pharmaceutical": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "is_reimbursed": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "non_approved": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "npl_pack_id": {
+                            "type": "string",
+                            "example": "19780408400186"
+                        },
+                        "npl_id": {
+                            "type": "string",
+                            "example": "25780408400116"
+                        },
+                        "package_text": {
+                            "type": "string",
+                            "example": "Strip, 10 suppositorier"
+                        },
+                        "prescription_required": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "preventive_action": {
+                            "type": "string"
+                        },
+                        "quantity_text": {
+                            "type": "string",
+                            "example": "10 styck"
+                        },
+                        "reference_price": {
+                            "type": "0.00"
+                        },
+                        "sales_stopped": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "strength": {
+                            "type": "string",
+                            "example": "500 mg"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "JournalPharmacyResponse": {
             "properties": {
                 "type": {
@@ -46767,13 +50212,35 @@
                 },
                 "id": {
                     "type": "string",
-                    "example": "id"
+                    "example": "1"
                 },
                 "attributes": {
                     "properties": {
                         "name": {
                             "type": "string",
                             "example": "Tandblekning"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ProcedureResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "procedure"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Botox-behandling"
                         }
                     },
                     "type": "object"
@@ -46867,6 +50334,43 @@
             },
             "type": "object"
         },
+        "RebookingDefaultsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "rebooking_default"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "description": {
+                            "type": "string",
+                            "example": "Test description"
+                        },
+                        "status": {
+                            "type": "string"
+                        },
+                        "booking_duration": {
+                            "type": "number",
+                            "example": 30
+                        },
+                        "months_to_booking": {
+                            "type": "number",
+                            "example": 12
+                        },
+                        "auto_rebook": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "RebookingsResponse": {
             "properties": {
                 "type": {
@@ -46913,6 +50417,36 @@
             },
             "type": "object"
         },
+        "ReimbursementRuleResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "reimbursement_rule"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "share": {
+                            "type": "number",
+                            "example": 50
+                        },
+                        "from": {
+                            "type": "number",
+                            "example": 3000
+                        },
+                        "to": {
+                            "type": "number",
+                            "example": 10000
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ReimbursementTypeResponse": {
             "properties": {
                 "type": {
@@ -46932,6 +50466,60 @@
                         "active": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "RemittanceEmailResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "remittance_email"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "to": {
+                            "type": "string"
+                        },
+                        "to_name": {
+                            "type": "string"
+                        },
+                        "subject": {
+                            "type": "string",
+                            "example": "Test subject"
+                        },
+                        "body": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "sent_at": {
+                            "type": "string",
+                            "example": "2024-10-30T15:00:00+01:00"
+                        },
+                        "scheduled": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "message_status": {
+                            "type": "string"
+                        },
+                        "error_code": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-10-30T15:00:43+01:00"
                         }
                     },
                     "type": "object"
@@ -47697,6 +51285,162 @@
             },
             "type": "object"
         },
+        "RiskEvaluationResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "risk_evaluation"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-06-27T13:41:22+02:00"
+                        },
+                        "caries_diet": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "caries_fluor_exposure": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "caries_history": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "caries_oral_hygiene": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "caries_other": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "caries_progression": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "caries_saliva": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "generic_age": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "generic_cooperation_willingness": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "generic_dental_fear": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "generic_diseases": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "generic_medications": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "parodontal_activity": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "parodontal_bleeding": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "parodontal_oral_hygiene": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "parodontal_plaque": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "parodontal_tobacco_use": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "technical_bite_physiology": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "technical_erosion": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "technical_fillings_and_crowns": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "technical_other": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "technical_prosthetics": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "technical_root_fillings": {
+                            "type": "number",
+                            "example": 0
+                        },
+                        "signed_at": {
+                            "type": "string",
+                            "example": "2024-07-27T12:41:22+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-05-27T12:41:22+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "RoleResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "role"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "12"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Tandl\u00e4kare"
+                        },
+                        "slug": {
+                            "type": "string",
+                            "example": "dentist"
+                        },
+                        "occupational_code": {
+                            "type": "string",
+                            "example": "TAN"
+                        },
+                        "is_caregiver_role": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "RoomsResponse": {
             "properties": {
                 "type": {
@@ -47724,6 +51468,31 @@
                         "replace_with_default_users": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SafeModeConfigResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "safe_mode_config"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "email": {
+                            "type": "string",
+                            "example": "test@testemail.com"
+                        },
+                        "password": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
@@ -47798,6 +51567,30 @@
                             "type": "string"
                         },
                         "title": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SigningTokenResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "signing_token"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "12"
+                },
+                "attributes": {
+                    "properties": {
+                        "personal_id": {
+                            "type": "string"
+                        },
+                        "origin": {
                             "type": "string"
                         }
                     },
