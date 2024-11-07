@@ -6340,13 +6340,6 @@
                         "type": "string"
                     },
                     {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
                         "name": "body",
                         "in": "body",
                         "description": "Body of request (not all properties is obligatory)",
@@ -19634,7 +19627,8 @@
                                                 },
                                                 "reference_price": {
                                                     "description": "Create a journal-pharmaceutical-article",
-                                                    "type": "0.00"
+                                                    "type": "number",
+                                                    "example": "0.00"
                                                 },
                                                 "sales_stopped": {
                                                     "description": "Create a journal-pharmaceutical-article",
@@ -19878,7 +19872,8 @@
                                                 },
                                                 "reference_price": {
                                                     "description": "Edit a journal-pharmaceutical-article",
-                                                    "type": "0.00"
+                                                    "type": "number",
+                                                    "example": "0.00"
                                                 },
                                                 "sales_stopped": {
                                                     "description": "Edit a journal-pharmaceutical-article",
