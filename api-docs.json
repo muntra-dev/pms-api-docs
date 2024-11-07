@@ -6359,32 +6359,36 @@
                                                         "type": "string"
                                                     }
                                                 },
-                                                "dtend": {
+                                                "clinic_id": {
                                                     "description": "Book booking",
-                                                    "type": "string",
-                                                    "example": "2024-08-02 12:55:53"
+                                                    "type": "number",
+                                                    "example": 8551
+                                                },
+                                                "user_ids": {
+                                                    "description": "Book booking",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "room_ids": {
+                                                    "description": "Book booking",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "resource_ids": {
+                                                    "description": "Book booking",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
                                                 },
                                                 "booking_type_id": {
                                                     "description": "Book booking",
                                                     "type": "number",
                                                     "example": 12
-                                                },
-                                                "clinic_id": {
-                                                    "description": "Book booking",
-                                                    "type": "number",
-                                                    "example": 312
-                                                },
-                                                "caregiver_ids": {
-                                                    "description": "Book booking",
-                                                    "type": "string"
-                                                },
-                                                "room_ids": {
-                                                    "description": "Book booking",
-                                                    "type": "string"
-                                                },
-                                                "resource_ids": {
-                                                    "description": "Book booking",
-                                                    "type": "string"
                                                 }
                                             },
                                             "type": "object"
@@ -6418,6 +6422,121 @@
                             "properties": {
                                 "message": {
                                     "description": "Book booking",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/bookings/rebook": {
+            "post": {
+                "tags": [
+                    "bookings"
+                ],
+                "summary": "Rebook booking",
+                "description": "Returns rebooked booking based on the given filters",
+                "operationId": "postBookingRebook",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all properties is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Rebook booking",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Rebook booking",
+                                            "properties": {
+                                                "patient_ids": {
+                                                    "description": "Rebook booking",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "clinic_id": {
+                                                    "description": "Rebook booking",
+                                                    "type": "number",
+                                                    "example": 8551
+                                                },
+                                                "user_ids": {
+                                                    "description": "Rebook booking",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "room_ids": {
+                                                    "description": "Rebook booking",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "resource_ids": {
+                                                    "description": "Rebook booking",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "booking_type_id": {
+                                                    "description": "Rebook booking",
+                                                    "type": "number",
+                                                    "example": 12
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Rebook booking",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Rebook booking",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
