@@ -52575,7 +52575,7 @@
                     "webhooks"
                 ],
                 "summary": "Webhook for booking",
-                "description": "Booking request be send to webhook endpoint\r\n     ---\r\n\r\n    Bullet list:\r\n\r\n      * apples\r\n      * oranges\r\n      * pears\r\n      ",
+                "description": "Booking request be send to webhook endpoint\r\n     \r\n    Triggers of the booking webhook:\r\n\r\n       * POST /muntra-bookings/{id}/reschedule\r\n       * POST /muntra-bookings\r\n       * POST /muntra-booking-attendees/{id}/reschedule\r\n       * POST /muntra-booking-attendees\r\n       * POST /bookings/book\r\n       * POST /bookings/rebook\r\n       * POST /bookings with user_ids/patient_ids\r\n       * PATCH /bookings\r\n       * POST /booking-attendees for attendees with related user/patient\r\n       * PATCH /booking-attendees for attendees with related user/patient\r\n       * POST /bookings/{id}/cancel\r\n       * POST /bookings/{id}/change\r\n       * POST /rebookings/{id}/tentative-book\r\n      ",
                 "operationId": "WebhookBookings",
                 "consumes": [
                     "application/json"
