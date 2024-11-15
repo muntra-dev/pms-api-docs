@@ -48028,7 +48028,7 @@
                 ],
                 "summary": "Edit a twain-data-source",
                 "description": "Returns edited twain data source based on the given filters",
-                "operationId": "getTwainDataSource",
+                "operationId": "patchTwainDataSource",
                 "consumes": [
                     "application/json"
                 ],
@@ -51955,7 +51955,7 @@
                                             "properties": {
                                                 "fiscal_year_id": {
                                                     "description": "Create a verification",
-                                                    "type": "numer",
+                                                    "type": "number",
                                                     "example": 1
                                                 },
                                                 "verification_serie_id": {
@@ -52146,7 +52146,7 @@
                                             "properties": {
                                                 "fiscal_year_id": {
                                                     "description": "Edit a verification",
-                                                    "type": "numer",
+                                                    "type": "number",
                                                     "example": 1
                                                 },
                                                 "verification_serie_id": {
