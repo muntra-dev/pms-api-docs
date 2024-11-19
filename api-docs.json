@@ -11,6 +11,1221 @@
         "https"
     ],
     "paths": {
+        "/api/account-plan-templates": {
+            "get": {
+                "tags": [
+                    "account-plan-templates"
+                ],
+                "summary": "List account-plan-templates",
+                "description": "Returns a list of account plan templates on the given filters",
+                "operationId": "getAccountPlanTemplates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "'country_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List account-plan-templates",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountPlanTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List account-plan-templates",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/account-plan-templates/{id}": {
+            "get": {
+                "tags": [
+                    "account-plan-templates"
+                ],
+                "summary": "Retrieve an account-plan-template",
+                "description": "Returns certain account plan template on the given filters",
+                "operationId": "getAccountPlanTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an account-plan-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountPlanTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an account-plan-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/account-plans/{id}": {
+            "get": {
+                "tags": [
+                    "account-plans"
+                ],
+                "summary": "Retrieve an account-plan",
+                "description": "Returns certain account plan based on the given filters",
+                "operationId": "getAccountPlans",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'fiscal_year', 'accounts'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an account-plan",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountPlansResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an account-plan",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/account-types": {
+            "get": {
+                "tags": [
+                    "account-types"
+                ],
+                "summary": "List account-types",
+                "description": "Returns a list of account types based on the given filters",
+                "operationId": "getAccountTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'account', 'clinic'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "name",
+                        "in": "query",
+                        "description": "'name' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List account-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List account-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/account-types/{id}": {
+            "patch": {
+                "tags": [
+                    "account-types"
+                ],
+                "summary": "Edit an account-type",
+                "description": "Returns edited account types based on the given filters",
+                "operationId": "patchAccountType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an account-type",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an account-type",
+                                            "properties": {
+                                                "account_id": {
+                                                    "description": "Edit an account-type",
+                                                    "type": "number"
+                                                },
+                                                "custom_payment_type": {
+                                                    "description": "Edit an account-type",
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "description": "Edit an account-type",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an account-type",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an account-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounting-report-rows": {
+            "get": {
+                "tags": [
+                    "accounting-report-rows"
+                ],
+                "summary": "List accounting-report-rows",
+                "description": "Returns a list of accounting report rows based on the given filters",
+                "operationId": "getAccountingReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List accounting-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List accounting-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounting-templates": {
+            "get": {
+                "tags": [
+                    "accounting-templates"
+                ],
+                "summary": "List accounting-templates",
+                "description": "Returns a list of accounting templates based on the given filters",
+                "operationId": "getAccountingTemplates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'verification_serie', 'currency', 'accounting_template_cost_rows'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "verification_serie_id",
+                        "in": "query",
+                        "description": "'verification_serie_id' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List accounting-templates",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List accounting-templates",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "accounting-templates"
+                ],
+                "summary": "Create an accounting-template",
+                "description": "Returns created accounting template based on the given filters",
+                "operationId": "postAccountingTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an accounting-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an accounting-template",
+                                            "properties": {
+                                                "verification_serie_id": {
+                                                    "description": "Create an accounting-template",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "name": {
+                                                    "description": "Create an accounting-template",
+                                                    "type": "string",
+                                                    "example": "test"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an accounting-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an accounting-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounting-templates/{id}": {
+            "get": {
+                "tags": [
+                    "accounting-templates"
+                ],
+                "summary": "Retrieve an accounting-template",
+                "description": "Returns certain accounting template based on the given filters",
+                "operationId": "getAccountingTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'verification_serie', 'currency', 'accounting_template_cost_rows'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an accounting-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an accounting-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "accounting-templates"
+                ],
+                "summary": "Edit an accounting-template",
+                "description": "Returns edited accounting template based on the given filters",
+                "operationId": "patchAccountingTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an accounting-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an accounting-template",
+                                            "properties": {
+                                                "verification_serie_id": {
+                                                    "description": "Edit an accounting-template",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "name": {
+                                                    "description": "Edit an accounting-template",
+                                                    "type": "string",
+                                                    "example": "test"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an accounting-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an accounting-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounts": {
+            "get": {
+                "tags": [
+                    "accounts"
+                ],
+                "summary": "List accounts",
+                "description": "Returns a list of accounts based on the given filters",
+                "operationId": "getAccounts",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'account_plan'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "account_plan_id",
+                        "in": "query",
+                        "description": "'account_plan_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "active",
+                        "in": "query",
+                        "description": "'active' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "account_number",
+                        "in": "query",
+                        "description": "'account_number' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List accounts",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List accounts",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "accounts"
+                ],
+                "summary": "Create an account",
+                "description": "Returns created account based on the given filters",
+                "operationId": "postAccount",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an account",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an account",
+                                            "properties": {
+                                                "account_plan_id": {
+                                                    "description": "Create an account",
+                                                    "type": "number"
+                                                },
+                                                "account_number": {
+                                                    "description": "Create an account",
+                                                    "type": "number",
+                                                    "example": 1010
+                                                },
+                                                "account_name": {
+                                                    "description": "Create an account",
+                                                    "type": "string",
+                                                    "example": "Utvecklingsutgifter"
+                                                },
+                                                "balance_type": {
+                                                    "description": "Create an account",
+                                                    "type": "string"
+                                                },
+                                                "active": {
+                                                    "description": "Create an account",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an account",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an account",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounts/{id}": {
+            "get": {
+                "tags": [
+                    "accounts"
+                ],
+                "summary": "Retrieve an account",
+                "description": "Returns certain account based on the given filters",
+                "operationId": "getAccount",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'account_plan'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an account",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an account",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "accounts"
+                ],
+                "summary": "Edit an account",
+                "description": "Returns edited account based on the given filters",
+                "operationId": "patchAccount",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an account",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an account",
+                                            "properties": {
+                                                "account_plan_id": {
+                                                    "description": "Edit an account",
+                                                    "type": "number"
+                                                },
+                                                "account_number": {
+                                                    "description": "Edit an account",
+                                                    "type": "number",
+                                                    "example": 1010
+                                                },
+                                                "account_name": {
+                                                    "description": "Edit an account",
+                                                    "type": "string",
+                                                    "example": "Utvecklingsutgifter"
+                                                },
+                                                "balance_type": {
+                                                    "description": "Edit an account",
+                                                    "type": "string"
+                                                },
+                                                "active": {
+                                                    "description": "Edit an account",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an account",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an account",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/action-needed-patient-report-rows": {
             "get": {
                 "tags": [
@@ -480,6 +1695,149 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an animal-journal-entry",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-owner-invoices": {
+            "get": {
+                "tags": [
+                    "animal-owner-invoices"
+                ],
+                "summary": "List animal-owner-invoices",
+                "description": "Returns a list of animal owner invoices based on the given filters",
+                "operationId": "getAnimalOwnerInvoices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'user', 'fiscal_year', 'verification', 'invoice_type', 'payment_type', 'currency', 'animal_owner', 'animal_owner', 'animal_owner_invoice_rows'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_id",
+                        "in": "query",
+                        "description": "'user_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_owner_id",
+                        "in": "query",
+                        "description": "'animal_owner_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "query",
+                        "in": "query",
+                        "description": "'query' field. These values can be passed:                 \r\n                'invoices.id',\r\n                'invoices.ocr_number',\r\n                'users.first_name',\r\n                'users.last_name',\r\n                'patients.first_name',\r\n                'patients.last_name',\r\n                'patients.social_security_number',\r\n                'legal_entities.organization_name',\r\n                'legal_entities.organization_number'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-owner-invoices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerInvoicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-owner-invoices",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -52569,6 +53927,473 @@
                 }
             }
         },
+        "/api/xray-system-string-arguments": {
+            "get": {
+                "tags": [
+                    "xray-system-string-arguments"
+                ],
+                "summary": "List xray-system-string-arguments",
+                "description": "Returns a list of xray system string arguments based on the given filters",
+                "operationId": "getXraySystemStringArguments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'xray_system'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "xray_system_id",
+                        "in": "query",
+                        "description": "'xray_system_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List xray-system-string-arguments",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/XraySystemStringArgumentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List xray-system-string-arguments",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "xray-system-string-arguments"
+                ],
+                "summary": "Create an xray-system-string-argument",
+                "description": "Returns created xray system string argument based on the given filters",
+                "operationId": "postXraySystemStringArgument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an xray-system-string-argument",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an xray-system-string-argument",
+                                            "properties": {
+                                                "order": {
+                                                    "description": "Create an xray-system-string-argument",
+                                                    "type": "number",
+                                                    "example": 3
+                                                },
+                                                "label": {
+                                                    "description": "Create an xray-system-string-argument",
+                                                    "type": "string"
+                                                },
+                                                "model": {
+                                                    "description": "Create an xray-system-string-argument",
+                                                    "type": "string",
+                                                    "example": "patient"
+                                                },
+                                                "column_name": {
+                                                    "description": "Create an xray-system-string-argument",
+                                                    "type": "string",
+                                                    "example": "first_name"
+                                                },
+                                                "regular_expression": {
+                                                    "description": "Create an xray-system-string-argument",
+                                                    "type": "string",
+                                                    "example": "'[^0-9]'"
+                                                },
+                                                "substitution": {
+                                                    "description": "Create an xray-system-string-argument",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an xray-system-string-argument",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/XraySystemStringArgumentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an xray-system-string-argument",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/xray-system-string-arguments/{id}": {
+            "get": {
+                "tags": [
+                    "xray-system-string-arguments"
+                ],
+                "summary": "Retrieve an xray-system-string-argument",
+                "description": "Returns certain xray system string argument based on the given filters",
+                "operationId": "getXraySystemStringArgument",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'xray_system'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an xray-system-string-argument",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/XraySystemStringArgumentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an xray-system-string-argument",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/xray-systems": {
+            "get": {
+                "tags": [
+                    "xray-systems"
+                ],
+                "summary": "List xray-systems",
+                "description": "Returns a list of xray systems based on the given filters",
+                "operationId": "getXraySystems",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List xray-systems",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/XraySystemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List xray-systems",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "xray-systems"
+                ],
+                "summary": "Create an xray-system",
+                "description": "Returns created xray system based on the given filters",
+                "operationId": "postXraySystem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (only 'system_brand' and 'system_supplier' is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an xray-system",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an xray-system",
+                                            "properties": {
+                                                "system_supplier": {
+                                                    "description": "Create an xray-system",
+                                                    "type": "string"
+                                                },
+                                                "system_brand": {
+                                                    "description": "Create an xray-system",
+                                                    "type": "string"
+                                                },
+                                                "system_version": {
+                                                    "description": "Create an xray-system",
+                                                    "type": "string"
+                                                },
+                                                "separator": {
+                                                    "description": "Create an xray-system",
+                                                    "type": "string"
+                                                },
+                                                "integration_type": {
+                                                    "description": "Create an xray-system",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an xray-system",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/XraySystemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an xray-system",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/xray-systems/{id}": {
+            "get": {
+                "tags": [
+                    "xray-systems"
+                ],
+                "summary": "Retrieve an xray-system",
+                "description": "Returns certain xray system based on the given filters",
+                "operationId": "getXraySystem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an xray-system",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/XraySystemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an xray-system",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/webhooks:booking": {
             "post": {
                 "tags": [
@@ -52901,6 +54726,151 @@
         }
     },
     "definitions": {
+        "AccountPlanTemplateResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "account_plan_template"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Norge"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AccountPlansResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "account_plan"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "BAST 2022"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AccountResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "account"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "6202756"
+                },
+                "attributes": {
+                    "properties": {
+                        "account_number": {
+                            "type": "number",
+                            "example": 1010
+                        },
+                        "account_name": {
+                            "type": "string",
+                            "example": "Utvecklingsutgifter"
+                        },
+                        "balance_type": {
+                            "type": "string"
+                        },
+                        "active": {
+                            "type": "boolean",
+                            "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AccountTypeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "account_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "GOVERNMENT INVOICE"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AccountingReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "accounting_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string"
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AccountingTemplateResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "accounting_template"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ActionNeededPatientReportRowResponse": {
             "properties": {
                 "type": {
@@ -52968,6 +54938,47 @@
                         "deleted": {
                             "type": "boolean",
                             "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnimalOwnerInvoicesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_owner_invoice"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "animal_owner_name": {
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "animal_owner_street_address_1": {
+                            "type": "string",
+                            "example": "Hold street"
+                        },
+                        "animal_owner_street_address_2": {
+                            "type": "string",
+                            "example": "Talk street"
+                        },
+                        "animal_owner_postal_code": {
+                            "type": "string"
+                        },
+                        "animal_owner_city": {
+                            "type": "string",
+                            "example": "Stockholm"
+                        },
+                        "animal_owner_country_name": {
+                            "type": "string",
+                            "example": "Sweden"
                         }
                     },
                     "type": "object"
@@ -64735,6 +66746,79 @@
                         "added_at": {
                             "type": "string",
                             "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "XraySystemStringArgumentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "xray_system_string_argument"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "order": {
+                            "type": "number",
+                            "example": 3
+                        },
+                        "label": {
+                            "type": "string"
+                        },
+                        "model": {
+                            "type": "string",
+                            "example": "patient"
+                        },
+                        "column_name": {
+                            "type": "string",
+                            "example": "first_name"
+                        },
+                        "regular_expression": {
+                            "type": "string",
+                            "example": "'[^0-9]'"
+                        },
+                        "substitution": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "XraySystemResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "xray_system"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "system_supplier": {
+                            "type": "string"
+                        },
+                        "system_brand": {
+                            "type": "string"
+                        },
+                        "system_version": {
+                            "type": "string"
+                        },
+                        "separator": {
+                            "type": "string"
+                        },
+                        "integration_type": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
