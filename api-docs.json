@@ -488,6 +488,355 @@
                 }
             }
         },
+        "/api/accounting-template-cost-rows": {
+            "get": {
+                "tags": [
+                    "accounting-template-cost-rows"
+                ],
+                "summary": "List accounting-template-cost-rows",
+                "description": "Returns a list of accounting template cost rows based on the given filters",
+                "operationId": "getAccountingTemplateCostRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'accounting_template', 'account', 'vat_code'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "accounting_template_id",
+                        "in": "query",
+                        "description": "'accounting_template_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List accounting-template-cost-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateCostRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List accounting-template-cost-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "accounting-template-cost-rows"
+                ],
+                "summary": "Create an accounting-template-cost-row",
+                "description": "Returns created accounting template cost row based on the given filters",
+                "operationId": "postAccountingTemplateCostRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an accounting-template-cost-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an accounting-template-cost-row",
+                                            "properties": {
+                                                "vat_code_id": {
+                                                    "description": "Create an accounting-template-cost-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "accounting_template_id": {
+                                                    "description": "Create an accounting-template-cost-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "account_id": {
+                                                    "description": "Create an accounting-template-cost-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "text": {
+                                                    "description": "Create an accounting-template-cost-row",
+                                                    "type": "string",
+                                                    "example": "test text"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an accounting-template-cost-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateCostRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an accounting-template-cost-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/accounting-template-cost-rows/{id}": {
+            "get": {
+                "tags": [
+                    "accounting-template-cost-rows"
+                ],
+                "summary": "Retrieve an accounting-template-cost-row",
+                "description": "Returns certain accounting template cost row based on the given filters",
+                "operationId": "getAccountingTemplateCostRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' filed",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'accounting_template', 'account', 'vat_code'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an accounting-template-cost-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateCostRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an accounting-template-cost-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "accounting-template-cost-rows"
+                ],
+                "summary": "Edit an accounting-template-cost-row",
+                "description": "Returns edited accounting template cost row based on the given filters",
+                "operationId": "patchAccountingTemplateCostRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' filed",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an accounting-template-cost-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an accounting-template-cost-row",
+                                            "properties": {
+                                                "vat_code_id": {
+                                                    "description": "Edit an accounting-template-cost-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "accounting_template_id": {
+                                                    "description": "Edit an accounting-template-cost-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "account_id": {
+                                                    "description": "Edit an accounting-template-cost-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "text": {
+                                                    "description": "Edit an accounting-template-cost-row",
+                                                    "type": "string",
+                                                    "example": "test text"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an accounting-template-cost-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateCostRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an accounting-template-cost-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/accounting-templates": {
             "get": {
                 "tags": [
@@ -1312,6 +1661,61 @@
                 }
             }
         },
+        "/api/all-treatment-per-patient-article-report-rows": {
+            "get": {
+                "tags": [
+                    "all-treatment-per-patient-article-report-rows"
+                ],
+                "summary": "List all-treatment-per-patient-article-report-rows",
+                "description": "Returns a list of all treatment per patient article report rows based on the given filters",
+                "operationId": "getAllTreatmentPerPatientArticleReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List all-treatment-per-patient-article-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AllTreatmentPerPatientArticleReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List all-treatment-per-patient-article-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/animal-journal-entries": {
             "get": {
                 "tags": [
@@ -1705,6 +2109,392 @@
                 }
             }
         },
+        "/api/animal-owner-invoice-rows": {
+            "get": {
+                "tags": [
+                    "animal-owner-invoice-rows"
+                ],
+                "summary": "List animal-owner-invoice-rows",
+                "description": "Returns a list of animal owner invoice rows based on the given filters",
+                "operationId": "getAnimalOwnerInvoiceRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_owner_invoice', 'animal_journal_entry'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "invoice_id",
+                        "in": "query",
+                        "description": "'invoice_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-owner-invoice-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-owner-invoice-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-owner-invoice-rows"
+                ],
+                "summary": "Create an animal-owner-invoice-row",
+                "description": "Returns created animal owner invoice row based on the given filters",
+                "operationId": "postAnimalOwnerInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-owner-invoice-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-owner-invoice-row",
+                                            "properties": {
+                                                "vat_code_id": {
+                                                    "description": "Create an animal-owner-invoice-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "invoice_id": {
+                                                    "description": "Create an animal-owner-invoice-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "product_code": {
+                                                    "description": "Create an animal-owner-invoice-row",
+                                                    "type": "string"
+                                                },
+                                                "product_name": {
+                                                    "description": "Create an animal-owner-invoice-row",
+                                                    "type": "string"
+                                                },
+                                                "price_excluding_vat_per_quantity": {
+                                                    "description": "Create an animal-owner-invoice-row",
+                                                    "type": "number"
+                                                },
+                                                "quantity": {
+                                                    "description": "Create an animal-owner-invoice-row",
+                                                    "type": "number"
+                                                },
+                                                "discount_excluding_vat": {
+                                                    "description": "Create an animal-owner-invoice-row",
+                                                    "type": "number"
+                                                },
+                                                "vat_percentage": {
+                                                    "description": "Create an animal-owner-invoice-row",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-owner-invoice-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-owner-invoice-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-owner-invoice-rows/{id}": {
+            "get": {
+                "tags": [
+                    "animal-owner-invoice-rows"
+                ],
+                "summary": "Retrieve an animal-owner-invoice-row",
+                "description": "Returns certain animal owner invoice row based on the given filters",
+                "operationId": "getAnimalOwnerInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_owner_invoice', 'animal_journal_entry'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "invoice_id",
+                        "in": "query",
+                        "description": "'invoice_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-owner-invoice-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-owner-invoice-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "animal-owner-invoice-rows"
+                ],
+                "summary": "Edit an animal-owner-invoice-row",
+                "description": "Returns edited animal owner invoice row based on the given filters",
+                "operationId": "patchAnimalOwnerInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-owner-invoice-row",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-owner-invoice-row",
+                                            "properties": {
+                                                "vat_code_id": {
+                                                    "description": "Edit an animal-owner-invoice-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "invoice_id": {
+                                                    "description": "Edit an animal-owner-invoice-row",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "product_code": {
+                                                    "description": "Edit an animal-owner-invoice-row",
+                                                    "type": "string"
+                                                },
+                                                "product_name": {
+                                                    "description": "Edit an animal-owner-invoice-row",
+                                                    "type": "string"
+                                                },
+                                                "price_excluding_vat_per_quantity": {
+                                                    "description": "Edit an animal-owner-invoice-row",
+                                                    "type": "number"
+                                                },
+                                                "quantity": {
+                                                    "description": "Edit an animal-owner-invoice-row",
+                                                    "type": "number"
+                                                },
+                                                "discount_excluding_vat": {
+                                                    "description": "Edit an animal-owner-invoice-row",
+                                                    "type": "number"
+                                                },
+                                                "vat_percentage": {
+                                                    "description": "Edit an animal-owner-invoice-row",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-owner-invoice-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-owner-invoice-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/animal-owner-invoices": {
             "get": {
                 "tags": [
@@ -1838,6 +2628,857 @@
                             "properties": {
                                 "message": {
                                     "description": "List animal-owner-invoices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-owner-invoices"
+                ],
+                "summary": "Create an animal-owner-invoice",
+                "description": "Returns created animal owner invoice based on the given filters",
+                "operationId": "postAnimalOwnerInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-owner-invoice",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-owner-invoice",
+                                            "properties": {
+                                                "user_id": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "invoice_date": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "11-01-2024"
+                                                },
+                                                "due_date": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "22-11-2024"
+                                                },
+                                                "currency_id": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "invoice_type_id": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "number",
+                                                    "example": 22
+                                                },
+                                                "animal_owner_name": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "animal_owner_street_address_1": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "Hold street"
+                                                },
+                                                "animal_owner_street_address_2": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "Talk street"
+                                                },
+                                                "animal_owner_postal_code": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "string"
+                                                },
+                                                "animal_owner_city": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "Stockholm"
+                                                },
+                                                "animal_owner_country_name": {
+                                                    "description": "Create an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "Sweden"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-owner-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerInvoicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-owner-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-owner-invoices/{id}": {
+            "get": {
+                "tags": [
+                    "animal-owner-invoices"
+                ],
+                "summary": "Retrieve an animal-owner-invoice",
+                "description": "Returns certain animal owner invoice based on the given filters",
+                "operationId": "getAnimalOwnerInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'user', 'fiscal_year', 'verification', 'invoice_type', 'payment_type', 'currency', 'animal_owner', 'animal_owner', 'animal_owner_invoice_rows'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-owner-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerInvoicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-owner-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "animal-owner-invoices"
+                ],
+                "summary": "Edit an animal-owner-invoice",
+                "description": "Returns edited animal owner invoice based on the given filters",
+                "operationId": "patchAnimalOwnerInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-owner-invoice",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-owner-invoice",
+                                            "properties": {
+                                                "user_id": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "invoice_date": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "11-01-2024"
+                                                },
+                                                "due_date": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "22-11-2024"
+                                                },
+                                                "currency_id": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
+                                                "invoice_type_id": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "number",
+                                                    "example": 22
+                                                },
+                                                "animal_owner_name": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "John"
+                                                },
+                                                "animal_owner_street_address_1": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "Hold street"
+                                                },
+                                                "animal_owner_street_address_2": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "Talk street"
+                                                },
+                                                "animal_owner_postal_code": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "string"
+                                                },
+                                                "animal_owner_city": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "Stockholm"
+                                                },
+                                                "animal_owner_country_name": {
+                                                    "description": "Edit an animal-owner-invoice",
+                                                    "type": "string",
+                                                    "example": "Sweden"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-owner-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerInvoicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-owner-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-owner-payments": {
+            "get": {
+                "tags": [
+                    "animal-owner-payments"
+                ],
+                "summary": "List animal-owner-payments",
+                "description": "Returns a list of animal owner payments based on the given filters",
+                "operationId": "getAnimalOwnerPayments",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_owner', 'payments_per_invoices'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "payment_type_id",
+                        "in": "query",
+                        "description": "'payment_type_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "animal_owner_id",
+                        "in": "query",
+                        "description": "'animal_owner_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "succeeded",
+                        "in": "query",
+                        "description": "'succeeded' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "has_payment_per_invoice",
+                        "in": "query",
+                        "description": "'has_payment_per_invoice' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "has_uninvoiced_amount",
+                        "in": "query",
+                        "description": "'has_uninvoiced_amount' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List animal-owner-payments",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerPaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List animal-owner-payments",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "animal-owner-payments"
+                ],
+                "summary": "Create an animal-owner-payment",
+                "description": "Returns created animal owner payment based on the given filters",
+                "operationId": "postAnimalOwnerPayment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-owner-payment",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an animal-owner-payment",
+                                            "properties": {
+                                                "currency_id": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "payment_type_id": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "custom_payment_type_id": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "amount": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 223
+                                                },
+                                                "vat_amount": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 120
+                                                },
+                                                "description": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "paid_at": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                },
+                                                "created_at": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "string",
+                                                    "example": "2024-08-11T23:59:59+02:00"
+                                                },
+                                                "updated_at": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                },
+                                                "advance_payment": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "deleted": {
+                                                    "description": "Create an animal-owner-payment",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an animal-owner-payment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerPaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an animal-owner-payment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/animal-owner-payments/{id}": {
+            "get": {
+                "tags": [
+                    "animal-owner-payments"
+                ],
+                "summary": "Retrieve an animal-owner-payment",
+                "description": "Returns certain animal owner payment based on the given filters",
+                "operationId": "getAnimalOwnerPayment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'animal_owner', 'payments_per_invoices'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an animal-owner-payment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerPaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an animal-owner-payment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "animal-owner-payments"
+                ],
+                "summary": "Edit an animal-owner-payment",
+                "description": "Returns edited animal owner payment based on the given filters",
+                "operationId": "patchAnimalOwnerPayment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-owner-payment",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an animal-owner-payment",
+                                            "properties": {
+                                                "currency_id": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "payment_type_id": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "fiscal_year_id": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "custom_payment_type_id": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "amount": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 223
+                                                },
+                                                "vat_amount": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "number",
+                                                    "example": 120
+                                                },
+                                                "description": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "paid_at": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                },
+                                                "created_at": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "string",
+                                                    "example": "2024-08-11T23:59:59+02:00"
+                                                },
+                                                "updated_at": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                },
+                                                "advance_payment": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "deleted": {
+                                                    "description": "Edit an animal-owner-payment",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an animal-owner-payment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnimalOwnerPaymentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an animal-owner-payment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -4918,6 +6559,74 @@
                 }
             }
         },
+        "/api/anonymous-customer-receivable-report-rows": {
+            "get": {
+                "tags": [
+                    "anonymous-customer-receivable-report-rows"
+                ],
+                "summary": "List anonymous-customer-receivable-report-rows",
+                "description": "Returns a list of anonymous customer receivable report rows based on the given filters",
+                "operationId": "getAnonymousCustomerReceivableReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-customer-receivable-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CustomerReceivableReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-customer-receivable-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/anonymous-invoice-payments": {
             "get": {
                 "tags": [
@@ -5680,6 +7389,619 @@
                 }
             }
         },
+        "/api/anonymous-sales-per-patient-report-rows": {
+            "get": {
+                "tags": [
+                    "anonymous-sales-per-patient-report-rows"
+                ],
+                "summary": "List anonymous-sales-per-patient-report-rows",
+                "description": "Returns a list of anonymous sales per patient report rows based on the given filters",
+                "operationId": "getAnonymousSalesPerPatientReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-sales-per-patient-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousSalesPerPatientReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-sales-per-patient-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-treatment-article-report-rows": {
+            "get": {
+                "tags": [
+                    "anonymous-treatment-article-report-rows"
+                ],
+                "summary": "List anonymous-treatment-article-report-rows",
+                "description": "Returns a list of anonymous treatment article report rows based on the given filters",
+                "operationId": "getAnonymousTreatmentArticleReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-treatment-article-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/TreatmentArticleReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-treatment-article-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/anonymous-treatment-report-rows": {
+            "get": {
+                "tags": [
+                    "anonymous-treatment-report-rows"
+                ],
+                "summary": "List anonymous-treatment-report-rows",
+                "description": "Returns a list of anonymous treatment report rows based on the given filters",
+                "operationId": "getAnonymousTreatmentReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency', 'user'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List anonymous-treatment-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AnonymousTreatmentReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List anonymous-treatment-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/articles": {
+            "get": {
+                "tags": [
+                    "articles"
+                ],
+                "summary": "List articles",
+                "description": "Returns a list of articles based on the given filters",
+                "operationId": "getArticles",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_articles'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "article_code",
+                        "in": "query",
+                        "description": "'article_code' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List articles",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ArticleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List articles",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/articles/{id}": {
+            "get": {
+                "tags": [
+                    "articles"
+                ],
+                "summary": "Retrieve an article",
+                "description": "Returns certain article based on the given filters",
+                "operationId": "getArticle",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_articles'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an article",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ArticleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an article",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/atb-check-report-rows": {
+            "get": {
+                "tags": [
+                    "atb-check-report-rows"
+                ],
+                "summary": "List atb-check-report-rows",
+                "description": "Returns a list of atb check report rows based on the given filters",
+                "operationId": "getAtbCheckReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List atb-check-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AtbCheckReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List atb-check-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/autostarttokens": {
+            "post": {
+                "tags": [
+                    "autostarttokens"
+                ],
+                "summary": "Create an autostarttokens",
+                "description": "Returns created autostarttoken on the given filters",
+                "operationId": "postAutostarttokens",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an autostarttokens",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an autostarttokens",
+                                            "properties": {
+                                                "id_service_id": {
+                                                    "description": "Create an autostarttokens",
+                                                    "type": "nu,ber"
+                                                },
+                                                "email": {
+                                                    "description": "Create an autostarttokens",
+                                                    "type": "string"
+                                                },
+                                                "password": {
+                                                    "description": "Create an autostarttokens",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an autostarttokens",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AutostarttokenResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an autostarttokens",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/balance-report-rows": {
+            "get": {
+                "tags": [
+                    "balance-report-rows"
+                ],
+                "summary": "List balance-report-rows",
+                "description": "Returns a list of balance report rows based on the given filters",
+                "operationId": "getAccountingTemplates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List balance-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BalanceReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List balance-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/booking-attendee-external-bindings": {
             "post": {
                 "tags": [
@@ -6055,6 +8377,61 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a booking attendee",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/booking-conversion-report-rows": {
+            "get": {
+                "tags": [
+                    "booking-conversion-report-rows"
+                ],
+                "summary": "List booking-conversion-report-rows",
+                "description": "Returns a list of booking conversion report rows based on the given filters",
+                "operationId": "getBookingConversionReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List booking-conversion-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingConversationReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List booking-conversion-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -11850,6 +14227,142 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a custom-payment-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/customer-credit-report-rows": {
+            "get": {
+                "tags": [
+                    "customer-credit-report-rows"
+                ],
+                "summary": "List customer-credit-report-rows",
+                "description": "Returns a list of customer credit report rows based on the given filters",
+                "operationId": "getCustomerCreditReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List customer-credit-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/AccountingTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List customer-credit-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/customer-receivable-report-rows": {
+            "get": {
+                "tags": [
+                    "customer-receivable-report-rows"
+                ],
+                "summary": "List customer-receivable-report-rows",
+                "description": "Returns a list of customer receivable report rows based on the given filters",
+                "operationId": "getCustomerReceivableReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List customer-receivable-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CustomerReceivableRepRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List customer-receivable-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -25224,6 +27737,15 @@
                         "name": "dtend",
                         "in": "query",
                         "description": "End of a day (current + 3 days with format Y-m-d H:i  for defining free bookable slots.)",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_secret",
+                        "in": "query",
+                        "description": "Find a clinic by secret, this will return only one clinic as response, and not a list.",
                         "required": false,
                         "type": "string",
                         "allowEmptyValue": true,
@@ -54849,6 +57371,28 @@
             },
             "type": "object"
         },
+        "AccountingTemplateCostRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "accounting_template_cost_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AccountingTemplateResponse": {
             "properties": {
                 "type": {
@@ -54945,6 +57489,42 @@
             },
             "type": "object"
         },
+        "AnimalOwnerInvoiceRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_owner_invoice_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "product_code": {
+                            "type": "string"
+                        },
+                        "product_name": {
+                            "type": "string"
+                        },
+                        "price_excluding_vat_per_quantity": {
+                            "type": "number"
+                        },
+                        "quantity": {
+                            "type": "number"
+                        },
+                        "discount_excluding_vat": {
+                            "type": "number"
+                        },
+                        "vat_percentage": {
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AnimalOwnerInvoicesResponse": {
             "properties": {
                 "type": {
@@ -54979,6 +57559,60 @@
                         "animal_owner_country_name": {
                             "type": "string",
                             "example": "Sweden"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnimalOwnerPaymentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal_owner_payment"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 223
+                        },
+                        "vat_amount": {
+                            "type": "number",
+                            "example": 120
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "Test description"
+                        },
+                        "succeeded": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "paid_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-08-11T23:59:59+02:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        },
+                        "advance_payment": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": false
                         }
                     },
                     "type": "object"
@@ -55505,6 +58139,50 @@
             },
             "type": "object"
         },
+        "CustomerReceivableReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_customer_receivable_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "due_date": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        },
+                        "invoice_id": {
+                            "type": "number"
+                        },
+                        "invoice_date": {
+                            "type": "string",
+                            "example": "2024-11-01T23:59:59+02:00"
+                        },
+                        "invoiced_amount": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "patient_full_name": {
+                            "type": "string",
+                            "example": "John Smith"
+                        },
+                        "remaining_receivable": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "type": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AnonymouseInvoicePaymentResponse": {
             "properties": {
                 "type": {
@@ -55635,6 +58313,174 @@
             },
             "type": "object"
         },
+        "AnonymousSalesPerPatientReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_sales_per_patient_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "social_security_number": {
+                            "type": "string"
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John"
+                        },
+                        "value": {
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "TreatmentArticleReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_treatment_article_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "atrr673edda5850c2"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Test label"
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 12
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 1000
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AnonymousTreatmentReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "anonymous_treatment_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "atrr673edda5850c2"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Test label"
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 123
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ArticleResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "article"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "article_code": {
+                            "type": "string",
+                            "example": "SMS_REMINDER_SWEDEN"
+                        },
+                        "article_name": {
+                            "type": "string",
+                            "example": "SMS-p\u00e5minnelse"
+                        },
+                        "is_pharmaceutical": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AtbCheckReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "atb_check_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "patient_id": {
+                            "type": "string",
+                            "example": 123
+                        },
+                        "label": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BalanceReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "balance_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1dqwd21qwd12q"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string"
+                        },
+                        "opening_balance": {
+                            "type": "number",
+                            "example": 1000
+                        },
+                        "closing_balance": {
+                            "type": "number",
+                            "example": 2000
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "BookingAttendeeResponse": {
             "properties": {
                 "type": {
@@ -55666,6 +58512,36 @@
                         "arrived_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "BookingConversationReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "booking_conversion_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "2wq12rwqrwqw11"
+                },
+                "attributes": {
+                    "properties": {
+                        "pixel_id": {
+                            "type": "string"
+                        },
+                        "booking_count": {
+                            "type": "number"
+                        },
+                        "session_count": {
+                            "type": "number"
+                        },
+                        "source": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
@@ -56764,6 +59640,33 @@
             },
             "type": "object"
         },
+        "AutostarttokenResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "user_group"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "email": {
+                            "type": "string"
+                        },
+                        "password": {
+                            "type": "string"
+                        },
+                        "token": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "MuntraRolesResponse": {
             "properties": {
                 "type": {
@@ -57394,6 +60297,92 @@
                     "properties": {
                         "label": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CustomerCreditReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "customer_credit_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "11fw41safasfqw1"
+                },
+                "attributes": {
+                    "properties": {
+                        "paid_amount": {
+                            "type": "number",
+                            "example": 111
+                        },
+                        "paid_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "123"
+                        },
+                        "patient_full_name": {
+                            "type": "string",
+                            "example": "John Smith"
+                        },
+                        "payment_id": {
+                            "type": "string"
+                        },
+                        "remaining_credit": {
+                            "type": "number"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "CustomerReceivableRepRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "customer_receivable_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "11fw41safasfqw1"
+                },
+                "attributes": {
+                    "properties": {
+                        "due_date": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        },
+                        "invoice_id": {
+                            "type": "string",
+                            "example": "123"
+                        },
+                        "invoice_date": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        },
+                        "invoiced_amount": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "patient_full_name": {
+                            "type": "string",
+                            "example": "John Smith"
+                        },
+                        "remaining_receivable": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "type": {
+                            "type": "string",
+                            "example": true
                         }
                     },
                     "type": "object"
@@ -64143,6 +67132,52 @@
                         },
                         "value": {
                             "type": "number"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "AllTreatmentPerPatientArticleReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "all_treatment_per_patient_article_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "tarr673c8acec87be"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Justering av avtagbar protes"
+                        },
+                        "price_code": {
+                            "type": "string",
+                            "example": "p831"
+                        },
+                        "count": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "lab_fee": {
+                            "type": "number",
+                            "example": 3
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 1000
+                        },
+                        "patient_id": {
+                            "type": "number",
+                            "example": 155
+                        },
+                        "patient_name": {
+                            "type": "string",
+                            "example": "John Smith"
                         }
                     },
                     "type": "object"
