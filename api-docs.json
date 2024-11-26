@@ -7882,7 +7882,7 @@
                                             "properties": {
                                                 "id_service_id": {
                                                     "description": "Create an autostarttokens",
-                                                    "type": "nu,ber"
+                                                    "type": "number"
                                                 },
                                                 "email": {
                                                     "description": "Create an autostarttokens",
@@ -16467,6 +16467,975 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a deduction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-anchorings": {
+            "get": {
+                "tags": [
+                    "dental-lab-anchorings"
+                ],
+                "summary": "List dental-lab-anchorings",
+                "description": "Returns a list of dental lab anchorings based on the given filters",
+                "operationId": "getDentalLabAnchorings",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-lab-anchorings",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabAnchoringResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-lab-anchorings",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-anchorings/{id}": {
+            "get": {
+                "tags": [
+                    "dental-lab-anchorings"
+                ],
+                "summary": "Retrieve a dental-lab-anchoring",
+                "description": "Returns certain dental lab anchoring based on the given filters",
+                "operationId": "getDentalLabAnchoring",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab-anchoring",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabAnchoringResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab-anchoring",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-categories": {
+            "get": {
+                "tags": [
+                    "dental-lab-categories"
+                ],
+                "summary": "List dental-lab-categories",
+                "description": "Returns dental lab categories based on the given filters",
+                "operationId": "getDentalLabCategories",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'types'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-lab-categories",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabCategoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-lab-categories",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-categories/{id}": {
+            "get": {
+                "tags": [
+                    "dental-lab-categories"
+                ],
+                "summary": "Retrieve a dental-lab-category",
+                "description": "Returns certain lab categories based on the given filters",
+                "operationId": "getDentalLabCategory",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'types'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab-category",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabCategoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab-category",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-constructions": {
+            "get": {
+                "tags": [
+                    "dental-lab-constructions"
+                ],
+                "summary": "List dental-lab-constructions",
+                "description": "Returns a list of dental lab constructions based on the given filters",
+                "operationId": "getDentalLabConstructions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'dental_lab_order', type', 'anchoring', 'color', 'design', 'interproximal_contact', 'material', 'occlusion', 'pontic_design', 'process_step', 'elements'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-lab-constructions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabConstructionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-lab-constructions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "dental-lab-constructions"
+                ],
+                "summary": "Create a dental-lab-construction",
+                "description": "Returns created dental lab construction based on the given filters",
+                "operationId": "postDentalLabConstruction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a dental-lab-construction",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a dental-lab-construction",
+                                            "properties": {
+                                                "dental_lab_order_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "type_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "comment": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "string",
+                                                    "example": "Test comment"
+                                                },
+                                                "pick_out_color_in_lab": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "splint_soft_inside": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "due_date": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                },
+                                                "anchoring_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "color_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "design_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "interproximal_contact_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "material_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "occlusion_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "pontic_design_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "process_step_id": {
+                                                    "description": "Create a dental-lab-construction",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a dental-lab-construction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabConstructionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a dental-lab-construction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-constructions/{id}": {
+            "get": {
+                "tags": [
+                    "dental-lab-constructions"
+                ],
+                "summary": "Retrieve a dental-lab-construction",
+                "description": "Returns certain dental lab construction based on the given filters",
+                "operationId": "getDentalLabConstruction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'dental_lab_order', type', 'anchoring', 'color', 'design', 'interproximal_contact', 'material', 'occlusion', 'pontic_design', 'process_step', 'elements'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab-construction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabConstructionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab-construction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "dental-lab-constructions"
+                ],
+                "summary": "Edit a dental-lab-construction",
+                "description": "Returns edited dental lab construction based on the given filters",
+                "operationId": "patchDentalLabConstruction",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a dental-lab-construction",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a dental-lab-construction",
+                                            "properties": {
+                                                "dental_lab_order_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "type_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "comment": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "string",
+                                                    "example": "Test comment"
+                                                },
+                                                "pick_out_color_in_lab": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "splint_soft_inside": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "due_date": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                },
+                                                "anchoring_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "color_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "design_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "interproximal_contact_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "material_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "occlusion_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "pontic_design_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                },
+                                                "process_step_id": {
+                                                    "description": "Edit a dental-lab-construction",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a dental-lab-construction",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabConstructionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a dental-lab-construction",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-labs": {
+            "get": {
+                "tags": [
+                    "dental-labs"
+                ],
+                "summary": "List dental-labs",
+                "description": "Returns a list of dental labs based on the given filters",
+                "operationId": "getDentalLabs",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country', 'supplier'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "supplier_id",
+                        "in": "query",
+                        "description": "'supplier_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "viewport_northeast_lat",
+                        "in": "query",
+                        "description": "'viewport_northeast_lat' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "viewport_southwest_lat",
+                        "in": "query",
+                        "description": "'viewport_southwest_lat' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "viewport_northeast_lng",
+                        "in": "query",
+                        "description": "'viewport_northeast_lng' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "viewport_southwest_lng",
+                        "in": "query",
+                        "description": "'viewport_southwest_lng' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-labs",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-labs",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-labs/{id}": {
+            "get": {
+                "tags": [
+                    "dental-labs"
+                ],
+                "summary": "Retrieve a dental-lab",
+                "description": "Returns certain dental lab based on the given filters",
+                "operationId": "getDentalLab",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country', 'supplier'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -29433,6 +30402,98 @@
                 }
             }
         },
+        "/api/muntra-phone-calls": {
+            "post": {
+                "tags": [
+                    "muntra-phone-calls"
+                ],
+                "summary": "Create a muntra-phone-call",
+                "description": "Returns created muntra phone call based on the given filters",
+                "operationId": "postMuntraPhoneCall",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra-phone-call",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a muntra-phone-call",
+                                            "properties": {
+                                                "from": {
+                                                    "description": "Create a muntra-phone-call",
+                                                    "type": "string",
+                                                    "example": "+46734100411"
+                                                },
+                                                "to": {
+                                                    "description": "Create a muntra-phone-call",
+                                                    "type": "string",
+                                                    "example": "+46840906343"
+                                                },
+                                                "tenant_database_id": {
+                                                    "description": "Create a muntra-phone-call",
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a muntra-phone-call",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraPhoneCallResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a muntra-phone-call",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/muntra-procedures": {
             "get": {
                 "tags": [
@@ -35469,6 +36530,81 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a pdf",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/phone-calls/{id}": {
+            "get": {
+                "tags": [
+                    "phone-calls"
+                ],
+                "summary": "Retrieve a phone-call",
+                "description": "Returns certain phone call based on the given filters",
+                "operationId": "getPhoneCall",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'possible_patients'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a phone-call",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PhoneCallResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a phone-call",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -59640,6 +60776,32 @@
             },
             "type": "object"
         },
+        "MuntraPhoneCallResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "phone_call"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "c5074a1e-b8c6-4e98-b6de-51f172c61711"
+                },
+                "attributes": {
+                    "properties": {
+                        "from": {
+                            "type": "string",
+                            "example": "+46734100411"
+                        },
+                        "to": {
+                            "type": "string",
+                            "example": "+46840906343"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "AutostarttokenResponse": {
             "properties": {
                 "type": {
@@ -61195,6 +62357,136 @@
                         "deducted_from_invoice": {
                             "type": "string",
                             "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DentalLabAnchoringResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dental_lab_anchoring"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "stub": {
+                            "type": "string"
+                        },
+                        "label": {
+                            "type": "string",
+                            "example": "Test label"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DentalLabCategoryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dental_lab_category"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "stub": {
+                            "type": "string"
+                        },
+                        "label": {
+                            "type": "string",
+                            "example": "Test lab"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DentalLabConstructionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "user_group"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "comment": {
+                            "type": "string",
+                            "example": "Test comment"
+                        },
+                        "pick_out_color_in_lab": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "splint_soft_inside": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "due_date": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DentalLabResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dental_lab"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "lab_name": {
+                            "type": "string",
+                            "example": "Arclai lab"
+                        },
+                        "e_mail_address": {
+                            "type": "string",
+                            "example": "testemail@muntra.com"
+                        },
+                        "latitude": {
+                            "type": "number",
+                            "example": 59.932461
+                        },
+                        "longitude": {
+                            "type": "number",
+                            "example": 10.778304
+                        },
+                        "lab_orders_receiver_weight": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "number_of_lab_order_senders": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "number_of_received_lab_orders": {
+                            "type": "number",
+                            "example": 1
                         }
                     },
                     "type": "object"
@@ -64195,6 +65487,32 @@
                         "label": {
                             "type": "string",
                             "example": "RECEPTBREVL\u00c5DAN"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PhoneCallResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "phone_call"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "c5074a1e-b8c6-4e98-b6de-51f172c61711"
+                },
+                "attributes": {
+                    "properties": {
+                        "from": {
+                            "type": "string",
+                            "example": "+46734100421"
+                        },
+                        "to": {
+                            "type": "string",
+                            "example": "+46840906333"
                         }
                     },
                     "type": "object"
