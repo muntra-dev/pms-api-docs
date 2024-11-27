@@ -58052,6 +58052,98 @@
                 }
             }
         },
+        "/muntra-phone-calls/telavox": {
+            "post": {
+                "tags": [
+                    "muntra-phone-calls"
+                ],
+                "summary": "Create a Telavox muntra-phone-call",
+                "description": "Returns created Televox muntra phone call based on the given filters",
+                "operationId": "postMuntraPhoneCallTelevox",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a Telavox muntra-phone-call",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a Telavox muntra-phone-call",
+                                            "properties": {
+                                                "from": {
+                                                    "description": "Create a Telavox muntra-phone-call",
+                                                    "type": "string",
+                                                    "example": "+46734100411"
+                                                },
+                                                "to": {
+                                                    "description": "Create a Telavox muntra-phone-call",
+                                                    "type": "string",
+                                                    "example": "+46840906343"
+                                                },
+                                                "tenant_database_id": {
+                                                    "description": "Create a Telavox muntra-phone-call",
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a Telavox muntra-phone-call",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/MuntraPhoneCallResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a Telavox muntra-phone-call",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/webhooks:booking": {
             "post": {
                 "tags": [
