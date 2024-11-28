@@ -59969,15 +59969,15 @@
                                     "type": "string",
                                     "example": "+46734100411"
                                 },
+                                "tenant_database_id": {
+                                    "description": "Create a Telavox muntra-phone-call",
+                                    "type": "string",
+                                    "example": "1"
+                                },
                                 "to": {
                                     "description": "Create a Telavox muntra-phone-call",
                                     "type": "string",
                                     "example": "+46840906343"
-                                },
-                                "tenant_database_id": {
-                                    "description": "Create a Telavox muntra-phone-call",
-                                    "type": "number",
-                                    "example": 1
                                 }
                             }
                         }
