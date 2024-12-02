@@ -19046,6 +19046,694 @@
                 }
             }
         },
+        "/api/dental-lab-pontic-designs": {
+            "get": {
+                "tags": [
+                    "dental-lab-pontic-designs"
+                ],
+                "summary": "List dental-lab-pontic-designs",
+                "description": "Returns a list of dental lab pontic designs based on the given filters",
+                "operationId": "getDentalLabPonticDesigns",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-lab-pontic-designs",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabPonticDesignResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-lab-pontic-designs",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-pontic-designs/{id}": {
+            "get": {
+                "tags": [
+                    "dental-lab-pontic-designs"
+                ],
+                "summary": "Retrieve a dental-lab-pontic-design",
+                "description": "Returns certain dental lab pontic design based on the given filters",
+                "operationId": "getDentalLabPonticDesign",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab-pontic-design",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabPonticDesignResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab-pontic-design",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-process-steps": {
+            "get": {
+                "tags": [
+                    "dental-lab-process-steps"
+                ],
+                "summary": "List dental-lab-process-steps",
+                "description": "Returns a list of dental lab process steps based on the given filters",
+                "operationId": "getDentalLabProcessSteps",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-lab-process-steps",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabProcessStepResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-lab-process-steps",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-process-steps/{id}": {
+            "get": {
+                "tags": [
+                    "dental-lab-process-steps"
+                ],
+                "summary": "Retrieve a dental-lab-process-step",
+                "description": "Returns certain dental lab process step based on the given filters",
+                "operationId": "getDentalLabProcessStep",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab-process-step",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabProcessStepResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab-process-step",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-scales": {
+            "get": {
+                "tags": [
+                    "dental-lab-scales"
+                ],
+                "summary": "List dental-lab-scales",
+                "description": "Returns a list of dental lab scales based on the given filters",
+                "operationId": "getDentalLabScales",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'colors'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-lab-scales",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabScaleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-lab-scales",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-scales/{id}": {
+            "get": {
+                "tags": [
+                    "dental-lab-scales"
+                ],
+                "summary": "Retrieve a dental-lab-scale",
+                "description": "Returns certain dental lab scale based on the given filters",
+                "operationId": "getDentalLabScale",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'colors'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab-scale",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabScaleResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab-scale",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-supplier-invoices": {
+            "get": {
+                "tags": [
+                    "dental-lab-supplier-invoices"
+                ],
+                "summary": "List dental-lab-supplier-invoices",
+                "description": "Returns a list of dental lab supplier invoices based on the given filters",
+                "operationId": "getDentalLabSupplierInvoices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_invoice', 'dental_lab_order_line'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "supplier_id",
+                        "in": "query",
+                        "description": "'supplier_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_ids",
+                        "in": "query",
+                        "description": "'clinic_ids' field",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "supplier_id",
+                        "in": "query",
+                        "description": "'supplier_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "dental_lab_id",
+                        "in": "query",
+                        "description": "'dental_lab_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-lab-supplier-invoices",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabSupplierInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-lab-supplier-invoices",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-supplier-invoices/{id}": {
+            "get": {
+                "tags": [
+                    "dental-lab-supplier-invoices"
+                ],
+                "summary": "Retrieve a dental-lab-supplier-invoice",
+                "description": "Returns certain dental lab supplier invoice based on the given filters",
+                "operationId": "getDentalLabSupplierInvoice",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_invoice', 'dental_lab_order_line'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab-supplier-invoice",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabSupplierInvoiceResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab-supplier-invoice",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/dental-labs": {
             "get": {
                 "tags": [
@@ -19901,6 +20589,441 @@
                             "properties": {
                                 "message": {
                                     "description": "List draft-snail-mail-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/element-adapters": {
+            "get": {
+                "tags": [
+                    "element-adapters"
+                ],
+                "summary": "List element-adapters",
+                "description": "Returns a list of element adapters based on the given filters",
+                "operationId": "getElementAdapters",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'elements'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List element-adapters",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ElementAdapterResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List element-adapters",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/elements": {
+            "get": {
+                "tags": [
+                    "elements"
+                ],
+                "summary": "List elements",
+                "description": "Returns a list of elements based on the given filters",
+                "operationId": "getElements",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'selectable'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "'id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List elements",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ElementsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List elements",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/elements/{id}": {
+            "get": {
+                "tags": [
+                    "elements"
+                ],
+                "summary": "Retrieve an element",
+                "description": "Returns certain element based on the given filters",
+                "operationId": "getElement",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'selectable'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "id",
+                        "in": "query",
+                        "description": "'id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an element",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ElementsResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an element",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/email-addresses": {
+            "get": {
+                "tags": [
+                    "email-addresses"
+                ],
+                "summary": "List email-addresses",
+                "description": "Returns a list of email addresses based on the given filters",
+                "operationId": "getEmailAddresses",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "default",
+                        "in": "query",
+                        "description": "'default' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List email-addresses",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailAddressResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List email-addresses",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "email-addresses"
+                ],
+                "summary": "Create an email-address",
+                "description": "Returns created email address based on the given filters",
+                "operationId": "postEmailAddress",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an email-address",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an email-address",
+                                            "properties": {
+                                                "email": {
+                                                    "description": "Create an email-address",
+                                                    "type": "string",
+                                                    "example": "testemail@com.eu"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an email-address",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailAddressResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an email-address",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/email-addresses/{id}": {
+            "get": {
+                "tags": [
+                    "email-addresses"
+                ],
+                "summary": "Retrieve an email-address",
+                "description": "Returns certain email address based on the given filters",
+                "operationId": "getEmailAddress",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an email-address",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailAddressResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an email-address",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -21429,6 +22552,289 @@
                             "properties": {
                                 "message": {
                                     "description": "List first-bookable-slots",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/free-cards": {
+            "get": {
+                "tags": [
+                    "free-cards"
+                ],
+                "summary": "List free-cards",
+                "description": "Returns a list of free cards based on the given filters",
+                "operationId": "getFreeCards",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'third_party', 'tags'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List free-cards",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FreeCardResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List free-cards",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "free-cards"
+                ],
+                "summary": "Create a free-card",
+                "description": "Returns created free card based on the given filters",
+                "operationId": "postFreeCard",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a free-card",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a free-card",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a free-card",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "start_date": {
+                                                    "description": "Create a free-card",
+                                                    "type": "string",
+                                                    "example": "2024-11-02T09:16:31+02:00"
+                                                },
+                                                "end_date": {
+                                                    "description": "Create a free-card",
+                                                    "type": "string",
+                                                    "example": "2024-08-02T09:16:31+02:00"
+                                                },
+                                                "deleted_at": {
+                                                    "description": "Create a free-card",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a free-card",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FreeCardResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a free-card",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/free-cards/{id}": {
+            "get": {
+                "tags": [
+                    "free-cards"
+                ],
+                "summary": "Retrieve a free-card",
+                "description": "Returns certain free card based on the given filters",
+                "operationId": "getFreeCard",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'third_party', 'tags'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a free-card",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FreeCardResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a free-card",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -64656,6 +66062,126 @@
             },
             "type": "object"
         },
+        "DentalLabPonticDesignResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dental_lab_pontic_design"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "stub": {
+                            "type": "string",
+                            "example": "sanitary"
+                        },
+                        "label": {
+                            "type": "string",
+                            "example": "Sanitary"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DentalLabProcessStepResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dental_lab_process_step"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "stub": {
+                            "type": "string",
+                            "example": "immediate_prosthesis"
+                        },
+                        "label": {
+                            "type": "string",
+                            "example": "Immediatprotes"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DentalLabScaleResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dental_lab_scale"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Bioform"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DentalLabSupplierInvoiceResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dental_lab_supplier_invoice"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "product_code": {
+                            "type": "string"
+                        },
+                        "product_name": {
+                            "type": "string"
+                        },
+                        "price_excluding_vat_per_quantity": {
+                            "type": "number",
+                            "example": 33
+                        },
+                        "quantity": {
+                            "type": "number",
+                            "example": 15
+                        },
+                        "discount_excluding_vat": {
+                            "type": "number",
+                            "example": 11
+                        },
+                        "vat_percentage": {
+                            "type": "number",
+                            "example": 30
+                        },
+                        "supplier_invoice": {
+                            "type": "string"
+                        },
+                        "order_line": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "DentalLabResponse": {
             "properties": {
                 "type": {
@@ -64849,6 +66375,83 @@
                         "patient_name": {
                             "type": "string",
                             "example": "John"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ElementAdapterResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "element_adapter"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "49R"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ElementsResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "element"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "surface": {
+                            "type": "string"
+                        },
+                        "selectable": {
+                            "type": "string",
+                            "example": "tooth"
+                        },
+                        "tooth": {
+                            "type": "string",
+                            "example": "11"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "EmailAddressResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "email_address"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1423"
+                },
+                "attributes": {
+                    "properties": {
+                        "email": {
+                            "type": "string",
+                            "example": "testemail@com.eu"
+                        },
+                        "verified_at": {
+                            "type": "string",
+                            "example": "2024-08-02T09:16:31+02:00"
                         }
                     },
                     "type": "object"
@@ -65231,6 +66834,36 @@
                 "attributes": {
                     "properties": {
                         "dtstart": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "FreeCardResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "free_card"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "start_date": {
+                            "type": "string",
+                            "example": "2024-11-02T09:16:31+02:00"
+                        },
+                        "end_date": {
+                            "type": "string",
+                            "example": "2024-08-02T09:16:31+02:00"
+                        },
+                        "deleted_at": {
                             "type": "string",
                             "example": "2024-09-01T23:59:59+02:00"
                         }
