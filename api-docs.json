@@ -7941,7 +7941,7 @@
                 ],
                 "summary": "List balance-report-rows",
                 "description": "Returns a list of balance report rows based on the given filters",
-                "operationId": "getAccountingTemplates",
+                "operationId": "getBalanceReportRows",
                 "consumes": [
                     "application/json"
                 ],
@@ -17117,6 +17117,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "body",
                         "in": "body",
                         "description": "Body of request (not all fields is obligatory)",
@@ -19151,6 +19158,13 @@
                         "type": "string"
                     },
                     {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
                         "name": "sort_by",
                         "in": "query",
                         "description": "'sort_by' field",
@@ -19579,15 +19593,6 @@
                             "type": "string"
                         },
                         "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "supplier_id",
-                        "in": "query",
-                        "description": "'supplier_id' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
                         "default": ""
                     },
                     {
@@ -22552,289 +22557,6 @@
                             "properties": {
                                 "message": {
                                     "description": "List first-bookable-slots",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/free-cards": {
-            "get": {
-                "tags": [
-                    "free-cards"
-                ],
-                "summary": "List free-cards",
-                "description": "Returns a list of free cards based on the given filters",
-                "operationId": "getFreeCards",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'patient', 'third_party', 'tags'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "patient_id",
-                        "in": "query",
-                        "description": "'patient_id' field",
-                        "required": true,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "deleted",
-                        "in": "query",
-                        "description": "'deleted' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "sort_by",
-                        "in": "query",
-                        "description": "'sort_by' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "page",
-                        "in": "query",
-                        "description": "'page' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "per_page",
-                        "in": "query",
-                        "description": "'per_page' field",
-                        "required": false,
-                        "type": "number",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "List free-cards",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/FreeCardResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "List free-cards",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            },
-            "post": {
-                "tags": [
-                    "free-cards"
-                ],
-                "summary": "Create a free-card",
-                "description": "Returns created free card based on the given filters",
-                "operationId": "postFreeCard",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "body",
-                        "in": "body",
-                        "description": "Body of request (Not all fields is obligatory)",
-                        "required": true,
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a free-card",
-                                    "properties": {
-                                        "attributes": {
-                                            "description": "Create a free-card",
-                                            "properties": {
-                                                "patient_id": {
-                                                    "description": "Create a free-card",
-                                                    "type": "number",
-                                                    "example": 123
-                                                },
-                                                "start_date": {
-                                                    "description": "Create a free-card",
-                                                    "type": "string",
-                                                    "example": "2024-11-02T09:16:31+02:00"
-                                                },
-                                                "end_date": {
-                                                    "description": "Create a free-card",
-                                                    "type": "string",
-                                                    "example": "2024-08-02T09:16:31+02:00"
-                                                },
-                                                "deleted_at": {
-                                                    "description": "Create a free-card",
-                                                    "type": "string",
-                                                    "example": "2024-09-01T23:59:59+02:00"
-                                                }
-                                            },
-                                            "type": "object"
-                                        }
-                                    },
-                                    "type": "object"
-                                }
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Create a free-card",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/FreeCardResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Create a free-card",
-                                    "type": "string",
-                                    "example": "Please make sure that request parameters is correct"
-                                }
-                            },
-                            "type": "object"
-                        }
-                    }
-                }
-            }
-        },
-        "/api/free-cards/{id}": {
-            "get": {
-                "tags": [
-                    "free-cards"
-                ],
-                "summary": "Retrieve a free-card",
-                "description": "Returns certain free card based on the given filters",
-                "operationId": "getFreeCard",
-                "consumes": [
-                    "application/json"
-                ],
-                "produces": [
-                    "application/json"
-                ],
-                "parameters": [
-                    {
-                        "name": "Authorization",
-                        "in": "header",
-                        "description": "Bearer token",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "id",
-                        "in": "path",
-                        "description": "'id' field",
-                        "required": true,
-                        "type": "string"
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'patient', 'third_party', 'tags'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "OK",
-                        "schema": {
-                            "properties": {
-                                "data": {
-                                    "description": "Retrieve a free-card",
-                                    "type": "array",
-                                    "items": {
-                                        "$ref": "#/definitions/FreeCardResponse"
-                                    }
-                                }
-                            },
-                            "type": "object"
-                        }
-                    },
-                    "422": {
-                        "description": "Validation error",
-                        "schema": {
-                            "properties": {
-                                "message": {
-                                    "description": "Retrieve a free-card",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -66834,36 +66556,6 @@
                 "attributes": {
                     "properties": {
                         "dtstart": {
-                            "type": "string",
-                            "example": "2024-09-01T23:59:59+02:00"
-                        }
-                    },
-                    "type": "object"
-                }
-            },
-            "type": "object"
-        },
-        "FreeCardResponse": {
-            "properties": {
-                "type": {
-                    "type": "string",
-                    "example": "free_card"
-                },
-                "id": {
-                    "type": "string",
-                    "example": "1"
-                },
-                "attributes": {
-                    "properties": {
-                        "start_date": {
-                            "type": "string",
-                            "example": "2024-11-02T09:16:31+02:00"
-                        },
-                        "end_date": {
-                            "type": "string",
-                            "example": "2024-08-02T09:16:31+02:00"
-                        },
-                        "deleted_at": {
                             "type": "string",
                             "example": "2024-09-01T23:59:59+02:00"
                         }
