@@ -19538,6 +19538,159 @@
                 }
             }
         },
+        "/api/dental-lab-supplier-invoice-rows": {
+            "get": {
+                "tags": [
+                    "dental-lab-supplier-invoice-rows"
+                ],
+                "summary": "List dental-lab-supplier-invoice-rows",
+                "description": "Returns a list of dental lab supplier invoice rows based on the given filters",
+                "operationId": "getDentalLabSupplierInvoiceRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "supplier_invoice_id",
+                        "in": "query",
+                        "description": "'supplier_invoice_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List dental-lab-supplier-invoice-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabSupplierInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List dental-lab-supplier-invoice-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/dental-lab-supplier-invoice-rows/{id}": {
+            "get": {
+                "tags": [
+                    "dental-lab-supplier-invoice-rows"
+                ],
+                "summary": "Retrieve a dental-lab-supplier-invoice-row",
+                "description": "Returns certain dental lab supplier invoice row based on the given filters",
+                "operationId": "getDentalLabSupplierInvoiceRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a dental-lab-supplier-invoice-row",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DentalLabSupplierInvoiceRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a dental-lab-supplier-invoice-row",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/dental-lab-supplier-invoices": {
             "get": {
                 "tags": [
@@ -22567,6 +22720,1089 @@
                 }
             }
         },
+        "/api/fiscal-years": {
+            "get": {
+                "tags": [
+                    "fiscal-years"
+                ],
+                "summary": "List fiscal-years",
+                "description": "Returns a list of fiscal years based on the given filters",
+                "operationId": "getFiscalYears",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'organization_with_default', 'supplier_payment_custom_payment_type', 'account_plan', 'verification_series', 'verifications'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List fiscal-years",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FiscalYearResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List fiscal-years",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "fiscal-years"
+                ],
+                "summary": "Create a fiscal-year",
+                "description": "Returns created fiscal year based on the given filters",
+                "operationId": "postFiscalYear",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a fiscal-year",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a fiscal-year",
+                                            "properties": {
+                                                "account_plan_template_id": {
+                                                    "description": "Create a fiscal-year",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "organization_with_default_id": {
+                                                    "description": "Create a fiscal-year",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "cash_accounting_method": {
+                                                    "description": "Create a fiscal-year",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "book_outstanding_treatments": {
+                                                    "description": "Create a fiscal-year",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "organization_id": {
+                                                    "description": "Create a fiscal-year",
+                                                    "type": "number",
+                                                    "example": 327
+                                                },
+                                                "start_date": {
+                                                    "description": "Create a fiscal-year",
+                                                    "type": "2024-07-28T00:00:00+02:00"
+                                                },
+                                                "end_date": {
+                                                    "description": "Create a fiscal-year",
+                                                    "type": "2025-07-28T00:00:00+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a fiscal-year",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FiscalYearResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a fiscal-year",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/fiscal-years/{id}": {
+            "get": {
+                "tags": [
+                    "fiscal-years"
+                ],
+                "summary": "Retrieve a fiscal-year",
+                "description": "Returns certain fiscal year based on the given filters",
+                "operationId": "getFiscalYear",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'organization_with_default', 'supplier_payment_custom_payment_type', 'account_plan', 'verification_series', 'verifications'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a fiscal-year",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FiscalYearResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a fiscal-year",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "fiscal-years"
+                ],
+                "summary": "Edit a fiscal-year",
+                "description": "Returns edited fiscal year based on the given filters",
+                "operationId": "patchFiscalYear",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a fiscal-year",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a fiscal-year",
+                                            "properties": {
+                                                "account_plan_template_id": {
+                                                    "description": "Edit a fiscal-year",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "organization_with_default_id": {
+                                                    "description": "Edit a fiscal-year",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "cash_accounting_method": {
+                                                    "description": "Edit a fiscal-year",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "book_outstanding_treatments": {
+                                                    "description": "Edit a fiscal-year",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "organization_id": {
+                                                    "description": "Edit a fiscal-year",
+                                                    "type": "number",
+                                                    "example": 327
+                                                },
+                                                "start_date": {
+                                                    "description": "Edit a fiscal-year",
+                                                    "type": "2024-07-28T00:00:00+02:00"
+                                                },
+                                                "end_date": {
+                                                    "description": "Edit a fiscal-year",
+                                                    "type": "2025-07-28T00:00:00+02:00"
+                                                },
+                                                "supplier_payment_custom_payment_type_id": {
+                                                    "description": "Edit a fiscal-year",
+                                                    "type": "number",
+                                                    "example": 123
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a fiscal-year",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FiscalYearResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a fiscal-year",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/free-cards": {
+            "get": {
+                "tags": [
+                    "free-cards"
+                ],
+                "summary": "List free-cards",
+                "description": "Returns a list of free cards based on the given filters",
+                "operationId": "getFreeCards",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'third_party', 'tags'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List free-cards",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FreeCardResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List free-cards",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "free-cards"
+                ],
+                "summary": "Create a free-card",
+                "description": "Returns created free card based on the given filters",
+                "operationId": "postFreeCard",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a free-card",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a free-card",
+                                            "properties": {
+                                                "patient_id": {
+                                                    "description": "Create a free-card",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "start_date": {
+                                                    "description": "Create a free-card",
+                                                    "type": "string",
+                                                    "example": "2024-11-02T09:16:31+02:00"
+                                                },
+                                                "end_date": {
+                                                    "description": "Create a free-card",
+                                                    "type": "string",
+                                                    "example": "2024-08-02T09:16:31+02:00"
+                                                },
+                                                "deleted_at": {
+                                                    "description": "Create a free-card",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T23:59:59+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a free-card",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FreeCardResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a free-card",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/free-cards/{id}": {
+            "get": {
+                "tags": [
+                    "free-cards"
+                ],
+                "summary": "Retrieve a free-card",
+                "description": "Returns certain free card based on the given filters",
+                "operationId": "getFreeCard",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'third_party', 'tags'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a free-card",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/FreeCardResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a free-card",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/histories": {
+            "get": {
+                "tags": [
+                    "histories"
+                ],
+                "summary": "List histories",
+                "description": "Returns a list of histories based on the given filters",
+                "operationId": "getHistories",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "elements",
+                        "in": "query",
+                        "description": "'elements' field.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List histories",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HistoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List histories",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "histories"
+                ],
+                "summary": "Create a history",
+                "description": "Returns created history based on the given filters",
+                "operationId": "postHistory",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Only 'text' field is is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a history",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a history",
+                                            "properties": {
+                                                "text": {
+                                                    "description": "Create a history",
+                                                    "type": "string",
+                                                    "example": "Test text"
+                                                },
+                                                "code": {
+                                                    "description": "Create a history",
+                                                    "type": "string",
+                                                    "example": "TS"
+                                                },
+                                                "selectable": {
+                                                    "description": "Create a history",
+                                                    "type": "string",
+                                                    "example": "surface"
+                                                },
+                                                "crown_background_color": {
+                                                    "description": "Create a history",
+                                                    "type": "string",
+                                                    "example": "rgba(0,0,0,0.8)"
+                                                },
+                                                "crown_border_color": {
+                                                    "description": "Create a history",
+                                                    "type": "string",
+                                                    "example": "rgba(255,255,255,1)"
+                                                },
+                                                "root_background_color": {
+                                                    "description": "Create a history",
+                                                    "type": "string",
+                                                    "example": "rgba(0,0,0,0.8)"
+                                                },
+                                                "root_border_color": {
+                                                    "description": "Create a history",
+                                                    "type": "string",
+                                                    "example": "rgba(255,255,255,1)"
+                                                },
+                                                "clear_history": {
+                                                    "description": "Create a history",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "surface_text": {
+                                                    "description": "Create a history",
+                                                    "type": "string"
+                                                },
+                                                "surface_text_color": {
+                                                    "description": "Create a history",
+                                                    "type": "string",
+                                                    "example": "rgba(255,255,255,1)"
+                                                },
+                                                "tooth_status": {
+                                                    "description": "Create a history",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a history",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HistoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a history",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/histories/{id}": {
+            "get": {
+                "tags": [
+                    "histories"
+                ],
+                "summary": "Retrieve a history",
+                "description": "Returns certain history based on the given filters",
+                "operationId": "getHistory",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a history",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HistoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a history",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "histories"
+                ],
+                "summary": "Edit a history",
+                "description": "Returns edited history based on the given filters",
+                "operationId": "patchHistory",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (Only 'text' field is is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a history",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a history",
+                                            "properties": {
+                                                "text": {
+                                                    "description": "Edit a history",
+                                                    "type": "string",
+                                                    "example": "Test text"
+                                                },
+                                                "code": {
+                                                    "description": "Edit a history",
+                                                    "type": "string",
+                                                    "example": "TS"
+                                                },
+                                                "selectable": {
+                                                    "description": "Edit a history",
+                                                    "type": "string",
+                                                    "example": "surface"
+                                                },
+                                                "crown_background_color": {
+                                                    "description": "Edit a history",
+                                                    "type": "string",
+                                                    "example": "rgba(0,0,0,0.8)"
+                                                },
+                                                "crown_border_color": {
+                                                    "description": "Edit a history",
+                                                    "type": "string",
+                                                    "example": "rgba(255,255,255,1)"
+                                                },
+                                                "root_background_color": {
+                                                    "description": "Edit a history",
+                                                    "type": "string",
+                                                    "example": "rgba(0,0,0,0.8)"
+                                                },
+                                                "root_border_color": {
+                                                    "description": "Edit a history",
+                                                    "type": "string",
+                                                    "example": "rgba(255,255,255,1)"
+                                                },
+                                                "clear_history": {
+                                                    "description": "Edit a history",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "surface_text": {
+                                                    "description": "Edit a history",
+                                                    "type": "string"
+                                                },
+                                                "surface_text_color": {
+                                                    "description": "Edit a history",
+                                                    "type": "string",
+                                                    "example": "rgba(255,255,255,1)"
+                                                },
+                                                "tooth_status": {
+                                                    "description": "Edit a history",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a history",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HistoryResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a history",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/human-prescription-rows": {
             "get": {
                 "tags": [
@@ -24293,6 +25529,83 @@
                 }
             }
         },
+        "/api/inventory-report-rows": {
+            "get": {
+                "tags": [
+                    "inventory-report-rows"
+                ],
+                "summary": "List inventory-report-rows",
+                "description": "Returns a list of inventory report rows based on the given filters",
+                "operationId": "getInventoryReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "'date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List inventory-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InventoryReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List inventory-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/invoice-emails": {
             "get": {
                 "tags": [
@@ -24710,6 +26023,101 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit an invoice-email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-payment-report-rows": {
+            "get": {
+                "tags": [
+                    "invoice-payment-report-rows"
+                ],
+                "summary": "List invoice-payment-report-rows",
+                "description": "Returns a list of invoice payment report rows based on the given filters",
+                "operationId": "getInvoicePaymentReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoice-payment-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoicePaymentReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoice-payment-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -25606,6 +27014,273 @@
                 }
             }
         },
+        "/api/invoice-report-rows": {
+            "get": {
+                "tags": [
+                    "invoice-report-rows"
+                ],
+                "summary": "List invoice-report-rows",
+                "description": "Returns a list of invoice report rows based on the given filters",
+                "operationId": "getInvoiceReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoice-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoice-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-revenue-per-user-report-rows": {
+            "get": {
+                "tags": [
+                    "invoice-revenue-per-user-report-rows"
+                ],
+                "summary": "List invoice-revenue-per-user-report-rows",
+                "description": "Returns a list of invoice revenue per user report rows based on the given filters",
+                "operationId": "getInvoiceRevenuePerUserReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency', 'user'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "price_type",
+                        "in": "query",
+                        "description": "'price_type' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoice-revenue-per-user-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceRevenuePerUserReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoice-revenue-per-user-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoice-sales-per-article-report-rows": {
+            "get": {
+                "tags": [
+                    "invoice-sales-per-article-report-rows"
+                ],
+                "summary": "List invoice-sales-per-article-report-rows",
+                "description": "Returns a list of invoice sales per article report rows based on the given filters",
+                "operationId": "getInvoiceSalesPerArticleReportRowResponse",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoice-sales-per-article-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoiceSalesPerArticleReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoice-sales-per-article-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/invoice-types": {
             "get": {
                 "tags": [
@@ -25748,6 +27423,101 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a invoice-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/invoiced-lab-fee-per-user-report-rows": {
+            "get": {
+                "tags": [
+                    "invoiced-lab-fee-per-user-report-rows"
+                ],
+                "summary": "List invoiced-lab-fee-per-user-report-rows",
+                "description": "Returns a list of invoiced lab fee per user report-rows based on the given filters",
+                "operationId": "getInvoicedLabFeePerUserReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency', 'user'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List invoiced-lab-fee-per-user-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoicedLabFeePerUserReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List invoiced-lab-fee-per-user-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -33728,6 +35498,92 @@
                 }
             }
         },
+        "/api/new-patient-report-rows": {
+            "get": {
+                "tags": [
+                    "new-patient-report-rows"
+                ],
+                "summary": "List new-patient-report-rows",
+                "description": "Returns a list of new patient report rows based on the given filters",
+                "operationId": "getNewPatientReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient', 'user'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List new-patient-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/NewPatientReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List new-patient-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/notifications": {
             "get": {
                 "tags": [
@@ -33980,6 +35836,128 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a notification",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/number-of-patient-hours-report-rows": {
+            "get": {
+                "tags": [
+                    "number-of-patient-hours-report-rows"
+                ],
+                "summary": "List number-of-patient-hours-report-rows",
+                "description": "Returns a list of number of patient hours report rows based on the given filters",
+                "operationId": "getNumberOfPatientHoursReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "interval",
+                        "in": "query",
+                        "description": "'interval' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "user_ids",
+                        "in": "query",
+                        "description": "'user_ids' field.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List number-of-patient-hours-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/NumberOfPatientHoursReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List number-of-patient-hours-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -34790,6 +36768,273 @@
                 }
             }
         },
+        "/api/outstanding-report-rows": {
+            "get": {
+                "tags": [
+                    "outstanding-report-rows"
+                ],
+                "summary": "List outstanding-report-rows",
+                "description": "Returns a list of outstanding report rows based on the given filters",
+                "operationId": "getOutstandingReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "date",
+                        "in": "query",
+                        "description": "'date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List outstanding-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/InvoicePaymentReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List outstanding-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/paid-per-date-report-rows": {
+            "get": {
+                "tags": [
+                    "paid-per-date-report-rows"
+                ],
+                "summary": "List paid-per-date-report-rows",
+                "description": "Returns a list of paid per date report rows based on the given filters",
+                "operationId": "getPaidPerDateReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List paid-per-date-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PaidPerDateReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List paid-per-date-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/paid-per-user-report-rows": {
+            "get": {
+                "tags": [
+                    "paid-per-user-report-rows"
+                ],
+                "summary": "List paid-per-user-report-rows",
+                "description": "Returns a list of paid per user report rows based on the given filters",
+                "operationId": "getPaidPerUserReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List paid-per-user-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PaidPerUserReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List paid-per-user-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/parod-entry-types": {
             "get": {
                 "tags": [
@@ -34897,6 +37142,128 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a parod-entry-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/parod-report-rows": {
+            "get": {
+                "tags": [
+                    "parod-report-rows"
+                ],
+                "summary": "List invoice-revenue-per-user-report-rows",
+                "description": "Returns a list of parod report rows based on the given filters",
+                "operationId": "getParodReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'patient'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "pocket_depth_exceeds_in_mm",
+                        "in": "query",
+                        "description": "'pocket_depth_exceeds_in_mm' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "bleeding",
+                        "in": "query",
+                        "description": "'bleeding' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "has_plaque_index",
+                        "in": "query",
+                        "description": "'has_plaque_index' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "unit",
+                        "in": "query",
+                        "description": "'unit' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "summarize_as",
+                        "in": "query",
+                        "description": "'summarize_as' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List parod-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/ParodReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List parod-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -35975,6 +38342,207 @@
                             "properties": {
                                 "message": {
                                     "description": "List parodont-journal-entry-versions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-count-per-birth-year-report-rows": {
+            "get": {
+                "tags": [
+                    "patient-count-per-birth-year-report-rows"
+                ],
+                "summary": "List patient-count-per-birth-year-report-rows",
+                "description": "Returns a list of patient count per birth year report rows based on the given filters",
+                "operationId": "getPatientCountPerBirthYearReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-count-per-birth-year-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientCountPerBirthYearReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-count-per-birth-year-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-count-per-date-report-rows": {
+            "get": {
+                "tags": [
+                    "patient-count-per-date-report-rows"
+                ],
+                "summary": "List patient-count-per-date-report-rows",
+                "description": "Returns a list of patient count per date report rows based on the given filters",
+                "operationId": "getPatientCountPerDateReportRow",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "start_date",
+                        "in": "query",
+                        "description": "'start_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "end_date",
+                        "in": "query",
+                        "description": "'end_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-count-per-date-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientCountPerDateReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-count-per-date-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/patient-count-report-rows": {
+            "get": {
+                "tags": [
+                    "patient-count-report-rows"
+                ],
+                "summary": "List patient-count-report-rows",
+                "description": "Returns a list of patient count report rows based on the given filters",
+                "operationId": "getPatientCountReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-count-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientCountReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-count-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -37983,6 +40551,101 @@
                 }
             }
         },
+        "/api/patient-transaction-report-rows": {
+            "get": {
+                "tags": [
+                    "patient-transaction-report-rows"
+                ],
+                "summary": "List patient-transaction-report-rows",
+                "description": "Returns a list of patient transaction report rows based on the given filters",
+                "operationId": "getPatientTransactionReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "patient_id",
+                        "in": "query",
+                        "description": "'patient_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "from_date",
+                        "in": "query",
+                        "description": "'from_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "to_date",
+                        "in": "query",
+                        "description": "'to_date' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List patient-transaction-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientTransactionReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List patient-transaction-report-rows",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/patient-versions": {
             "get": {
                 "tags": [
@@ -38330,7 +40993,7 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Body of request (one field obligatory)",
+                        "description": "Body of request (one field is obligatory)",
                         "required": true,
                         "schema": {
                             "properties": {
@@ -38588,7 +41251,7 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Body of request (one field obligatory)",
+                        "description": "Body of request (one field is obligatory)",
                         "required": true,
                         "schema": {
                             "properties": {
@@ -38646,6 +41309,61 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a patient",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/payment-report-rows": {
+            "get": {
+                "tags": [
+                    "payment-report-rows"
+                ],
+                "summary": "List payment-report-rows",
+                "description": "Returns a list of payment report rows based on the given filters",
+                "operationId": "getPaymentReportRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List payment-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PaymentReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List payment-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -39486,6 +42204,734 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a pdf",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permission-policies": {
+            "get": {
+                "tags": [
+                    "permission-policies"
+                ],
+                "summary": "List permission-policies",
+                "description": "Returns s list of permission policies based on the given filters",
+                "operationId": "getPermissionPolicies",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'permissions', 'user_at_clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List permission-policies",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PermissionPolicyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List permission-policies",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "permission-policies"
+                ],
+                "summary": "Create a permission-policy",
+                "description": "Returns created permission policy based on the given filters",
+                "operationId": "postPermissionPolicy",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a permission-policy",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a permission-policy",
+                                            "properties": {
+                                                "organization_id": {
+                                                    "description": "Create a permission-policy",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "name": {
+                                                    "description": "Create a permission-policy",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "description": {
+                                                    "description": "Create a permission-policy",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "customer_managed": {
+                                                    "description": "Create a permission-policy",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a permission-policy",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PermissionPolicyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a permission-policy",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permission-policies/{id}": {
+            "get": {
+                "tags": [
+                    "permission-policies"
+                ],
+                "summary": "Retrieve a permission-policy",
+                "description": "Returns certain permission policy based on the given filters",
+                "operationId": "getPermissionPolicy",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'organization', 'permissions', 'user_at_clinics'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a permission-policy",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PermissionPolicyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a permission-policy",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "permission-policies"
+                ],
+                "summary": "Edit a permission-policy",
+                "description": "Returns edited permission policy based on the given filters",
+                "operationId": "patchPermissionPolicy",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a permission-policy",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a permission-policy",
+                                            "properties": {
+                                                "organization_id": {
+                                                    "description": "Edit a permission-policy",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "name": {
+                                                    "description": "Edit a permission-policy",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "description": {
+                                                    "description": "Edit a permission-policy",
+                                                    "type": "string",
+                                                    "example": "Test description"
+                                                },
+                                                "customer_managed": {
+                                                    "description": "Edit a permission-policy",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a permission-policy",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PermissionPolicyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a permission-policy",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions": {
+            "get": {
+                "tags": [
+                    "permissions"
+                ],
+                "summary": "List permissions",
+                "description": "Returns a list of permissions based on the given filters",
+                "operationId": "getPermissions",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'permission_policy'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "permission_policy_id",
+                        "in": "query",
+                        "description": "'permission_policy_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List permissions",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientCountReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List permissions",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "permissions"
+                ],
+                "summary": "Create a permission",
+                "description": "Returns created permission based on the given filters",
+                "operationId": "postPermission",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a permission",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a permission",
+                                            "properties": {
+                                                "permission_policy_id": {
+                                                    "description": "Create a permission",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "action": {
+                                                    "description": "Create a permission",
+                                                    "type": "string"
+                                                },
+                                                "resource": {
+                                                    "description": "Create a permission",
+                                                    "type": "string"
+                                                },
+                                                "label": {
+                                                    "description": "Create a permission",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a permission",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PermissionResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a permission",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/permissions/{id}": {
+            "get": {
+                "tags": [
+                    "permissions"
+                ],
+                "summary": "Retrieve a permission",
+                "description": "Returns certain permission based on the given filters",
+                "operationId": "getPermission",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'permission_policy'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a permission",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientCountReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a permission",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "permissions"
+                ],
+                "summary": "Edit a permission",
+                "description": "Returns edited permission based on the given filters",
+                "operationId": "patchPermission",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a permission",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a permission",
+                                            "properties": {
+                                                "permission_policy_id": {
+                                                    "description": "Edit a permission",
+                                                    "type": "number",
+                                                    "example": 123
+                                                },
+                                                "action": {
+                                                    "description": "Edit a permission",
+                                                    "type": "string"
+                                                },
+                                                "resource": {
+                                                    "description": "Edit a permission",
+                                                    "type": "string"
+                                                },
+                                                "label": {
+                                                    "description": "Edit a permission",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a permission",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/PatientCountReportRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a permission",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -45522,6 +48968,83 @@
                             "properties": {
                                 "message": {
                                     "description": "Retrieve a safe-mode-config",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/sales-per-date-report-rows": {
+            "get": {
+                "tags": [
+                    "sales-per-date-report-rows"
+                ],
+                "summary": "List sales-per-date-report-rows",
+                "description": "Returns a list of sales per date report rows based on the given filters",
+                "operationId": "getSalesPerDateReporRows",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'currency'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "fiscal_year_id",
+                        "in": "query",
+                        "description": "'fiscal_year_id' field",
+                        "required": true,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List sales-per-date-report-rows",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/SalesPerDateReporRowResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List sales-per-date-report-rows",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -64597,6 +68120,44 @@
             },
             "type": "object"
         },
+        "CustomerLossResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "customer_loss"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "id"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": "1000.00"
+                        },
+                        "date": {
+                            "type": "string",
+                            "example": "2024-11-08"
+                        },
+                        "realized": {
+                            "type": "boolean",
+                            "example": "true"
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-11-08T18:48:44+00:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-11-08T18:48:44+00:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "CustomerReceivableRepRowResponse": {
             "properties": {
                 "type": {
@@ -65858,6 +69419,52 @@
             },
             "type": "object"
         },
+        "DentalLabSupplierInvoiceRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "dental_lab_supplier_invoice_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "product_code": {
+                            "type": "string"
+                        },
+                        "product_name": {
+                            "type": "string"
+                        },
+                        "price_excluding_vat_per_quantity": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "quantity": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "discount_excluding_vat": {
+                            "type": "number",
+                            "example": 15
+                        },
+                        "vat_percentage": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "supplier_invoice": {
+                            "type": "string"
+                        },
+                        "dental_lab_order_line": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "DentalLabSupplierInvoiceResponse": {
             "properties": {
                 "type": {
@@ -66565,6 +70172,70 @@
             },
             "type": "object"
         },
+        "FiscalYearResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "fiscal_year"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "start_date": {
+                            "type": "string",
+                            "example": "2023-07-24T00:00:00+02:00"
+                        },
+                        "end_date": {
+                            "type": "string",
+                            "example": "2025-07-28T00:00:00+02:00"
+                        },
+                        "cash_accounting_method": {
+                            "type": "boolean",
+                            "example": true
+                        },
+                        "book_outstanding_treatments": {
+                            "type": "boolean",
+                            "example": true
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "FreeCardResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "free_card"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "start_date": {
+                            "type": "string",
+                            "example": "2024-11-02T09:16:31+02:00"
+                        },
+                        "end_date": {
+                            "type": "string",
+                            "example": "2024-08-02T09:16:31+02:00"
+                        },
+                        "deleted_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "GooglePlaceDetailRequest": {
             "properties": {
                 "type": {
@@ -66690,6 +70361,66 @@
                             "example": "ChIJq6V7IxIQXEYRz-eMz_uA3Lo"
                         },
                         "formatted_address": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "HistoryResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "export_request"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        },
+                        "code": {
+                            "type": "string",
+                            "example": "TS"
+                        },
+                        "selectable": {
+                            "type": "string",
+                            "example": "surface"
+                        },
+                        "crown_background_color": {
+                            "type": "string",
+                            "example": "rgba(0,0,0,0.8)"
+                        },
+                        "crown_border_color": {
+                            "type": "string",
+                            "example": "rgba(255,255,255,1)"
+                        },
+                        "root_background_color": {
+                            "type": "string",
+                            "example": "rgba(0,0,0,0.8)"
+                        },
+                        "root_border_color": {
+                            "type": "string",
+                            "example": "rgba(255,255,255,1)"
+                        },
+                        "clear_history": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "surface_text": {
+                            "type": "string"
+                        },
+                        "surface_text_color": {
+                            "type": "string",
+                            "example": "rgba(255,255,255,1)"
+                        },
+                        "tooth_status": {
                             "type": "string"
                         }
                     },
@@ -67066,6 +70797,50 @@
             },
             "type": "object"
         },
+        "InventoryReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "inventory_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1fasfqwqw142aqqw"
+                },
+                "attributes": {
+                    "properties": {
+                        "price_code": {
+                            "type": "string"
+                        },
+                        "price_name": {
+                            "type": "string"
+                        },
+                        "quantity": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "purchase_price_excluding_vat": {
+                            "type": "number",
+                            "example": 200
+                        },
+                        "clinic_name": {
+                            "type": "string",
+                            "example": "Test clinic name"
+                        },
+                        "delivery_id": {
+                            "type": "number",
+                            "example": 421
+                        },
+                        "signer_full_name": {
+                            "type": "string",
+                            "example": "John Otto"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "InvoiceEmailResponse": {
             "properties": {
                 "type": {
@@ -67112,6 +70887,31 @@
                         "created_at": {
                             "type": "string",
                             "example": "2024-10-22T10:04:25+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InvoicePaymentReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_payment_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "qw112421dwqd"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Test label"
+                        },
+                        "value": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
@@ -67203,6 +71003,53 @@
             },
             "type": "object"
         },
+        "InvoiceReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1fasfqwqw142aqqw"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Test label"
+                        },
+                        "value": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InvoiceRevenuePerUserReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_revenue_per_user_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1rwqw24rwq211"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 1
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "InvoiceTypeResponse": {
             "properties": {
                 "type": {
@@ -67225,6 +71072,27 @@
                         }
                     },
                     "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InvoicedLabFeePerUserReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "export_request"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "112dqwdqwfq"
+                },
+                "attributes": {
+                    "properties": {
+                        "amount": {
+                            "type": "number",
+                            "example": 100
+                        }
+                    }
                 }
             },
             "type": "object"
@@ -67752,6 +71620,28 @@
             },
             "type": "object"
         },
+        "NewPatientReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "new_patient_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "qwwd1dqw21"
+                },
+                "attributes": {
+                    "properties": {
+                        "charged_at": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "NotificationsResponse": {
             "properties": {
                 "type": {
@@ -67781,6 +71671,40 @@
                         "deleted": {
                             "type": "boolean",
                             "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "NumberOfPatientHoursReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "number_of_patient_hours_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "nophrr674f1f5104976"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Test label"
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 1.9167
+                        },
+                        "end_date": {
+                            "type": "string",
+                            "example": "2024-06-26T23:59:59+02:00"
+                        },
+                        "start_date": {
+                            "type": "string",
+                            "example": "2024-06-26T00:00:00+02:00"
                         }
                     },
                     "type": "object"
@@ -67981,6 +71905,100 @@
             },
             "type": "object"
         },
+        "OutstandingReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "outstanding_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "journal_entry_date": {
+                            "type": "string",
+                            "example": "2024-08-02T09:16:31+02:00"
+                        },
+                        "journal_entry_id": {
+                            "type": "string",
+                            "example": "123"
+                        },
+                        "outstanding_amount": {
+                            "type": "number",
+                            "example": 300
+                        },
+                        "patient_full_name": {
+                            "type": "string",
+                            "example": "John Otto"
+                        },
+                        "patient_id": {
+                            "type": "string",
+                            "example": "233"
+                        },
+                        "verification_date": {
+                            "type": "string",
+                            "example": "2024-09-01T23:59:59+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PaidPerDateReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "paid_per_date_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1qwf12wqd122d"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 123
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PaidPerUserReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "paid_per_user_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "8a3f12wqd122d"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-11-11T19:25:31+02:00"
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 123
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "ParodEntryTypeResponse": {
             "properties": {
                 "type": {
@@ -68000,6 +72018,32 @@
                         "detail_type": {
                             "type": "boolean",
                             "example": false
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "ParodReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "parod_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "parrr1425823c6b112"
+                },
+                "attributes": {
+                    "properties": {
+                        "value": {
+                            "type": "number",
+                            "example": 5
+                        },
+                        "date": {
+                            "type": "string",
+                            "example": "2024-09-01T19:25:31+02:00"
                         }
                     },
                     "type": "object"
@@ -68158,6 +72202,83 @@
                         "history_id": {
                             "type": "string",
                             "example": "draft"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientCountPerBirthYearReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_count_per_birth_year_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "pcpttrr775064256010a"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string",
+                            "example": "Test label"
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 123
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientCountPerDateReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_count_per_date_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "pcpdrr6750687d0302a"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-06-20T00:00:00+02:00"
+                        },
+                        "value": {
+                            "type": "string",
+                            "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PatientCountReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_count_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "pcrr6750733ce1182"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string"
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 15
                         }
                     },
                     "type": "object"
@@ -68563,6 +72684,31 @@
             },
             "type": "object"
         },
+        "PatientTransactionReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "patient_transaction_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "label": {
+                            "type": "string"
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 5
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "PatientResponse": {
             "properties": {
                 "type": {
@@ -68824,6 +72970,44 @@
             },
             "type": "object"
         },
+        "PaymentReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "payment_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "account_number": {
+                            "type": "string"
+                        },
+                        "verification_number": {
+                            "type": "string"
+                        },
+                        "verification_date": {
+                            "type": "string",
+                            "example": "2024-09-11T29:25:31+02:00"
+                        },
+                        "verification_text": {
+                            "type": "string"
+                        },
+                        "patient_name": {
+                            "type": "string"
+                        },
+                        "amount": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "PaymentTypeResponse": {
             "properties": {
                 "type": {
@@ -68903,6 +73087,71 @@
                         "creation_date": {
                             "type": "string",
                             "example": "2024-08-31T00:00:00+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PermissionPolicyResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "permission_policy"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "description": {
+                            "type": "string",
+                            "example": "Test description"
+                        },
+                        "customer_managed": {
+                            "type": "boolean",
+                            "example": false
+                        },
+                        "created_at": {
+                            "type": "string",
+                            "example": "2024-12-05T17:55:39+01:00"
+                        },
+                        "updated_at": {
+                            "type": "string",
+                            "example": "2024-12-05T17:55:39+01:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "PermissionResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "permission"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "action": {
+                            "type": "string"
+                        },
+                        "resource": {
+                            "type": "string"
+                        },
+                        "label": {
+                            "type": "string"
                         }
                     },
                     "type": "object"
@@ -70416,6 +74665,84 @@
                         },
                         "password": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "InvoiceSalesPerArticleReportRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "invoice_sales_per_article_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1wdqgqw21g3f44"
+                },
+                "attributes": {
+                    "properties": {
+                        "clinic_name": {
+                            "type": "string",
+                            "example": "Test clinic name"
+                        },
+                        "clinic_id": {
+                            "type": "string",
+                            "example": "134"
+                        },
+                        "year": {
+                            "type": "string",
+                            "example": "2024"
+                        },
+                        "month": {
+                            "type": "string"
+                        },
+                        "price_code": {
+                            "type": "string"
+                        },
+                        "price_description": {
+                            "type": "string",
+                            "example": "Test description"
+                        },
+                        "quantity": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "amount_excluding_vat": {
+                            "type": "number",
+                            "example": 15
+                        },
+                        "vat_amount": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "SalesPerDateReporRowResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "sales_per_date_report_row"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "pcrr6750733ce1182"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2018-01-05T00:00:00+01:00"
+                        },
+                        "value": {
+                            "type": "number",
+                            "example": 1500
                         }
                     },
                     "type": "object"
