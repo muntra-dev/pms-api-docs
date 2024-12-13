@@ -27124,6 +27124,14 @@
                                                 "history_code": {
                                                     "description": "Create a history-select",
                                                     "type": "number"
+                                                },
+                                                "elements": {
+                                                    "description": "Create a history-select",
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "string"
+                                                    },
+                                                    "collectionFormat": "csv"
                                                 }
                                             },
                                             "type": "object"
