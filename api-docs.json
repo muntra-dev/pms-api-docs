@@ -8089,7 +8089,7 @@
                     "booking-attendees"
                 ],
                 "summary": "List booking attendees",
-                "description": "Returns a list of booking attenees based on the given filters",
+                "description": "Returns a list of booking attendees based on the given filters",
                 "operationId": "getBookingAttendees",
                 "consumes": [
                     "application/json"
@@ -8108,7 +8108,7 @@
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'booking', 'user', 'patient', 'room', 'resource'.",
+                        "description": "Including 'booking', 'user', 'patient', 'room', 'resource', 'emails', 'email_ics', 'declaration_emails', 'sms_invitations', 'sms_reminders', 'declaration_sms', 'snail_mails', 'booking_attendee_external_binding'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -8143,6 +8143,129 @@
                             },
                             "type": "object"
                         }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List booking attendees",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "booking-attendees"
+                ],
+                "summary": "Create a booking attendee",
+                "description": "Returns created booking attendee based on the given filters",
+                "operationId": "postBookingAttendee",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking attendee",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a booking attendee",
+                                            "properties": {
+                                                "booking_id": {
+                                                    "description": "Create a booking attendee",
+                                                    "type": "number",
+                                                    "example": "1"
+                                                },
+                                                "dtstart": {
+                                                    "description": "Create a booking attendee",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "dtend": {
+                                                    "description": "Create a booking attendee",
+                                                    "type": "string",
+                                                    "example": "2024-10-01T22:28:33+02:00"
+                                                },
+                                                "partstat": {
+                                                    "description": "Create a booking attendee",
+                                                    "type": "string",
+                                                    "example": "ACCEPTED"
+                                                },
+                                                "rsvp": {
+                                                    "description": "Create a booking attendee",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "arrived_at": {
+                                                    "description": "Create a booking attendee",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "first_sendout_on": {
+                                                    "description": "Create a booking attendee",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a booking attendee",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/BookingAttendeeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a booking attendee",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
                     }
                 }
             }
@@ -8153,7 +8276,7 @@
                     "booking-attendees"
                 ],
                 "summary": "Retrieve a booking attendee",
-                "description": "Returns a booking attenee based on the given filters",
+                "description": "Returns certain booking attendee based on the given filters",
                 "operationId": "getBookingAttendee",
                 "consumes": [
                     "application/json"
@@ -8174,14 +8297,12 @@
                         "in": "path",
                         "description": "'id' field",
                         "required": true,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
+                        "type": "string"
                     },
                     {
                         "name": "include",
                         "in": "query",
-                        "description": "Including 'booking', 'user', 'patient', 'room', 'resource'.",
+                        "description": "Including 'booking', 'user', 'patient', 'room', 'resource', 'emails', 'email_ics', 'declaration_emails', 'sms_invitations', 'sms_reminders', 'declaration_sms', 'snail_mails', 'booking_attendee_external_binding'.",
                         "required": false,
                         "type": "array",
                         "allowEmptyValue": true,
@@ -8189,15 +8310,6 @@
                             "type": "string"
                         },
                         "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "booking_id",
-                        "in": "query",
-                        "description": "Booking id field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
                         "default": ""
                     }
                 ],
@@ -8237,7 +8349,7 @@
                     "booking-attendees"
                 ],
                 "summary": "Edit a booking attendee",
-                "description": "",
+                "description": "Returns edited booking attendee based on the given filters",
                 "operationId": "patchBookingAttendees",
                 "consumes": [
                     "application/json"
@@ -8263,7 +8375,7 @@
                     {
                         "name": "body",
                         "in": "body",
-                        "description": "Body of request (obligatory)",
+                        "description": "Body of request (not all fields is obligatory)",
                         "required": true,
                         "schema": {
                             "properties": {
@@ -8277,6 +8389,36 @@
                                                     "description": "Edit a booking attendee",
                                                     "type": "number",
                                                     "example": "1"
+                                                },
+                                                "dtstart": {
+                                                    "description": "Edit a booking attendee",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "dtend": {
+                                                    "description": "Edit a booking attendee",
+                                                    "type": "string",
+                                                    "example": "2024-10-01T22:28:33+02:00"
+                                                },
+                                                "partstat": {
+                                                    "description": "Edit a booking attendee",
+                                                    "type": "string",
+                                                    "example": "ACCEPTED"
+                                                },
+                                                "rsvp": {
+                                                    "description": "Edit a booking attendee",
+                                                    "type": "boolean",
+                                                    "example": false
+                                                },
+                                                "arrived_at": {
+                                                    "description": "Edit a booking attendee",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
+                                                },
+                                                "first_sendout_on": {
+                                                    "description": "Edit a booking attendee",
+                                                    "type": "string",
+                                                    "example": "2024-09-01T19:25:31+02:00"
                                                 }
                                             },
                                             "type": "object"
@@ -8286,73 +8428,6 @@
                                 }
                             }
                         }
-                    },
-                    {
-                        "name": "include",
-                        "in": "query",
-                        "description": "Including 'booking', 'user', 'patient', 'room', 'resource', 'emails', 'email_ics', 'declaration_emails', 'sms_invitations', 'sms_reminders', 'declaration_sms', 'snail_mails', 'booking_attendee_external_binding'.",
-                        "required": false,
-                        "type": "array",
-                        "allowEmptyValue": true,
-                        "items": {
-                            "type": "string"
-                        },
-                        "collectionFormat": "csv",
-                        "default": ""
-                    },
-                    {
-                        "name": "arrived_at",
-                        "in": "query",
-                        "description": "Arrived at field (format: '2024-09-01 19:25:31')",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "dtstart",
-                        "in": "query",
-                        "description": "Date/time start field (format: '2024-08-01 11:35:33')",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "dtend",
-                        "in": "query",
-                        "description": "Date/time end field (format: '2024-08-02 13:46:43')",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "partstat",
-                        "in": "query",
-                        "description": "Part stat field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "rsvp",
-                        "in": "query",
-                        "description": "'rsvp' field",
-                        "required": false,
-                        "type": "boolean",
-                        "allowEmptyValue": true,
-                        "default": ""
-                    },
-                    {
-                        "name": "first_sendout_on",
-                        "in": "query",
-                        "description": "'first_sendout_on' field",
-                        "required": false,
-                        "type": "string",
-                        "allowEmptyValue": true,
-                        "default": ""
                     }
                 ],
                 "responses": {
@@ -8858,7 +8933,7 @@
                 ],
                 "summary": "List booking-policies",
                 "description": "Returns a list of booking policies based on the given filters",
-                "operationId": "getBookingPilicies",
+                "operationId": "getBookingPolicies",
                 "consumes": [
                     "application/json"
                 ],
@@ -8911,7 +8986,7 @@
                 ],
                 "summary": "Create a booking-policy",
                 "description": "Returns created booking policy based on the given filters",
-                "operationId": "postBookingPilicy",
+                "operationId": "postBookingPolicy",
                 "consumes": [
                     "application/json"
                 ],
@@ -9008,7 +9083,7 @@
                 ],
                 "summary": "Retrieve a booking-policy",
                 "description": "Returns certain booking policy based on the given filters",
-                "operationId": "getBookingPilicy",
+                "operationId": "getBookingPolicy",
                 "consumes": [
                     "application/json"
                 ],
@@ -9068,7 +9143,7 @@
                 ],
                 "summary": "Edit a booking-policy",
                 "description": "Returns edited booking policy based on the given filters",
-                "operationId": "patchBookingPilicy",
+                "operationId": "patchBookingPolicy",
                 "consumes": [
                     "application/json"
                 ],
@@ -13375,11 +13450,6 @@
                                         "attributes": {
                                             "description": "Create a computer",
                                             "properties": {
-                                                "body": {
-                                                    "description": "Create a computer",
-                                                    "type": "string",
-                                                    "example": "Test body"
-                                                },
                                                 "clinic_id": {
                                                     "description": "Create a computer",
                                                     "type": "number",
@@ -13550,11 +13620,6 @@
                                         "attributes": {
                                             "description": "Edit a computer",
                                             "properties": {
-                                                "body": {
-                                                    "description": "Edit a computer",
-                                                    "type": "string",
-                                                    "example": "Test body"
-                                                },
                                                 "clinic_id": {
                                                     "description": "Edit a computer",
                                                     "type": "number",
@@ -13600,6 +13665,93 @@
                             "properties": {
                                 "message": {
                                     "description": "Edit a computer",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/cors-proxies": {
+            "post": {
+                "tags": [
+                    "cors-proxies"
+                ],
+                "summary": "Create a cors-proxy",
+                "description": "Returns created cors proxy based on the given filters",
+                "operationId": "postCorsProxy",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a cors-proxy",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a cors-proxy",
+                                            "properties": {
+                                                "destination": {
+                                                    "description": "Create a cors-proxy",
+                                                    "type": "string",
+                                                    "example": "Test body"
+                                                },
+                                                "parameters": {
+                                                    "description": "Create a cors-proxy",
+                                                    "type": "string",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a cors-proxy",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/CorsProxyResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a cors-proxy",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -15768,11 +15920,6 @@
                                         "attributes": {
                                             "description": "Create a credential",
                                             "properties": {
-                                                "body": {
-                                                    "description": "Create a credential",
-                                                    "type": "string",
-                                                    "example": "Test body"
-                                                },
                                                 "user_at_clinic_id": {
                                                     "description": "Create a credential",
                                                     "type": "number",
@@ -15949,11 +16096,6 @@
                                         "attributes": {
                                             "description": "Edit a credential",
                                             "properties": {
-                                                "body": {
-                                                    "description": "Edit a credential",
-                                                    "type": "string",
-                                                    "example": "Test body"
-                                                },
                                                 "user_at_clinic_id": {
                                                     "description": "Edit a credential",
                                                     "type": "number",
@@ -17267,6 +17409,367 @@
                             "properties": {
                                 "message": {
                                     "description": "List dashboard-reports",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/debt-collection-services": {
+            "get": {
+                "tags": [
+                    "debt-collection-services"
+                ],
+                "summary": "List debt-collection-services",
+                "description": "Returns a list of debt collection services based on the given filters",
+                "operationId": "getDebtCollectionServices",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_article', 'organization', 'order_line', 'invoice', 'api_responses'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "organization_id",
+                        "in": "query",
+                        "description": "'organization_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "invoice_id",
+                        "in": "query",
+                        "description": "'invoice_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "deleted",
+                        "in": "query",
+                        "description": "'deleted' field",
+                        "required": false,
+                        "type": "boolean",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List debt-collection-services",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DebtCollectionServicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List debt-collection-services",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "debt-collection-services"
+                ],
+                "summary": "Create a debt-collection-service",
+                "description": "Returns created debt collection service based on the given filters",
+                "operationId": "postDebtCollectionService",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a debt-collection-service",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a debt-collection-service",
+                                            "properties": {
+                                                "invoice_url": {
+                                                    "description": "Create a debt-collection-service",
+                                                    "type": "string"
+                                                },
+                                                "deleted": {
+                                                    "description": "Create a debt-collection-service",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "supplier_article_id": {
+                                                    "description": "Create a debt-collection-service",
+                                                    "type": "number"
+                                                },
+                                                "invoice_id": {
+                                                    "description": "Create a debt-collection-service",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a debt-collection-service",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DebtCollectionServicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a debt-collection-service",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/debt-collection-services/{id}": {
+            "get": {
+                "tags": [
+                    "debt-collection-services"
+                ],
+                "summary": "Retrieve a debt-collection-service",
+                "description": "Returns certain debt collection service based on the given filters",
+                "operationId": "getDebtCollectionService",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'supplier_article', 'organization', 'order_line', 'invoice', 'api_responses'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a debt-collection-service",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DebtCollectionServicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a debt-collection-service",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "debt-collection-services"
+                ],
+                "summary": "Edit a debt-collection-service",
+                "description": "Returns edited debt collection service based on the given filters",
+                "operationId": "patchDebtCollectionService",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a debt-collection-service",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a debt-collection-service",
+                                            "properties": {
+                                                "invoice_url": {
+                                                    "description": "Edit a debt-collection-service",
+                                                    "type": "string"
+                                                },
+                                                "deleted": {
+                                                    "description": "Edit a debt-collection-service",
+                                                    "type": "boolean",
+                                                    "example": true
+                                                },
+                                                "supplier_article_id": {
+                                                    "description": "Edit a debt-collection-service",
+                                                    "type": "number"
+                                                },
+                                                "invoice_id": {
+                                                    "description": "Edit a debt-collection-service",
+                                                    "type": "number"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a debt-collection-service",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DebtCollectionServicesResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a debt-collection-service",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -23670,6 +24173,123 @@
                 }
             }
         },
+        "/api/device-types": {
+            "get": {
+                "tags": [
+                    "device-types"
+                ],
+                "summary": "List device-types",
+                "description": "Returns a list of device types based on the given filters",
+                "operationId": "getDeviceTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List device-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeviceTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List device-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/device-types/{id}": {
+            "get": {
+                "tags": [
+                    "device-types"
+                ],
+                "summary": "Retrieve a device-type",
+                "description": "Returns certain device type based on the given filters",
+                "operationId": "getDeviceType",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a device-type",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/DeviceTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a device-type",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/devices": {
             "get": {
                 "tags": [
@@ -24591,6 +25211,300 @@
                 }
             }
         },
+        "/api/email-templates": {
+            "get": {
+                "tags": [
+                    "email-templates"
+                ],
+                "summary": "List email-templates",
+                "description": "Returns list of email templates based on the given filters",
+                "operationId": "getEmailTemplates",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List email-templates",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List email-templates",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "email-templates"
+                ],
+                "summary": "Create a email-template",
+                "description": "Returns created email template based on the given filters",
+                "operationId": "postEmailTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a email-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a email-template",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create a email-template",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "text": {
+                                                    "description": "Create a email-template",
+                                                    "type": "string",
+                                                    "example": "Test text"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a email-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a email-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/email-templates/{id}": {
+            "get": {
+                "tags": [
+                    "email-templates"
+                ],
+                "summary": "Retrieve a email-template",
+                "description": "Returns certain email template based on the given filters",
+                "operationId": "getEmailTemplate",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a email-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a email-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "email-templates"
+                ],
+                "summary": "Edit a email-template",
+                "description": "Returns edited email template based on the given filters",
+                "operationId": "patchCalendarView",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a email-template",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit a email-template",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit a email-template",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "text": {
+                                                    "description": "Edit a email-template",
+                                                    "type": "string",
+                                                    "example": "Test text"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a email-template",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EmailTemplateResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a email-template",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/emails": {
             "get": {
                 "tags": [
@@ -25074,6 +25988,362 @@
                             "properties": {
                                 "message": {
                                     "description": "Unschedule an email",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/equipment": {
+            "get": {
+                "tags": [
+                    "equipment"
+                ],
+                "summary": "List an equipment",
+                "description": "Returns list of equipment based on the given filters",
+                "operationId": "getEquipment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'room', 'supplier'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "clinic_id",
+                        "in": "query",
+                        "description": "'clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List an equipment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EquipmentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List an equipment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "equipment"
+                ],
+                "summary": "Create an equipment",
+                "description": "Returns created equipment based on the given filters",
+                "operationId": "postEquipment",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an equipment",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create an equipment",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Create an equipment",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "clinic_id": {
+                                                    "description": "Create an equipment",
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create an equipment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EquipmentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create an equipment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/equipment/{id}": {
+            "get": {
+                "tags": [
+                    "equipment"
+                ],
+                "summary": "Retrieve an equipment",
+                "description": "Returns certain equipment based on the given filters",
+                "operationId": "getEquipmentById",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'clinic', 'room', 'supplier'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve an equipment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EquipmentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve an equipment",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "equipment"
+                ],
+                "summary": "Edit an equipment",
+                "description": "Returns edited equipment based on the given filters",
+                "operationId": "patchEquipmentById",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an equipment",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Edit an equipment",
+                                            "properties": {
+                                                "name": {
+                                                    "description": "Edit an equipment",
+                                                    "type": "string",
+                                                    "example": "Test name"
+                                                },
+                                                "clinic_id": {
+                                                    "description": "Edit an equipment",
+                                                    "type": "number",
+                                                    "example": 1
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit an equipment",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/EquipmentResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit an equipment",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -26662,6 +27932,470 @@
                 }
             }
         },
+        "/api/grand-totals": {
+            "get": {
+                "tags": [
+                    "grand-totals"
+                ],
+                "summary": "List grand-totals",
+                "description": "Returns a list of grand totals based on the given filters",
+                "operationId": "getGrandTotals",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "daily_reconciliation_id",
+                        "in": "query",
+                        "description": "'daily_reconciliation_id' field",
+                        "required": true,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List grand-totals",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GrandTotalesponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List grand-totals",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/gui-item-types": {
+            "get": {
+                "tags": [
+                    "gui-item-types"
+                ],
+                "summary": "List gui-item-types",
+                "description": "Returns a list of gui item types based on the given filters",
+                "operationId": "getBuiItemTypes",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List gui-item-types",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GuiItemTypeResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List gui-item-types",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/gui-items": {
+            "get": {
+                "tags": [
+                    "gui-items"
+                ],
+                "summary": "List gui-items",
+                "description": "Returns a list of gui items based on the given filters",
+                "operationId": "getGuiItems",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user_at_clinic', 'gui_item_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "user_at_clinic_id",
+                        "in": "query",
+                        "description": "'user_at_clinic_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "sort_by",
+                        "in": "query",
+                        "description": "'sort_by' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "'page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "per_page",
+                        "in": "query",
+                        "description": "'per_page' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List gui-items",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GuiItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List gui-items",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "gui-items"
+                ],
+                "summary": "Create a gui-item",
+                "description": "Returns created gui item based on the given filters",
+                "operationId": "postGuiItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "description": "Body of request (not all fields is obligatory)",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a gui-item",
+                                    "properties": {
+                                        "attributes": {
+                                            "description": "Create a gui-item",
+                                            "properties": {
+                                                "user_at_clinic_id": {
+                                                    "description": "Create a gui-item",
+                                                    "type": "number",
+                                                    "example": 12
+                                                },
+                                                "gui_item_type_id": {
+                                                    "description": "Create a gui-item",
+                                                    "type": "number",
+                                                    "example": 10
+                                                },
+                                                "order": {
+                                                    "description": "Create a gui-item",
+                                                    "type": "number"
+                                                },
+                                                "name": {
+                                                    "description": "Create a gui-item",
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "type": "object"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Create a gui-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GuiItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Create a gui-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/gui-items/{id}": {
+            "get": {
+                "tags": [
+                    "gui-items"
+                ],
+                "summary": "Retrieve a gui-item",
+                "description": "Returns certain gui item based on the given filters",
+                "operationId": "getGuiItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user_at_clinic', 'gui_item_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Retrieve a gui-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GuiItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Retrieve a gui-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "patch": {
+                "tags": [
+                    "gui-items"
+                ],
+                "summary": "Edit a gui-item",
+                "description": "Returns edited gui item based on the given filters",
+                "operationId": "patchGuiItem",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "'id' field",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user_at_clinic', 'gui_item_type'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "Edit a gui-item",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/GuiItemResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "Edit a gui-item",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
         "/api/histories": {
             "get": {
                 "tags": [
@@ -27105,6 +28839,19 @@
                         "type": "string"
                     },
                     {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'user', 'clinic', 'history', 'county_council_patient_category', 'reimbursement_type', 'elements'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
                         "name": "body",
                         "in": "body",
                         "description": "Body of request (not all field is obligatory)",
@@ -27164,6 +28911,92 @@
                             "properties": {
                                 "message": {
                                     "description": "Create a history-select",
+                                    "type": "string",
+                                    "example": "Please make sure that request parameters is correct"
+                                }
+                            },
+                            "type": "object"
+                        }
+                    }
+                }
+            }
+        },
+        "/api/holidays": {
+            "get": {
+                "tags": [
+                    "holidays"
+                ],
+                "summary": "List holidays",
+                "description": "Returns list of holidays based on the given filters",
+                "operationId": "getHolidays",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer token",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "name": "include",
+                        "in": "query",
+                        "description": "Including 'country'.",
+                        "required": false,
+                        "type": "array",
+                        "allowEmptyValue": true,
+                        "items": {
+                            "type": "string"
+                        },
+                        "collectionFormat": "csv",
+                        "default": ""
+                    },
+                    {
+                        "name": "country_id",
+                        "in": "query",
+                        "description": "'country_id' field",
+                        "required": false,
+                        "type": "number",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    },
+                    {
+                        "name": "year",
+                        "in": "query",
+                        "description": "'year' field",
+                        "required": false,
+                        "type": "string",
+                        "allowEmptyValue": true,
+                        "default": ""
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "properties": {
+                                "data": {
+                                    "description": "List holidays",
+                                    "type": "array",
+                                    "items": {
+                                        "$ref": "#/definitions/HolidayResponse"
+                                    }
+                                }
+                            },
+                            "type": "object"
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "schema": {
+                            "properties": {
+                                "message": {
+                                    "description": "List holidays",
                                     "type": "string",
                                     "example": "Please make sure that request parameters is correct"
                                 }
@@ -72142,6 +73975,19 @@
             },
             "type": "object"
         },
+        "CorsProxyResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "animal"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                }
+            },
+            "type": "object"
+        },
         "CostCentersResponse": {
             "properties": {
                 "type": {
@@ -72731,6 +74577,31 @@
                         "model_name": {
                             "type": "string",
                             "example": "action-needed-patient-report-row"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "DebtCollectionServicesResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "debt_collection_service"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "12"
+                },
+                "attributes": {
+                    "properties": {
+                        "invoice_url": {
+                            "type": "string"
+                        },
+                        "deleted": {
+                            "type": "boolean",
+                            "example": true
                         }
                     },
                     "type": "object"
@@ -74105,6 +75976,28 @@
             },
             "type": "object"
         },
+        "DeviceTypeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "device_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "extraoral-xray"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "DraftEmailReportRowResponse": {
             "properties": {
                 "type": {
@@ -74330,6 +76223,32 @@
             },
             "type": "object"
         },
+        "EmailTemplateResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "email_template"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
+                        },
+                        "text": {
+                            "type": "string",
+                            "example": "Test text"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "EmailsResponse": {
             "properties": {
                 "type": {
@@ -74374,6 +76293,28 @@
                         "created_at": {
                             "type": "string",
                             "example": "2024-09-01T19:25:31+02:00"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "EquipmentResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "email_template"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
                         }
                     },
                     "type": "object"
@@ -74853,6 +76794,79 @@
             },
             "type": "object"
         },
+        "GrandTotalesponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "grand_total"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "credits": {
+                            "type": "number",
+                            "example": 100
+                        },
+                        "sales": {
+                            "type": "number",
+                            "example": 10
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GuiItemResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "gui_item"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "order": {
+                            "type": "number",
+                            "example": 1
+                        },
+                        "name": {
+                            "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "GuiItemTypeResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "gui_item_type"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "stub": {
+                            "type": "string",
+                            "example": "mouth-selector"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
         "HistorySelectResponse": {
             "properties": {
                 "type": {
@@ -74936,6 +76950,32 @@
                         },
                         "tooth_status": {
                             "type": "string"
+                        }
+                    },
+                    "type": "object"
+                }
+            },
+            "type": "object"
+        },
+        "HolidayResponse": {
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "example": "email_template"
+                },
+                "id": {
+                    "type": "string",
+                    "example": "1"
+                },
+                "attributes": {
+                    "properties": {
+                        "date": {
+                            "type": "string",
+                            "example": "2024-01-01T00:00:00+00:00"
+                        },
+                        "name": {
+                            "type": "string",
+                            "example": "Test name"
                         }
                     },
                     "type": "object"
@@ -81128,8 +83168,8 @@
                             "example": "Niels Rask"
                         },
                         "value": {
-                            "type": "string",
-                            "example": "2000.00"
+                            "type": "number",
+                            "example": 2000
                         }
                     },
                     "type": "object"
@@ -81398,8 +83438,8 @@
                             "example": "Protes"
                         },
                         "value": {
-                            "type": "string",
-                            "example": "0.00"
+                            "type": "number",
+                            "example": 0
                         }
                     },
                     "type": "object"
@@ -83890,35 +85930,6 @@
                 }
             },
             "type": "object"
-        }
-    },
-    "parameters": {
-        "body": {
-            "name": "body",
-            "in": "body",
-            "description": "Body of request (obligatory)",
-            "required": true,
-            "schema": {
-                "properties": {
-                    "data": {
-                        "description": "List booking attendees",
-                        "properties": {
-                            "attributes": {
-                                "description": "List booking attendees",
-                                "properties": {
-                                    "patient_id": {
-                                        "description": "List booking attendees",
-                                        "type": "number",
-                                        "example": "1"
-                                    }
-                                },
-                                "type": "object"
-                            }
-                        },
-                        "type": "object"
-                    }
-                }
-            }
         }
     },
     "responses": {
