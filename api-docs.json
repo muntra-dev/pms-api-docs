@@ -28872,6 +28872,11 @@
                                                     "description": "Create a history-select",
                                                     "type": "number"
                                                 },
+                                                "recommendation_position": {
+                                                    "description": "Create a history-select",
+                                                    "type": "number",
+                                                    "example": 1
+                                                },
                                                 "elements": {
                                                     "description": "Create a history-select",
                                                     "type": "array",
@@ -76871,7 +76876,7 @@
             "properties": {
                 "type": {
                     "type": "string",
-                    "example": "email_template"
+                    "example": "history_select"
                 },
                 "id": {
                     "type": "string",
